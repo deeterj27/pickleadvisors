@@ -760,10 +760,136 @@
 
         /* Footer */
         footer {
-            padding: 40px;
-            text-align: center;
+            padding: 80px 40px 40px 40px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(180deg, var(--dark) 0%, #0a0a0a 100%);
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20%;
+            right: 20%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--secondary), var(--accent), transparent);
+            opacity: 0.5;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: 80px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-tagline {
             color: var(--gray);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 300px;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .footer-column h4 {
+            color: var(--light);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-column a {
+            display: block;
+            color: var(--gray);
+            text-decoration: none;
+            padding: 8px 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .footer-column a:hover {
+            color: var(--light);
+            transform: translateX(5px);
+        }
+
+        .footer-column a.coming-soon {
+            opacity: 0.5;
+            cursor: not-allowed;
+            font-style: italic;
+        }
+
+        .footer-column a.coming-soon::after {
+            content: ' (Coming Soon)';
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-legal {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-legal p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .legal-link {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .legal-link:hover {
+            color: var(--accent);
+        }
+
+        .separator {
+            color: rgba(255, 255, 255, 0.2);
         }
 
         /* Responsive */
@@ -885,8 +1011,37 @@
             }
 
             footer {
-                padding: 30px 20px;
-                font-size: 0.9rem;
+                padding: 60px 20px 30px 20px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .footer-brand {
+                align-items: center;
+            }
+
+            .footer-tagline {
+                text-align: center;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: left;
+            }
+
+            .footer-column h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .footer-legal {
+                flex-direction: column;
+                text-align: center;
             }
         }
 
@@ -1140,7 +1295,79 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Pickle Advisors, LLC. All rights reserved.</p>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="footerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#16A085;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#F39C12;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M 20 15 L 20 45 M 20 15 L 35 15 Q 43 15 43 23 Q 43 31 35 31 L 20 31" 
+                              stroke="url(#footerGradient)" stroke-width="4" fill="none" stroke-linecap="round"/>
+                        <path d="M 36 26 L 44 18 M 44 18 L 44 26 M 44 18 L 36 18" 
+                              stroke="#F39C12" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <text x="55" y="28" font-family="-apple-system, BlinkMacSystemFont, sans-serif" 
+                              font-size="20" font-weight="700" fill="url(#footerGradient)">PICKLE</text>
+                        <text x="55" y="42" font-family="-apple-system, BlinkMacSystemFont, sans-serif" 
+                              font-size="14" font-weight="400" fill="#6B7280">ADVISORS</text>
+                    </svg>
+                    <p class="footer-tagline">Investing in the next wave of consumer culture</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#about">About</a>
+                        <a href="#approach">Approach</a>
+                        <a href="#portfolio">Portfolio</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="#" class="coming-soon">Founder Resources</a>
+                        <a href="#" class="coming-soon">Portfolio News</a>
+                        <a href="#" class="coming-soon">Insights</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <a href="https://www.linkedin.com/in/jonathan-deeter/" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 8px;">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="currentColor"/>
+                            </svg>
+                            LinkedIn
+                        </a>
+                        <a href="mailto:jonathan@pickleadvisors.com">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 8px;">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/>
+                            </svg>
+                            Email
+                        </a>
+                        <a href="#" class="coming-soon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 8px;">
+                                <path d="M23 3.00005C22.0424 3.67552 20.9821 4.19216 19.86 4.53005C19.2577 3.83756 18.4573 3.34674 17.567 3.12397C16.6767 2.90121 15.7395 2.95724 14.8821 3.2845C14.0247 3.61176 13.2884 4.19445 12.773 4.95376C12.2575 5.71308 11.9877 6.61238 12 7.53005V8.53005C10.2426 8.57561 8.50127 8.18586 6.93101 7.39549C5.36074 6.60513 4.01032 5.43868 3 4.00005C3 4.00005 -1 13 8 17C5.94053 18.398 3.48716 19.099 1 19C10 24 21 19 21 7.50005C20.9991 7.2215 20.9723 6.94364 20.92 6.67005C21.9406 5.66354 22.6608 4.39276 23 3.00005Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Twitter
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <p>&copy; 2025 Pickle Advisors, LLC. All rights reserved.</p>
+                    <div class="legal-links">
+                        <a href="#" class="legal-link">Privacy Policy</a>
+                        <span class="separator">•</span>
+                        <a href="#" class="legal-link">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script>
