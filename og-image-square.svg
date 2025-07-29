@@ -1,0 +1,35 @@
+<svg width="1080" height="1080" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1080" fill="#0F0F0F"/>
+  
+  <defs>
+    <linearGradient id="sqGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#16A085;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F39C12;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Logo - Larger for square format -->
+  <g transform="translate(540, 400)">
+    <path d="M -120 -60 L -120 60 M -120 -60 L -60 -60 Q -24 -60 -24 -24 Q -24 12 -60 12 L -120 12" 
+          stroke="url(#sqGradient)" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <path d="M -48 -12 L -12 -48 M -12 -48 L -12 -12 M -12 -48 L -48 -48" 
+          stroke="#F39C12" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- Text - Stacked for square format -->
+  <text x="540" y="580" font-family="-apple-system, BlinkMacSystemFont, sans-serif" 
+        font-size="84" font-weight="800" fill="url(#sqGradient)" text-anchor="middle">PICKLE</text>
+  
+  <text x="540" y="660" font-family="-apple-system, BlinkMacSystemFont, sans-serif" 
+        font-size="84" font-weight="800" fill="url(#sqGradient)" text-anchor="middle">ADVISORS</text>
+  
+  <text x="540" y="750" font-family="-apple-system, BlinkMacSystemFont, sans-serif" 
+        font-size="28" font-weight="400" fill="#6B7280" text-anchor="middle">Investing in the Next Wave</text>
+  
+  <text x="540" y="790" font-family="-apple-system, BlinkMacSystemFont, sans-serif" 
+        font-size="28" font-weight="400" fill="#6B7280" text-anchor="middle">of Consumer Culture</text>
+  
+  <!-- Bottom tagline -->
+  <text x="540" y="880" font-family="-apple-system, BlinkMacSystemFont, sans-serif" 
+        font-size="22" font-weight="400" fill="#16A085" text-anchor="middle">From CPG Innovation to Gaming Worlds</text>
+</svg>
