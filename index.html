@@ -91,6 +91,76 @@
             width: 100%;
         }
 
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--light);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 3px;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: rgba(15, 15, 15, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            transition: right 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-menu li {
+            margin: 30px 0;
+        }
+
+        .mobile-menu a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--accent);
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -632,12 +702,66 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-container {
+                padding: 0;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
             .nav-links {
                 display: none;
             }
 
+            .hero {
+                min-height: 100vh;
+                padding: 80px 20px 40px 20px;
+                text-align: center;
+            }
+
             .hero h1 {
-                font-size: 3rem;
+                font-size: 2.5rem;
+                margin-bottom: 20px;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 30px;
+            }
+
+            .cta-button {
+                padding: 16px 32px;
+                font-size: 1rem;
+            }
+
+            .about,
+            .philosophy,
+            .approach,
+            .portfolio,
+            .contact {
+                padding: 80px 20px;
+            }
+
+            .about h2,
+            .philosophy h2,
+            .approach h2,
+            .portfolio h2,
+            .contact h2 {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+
+            .about-content p {
+                font-size: 1.1rem;
             }
 
             .about-container,
@@ -645,15 +769,84 @@
             .approach-grid,
             .focus-areas {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
 
             .stats-grid {
                 grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .stat-card {
+                padding: 25px 20px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .philosophy-quote {
+                font-size: 1.3rem;
+                padding: 0 20px;
+                margin-bottom: 40px;
+            }
+
+            .value-card,
+            .approach-card,
+            .focus-card {
+                padding: 30px 25px;
+            }
+
+            .approach-header {
+                margin-bottom: 50px;
+            }
+
+            .approach-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .approach-intro {
+                font-size: 1.1rem;
+            }
+
+            .contact p {
+                font-size: 1.1rem;
             }
 
             .contact-info {
                 flex-direction: column;
-                gap: 20px;
+                gap: 30px;
+            }
+
+            footer {
+                padding: 30px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .philosophy-quote {
+                font-size: 1.2rem;
+            }
+
+            .about h2,
+            .philosophy h2,
+            .approach h2,
+            .portfolio h2,
+            .contact h2 {
+                font-size: 1.75rem;
             }
         }
     </style>
@@ -671,8 +864,25 @@
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
+            <li><a href="#about" onclick="closeMobileMenu()">About</a></li>
+            <li><a href="#philosophy" onclick="closeMobileMenu()">Philosophy</a></li>
+            <li><a href="#approach" onclick="closeMobileMenu()">Approach</a></li>
+            <li><a href="#portfolio" onclick="closeMobileMenu()">Portfolio</a></li>
+            <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+        </ul>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -851,6 +1061,23 @@
     </footer>
 
     <script>
+        // Mobile menu functions
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            mobileMenu.classList.toggle('active');
+            toggle.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            mobileMenu.classList.remove('active');
+            toggle.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
