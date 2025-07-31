@@ -3,8 +3,8 @@
   
   <defs>
     <linearGradient id="sqGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#16A085;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#F39C12;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#00F5A0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFB6C1;stop-opacity:1" />
     </linearGradient>
   </defs>
   
@@ -13,7 +13,7 @@
     <path d="M -120 -60 L -120 60 M -120 -60 L -60 -60 Q -24 -60 -24 -24 Q -24 12 -60 12 L -120 12" 
           stroke="url(#sqGradient)" stroke-width="10" fill="none" stroke-linecap="round"/>
     <path d="M -48 -12 L -12 -48 M -12 -48 L -12 -12 M -12 -48 L -48 -48" 
-          stroke="#F39C12" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          stroke="#FFB6C1" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   
   <!-- Text - Stacked for square format -->
@@ -31,5 +31,5 @@
   
   <!-- Bottom tagline -->
   <text x="540" y="880" font-family="-apple-system, BlinkMacSystemFont, sans-serif" 
-        font-size="22" font-weight="400" fill="#16A085" text-anchor="middle">From CPG Innovation to Gaming Worlds</text>
+        font-size="22" font-weight="400" fill="#00F5A0" text-anchor="middle">From CPG Innovation to Gaming Worlds</text>
 </svg>
