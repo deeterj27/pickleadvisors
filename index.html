@@ -195,6 +195,140 @@
             width: 100%;
         }
 
+        /* Cursor trail effect */
+        .cursor-emoji {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            font-size: 20px;
+            animation: fadeOut 1s ease-out forwards;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: scale(1) rotate(0deg); }
+            100% { opacity: 0; transform: scale(0.5) rotate(360deg); }
+        }
+
+        /* Vibing text animation */
+        @keyframes vibe {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+
+        .vibe-text {
+            display: inline-block;
+            animation: vibe 2s ease-in-out infinite;
+        }
+
+        /* Rainbow text on hover */
+        @keyframes rainbow {
+            0% { color: #ff6b6b; }
+            20% { color: #4ecdc4; }
+            40% { color: #45b7d1; }
+            60% { color: #96ceb4; }
+            80% { color: #feca57; }
+            100% { color: #ff6b6b; }
+        }
+
+        .rainbow-hover:hover {
+            animation: rainbow 2s linear infinite;
+        }
+
+        /* Neon glow effect */
+        @keyframes neonGlow {
+            0%, 100% {
+                text-shadow: 
+                    0 0 10px var(--secondary),
+                    0 0 20px var(--secondary),
+                    0 0 30px var(--secondary);
+            }
+            50% {
+                text-shadow: 
+                    0 0 20px var(--secondary),
+                    0 0 30px var(--secondary),
+                    0 0 40px var(--secondary);
+            }
+        }
+
+        /* Fun scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            animation: bounce 2s ease-in-out infinite;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .scroll-indicator:hover {
+            opacity: 1;
+        }
+
+        /* Emoji reactions */
+        .emoji-react {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            font-size: 30px;
+            animation: floatUp 2s ease-out forwards;
+        }
+
+        @keyframes floatUp {
+            0% { 
+                opacity: 1; 
+                transform: translateY(0) scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-100px) scale(1.2);
+            }
+            100% { 
+                opacity: 0; 
+                transform: translateY(-200px) scale(0.8);
+            }
+        }
+
+        /* Easter egg button */
+        .easter-egg-trigger {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-size: 24px;
+        }
+
+        .easter-egg-trigger:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1) rotate(15deg);
+            border-color: var(--accent);
+        }
+
+        /* Glitch effect on hover */
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+
+        .glitch-hover:hover {
+            animation: glitch 0.3s ease infinite;
+        }
+
         /* Mobile Menu Toggle with animation */
         .mobile-menu-toggle {
             display: none;
@@ -625,6 +759,12 @@
             line-height: 1.6;
         }
 
+        /* Pickle emoji animation */
+        @keyframes pickleFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
         /* Our Approach Section with dynamic elements */
         .approach {
             padding: 120px 40px;
@@ -676,6 +816,7 @@
             letter-spacing: 2px;
             margin-bottom: 20px;
             font-weight: 600;
+            font-style: italic;
         }
 
         .approach h2 {
@@ -900,6 +1041,191 @@
         .focus-card:hover li::before {
             transform: rotate(180deg);
             color: var(--accent-bright);
+        }
+
+        /* Specialty Services Section */
+        .specialty-services {
+            padding: 120px 40px;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 200, 81, 0.02) 0%, transparent 40%),
+                linear-gradient(180deg, #1a1a1a 0%, var(--dark) 100%);
+            position: relative;
+        }
+
+        .specialty-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .specialty-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .specialty-header h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .specialty-header p {
+            font-size: 1.3rem;
+            color: var(--gray);
+            font-style: italic;
+        }
+
+        .specialty-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .specialty-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .specialty-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+            opacity: 0;
+            transition: all 0.6s ease;
+            transform: rotate(45deg);
+        }
+
+        .specialty-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .specialty-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 20px 40px rgba(0, 200, 81, 0.15);
+        }
+
+        .specialty-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            animation: pickleFloat 4s ease-in-out infinite;
+        }
+
+        .specialty-card:nth-child(2) .specialty-emoji {
+            animation-delay: 1s;
+        }
+
+        .specialty-card:nth-child(3) .specialty-emoji {
+            animation-delay: 2s;
+        }
+
+        .specialty-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .specialty-card p {
+            color: var(--gray);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .specialty-card .tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Pickle Promise Section */
+        .pickle-promise {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pickle-promise::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.05) 10px,
+                rgba(255, 255, 255, 0.05) 20px
+            );
+            animation: float 30s linear infinite;
+        }
+
+        .pickle-promise-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pickle-promise h3 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .pickle-promise-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .promise-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .promise-item:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+        }
+
+        .promise-item span {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
         }
 
         /* Contact Section with gradient animation */
@@ -1234,6 +1560,21 @@
                 font-size: 1rem;
             }
 
+            .specialty-services,
+            .pickle-promise {
+                padding: 80px 20px;
+            }
+
+            .specialty-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .pickle-promise-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
             .about,
             .philosophy,
             .approach,
@@ -1399,6 +1740,7 @@
                 <li><a href="#philosophy">Philosophy</a></li>
                 <li><a href="#approach">Approach</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#specialty">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
@@ -1417,6 +1759,7 @@
             <li><a href="#philosophy" onclick="closeMobileMenu()">Philosophy</a></li>
             <li><a href="#approach" onclick="closeMobileMenu()">Approach</a></li>
             <li><a href="#portfolio" onclick="closeMobileMenu()">Portfolio</a></li>
+            <li><a href="#specialty" onclick="closeMobileMenu()">Services</a></li>
             <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
         </ul>
     </div>
@@ -1425,9 +1768,9 @@
     <section class="hero" id="home">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1>Investing in the Next Wave of <span class="hero-highlight">Consumer Culture</span></h1>
+            <h1>Investing in the Next Wave of <span class="hero-highlight vibe-text">Consumer Culture</span></h1>
             <p>From better-for-you CPG innovations to immersive gaming worlds, we back founders reimagining everyday categories and creating tomorrow's iconic brands.</p>
-            <a href="#contact" class="cta-button">Let's Build Together</a>
+            <a href="#contact" class="cta-button rainbow-hover">Let's Build Together 🚀</a>
         </div>
     </section>
 
@@ -1440,19 +1783,19 @@
                 <p>We don't just write checks. We partner with founders building at the intersection of physical and digital, where memorable brands meet passionate communities.</p>
             </div>
             <div class="stats-grid">
-                <div class="stat-card">
+                <div class="stat-card glitch-hover">
                     <span class="stat-number">10+</span>
                     <span class="stat-label">Years in Startups</span>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card glitch-hover">
                     <span class="stat-number">$500M+</span>
                     <span class="stat-label">Capital Raised</span>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card glitch-hover">
                     <span class="stat-number">Seed to Exit</span>
                     <span class="stat-label">Full Startup Journey</span>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card glitch-hover">
                     <span class="stat-number">10x</span>
                     <span class="stat-label">Revenue Potential</span>
                 </div>
@@ -1464,7 +1807,7 @@
     <section class="philosophy" id="philosophy">
         <div class="philosophy-container">
             <h2>Our Investment Philosophy</h2>
-            <p class="philosophy-quote">The best consumer brands don't just fill shelves; they reimagine categories, solve real problems, and build communities that drive organic growth.</p>
+            <p class="philosophy-quote">The best consumer brands don't just fill shelves; they <span style="color: var(--accent);">reimagine categories</span>, solve real problems, and build communities that drive organic growth.</p>
             
             <div class="values-grid">
                 <div class="value-card">
@@ -1487,14 +1830,14 @@
     <section class="approach" id="approach">
         <div class="approach-container">
             <div class="approach-header">
-                <p class="approach-subtitle">Hands-on support for culture-defining brands</p>
-                <h2>How We Help</h2>
-                <p class="approach-intro">We bring proven playbooks and deep networks to accelerate your path from startup to scale-up.</p>
+                <p class="approach-subtitle">"From cucumber to shelf-stable success"</p>
+                <h2>How We Help <span style="display: inline-block; animation: pickleFloat 3s ease-in-out infinite;">🥒</span></h2>
+                <p class="approach-intro">We bring proven playbooks and deep networks to accelerate your path from startup to scale-up. Choose your pickle, preserve your success.</p>
             </div>
             
             <div class="approach-grid">
                 <div class="approach-card">
-                    <h3>Strategy</h3>
+                    <h3>Gherkin <span style="font-size: 0.8em; opacity: 0.7;">(The Starter Pickle)</span></h3>
                     <ul>
                         <li>Category positioning</li>
                         <li>Retailer pitch decks</li>
@@ -1504,7 +1847,7 @@
                 </div>
                 
                 <div class="approach-card">
-                    <h3>Connections</h3>
+                    <h3>Kosher Dill <span style="font-size: 0.8em; opacity: 0.7;">(The Classic Choice)</span></h3>
                     <ul>
                         <li>Retail buyers (Whole Foods, Target)</li>
                         <li>Distributors (UNFI, KeHE)</li>
@@ -1514,7 +1857,7 @@
                 </div>
                 
                 <div class="approach-card">
-                    <h3>Operations</h3>
+                    <h3>Bread & Butter <span style="font-size: 0.8em; opacity: 0.7;">(The Full Barrel)</span></h3>
                     <ul>
                         <li>Gross margin optimization</li>
                         <li>Trade spend ROI</li>
@@ -1573,12 +1916,74 @@
         </div>
     </section>
 
+    <!-- Specialty Services Section -->
+    <section class="specialty-services" id="specialty">
+        <div class="specialty-container">
+            <div class="specialty-header">
+                <h2>Specialty Pickles 🌶️</h2>
+                <p>Tailored solutions for every stage of your journey</p>
+            </div>
+            
+            <div class="specialty-grid">
+                <div class="specialty-card">
+                    <div class="specialty-emoji">🥒</div>
+                    <h3>Sprint Program</h3>
+                    <p>Intensive 3-month accelerator for brands ready to scale fast. Perfect for upcoming funding rounds or retail expansions.</p>
+                    <span class="tag">Quick Results</span>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-emoji">🥒</div>
+                    <h3>Project-Based</h3>
+                    <p>Need a killer pitch deck or financial model? Get specific deliverables without ongoing commitment.</p>
+                    <span class="tag">One-Time Projects</span>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-emoji">🥒</div>
+                    <h3>Revenue Share</h3>
+                    <p>Align our success with yours. We grow together as your brand scales to new heights.</p>
+                    <span class="tag">Shared Success</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pickle Promise Section -->
+    <section class="pickle-promise">
+        <div class="pickle-promise-content">
+            <h3>The Pickle Promise</h3>
+            <p style="font-size: 1.3rem; color: white; margin-bottom: 30px; font-style: italic;">
+                "From cucumber to shelf-stable success"
+            </p>
+            
+            <div class="pickle-promise-grid">
+                <div class="promise-item">
+                    <span>✓</span>
+                    Free initial "taste test" consultation
+                </div>
+                <div class="promise-item">
+                    <span>✓</span>
+                    CPG-focused network & expertise
+                </div>
+                <div class="promise-item">
+                    <span>✓</span>
+                    Deet's Eats media exposure
+                </div>
+                <div class="promise-item">
+                    <span>✓</span>
+                    Weekly office hours access
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="contact-container">
             <h2>Ready to Scale?</h2>
             <p>Let's discuss how Pickle Advisors can help transform your vision into a culture-defining brand.</p>
-            <a href="mailto:jonathan@pickleadvisors.com?subject=Investment%20Opportunity%20-%20Consumer%20Culture%20Brand" class="contact-cta">Start the Conversation</a>
+            <a href="mailto:jonathan@pickleadvisors.com?subject=Investment%20Opportunity%20-%20Consumer%20Culture%20Brand" class="contact-cta rainbow-hover">Start the Conversation</a>
             
             <div class="contact-info">
                 <div class="contact-item">
@@ -1586,8 +1991,8 @@
                     <a href="mailto:jonathan@pickleadvisors.com">jonathan@pickleadvisors.com</a>
                 </div>
                 <div class="contact-item">
-                    <strong>Location</strong><br>
-                    New York, NY
+                    <strong>Locations</strong><br>
+                    New York, NY • Los Angeles, CA
                 </div>
             </div>
         </div>
@@ -1598,21 +2003,21 @@
         <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="150" height="40" viewBox="0 0 150 40" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="footerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#00D084;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#FF6B35;stop-opacity:1" />
+                                <stop offset="0%" style="stop-color:#00C851;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FFB6C1;stop-opacity:1" />
                             </linearGradient>
                         </defs>
-                        <path d="M 20 15 L 20 45 M 20 15 L 35 15 Q 43 15 43 23 Q 43 31 35 31 L 20 31" 
-                              stroke="url(#footerGradient)" stroke-width="4" fill="none" stroke-linecap="round"/>
-                        <path d="M 36 26 L 44 18 M 44 18 L 44 26 M 44 18 L 36 18" 
-                              stroke="#FFB6C1" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        <text x="55" y="28" font-family="-apple-system, BlinkMacSystemFont, sans-serif" 
-                              font-size="20" font-weight="700" fill="url(#footerGradient)">PICKLE</text>
-                        <text x="55" y="42" font-family="-apple-system, BlinkMacSystemFont, sans-serif" 
-                              font-size="14" font-weight="400" fill="#6B7280">ADVISORS</text>
+                        <path d="M 10 8 L 10 32 M 10 8 L 22 8 Q 30 8 30 16 Q 30 24 22 24 L 10 24" 
+                              stroke="url(#footerGradient)" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        <path d="M 24 18 L 32 10 M 32 10 L 32 18 M 32 10 L 24 10" 
+                              stroke="#FFB6C1" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <text x="40" y="18" font-family="-apple-system, BlinkMacSystemFont, sans-serif" 
+                              font-size="16" font-weight="700" fill="url(#footerGradient)">PICKLE</text>
+                        <text x="40" y="30" font-family="-apple-system, BlinkMacSystemFont, sans-serif" 
+                              font-size="11" font-weight="400" fill="#6B7280">ADVISORS</text>
                     </svg>
                     <p class="footer-tagline">Investing in the next wave of consumer culture</p>
                 </div>
@@ -1623,6 +2028,7 @@
                         <a href="#about">About</a>
                         <a href="#approach">Approach</a>
                         <a href="#portfolio">Portfolio</a>
+                        <a href="#specialty">Services</a>
                         <a href="#contact">Contact</a>
                     </div>
                     
@@ -1649,7 +2055,6 @@
                         </a>
                         <a href="#" class="coming-soon">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 8px;">
-                                <path d="M23 3.00005C22.0424 3.67552 20.9821 4.19216 19.86 4.53005C19.2577 3.83756 18.4573 3.34674 17.567 3.12397C16.6767 2.90121 15.7395 2.95724 14.8821 3.2845C14.0247 3.61176 13.2884 4.19445 12.773 4.95376C12.2575 5.71308 11.9877 6.61238 12 7.53005V8.53005C10.2426 8.57561 8.50127 8.18586 6.93101 7.39549C5.36074 6.60513 4.01032 5.43868 3 4.00005C3 4.00005 -1 13 8 17C5.94053 18.398 3.48716 19.099 1 19C10 24 21 19 21 7.50005C20.9991 7.2215 20.9723 6.94364 20.92 6.67005C21.9406 5.66354 22.6608 4.39276 23 3.00005Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/>
                             </svg>
-                            Twitter
-                        </a>
+                            X
