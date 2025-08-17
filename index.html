@@ -446,7 +446,7 @@
                 left: 20px;
                 right: 20px;
                 z-index: 90;
-                display: block;
+                display: none; /* Hidden by default */
                 text-align: center;
                 background: var(--primary-green);
                 padding: 16px;
@@ -461,14 +461,13 @@
                 animation: slideUp 0.5s ease-out;
             }
             
+            .mobile-sticky-cta.show {
+                display: block;
+            }
+            
             @keyframes slideUp {
                 from { transform: translateY(100px); }
                 to { transform: translateY(0); }
-            }
-            
-            /* Hide after hero section */
-            .hide-sticky-cta .mobile-sticky-cta {
-                display: none;
             }
         }
         
@@ -2689,8 +2688,8 @@
     <!-- Easter Egg Button -->
     <div class="easter-egg-trigger" onclick="activatePickleMode()">🥒</div>
     
-    <!-- Mobile Sticky CTA -->
-    <a href="mailto:jonathan@pickleadvisors.com?subject=Pitch%20Review%20Request%20-%20%5BCompany%20Name%5D&body=Hi%20Jonathan%2C%0A%0AI'd%20like%20to%20schedule%20a%20pitch%20review%20for%20my%20company.%0A%0ACompany%3A%20%0AStage%3A%20%0ACategory%3A%20%0A%0AThanks!" class="mobile-sticky-cta">Schedule Pitch Review 📅</a>
+    <!-- Mobile Sticky CTA - Only one instance -->
+    <a href="mailto:jonathan@pickleadvisors.com?subject=Pitch%20Review%20Request%20-%20%5BCompany%20Name%5D&body=Hi%20Jonathan%2C%0A%0AI'd%20like%20to%20schedule%20a%20pitch%20review%20for%20my%20company.%0A%0ACompany%3A%20%0AStage%3A%20%0ACategory%3A%20%0A%0AThanks!" class="mobile-sticky-cta" id="stickyCtaButton">Schedule Pitch Review 📅</a>
 
     <script>
         // Loading screen
@@ -2700,17 +2699,31 @@
             }, 1000);
         });
 
-        // Mobile sticky CTA visibility
+        // Mobile sticky CTA visibility - Fixed version
         if (window.innerWidth <= 768) {
+            let lastScrollTop = 0;
+            const stickyButton = document.getElementById('stickyCtaButton');
+            
             window.addEventListener('scroll', function() {
                 const heroSection = document.querySelector('.hero');
                 const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+                const currentScroll = window.scrollY;
                 
-                if (window.scrollY > heroBottom) {
-                    document.body.classList.remove('hide-sticky-cta');
+                // Show button only after scrolling past hero section
+                if (currentScroll > heroBottom) {
+                    stickyButton.classList.add('show');
                 } else {
-                    document.body.classList.add('hide-sticky-cta');
+                    stickyButton.classList.remove('show');
                 }
+                
+                // Hide button when scrolling up rapidly
+                if (currentScroll < lastScrollTop - 50) {
+                    stickyButton.style.transform = 'translateY(100px)';
+                } else {
+                    stickyButton.style.transform = 'translateY(0)';
+                }
+                
+                lastScrollTop = currentScroll;
             });
         }
 
