@@ -2795,49 +2795,33 @@
         });
 
         // Easter egg - Pickle Mode
-        let pickleClicks = 0;
-        let pickleRainInterval;
+        let isPickleActive = false;
         
         function activatePickleMode() {
-            pickleClicks++;
+            if (isPickleActive) return; // Prevent multiple activations
             
-            if (pickleClicks === 3) {
-                // Full pickle mode activation
-                document.body.style.transition = 'all 0.5s ease';
-                
-                // Start pickle rain
-                pickleRainInterval = setInterval(createFallingPickle, 100);
-                
-                // Add special effects
-                document.querySelectorAll('h1, h2, h3').forEach(heading => {
-                    heading.style.animation = 'bounce 0.5s ease infinite alternate';
-                });
-                
-                // Change background colors
-                document.querySelectorAll('section:nth-child(even)').forEach(section => {
-                    section.style.background = 'linear-gradient(135deg, #FFB6C1, #FFD6E0)';
-                });
-                
-                // Play sound effect (if we had one)
-                console.log('🥒 PICKLE MODE ACTIVATED! 🥒');
-                
-                // Create pickle explosion
-                for (let i = 0; i < 50; i++) {
-                    setTimeout(() => createPickleExplosion(), i * 50);
-                }
-                
-                // Reset after 10 seconds
-                setTimeout(() => {
-                    clearInterval(pickleRainInterval);
-                    pickleClicks = 0;
-                    document.querySelectorAll('h1, h2, h3').forEach(heading => {
-                        heading.style.animation = '';
-                    });
-                    document.querySelectorAll('section:nth-child(even)').forEach(section => {
-                        section.style.background = '';
-                    });
-                }, 10000);
+            isPickleActive = true;
+            
+            // Add pickle shower effect (less intense)
+            for (let i = 0; i < 10; i++) { // Reduced from 20
+                setTimeout(() => createFallingPickle(), i * 100);
             }
+            
+            // Add gentle animation to headings
+            document.querySelectorAll('h1, h2, h3').forEach(heading => {
+                heading.style.animation = 'gentleBounce 0.5s ease-out';
+            });
+            
+            // Play sound effect (if we had one)
+            console.log('🥒 Pickle shower activated! 🥒');
+            
+            // Reset after animation completes
+            setTimeout(() => {
+                isPickleActive = false;
+                document.querySelectorAll('h1, h2, h3').forEach(heading => {
+                    heading.style.animation = '';
+                });
+            }, 3000);
         }
 
         function createFallingPickle() {
@@ -2845,56 +2829,38 @@
             pickle.textContent = '🥒';
             pickle.style.cssText = `
                 position: fixed;
-                font-size: ${Math.random() * 30 + 20}px;
+                font-size: ${Math.random() * 20 + 30}px;
                 left: ${Math.random() * 100}vw;
                 top: -50px;
                 z-index: 9999;
-                animation: fall ${Math.random() * 3 + 2}s linear;
                 pointer-events: none;
+                animation: gentleFall ${Math.random() * 2 + 3}s ease-in;
             `;
             
             document.body.appendChild(pickle);
             
-            // Add fall animation
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes fall {
-                    to {
-                        transform: translateY(110vh) rotate(${Math.random() * 360}deg);
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-            
             // Remove after animation
             setTimeout(() => {
                 pickle.remove();
-                style.remove();
             }, 5000);
         }
-
-        function createPickleExplosion() {
-            const x = Math.random() * window.innerWidth;
-            const y = Math.random() * window.innerHeight;
-            
-            for (let i = 0; i < 5; i++) {
-                const pickle = document.createElement('div');
-                pickle.textContent = '🥒';
-                pickle.style.cssText = `
-                    position: fixed;
-                    font-size: 30px;
-                    left: ${x}px;
-                    top: ${y}px;
-                    z-index: 9999;
-                    pointer-events: none;
-                    animation: explode 1s ease-out forwards;
-                `;
-                
-                document.body.appendChild(pickle);
-                
-                setTimeout(() => pickle.remove(), 1000);
+        
+        // Add the gentle animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes gentleFall {
+                to {
+                    transform: translateY(110vh) rotate(${Math.random() * 180}deg);
+                    opacity: 0;
+                }
             }
-        }
+            @keyframes gentleBounce {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
 
         // Cursor trail effect (desktop only)
         if (window.innerWidth > 768) {
