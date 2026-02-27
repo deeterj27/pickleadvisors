@@ -3,1853 +3,806 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pickle Advisors - Investing in the Next Wave of Consumer Culture. We partner with founders building memorable brands at the intersection of physical and digital.">
-    <meta name="keywords" content="investment, consumer brands, CPG, advisory, startup funding, pickle advisors">
-    <meta name="author" content="Pickle Advisors">
-    
-    <!-- Open Graph / Facebook -->
+    <meta name="description" content="Pickle Advisors - We help CPG founders fix pricing, sharpen strategy, and build AI-powered operations.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pickleadvisors.com/">
-    <meta property="og:title" content="Pickle Advisors - Investing in Consumer Culture">
-    <meta property="og:description" content="We partner with founders whose eyes light up when they talk about their product. The ones building something so deeply personal that walking away isn't an option.">
+    <meta property="og:title" content="Pickle Advisors - CPG Advisory & AI-Powered Operations">
+    <meta property="og:description" content="We help CPG founders fix pricing, sharpen strategy, and build AI-powered operations.">
     <meta property="og:image" content="https://pickleadvisors.com/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://pickleadvisors.com/">
-    <meta property="twitter:title" content="Pickle Advisors - Investing in Consumer Culture">
-    <meta property="twitter:description" content="We partner with founders whose eyes light up when they talk about their product. The ones building something so deeply personal that walking away isn't an option.">
+    <meta property="twitter:title" content="Pickle Advisors - CPG Advisory & AI-Powered Operations">
+    <meta property="twitter:description" content="We help CPG founders fix pricing, sharpen strategy, and build AI-powered operations.">
     <meta property="twitter:image" content="https://pickleadvisors.com/og-image.png">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/logo-icon.svg">
     <link rel="icon" type="image/svg+xml" href="/logo-icon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="/og-image-square.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/og-image-square.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/og-image-square.png">
-    
-    <!-- Theme Color -->
     <meta name="theme-color" content="#00C851">
-    
-    <title>Pickle Advisors - Investing in Consumer Culture</title>
+    <title>Pickle Advisors - CPG Advisory & AI-Powered Operations</title>
     <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         :root {
-            --primary-green: #00C851;
-            --primary-pink: #FFB6C1;
+            --green: #00C851;
+            --green-dark: #00A844;
+            --pink: #FFB6C1;
+            --pink-light: #FFD6E0;
             --black: #0F0F0F;
             --white: #FFFFFF;
-            --gray: #666666;
-            --light-gray: #F5F5F5;
+            --gray: #6B7280;
+            --light: #F9FAFB;
         }
-        
-        html {
-            font-size: 16px;
-            scroll-behavior: smooth;
-        }
-        
+
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--white);
             color: var(--black);
             line-height: 1.6;
-            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
-        
-        /* Navigation */
+
+        /* NAV */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.25rem;
-            background: rgba(255, 255, 255, 0.95);
+            padding: 16px 24px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
             z-index: 1000;
-            border-bottom: 3px solid var(--primary-green);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
+            border-bottom: 3px solid var(--green);
+            transition: padding 0.3s;
         }
-        
-        nav.scrolled {
-            padding: 0.9375rem 1.25rem;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .nav-container {
-            max-width: 87.5rem;
+
+        nav.scrolled { padding: 10px 24px; }
+
+        .nav-inner {
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
-        .logo {
-            height: 4.375rem;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        
-        .logo:hover {
-            transform: scale(1.05) rotate(-2deg);
-        }
-        
-        .logo svg {
-            height: 100%;
-            width: auto;
-        }
-        
+
+        .logo svg { height: 60px; width: auto; }
+
         .nav-links {
             display: flex;
-            gap: 1.875rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .nav-links li {
+            gap: 32px;
             list-style: none;
         }
-        
+
         .nav-links a {
             color: var(--black);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.875rem;
+            font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: color 0.3s ease;
-            position: relative;
-            padding: 0.3125rem 0;
+            transition: color 0.3s;
         }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--primary-green);
-            transition: width 0.3s ease;
+
+        .nav-links a:hover { color: var(--green); }
+
+        .nav-cta {
+            background: var(--green) !important;
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        
-        .nav-links a:hover {
-            color: var(--primary-green);
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,200,81,0.3);
         }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        /* Mobile Menu Toggle */
-        .mobile-menu-toggle {
+
+        .mobile-toggle {
             display: none;
             flex-direction: column;
             cursor: pointer;
             background: none;
             border: none;
-            padding: 0.3125rem;
-            -webkit-tap-highlight-color: transparent;
+            padding: 4px;
         }
-        
-        .mobile-menu-toggle span {
-            width: 1.875rem;
+
+        .mobile-toggle span {
+            width: 28px;
             height: 3px;
-            background: var(--primary-green);
-            margin: 4px 0;
-            transition: 0.3s;
+            background: var(--green);
+            margin: 3px 0;
             border-radius: 2px;
-            display: block;
+            transition: 0.3s;
         }
-        
-        .mobile-menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        
-        .mobile-menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .mobile-menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 100%;
-            height: 100vh;
-            height: 100dvh;
-            background: linear-gradient(135deg, var(--primary-pink), #FFD6E0);
-            z-index: 999;
-            transition: right 0.3s ease;
-            display: none;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .mobile-menu.active {
-            right: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .mobile-menu ul {
-            list-style: none;
-            text-align: center;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .mobile-menu a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 1.8rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            display: block;
-            padding: 0.9375rem;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        /* Hero Section */
+
+        /* HERO */
         .hero {
             min-height: 100vh;
-            min-height: 100dvh;
             display: flex;
             align-items: center;
-            padding: 7.5rem 1.25rem 3.75rem;
-            background: linear-gradient(135deg, var(--primary-pink), #FFD6E0);
+            padding: 120px 24px 80px;
+            background: var(--black);
             color: var(--white);
-            text-align: center;
             position: relative;
             overflow: hidden;
         }
-        
-        .hero::before {
-            content: '🥒';
+
+        .hero::after {
+            content: '';
             position: absolute;
-            font-size: 18.75rem;
-            opacity: 0.1;
-            top: 50%;
-            right: -10%;
-            transform: translateY(-50%) rotate(-15deg);
-            animation: float 20s ease-in-out infinite;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0,200,81,0.15) 0%, transparent 70%);
             pointer-events: none;
         }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(-50%) rotate(-15deg) translateX(0); }
-            50% { transform: translateY(-50%) rotate(-15deg) translateX(-30px); }
-        }
-        
-        .hero-content {
-            max-width: 62.5rem;
+
+        .hero-inner {
+            max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
             position: relative;
             z-index: 1;
         }
-        
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 1.25rem;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            animation: fadeInUp 1s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .hero-highlight {
-            color: var(--primary-green);
-            display: block;
-            margin-top: 0.625rem;
-            text-shadow: 2px 2px 8px rgba(0, 200, 81, 0.3);
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-        
-        @keyframes glow {
-            from { text-shadow: 2px 2px 8px rgba(0, 200, 81, 0.3); }
-            to { text-shadow: 2px 2px 20px rgba(0, 200, 81, 0.6), 0 0 30px rgba(0, 200, 81, 0.4); }
-        }
-        
-        .hero p {
-            font-size: 1.4rem;
-            max-width: 43.75rem;
-            margin: 0 auto 1.875rem;
-            font-weight: 500;
-            animation: fadeInUp 1s ease-out 0.3s both;
-        }
-        
-        .cta-button {
+
+        .hero-tag {
             display: inline-block;
-            padding: 1.125rem 2.5rem;
-            background: var(--primary-green);
-            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-bottom: 24px;
+            padding: 6px 16px;
+            border: 2px solid var(--green);
+            border-radius: 50px;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5.5vw, 72px);
+            font-weight: 700;
+            line-height: 1.08;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+            max-width: 800px;
+        }
+
+        .hero h1 .green { color: var(--green); }
+
+        .hero p {
+            font-size: 20px;
+            color: rgba(255,255,255,0.6);
+            max-width: 560px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background: var(--green);
+            color: var(--white);
             text-decoration: none;
-            font-weight: 900;
+            font-weight: 700;
+            font-size: 16px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 1rem;
-            border-radius: 3.125rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(0, 200, 81, 0.3);
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(0,200,81,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--green);
+            color: var(--green);
+            margin-left: 16px;
+        }
+
+        .btn-outline:hover {
+            background: var(--green);
+            color: var(--white);
+        }
+
+        /* SECTIONS */
+        section { padding: 100px 24px; }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 560px;
+            line-height: 1.7;
+            margin-bottom: 60px;
+        }
+
+        /* SERVICES */
+        .services { background: var(--light); }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 48px 36px;
+            border-radius: 16px;
+            border: 1px solid #E5E7EB;
+            transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
             overflow: hidden;
-            animation: fadeInUp 1s ease-out 0.6s both;
-            -webkit-tap-highlight-color: transparent;
         }
-        
-        .cta-button::before {
+
+        .service-card::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--green);
+            transform: scaleX(0);
+            transition: transform 0.3s;
         }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 200, 81, 0.4);
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.08);
         }
-        
-        .cta-button:hover::before {
-            width: 300px;
-            height: 300px;
+
+        .service-card:hover::before { transform: scaleX(1); }
+
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
         }
-        
-        /* Sections */
-        section {
-            padding: 5rem 1.25rem;
-            position: relative;
-        }
-        
-        section h2 {
-            font-size: 3rem;
-            margin-bottom: 2.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            text-align: center;
-            color: var(--primary-green);
-            letter-spacing: -2px;
-            line-height: 1.2;
-            padding: 0 1rem;
-        }
-        
-        /* Special styling for white background sections */
-        .philosophy h2,
-        .approach h2,
-        .specialty-services h2,
-        .media-section h2,
-        .contact h2 {
-            color: var(--white);
-        }
-        
-        /* Scroll animations */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .scroll-reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* About Section */
-        .about {
-            background: var(--white);
-        }
-        
-        .about-container {
-            max-width: 75rem;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-        
-        .about-content p {
-            font-size: 1.1rem;
-            margin-bottom: 1.25rem;
-            line-height: 1.8;
-        }
-        
-        .about-content .highlight {
+
+        .service-card h3 {
+            font-size: 22px;
             font-weight: 700;
-            color: var(--primary-green);
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.875rem;
-        }
-        
-        .stat-card {
-            background: linear-gradient(135deg, var(--primary-pink), #FFD6E0);
-            padding: 1.875rem;
-            text-align: center;
-            border-radius: 0.9375rem;
-            transition: transform 0.3s ease;
-            box-shadow: 0 5px 20px rgba(255, 182, 193, 0.3);
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.5);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--white);
-            display: block;
-            margin-bottom: 0.625rem;
-        }
-        
-        .stat-label {
-            color: var(--white);
-            font-size: 1rem;
+            margin-bottom: 16px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
+            letter-spacing: 0.5px;
         }
-        
-        /* Philosophy Section */
-        .philosophy {
-            background: linear-gradient(135deg, var(--primary-green), #00E85D);
-            color: var(--white);
-            padding: 5rem 1.25rem;
+
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
-        
-        .philosophy h2 {
-            color: var(--white);
-        }
-        
-        .philosophy-container {
-            max-width: 62.5rem;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .philosophy-quote {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 3.75rem;
-            line-height: 1.5;
-        }
-        
-        .philosophy-quote span {
-            font-weight: 900;
-            text-transform: uppercase;
-            background: var(--primary-pink);
-            padding: 0.3125rem 0.9375rem;
-            border-radius: 0.3125rem;
-            display: inline-block;
-            margin: 0.3125rem 0;
-        }
-        
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-        }
-        
-        .value-card {
-            background: linear-gradient(135deg, var(--primary-pink), #FFD6E0);
-            padding: 2.5rem 1.875rem;
-            border-radius: 1.25rem;
-            text-align: center;
-            transition: transform 0.3s ease;
-            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
-        }
-        
-        .value-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(255, 182, 193, 0.5);
-        }
-        
-        .value-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.9375rem;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-        
-        /* Approach Section */
-        .approach {
-            background: linear-gradient(135deg, var(--primary-pink), #FFD6E0);
-            color: var(--white);
-            padding: 5rem 1.25rem;
-        }
-        
-        .approach h2 {
-            color: var(--white);
-        }
-        
-        .approach-header {
-            text-align: center;
-            margin-bottom: 3.75rem;
-            max-width: 56.25rem;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .approach-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 1.25rem;
-            font-weight: 600;
-            font-style: italic;
-        }
-        
-        .approach-intro {
-            font-size: 1.4rem;
-            line-height: 1.8;
-            font-weight: 600;
-        }
-        
-        .approach-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-            max-width: 75rem;
-            margin: 0 auto;
-        }
-        
-        .approach-card {
-            background: linear-gradient(135deg, var(--primary-green), #00E85D);
-            padding: 1.875rem 1.25rem;
-            border-radius: 1.25rem;
-            box-shadow: 0 10px 30px rgba(0, 200, 81, 0.3);
-            transition: transform 0.3s ease;
-        }
-        
-        .approach-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 200, 81, 0.5);
-        }
-        
-        .approach-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5625rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            text-align: center;
-        }
-        
-        .approach-card h3 span {
-            display: block;
-            font-size: 0.8em;
-            font-weight: 600;
-            margin-top: 0.3125rem;
-            opacity: 0.9;
-        }
-        
-        .approach-card ul {
+
+        .service-card ul {
             list-style: none;
+            padding: 0;
         }
-        
-        .approach-card li {
-            padding: 0.625rem 0;
-            font-weight: 600;
-            font-size: 1.1rem;
-            padding-left: 1.25rem;
+
+        .service-card li {
+            padding: 6px 0;
+            color: var(--gray);
+            font-weight: 500;
+            padding-left: 20px;
             position: relative;
         }
-        
-        .approach-card li::before {
+
+        .service-card li::before {
             content: '→';
             position: absolute;
             left: 0;
-            font-weight: 900;
-        }
-        
-        /* Why Section */
-        .why-section {
-            background: var(--white);
-            padding: 5rem 1.25rem;
-        }
-        
-        .why-container {
-            max-width: 56.25rem;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .why-story {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            margin-bottom: 3.75rem;
-        }
-        
-        .why-story strong {
-            color: var(--primary-green);
+            color: var(--green);
             font-weight: 700;
         }
-        
-        .why-beliefs {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
-        }
-        
-        .belief-card {
-            background: linear-gradient(135deg, var(--primary-green), #00E85D);
+
+        /* DIFFERENTIATOR */
+        .differentiator {
+            background: var(--green);
             color: var(--white);
-            padding: 2.5rem 1.875rem;
-            border-radius: 1.25rem;
-            box-shadow: 0 10px 30px rgba(0, 200, 81, 0.3);
-            transition: transform 0.3s ease;
-        }
-        
-        .belief-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 200, 81, 0.5);
-        }
-        
-        .belief-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.25rem;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-        
-        /* Portfolio Section */
-        .portfolio {
-            background: var(--white);
-            padding: 5rem 1.25rem;
-        }
-        
-        .portfolio-container {
-            max-width: 75rem;
-            margin: 0 auto;
-        }
-        
-        .focus-areas {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
-        }
-        
-        .focus-card {
-            background: linear-gradient(135deg, var(--primary-pink), #FFD6E0);
-            color: var(--white);
-            padding: 1.875rem 1.25rem;
-            border-radius: 0.9375rem;
-            box-shadow: 0 5px 20px rgba(255, 182, 193, 0.3);
-            transition: transform 0.3s ease;
-        }
-        
-        .focus-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.5);
-        }
-        
-        .focus-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.25rem;
-            font-weight: 900;
-            text-transform: uppercase;
             text-align: center;
         }
-        
-        .focus-card ul {
-            list-style: none;
-        }
-        
-        .focus-card li {
-            padding: 0.625rem 0;
-            font-weight: 600;
-            font-size: 1.1rem;
-            padding-left: 1.5625rem;
-            position: relative;
-        }
-        
-        .focus-card li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            font-weight: 900;
-            font-size: 1.5rem;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        /* Specialty Services */
-        .specialty-services {
-            background: linear-gradient(135deg, var(--primary-green), #00E85D);
-            color: var(--white);
-            padding: 5rem 1.25rem;
-        }
-        
-        .specialty-services h2 {
-            color: var(--white);
-        }
-        
-        .specialty-header {
-            text-align: center;
-            margin-bottom: 3.75rem;
-        }
-        
-        .specialty-grid {
+
+        .differentiator .section-tag { color: rgba(255,255,255,0.7); }
+        .differentiator .section-title { color: var(--white); }
+
+        .diff-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.875rem;
-            max-width: 75rem;
-            margin: 0 auto;
+            gap: 48px;
+            margin-top: 48px;
         }
-        
-        .specialty-card {
-            background: linear-gradient(135deg, var(--primary-pink), #FFD6E0);
-            padding: 1.875rem 1.25rem;
-            text-align: center;
-            border-radius: 1.25rem;
-            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
-            transition: transform 0.3s ease;
-        }
-        
-        .specialty-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(255, 182, 193, 0.5);
-        }
-        
-        .specialty-emoji {
-            font-size: 3rem;
-            margin-bottom: 1.25rem;
-            display: inline-block;
-        }
-        
-        .specialty-card h3 {
-            font-size: 1.5rem;
-            font-weight: 900;
-            margin-bottom: 0.625rem;
-            text-transform: uppercase;
-        }
-        
-        .specialty-card p {
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 1.25rem;
-            font-weight: 500;
-        }
-        
-        .tag {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1.25rem;
-            font-size: 0.9rem;
+
+        .diff-stat-number {
+            font-size: 48px;
             font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .diff-stat-label {
+            font-size: 14px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            border-radius: 1.5625rem;
-        }
-        
-        /* Media Section */
-        .media-section {
-            background: linear-gradient(135deg, var(--primary-pink), #FFD6E0);
-            color: var(--white);
-            padding: 5rem 1.25rem;
-        }
-        
-        .media-section h2 {
-            color: var(--white);
-        }
-        
-        .media-header {
-            text-align: center;
-            margin-bottom: 3.75rem;
-        }
-        
-        .media-header p {
-            font-size: 1.3rem;
-            max-width: 50rem;
-            margin: 0 auto;
+            letter-spacing: 2px;
+            opacity: 0.8;
             font-weight: 600;
         }
-        
-        .media-content {
+
+        /* ABOUT */
+        .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3.75rem;
+            gap: 80px;
             align-items: center;
-            max-width: 75rem;
-            margin: 0 auto;
         }
-        
-        .media-info h3 {
-            font-size: 2rem;
-            margin-bottom: 1.25rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            text-align: center;
-        }
-        
-        .media-info p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 1.875rem;
-            font-weight: 500;
-        }
-        
-        .media-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.25rem;
-            margin-bottom: 2.5rem;
-        }
-        
-        .media-stat {
-            background: var(--primary-green);
-            padding: 1.875rem 1.5625rem;
-            text-align: center;
-            border-radius: 0.9375rem;
-            box-shadow: 0 5px 20px rgba(0, 200, 81, 0.3);
-            transition: transform 0.3s ease;
-        }
-        
-        .media-stat:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 200, 81, 0.5);
-        }
-        
-        .media-stat-number {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: var(--white);
-            display: block;
-            margin-bottom: 0.3125rem;
-            text-transform: uppercase;
-        }
-        
-        .media-stat-label {
-            color: var(--white);
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-        }
-        
-        .social-links {
+
+        .about-photo {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: linear-gradient(135deg, var(--pink), var(--pink-light));
+            border-radius: 16px;
             display: flex;
-            gap: 1.25rem;
-            margin-top: 1.875rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .social-link {
-            display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 1.125rem 2.1875rem;
-            background: var(--primary-green);
+            justify-content: center;
+            font-size: 14px;
             color: var(--white);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .about-content strong { color: var(--black); }
+
+        /* MEDIA */
+        .media { background: var(--black); color: var(--white); }
+
+        .media .section-subtitle { color: rgba(255,255,255,0.5); }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .media-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 40px 32px;
+            border-radius: 16px;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .media-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .media-card-icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        .media-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .media-card p {
+            color: rgba(255,255,255,0.5);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .media-card a {
+            color: var(--green);
             text-decoration: none;
             font-weight: 700;
+            font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 0.9375rem;
-            border-radius: 1.875rem;
-            box-shadow: 0 5px 20px rgba(0, 200, 81, 0.3);
-            transition: transform 0.3s ease;
-            -webkit-tap-highlight-color: transparent;
+            transition: color 0.3s;
         }
-        
-        .social-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 200, 81, 0.4);
+
+        .media-card a:hover { color: var(--pink); }
+
+        .media-deets-logo {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 16px;
         }
-        
-        .media-visual {
-            background: var(--primary-green);
-            padding: 3.75rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 31.25rem;
-            border-radius: 1.25rem;
-            box-shadow: 0 10px 30px rgba(0, 200, 81, 0.3);
-        }
-        
-        .deets-logo {
-            width: 7.5rem;
-            height: 7.5rem;
-            margin-bottom: 1.875rem;
-            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
-        }
-        
-        .media-mockup h4 {
-            font-size: 1.8rem;
-            color: var(--white);
-            margin-bottom: 1.5625rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            text-align: center;
-        }
-        
-        .media-mockup ul {
-            list-style: none;
-            color: var(--white);
-            max-width: 25rem;
-            margin: 0 auto;
-        }
-        
-        .media-mockup li {
-            padding: 0.75rem 0;
-            font-weight: 600;
-            font-size: 1.1rem;
-            padding-left: 2.1875rem;
-            position: relative;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .media-mockup li::before {
-            content: '🎬';
-            position: absolute;
-            left: 0;
-            font-size: 1.25rem;
-        }
-        
-        /* Pickle Promise */
-        .pickle-promise {
-            background: var(--white);
-            padding: 5rem 2.5rem;
-            text-align: center;
-        }
-        
-        .pickle-promise-content {
-            max-width: 62.5rem;
-            margin: 0 auto;
-        }
-        
-        .pickle-promise h3 {
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 1.25rem;
-            text-transform: uppercase;
-            color: var(--primary-green);
-        }
-        
-        .pickle-promise p {
-            color: var(--primary-pink);
-            font-size: 1.3rem;
-            margin-bottom: 1.875rem;
-            font-style: italic;
-        }
-        
-        .pickle-promise-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.25rem;
-            margin-top: 2.5rem;
-        }
-        
-        .promise-item {
-            background: linear-gradient(135deg, var(--primary-pink), #FFD6E0);
-            color: var(--white);
-            padding: 1.875rem 1.25rem;
-            font-weight: 700;
-            border-radius: 0.9375rem;
-            box-shadow: 0 5px 20px rgba(255, 182, 193, 0.3);
-            transition: transform 0.3s ease;
-        }
-        
-        .promise-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.5);
-        }
-        
-        .promise-item span {
-            display: block;
-            font-size: 2rem;
-            margin-bottom: 0.625rem;
-        }
-        
-        /* Contact Section */
+
+        /* CONTACT */
         .contact {
-            background: linear-gradient(135deg, var(--primary-green), #00E85D);
+            background: linear-gradient(135deg, var(--pink), var(--pink-light));
             color: var(--white);
             text-align: center;
-            padding: 6.25rem 1.25rem;
+            padding: 120px 24px;
         }
-        
-        .contact h2 {
-            color: var(--white);
-        }
-        
-        .contact-container {
-            max-width: 50rem;
-            margin: 0 auto;
-        }
-        
+
+        .contact .section-tag { color: rgba(255,255,255,0.7); }
+        .contact .section-title { color: var(--white); font-size: clamp(36px, 5vw, 56px); }
+
         .contact p {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            font-weight: 600;
+            font-size: 20px;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
         }
-        
-        .contact-cta {
-            display: inline-block;
-            padding: 1.5625rem 3.75rem;
+
+        .contact .btn {
             background: var(--white);
-            color: var(--primary-green);
-            text-decoration: none;
-            font-weight: 900;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 3.125rem;
-            transition: transform 0.3s ease;
-            -webkit-tap-highlight-color: transparent;
+            color: var(--green);
+            font-size: 18px;
+            padding: 20px 48px;
         }
-        
-        .contact-cta:hover {
-            transform: translateY(-5px) scale(1.05);
+
+        .contact .btn:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
         }
-        
-        /* Footer */
+
+        /* FOOTER */
         footer {
-            padding: 5rem 2.5rem 2.5rem 2.5rem;
-            background: linear-gradient(135deg, var(--primary-pink), #FFD6E0);
-            color: var(--white);
+            background: var(--black);
+            color: rgba(255,255,255,0.4);
+            padding: 48px 24px;
         }
-        
-        .footer-container {
-            max-width: 75rem;
+
+        .footer-inner {
+            max-width: 1200px;
             margin: 0 auto;
-        }
-        
-        .newsletter-section {
-            text-align: center;
-            padding: 3.75rem 1.25rem;
-            margin-bottom: 3.75rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 1.25rem;
-        }
-        
-        .newsletter-section h3 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 0.9375rem;
-            text-transform: uppercase;
-        }
-        
-        .newsletter-form {
             display: flex;
-            gap: 0.9375rem;
-            max-width: 31.25rem;
-            margin: 0 auto 1.25rem;
-            flex-wrap: wrap;
-        }
-        
-        .newsletter-form input {
-            flex: 1;
-            min-width: 15.625rem;
-            padding: 0.9375rem 1.5625rem;
-            border: none;
-            border-radius: 3.125rem;
-            font-size: 1rem;
-        }
-        
-        .newsletter-form button {
-            padding: 0.9375rem 2.1875rem;
-            background: var(--primary-green);
-            color: var(--white);
-            border: none;
-            border-radius: 3.125rem;
-            font-weight: 900;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 3fr;
-            gap: 5rem;
-            margin-bottom: 3.75rem;
-        }
-        
-        .footer-tagline {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            max-width: 18.75rem;
-            font-weight: 500;
-        }
-        
-        .footer-links {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-        }
-        
-        .footer-column h4 {
-            font-size: 1.1rem;
-            font-weight: 900;
-            margin-bottom: 1.25rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .footer-column a {
-            display: block;
-            color: var(--white);
-            text-decoration: none;
-            padding: 0.5rem 0;
-            font-weight: 500;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        .footer-column a:hover {
-            color: var(--primary-green);
-        }
-        
-        .footer-social {
-            display: flex;
-            gap: 0.9375rem;
-            margin-top: 1.25rem;
-        }
-        
-        .footer-social a {
-            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            width: 2.5rem;
-            height: 2.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--white);
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.4);
             text-decoration: none;
-            -webkit-tap-highlight-color: transparent;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
         }
-        
-        .footer-social a:hover {
-            background: var(--primary-green);
+
+        .footer-links a:hover { color: var(--green); }
+
+        /* ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s, transform 0.8s;
         }
-        
-        .footer-bottom {
-            padding-top: 2.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        
-        /* Tablet Responsive */
-        @media (max-width: 1024px) {
-            .approach-grid,
-            .values-grid,
-            .specialty-grid {
-                grid-template-columns: 1fr;
-                gap: 1.875rem;
-            }
-            
-            .media-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .media-info {
-                order: 2;
-            }
-            
-            .media-visual {
-                order: 1;
-            }
-        }
-        
-        /* Mobile Responsive */
+
+        /* MOBILE */
         @media (max-width: 768px) {
-            html {
-                font-size: 14px;
-            }
-            
-            .mobile-menu-toggle {
-                display: flex !important;
-            }
-            
-            .nav-links {
-                display: none !important;
-            }
-            
-            .logo {
-                height: 3.125rem;
-            }
-            
-            nav {
-                padding: 0.9375rem 1.25rem;
-            }
-            
-            .hero {
-                padding: 6.25rem 1.25rem 2.5rem;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-                letter-spacing: -1px;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .hero::before {
-                font-size: 12.5rem;
-                right: -30%;
-            }
-            
-            section {
-                padding: 3.75rem 1.25rem;
-            }
-            
-            section h2 {
-                font-size: 2rem;
-                margin-bottom: 1.875rem;
-                letter-spacing: -1px;
-                line-height: 1.3;
-                padding: 0 0.5rem;
-            }
-            
-            /* Additional spacing for specific sections on mobile */
-            .philosophy h2,
-            .approach h2,
-            .why-section h2,
-            .portfolio h2,
-            .specialty-services h2,
-            .media-section h2,
-            .contact h2 {
-                margin-bottom: 2.5rem;
-            }
-            
-            .pickle-promise h3 {
-                font-size: 2rem;
-                line-height: 1.3;
-                padding: 0 0.5rem;
-                margin-bottom: 1.5rem;
-            }
-            
-            .about-container,
-            .values-grid,
-            .approach-grid,
-            .focus-areas,
-            .specialty-grid,
-            .media-content,
-            .why-beliefs,
-            .pickle-promise-grid,
-            .footer-content,
-            .footer-links {
-                grid-template-columns: 1fr !important;
-                gap: 1.875rem;
-            }
-            
-            .stats-grid,
-            .media-stats {
-                grid-template-columns: 1fr 1fr;
-                gap: 0.9375rem;
-            }
-            
-            .stat-card,
-            .media-stat {
-                padding: 1.25rem;
-            }
-            
-            .philosophy-quote {
-                font-size: 1.5rem;
-            }
-            
-            .cta-button {
-                padding: 0.9375rem 1.875rem;
-                font-size: 0.875rem;
-            }
-            
-            .social-links {
-                justify-content: center;
-            }
-            
-            .social-link {
-                padding: 0.875rem 1.5rem;
-                font-size: 0.875rem;
-            }
-            
-            .media-visual {
-                padding: 2.5rem 1.25rem;
-                min-height: auto;
-            }
-            
-            .pickle-promise h3 {
-                font-size: 2rem;
-            }
-            
-            .contact-cta {
-                padding: 1.25rem 2.5rem;
-                font-size: 1rem;
-            }
-            
-            .newsletter-form {
+            .nav-links { display: none; }
+            .mobile-toggle { display: flex; }
+
+            .mobile-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: var(--black);
+                z-index: 999;
+                display: none;
                 flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 24px;
             }
-            
-            .newsletter-form input {
-                min-width: 100%;
+
+            .mobile-menu.active { display: flex; }
+
+            .mobile-menu a {
+                color: var(--white);
+                text-decoration: none;
+                font-size: 24px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 2px;
             }
-            
-            .footer-content {
-                gap: 2.5rem;
+
+            .mobile-menu .close-btn {
+                position: absolute;
+                top: 20px;
+                right: 24px;
+                font-size: 32px;
+                color: var(--white);
+                background: none;
+                border: none;
+                cursor: pointer;
             }
-            
-            .footer-links {
-                gap: 1.25rem;
-            }
-            
-            footer {
-                padding: 3.75rem 1.25rem 2.5rem;
-            }
-        }
-        
-        /* Small Mobile */
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .hero-highlight {
-                margin-top: 0.3125rem;
-            }
-            
-            section h2 {
-                font-size: 1.5rem;
-                letter-spacing: -0.5px;
-                line-height: 1.4;
-                padding: 0 0.25rem;
-                margin-bottom: 2rem;
-            }
-            
-            .pickle-promise h3 {
-                font-size: 1.5rem;
-                line-height: 1.4;
-                padding: 0 0.25rem;
-            }
-            
-            .stats-grid {
+
+            .hero { padding: 100px 24px 60px; }
+            .hero h1 { letter-spacing: -1px; }
+
+            section { padding: 60px 24px; }
+
+            .services-grid,
+            .media-grid,
+            .diff-stats {
                 grid-template-columns: 1fr;
+                gap: 24px;
             }
-            
-            .pickle-promise-grid {
+
+            .about-grid {
                 grid-template-columns: 1fr;
+                gap: 40px;
             }
-            
-            .promise-item {
-                padding: 1.25rem;
+
+            .about-photo { max-height: 300px; }
+
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 12px;
+                display: inline-block;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav role="navigation" aria-label="Main navigation">
-        <div class="nav-container">
-            <a href="#home" class="logo" aria-label="Pickle Advisors Home">
-                <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#00C851;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#FFB6C1;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <path d="M 20 15 L 20 45 M 20 15 L 35 15 Q 43 15 43 23 Q 43 31 35 31 L 20 31"
-                          stroke="url(#logoGradient)" stroke-width="4" fill="none" stroke-linecap="round"/>
-                    <path d="M 36 26 L 44 18 M 44 18 L 44 26 M 44 18 L 36 18"
-                          stroke="#FFB6C1" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                    <text x="55" y="28" font-family="-apple-system, BlinkMacSystemFont, sans-serif"
-                          font-size="20" font-weight="700" fill="url(#logoGradient)">PICKLE</text>
-                    <text x="55" y="42" font-family="-apple-system, BlinkMacSystemFont, sans-serif"
-                          font-size="14" font-weight="400" fill="#6B7280">ADVISORS</text>
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="logo">
+                <svg width="220" height="60" viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 20 15 L 20 45 M 20 15 L 35 15 Q 43 15 43 23 Q 43 31 35 31 L 20 31" stroke="#00C851" stroke-width="5" fill="none" stroke-linecap="round"/>
+                    <path d="M 36 26 L 44 18 M 44 18 L 44 26 M 44 18 L 36 18" stroke="#FFB6C1" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <text x="55" y="30" font-family="'Space Grotesk', sans-serif" font-size="24" font-weight="700" fill="#0F0F0F">PICKLE</text>
+                    <text x="55" y="46" font-family="'Space Grotesk', sans-serif" font-size="13" font-weight="600" fill="#6B7280" letter-spacing="3">ADVISORS</text>
                 </svg>
             </a>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#philosophy">Philosophy</a></li>
-                <li><a href="#approach">Approach</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#specialty">Services</a></li>
-                <li><a href="#media">Deet's Eats</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#media">Media</a></li>
+                <li><a href="https://cal.com/jonathan-deeter-vlslzl/intro-call" class="nav-cta">Book a Call</a></li>
             </ul>
-            <button class="mobile-menu-toggle" id="mobileToggle" aria-label="Toggle mobile menu">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
             </button>
         </div>
     </nav>
-    
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#philosophy">Philosophy</a></li>
-            <li><a href="#approach">Approach</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#specialty">Services</a></li>
-            <li><a href="#media">Deet's Eats</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-btn" id="closeMenu">&times;</button>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#media">Media</a>
+        <a href="https://cal.com/jonathan-deeter-vlslzl/intro-call">Book a Call</a>
     </div>
-    
-    <!-- Hero Section -->
-    <section class="hero scroll-reveal active" id="home">
-        <div class="hero-content">
-            <h1>Investing in the Next Wave of <span class="hero-highlight">Consumer Culture</span></h1>
-            <p>We partner with founders whose eyes light up when they talk about their product. The ones building something so deeply personal that walking away isn't an option.</p>
-            <a href="#contact" class="cta-button">Tell Us Your Story 📅</a>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-tag">Your Brand's Operating System</span>
+            <h1>We help CPG founders <span class="green">fix their piping</span> and build their <span class="green">AI operating system</span>.</h1>
+            <p>Operational infrastructure and AI tooling for food and beverage brands. Built by someone who's done it for billion-dollar funds.</p>
+            <a href="https://cal.com/jonathan-deeter-vlslzl/intro-call" class="btn">Book a Call</a>
+            <a href="#services" class="btn btn-outline">Learn More</a>
         </div>
     </section>
-    
-    <!-- About Section -->
-    <section class="about scroll-reveal" id="about">
-        <h2>Why I Started Pickle Advisors</h2>
-        <div class="about-container">
-            <div class="about-content">
-                <p>After 10 years in the startup trenches—from fintech to structured products—I kept coming back to one truth: <span class="highlight">the most successful companies aren't built on spreadsheets and market analysis alone</span>. They're built on stories, values, and founders who'd rather fail than compromise on their mission.</p>
-                <p>I've sat across from hundreds of founders, and the ones who succeed aren't always the ones with the best deck or the most polished pitch. They're the ones whose eyes light up when they talk about their product. The ones who can tell you exactly which customer DM made them cry. <span class="highlight">The ones building something so deeply personal that walking away isn't an option</span>.</p>
-                <p>This is why I started Pickle Advisors—to partner with founders building at the intersection of physical and digital, where memorable brands meet passionate communities. But more than that, it exists because I believe <span class="highlight">the best investors don't just write checks—they take the time to understand the human behind the hustle</span>.</p>
-            </div>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-number">100s</span>
-                    <span class="stat-label">Founders Met</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">10+</span>
-                    <span class="stat-label">Years in Startups</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">Human-First</span>
-                    <span class="stat-label">Approach</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">Deep</span>
-                    <span class="stat-label">Understanding</span>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Philosophy Section -->
-    <section class="philosophy scroll-reveal" id="philosophy">
-        <div class="philosophy-container">
-            <h2>Our Investment Philosophy</h2>
-            <p class="philosophy-quote">You can't truly help a business until you <span>understand the human</span> building it.</p>
-            <div class="values-grid">
-                <div class="value-card">
-                    <h3>Stories First</h3>
-                    <p>The best brands aren't built on market analysis alone. They're built on stories, values, and founders who'd rather fail than compromise on their mission.</p>
-                </div>
-                <div class="value-card">
-                    <h3>Beyond the Pitch</h3>
-                    <p>The first hour isn't about margins or velocity data. It's about your "why". What keeps you up at night? What would success actually look like beyond the exit?</p>
-                </div>
-                <div class="value-card">
-                    <h3>See Around Corners</h3>
-                    <p>When you truly know a founder's values and vision, you can see around corners. You know when they'll struggle, when they'll need encouragement, and when to push them to think bigger.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Our Approach Section -->
-    <section class="approach scroll-reveal" id="approach">
-        <div class="approach-container">
-            <div class="approach-header">
-                <p class="approach-subtitle">"From cucumber to shelf-stable success"</p>
-                <h2>The Pickle Journey 🥒</h2>
-                <p class="approach-intro">"From cucumber to shelf-stable success" isn't just a clever tagline. It represents the journey every founder takes—from raw idea to preserved legacy. My role is to be the brine that helps preserve your vision while accelerating your growth.</p>
-            </div>
-            <div class="approach-grid">
-                <div class="approach-card">
-                    <h3>Understand <span>(The Raw Cucumber)</span></h3>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="section-inner">
+            <p class="section-tag">What We Do</p>
+            <h2 class="section-title">Three ways we work with founders.</h2>
+            <p class="section-subtitle">Every engagement starts with understanding your business. No templates, no playbooks. Tailored strategy built on real data.</p>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">🎯</div>
+                    <h3>Fix the Piping</h3>
+                    <p>Most CPG brands are held together with spreadsheets and duct tape. We fix the operational infrastructure so you can actually scale.</p>
                     <ul>
-                        <li>Deep dive into your "why"</li>
-                        <li>Map your values & vision</li>
-                        <li>Identify growth patterns</li>
-                        <li>Spot challenges early</li>
+                        <li>Financial modeling and forecasting</li>
+                        <li>Margin analysis and unit economics</li>
+                        <li>Supply chain and co-packer optimization</li>
+                        <li>Retail expansion planning</li>
                     </ul>
                 </div>
-                <div class="approach-card">
-                    <h3>Connect <span>(The Perfect Brine)</span></h3>
+                <div class="service-card reveal">
+                    <div class="service-icon">⚡</div>
+                    <h3>Brand OS</h3>
+                    <p>AI-powered dashboards and operational tooling. The same infrastructure we built for funds managing over $1B, applied to your brand.</p>
                     <ul>
-                        <li>Retail buyers (Whole Foods, Target)</li>
-                        <li>Distributors (UNFI, KeHE)</li>
-                        <li>Co-packers & labs</li>
-                        <li>Series A/B investors</li>
+                        <li>Live financial dashboards</li>
+                        <li>SKU simulation and forecasting</li>
+                        <li>Automated alerts and reporting</li>
+                        <li>Capital planning and cash flow modeling</li>
                     </ul>
                 </div>
-                <div class="approach-card">
-                    <h3>Preserve <span>(Shelf-Stable Success)</span></h3>
+                <div class="service-card reveal">
+                    <div class="service-icon">📡</div>
+                    <h3>Media & Distribution</h3>
+                    <p>Exposure through Deets Eats Media. Your brand in front of consumers, retailers, and investors who care about CPG.</p>
                     <ul>
-                        <li>Build strong foundations</li>
-                        <li>Create lasting value</li>
-                        <li>Scale sustainably</li>
-                        <li>Preserve your mission</li>
+                        <li>Featured on Deets Eats social channels</li>
+                        <li>Podcast guest spots on Unpackaged Goods</li>
+                        <li>Newsletter features in The Deeter Digest</li>
+                        <li>Community introductions and deal flow</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Why Section -->
-    <section class="why-section scroll-reveal" id="why">
-        <div class="why-container">
-            <h2>Building Trust Through Understanding</h2>
-            <div class="why-story">
-                <p>When I meet with founders, the first hour isn't about margins or velocity data. <strong>It's about understanding you</strong>.</p>
-                <p>What keeps you up at night? What problem did you experience that no one else was solving? What would success actually look like for you—beyond the exit?</p>
-                <p>This deep understanding allows me to identify growing pains before they happen. When you truly know a founder's values and vision, you can see around corners. You know when they'll struggle with their first co-packer because they're perfectionists. You know when they'll resist raising money because they're bootstrappers at heart. <strong>You know when they'll need encouragement to think bigger because they're still amazed anyone wants their product</strong>.</p>
-            </div>
-            <div class="why-beliefs">
-                <div class="belief-card">
-                    <h3>Personalized Roadmaps</h3>
-                    <p>Every founder's journey is unique. The roadmaps, connections, and guidance stem from understanding your specific vision, not a one-size-fits-all playbook.</p>
+
+    <!-- DIFFERENTIATOR -->
+    <section class="differentiator">
+        <div class="section-inner">
+            <p class="section-tag">Why Us</p>
+            <h2 class="section-title">We don't just advise. We build.</h2>
+            <p style="font-size:18px;max-width:600px;margin:0 auto;opacity:0.85;line-height:1.7;">Most advisors hand you a spreadsheet and a PDF. We build live, AI-powered systems that replace the guesswork with real-time intelligence.</p>
+            <div class="diff-stats">
+                <div class="reveal">
+                    <span class="diff-stat-number">$1B+</span>
+                    <span class="diff-stat-label">Assets Under AI Tooling</span>
                 </div>
-                <div class="belief-card">
-                    <h3>From Advisory to Investment</h3>
-                    <p>Once we've spent real time together, understood your DNA, and helped navigate challenges, we invest. Not just capital, but a continued partnership with founders changing consumer culture.</p>
+                <div class="reveal">
+                    <span class="diff-stat-number">10+</span>
+                    <span class="diff-stat-label">Years in Startups & Fintech</span>
                 </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Portfolio Section -->
-    <section class="portfolio scroll-reveal" id="portfolio">
-        <div class="portfolio-container">
-            <h2>Where We Partner With Founders</h2>
-            <div class="focus-areas">
-                <div class="focus-card">
-                    <h3>Consumer Culture Brands</h3>
-                    <ul>
-                        <li>Better-for-you CPG innovations</li>
-                        <li>Functional food & beverage</li>
-                        <li>Pet food & wellness brands</li>
-                        <li>Gaming studios & digital IP</li>
-                        <li>Omnichannel lifestyle brands</li>
-                        <li>Category-disrupting products</li>
-                    </ul>
-                </div>
-                <div class="focus-card">
-                    <h3>Stage & Size</h3>
-                    <ul>
-                        <li>Pre-seed to Series A</li>
-                        <li>Early-stage founders</li>
-                        <li>Proven product-market fit</li>
-                        <li>Ready to scale operations</li>
-                    </ul>
-                </div>
-                <div class="focus-card">
-                    <h3>What We Look For</h3>
-                    <ul>
-                        <li>Founders who light up talking about their product</li>
-                        <li>Stories that resonate with customers</li>
-                        <li>Values-driven leadership</li>
-                        <li>Community-building potential</li>
-                    </ul>
-                </div>
-                <div class="focus-card">
-                    <h3>Our Process</h3>
-                    <ul>
-                        <li>First hour: Understanding your "why"</li>
-                        <li>Personalized growth roadmaps</li>
-                        <li>Success-based partnerships</li>
-                        <li>Long-term relationship building</li>
-                    </ul>
+                <div class="reveal">
+                    <span class="diff-stat-number">100s</span>
+                    <span class="diff-stat-label">Founders Advised</span>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Specialty Services Section -->
-    <section class="specialty-services scroll-reveal" id="specialty">
-        <div class="specialty-container">
-            <div class="specialty-header">
-                <h2>Specialty Pickles 🌶️</h2>
-                <p>Tailored solutions for every stage of your journey</p>
-            </div>
-            <div class="specialty-grid">
-                <div class="specialty-card">
-                    <div class="specialty-emoji">🥒</div>
-                    <h3>Sprint Program</h3>
-                    <p>Intensive 3-month accelerator for brands ready to scale fast. Perfect for upcoming funding rounds or retail expansions.</p>
-                    <span class="tag">Quick Results</span>
-                </div>
-                <div class="specialty-card">
-                    <div class="specialty-emoji">🥒</div>
-                    <h3>Project-Based</h3>
-                    <p>Need a killer pitch deck or financial model? Get specific deliverables without ongoing commitment.</p>
-                    <span class="tag">One-Time Projects</span>
-                </div>
-                <div class="specialty-card">
-                    <div class="specialty-emoji">🥒</div>
-                    <h3>Revenue Share</h3>
-                    <p>Align our success with yours. We grow together as your brand scales to new heights.</p>
-                    <span class="tag">Shared Success</span>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="section-inner">
+            <div class="about-grid">
+                <img class="about-photo" src="jonathan.jpeg" alt="Jonathan Deeter" style="object-fit:cover;">
+                <div class="about-content reveal">
+                    <p class="section-tag">About</p>
+                    <h2 class="section-title">Jonathan Deeter</h2>
+                    <p><strong>Founder of Pickle Advisors.</strong> Based in Brooklyn. 10+ years in startups, fintech, and structured products before going all-in on CPG.</p>
+                    <p>I built AI-powered dashboards for institutional investment funds managing over a billion dollars — portfolio tracking, automated alerts, financial modeling. Then I realized <strong>CPG founders need this even more</strong>. Most brands are running their entire business on a Google Sheet and gut instinct.</p>
+                    <p>Now I help food and beverage founders build real operational infrastructure, fix their operational piping, and build AI-powered systems that replace spreadsheets with real intelligence. Through Deets Eats Media, I also discover and spotlight the next wave of consumer brands.</p>
+                    <a href="https://cal.com/jonathan-deeter-vlslzl/intro-call" class="btn" style="margin-top:12px;">Let's Talk</a>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Deet's Eats Media Section -->
-    <section class="media-section scroll-reveal" id="media">
-        <div class="media-container">
-            <div class="media-header">
-                <h2>Deet's Eats Media</h2>
-                <p>Preserved Stories brought to you by Deet's Eats Media</p>
-            </div>
-            <div class="media-content">
-                <div class="media-info">
-                    <h3>Every Jar Tells a Story</h3>
-                    <p>Real stories from the frontlines of CPG innovation. No fluff, no fake case studies—just honest insights from founders reshaping consumer culture.</p>
-                    <p>Through Instagram Reels, TikTok videos, our Substack newsletter, and our Podcast Preserved Stories, we spotlight the passionate founders and innovative products that don't just fill shelves—they create movements. Every Pickle Advisors portfolio company gets featured exposure, connecting them with our growing community of consumers, retailers, and investors who care about the future of consumer culture.</p>
-                    <div class="media-stats">
-                        <div class="media-stat">
-                            <span class="media-stat-number">Real</span>
-                            <span class="media-stat-label">Founder Stories</span>
-                        </div>
-                        <div class="media-stat">
-                            <span class="media-stat-number">Weekly</span>
-                            <span class="media-stat-label">Content Drops</span>
-                        </div>
-                        <div class="media-stat">
-                            <span class="media-stat-number">Honest</span>
-                            <span class="media-stat-label">Insights</span>
-                        </div>
-                        <div class="media-stat">
-                            <span class="media-stat-number">Growing</span>
-                            <span class="media-stat-label">Community</span>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/deetseatsnyc" target="_blank" rel="noopener noreferrer" class="social-link">Instagram</a>
-                        <a href="https://www.tiktok.com/@deetseatsnyc" target="_blank" rel="noopener noreferrer" class="social-link">TikTok</a>
-                        <a href="https://substack.com/@deetseatsnyc" target="_blank" rel="noopener noreferrer" class="social-link">Substack</a>
-                    </div>
+
+    <!-- MEDIA -->
+    <section class="media" id="media">
+        <div class="section-inner">
+            <p class="section-tag">Deets Eats Media</p>
+            <h2 class="section-title" style="color:#fff;">The content engine behind the advisory.</h2>
+            <p class="section-subtitle">Discovering emerging food brands, telling founder stories, and building a community that generates real deal flow.</p>
+            <div class="media-grid">
+                <div class="media-card reveal">
+                    <div class="media-card-icon">📰</div>
+                    <h3>The Deeter Digest</h3>
+                    <p>Weekly newsletter breaking down the biggest moves in CPG. Fundraising rounds, M&A, product launches, and unfiltered hot takes.</p>
+                    <a href="https://substack.com/@deetseatsnyc" target="_blank" rel="noopener">Read on Substack →</a>
                 </div>
-                <div class="media-visual">
-                    <div class="deets-logo">
-                        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="deets-logo-title">
-                            <title id="deets-logo-title">Deet's Eats Logo</title>
-                            <circle cx="60" cy="60" r="60" fill="#00C851"/>
-                            <g transform="translate(60, 60)">
-                                <g transform="scale(0.8)">
-                                    <path d="M -30 -40 L -30 40 L -5 40 Q 30 40 30 0 Q 30 -40 -5 -40 L -30 -40 Z"
-                                          fill="white" stroke="#0F0F0F" stroke-width="4"/>
-                                    <circle cx="-15" cy="-12" r="4" fill="#0F0F0F"/>
-                                    <circle cx="6" cy="-12" r="4" fill="#0F0F0F"/>
-                                    <circle cx="-14" cy="-14" r="2" fill="white"/>
-                                    <circle cx="7" cy="-14" r="2" fill="white"/>
-                                    <path d="M -20 8 Q 0 20 20 8" stroke="#0F0F0F" stroke-width="4" fill="none" stroke-linecap="round"/>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="media-mockup">
-                        <h4>Preserved Stories Include</h4>
-                        <ul>
-                            <li>The founder who cried over a customer DM</li>
-                            <li>Why that "overnight success" took 5 years</li>
-                            <li>The retailer rejection that changed everything</li>
-                            <li>How they knew it was time to scale</li>
-                            <li>The mission they won't compromise on</li>
-                            <li>Real lessons from real founders</li>
-                        </ul>
-                    </div>
+                <div class="media-card reveal">
+                    <div class="media-card-icon">🎙️</div>
+                    <h3>Unpackaged Goods</h3>
+                    <p>The podcast. Interviews with CPG founders, deep dives on industry trends, and the stories behind the brands reshaping consumer culture.</p>
+                    <a href="https://linktr.ee/deetseatnyc" target="_blank" rel="noopener">Listen Now →</a>
+                </div>
+                <div class="media-card reveal">
+                    <div class="media-card-icon">📱</div>
+                    <h3>Social</h3>
+                    <p>Daily content across Instagram, TikTok, and LinkedIn. Brand discoveries, Whole Foods hauls, and behind-the-scenes of the CPG world.</p>
+                    <a href="https://www.instagram.com/deetseatsnyc" target="_blank" rel="noopener">@deetseatsnyc →</a>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Pickle Promise Section -->
-    <section class="pickle-promise scroll-reveal">
-        <div class="pickle-promise-content">
-            <h3>The Pickle Promise</h3>
-            <p>"We're not just building brands. We're preserving stories."</p>
-            <div class="pickle-promise-grid">
-                <div class="promise-item">
-                    <span>🤝</span>
-                    Understanding the human behind the hustle
-                </div>
-                <div class="promise-item">
-                    <span>🎯</span>
-                    Personalized roadmaps from real understanding
-                </div>
-                <div class="promise-item">
-                    <span>📱</span>
-                    Featured in Preserved Stories media
-                </div>
-                <div class="promise-item">
-                    <span>🚀</span>
-                    From advisory to investment partnership
-                </div>
-            </div>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="section-inner">
+            <p class="section-tag">Get Started</p>
+            <h2 class="section-title">Ready to build something real?</h2>
+            <p>No pitch deck required. Just tell us what you're working on and where you need help.</p>
+            <a href="https://cal.com/jonathan-deeter-vlslzl/intro-call" class="btn">Book a Call</a>
         </div>
     </section>
-    
-    <!-- Contact Section -->
-    <section class="contact scroll-reveal" id="contact">
-        <div class="contact-container">
-            <h2>Every Jar Tells a Story</h2>
-            <p>What's yours? Let's explore how Pickle Advisors can help preserve your vision while accelerating your growth.</p>
-            <a href="mailto:jonathan@pickleadvisors.com" class="contact-cta">Share Your Story</a>
-        </div>
-    </section>
-    
-    <!-- Footer -->
+
+    <!-- FOOTER -->
     <footer>
-        <div class="footer-container">
-            <!-- Newsletter Section -->
-            <div class="newsletter-section">
-                <h3>Join Preserved Stories 🥒</h3>
-                <p>Real stories from the frontlines of CPG innovation. No fluff, no fake case studies.</p>
-                <form class="newsletter-form" action="https://substack.com/@deetseatsnyc" target="_blank" method="get">
-                    <input type="email" placeholder="Enter your email" required aria-label="Email for newsletter">
-                    <button type="submit">Subscribe</button>
-                </form>
-                <p class="newsletter-note">Join founders and investors building the future of consumer culture.</p>
-            </div>
-            
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo">PICKLE ADVISORS</div>
-                    <p class="footer-tagline">Because we're not just building brands. We're preserving stories, amplifying missions, and helping founders create products that matter.</p>
-                    <div class="footer-social">
-                        <a href="https://www.instagram.com/deetseatsnyc" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
-                        <a href="https://www.tiktok.com/@deetseatsnyc" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TT</a>
-                        <a href="https://x.com/pickleadvisors" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">X</a>
-                        <a href="https://substack.com/@deetseatsnyc" target="_blank" rel="noopener noreferrer" aria-label="Substack">SS</a>
-                    </div>
-                </div>
-                
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Company</h4>
-                        <a href="#about">About Us</a>
-                        <a href="#philosophy">Philosophy</a>
-                        <a href="#approach">Our Approach</a>
-                        <a href="#portfolio">Portfolio</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Services</h4>
-                        <a href="#specialty">Sprint Program</a>
-                        <a href="#specialty">Project-Based</a>
-                        <a href="#specialty">Revenue Share</a>
-                        <a href="#media">Deet's Eats Media</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Connect</h4>
-                        <a href="mailto:jonathan@pickleadvisors.com">Email Us</a>
-                        <a href="https://substack.com/@deetseatsnyc" target="_blank" rel="noopener noreferrer">Newsletter</a>
-                        <a href="https://x.com/pickleadvisors" target="_blank" rel="noopener noreferrer">X</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 Pickle Advisors. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        <div class="footer-inner">
+            <span>&copy; 2026 Pickle Advisors LLC. All rights reserved.</span>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/deetseatsnyc" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://www.tiktok.com/@deetseatsnyc" target="_blank" rel="noopener">TikTok</a>
+                <a href="https://substack.com/@deetseatsnyc" target="_blank" rel="noopener">Substack</a>
+                <a href="https://www.linkedin.com/company/pickle-advisors" target="_blank" rel="noopener">LinkedIn</a>
             </div>
         </div>
     </footer>
-    
+
     <script>
-        // Simple mobile menu toggle
-        document.getElementById('mobileToggle').addEventListener('click', function() {
-            const menu = document.getElementById('mobileMenu');
-            const toggle = this;
-            
-            menu.classList.toggle('active');
-            toggle.classList.toggle('active');
+        // Nav scroll
+        window.addEventListener('scroll', () => {
+            document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
         });
-        
-        // Close mobile menu when clicking links
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', function() {
+
+        // Mobile menu
+        document.getElementById('mobileToggle').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.add('active');
+        });
+        document.getElementById('closeMenu').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.remove('active');
+        });
+        document.querySelectorAll('.mobile-menu a').forEach(a => {
+            a.addEventListener('click', () => {
                 document.getElementById('mobileMenu').classList.remove('active');
-                document.getElementById('mobileToggle').classList.remove('active');
             });
         });
-        
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-        
-        // Simple scroll reveal
-        window.addEventListener('scroll', function() {
-            const reveals = document.querySelectorAll('.scroll-reveal');
-            
-            reveals.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('active');
-                }
-            });
-        });
-        
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', (e) => {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offset = 80;
-                    const targetPosition = target.offsetTop - offset;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
+                const t = document.querySelector(a.getAttribute('href'));
+                if (t) window.scrollTo({ top: t.offsetTop - 80, behavior: 'smooth' });
             });
         });
     </script>
