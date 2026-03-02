@@ -290,6 +290,7 @@ textarea.text-input { resize: vertical; min-height: 100px; }
 @media (max-width: 600px) {
   .hero { padding: 48px 20px 40px; }
   .card { padding: 24px 20px; }
+  .steps-grid { grid-template-columns: 1fr !important; }
 }
 </style>
 </head>
@@ -311,13 +312,27 @@ textarea.text-input { resize: vertical; min-height: 100px; }
     <div class="hero-badge" style="background:var(--black);">⏱ Takes ~5 minutes</div>
   </div>
   <h1>AI Readiness <span>Audit</span></h1>
-  <p>Fill this out before your call. We'll score your AI readiness and come prepared with a quick win.</p>
-  <p style="font-style:italic;font-size:14px;color:rgba(26,26,26,0.45);margin-top:16px;">Join 20+ CPG founders who've already taken the audit</p>
-  <div style="margin-top:28px;padding:20px 28px;background:var(--black);border-radius:var(--radius);display:inline-block;">
-    <p style="color:rgba(255,255,255,0.7);font-size:14px;margin-bottom:12px;">Step 1: Book your free audit call &nbsp;→&nbsp; Step 2: Fill out the form below</p>
-    <a href="https://cal.com/jonathan-deeter-vlslzl/ai-audit-pickle-advisors" target="_blank" style="display:inline-block;padding:14px 28px;background:var(--red);color:#fff;font-family:inherit;font-size:16px;font-weight:700;border-radius:8px;text-decoration:none;transition:all 0.2s ease;">Book Your Free AI Audit Call →</a>
-  </div>
+  <p style="font-style:italic;font-size:14px;color:rgba(26,26,26,0.45);margin-top:8px;">Join 20+ CPG founders who've already taken the audit</p>
 </header>
+
+<!-- Steps / CTA Section -->
+<div style="max-width:680px;margin:0 auto 40px;padding:0 20px;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="steps-grid">
+    <div style="background:var(--black);border-radius:var(--radius);padding:28px;text-align:center;">
+      <div style="background:var(--red);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;margin-bottom:12px;">1</div>
+      <h3 style="color:#fff;font-size:18px;margin-bottom:8px;">Book Your Call</h3>
+      <p style="color:rgba(255,255,255,0.5);font-size:13px;margin-bottom:16px;">Grab a free 30-min slot</p>
+      <a href="https://cal.com/jonathan-deeter-vlslzl/ai-audit-pickle-advisors" target="_blank" style="display:inline-block;padding:12px 24px;background:var(--red);color:#fff;font-family:inherit;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;transition:all 0.2s ease;">Book Now →</a>
+    </div>
+    <div style="background:#fff;border-radius:var(--radius);padding:28px;text-align:center;box-shadow:var(--shadow);">
+      <div style="background:var(--black);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;margin-bottom:12px;">2</div>
+      <h3 style="color:var(--black);font-size:18px;margin-bottom:8px;">Fill Out the Form</h3>
+      <p style="color:rgba(26,26,26,0.5);font-size:13px;margin-bottom:16px;">So we can hit the ground running</p>
+      <a href="#auditForm" style="display:inline-block;padding:12px 24px;background:var(--black);color:#fff;font-family:inherit;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;transition:all 0.2s ease;">Start Form ↓</a>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:16px;font-size:13px;color:rgba(26,26,26,0.4);">Already booked? Skip straight to the form. Haven't booked yet? Do that first — we'll review your answers before the call.</p>
+</div>
 
 <div class="form-wrap" id="formWrap">
 <form id="auditForm" action="#" method="POST">
