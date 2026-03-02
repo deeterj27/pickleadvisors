@@ -47,12 +47,27 @@ body {
 /* ── NAV ── */
 .nav {
   position: sticky; top: 0; z-index: 100;
-  background: var(--black);
-  padding: 16px 24px;
+  background: #fff;
+  padding: 14px 24px;
   display: flex; align-items: center; justify-content: space-between;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.06);
 }
-.nav-logo { color: #fff; font-weight: 700; font-size: 18px; letter-spacing: 3px; }
-.nav-tag { color: rgba(255,255,255,0.5); font-size: 12px; letter-spacing: 1px; }
+.nav-links {
+  list-style: none; display: flex; gap: 28px; align-items: center; margin: 0; padding: 0;
+}
+.nav-links a {
+  text-decoration: none; color: #6B7280; font-size: 14px; font-weight: 500; transition: color 0.2s;
+}
+.nav-links a:hover { color: #00C851; }
+.nav-cta {
+  background: var(--black); color: #fff !important; padding: 10px 20px; border-radius: 8px;
+  font-weight: 600; font-size: 13px; letter-spacing: 0.5px; transition: all 0.2s;
+}
+.nav-cta:hover { background: #00C851; color: #fff !important; }
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .nav { padding: 12px 16px; }
+}
 
 /* ── HERO ── */
 .hero {
@@ -310,10 +325,20 @@ textarea.text-input { resize: vertical; min-height: 100px; }
 
 <nav class="nav">
   <a href="https://pickleadvisors.com" style="text-decoration:none;">
-    <div class="nav-logo">PICKLE ADVISORS</div>
-    <div class="nav-tag">Your Brand's Operating System</div>
+    <svg width="180" height="50" viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 20 15 L 20 45 M 20 15 L 35 15 Q 43 15 43 23 Q 43 31 35 31 L 20 31" stroke="#00C851" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path d="M 36 26 L 44 18 M 44 18 L 44 26 M 44 18 L 36 18" stroke="#FFB6C1" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="55" y="30" font-family="'Space Grotesk', sans-serif" font-size="24" font-weight="700" fill="#0F0F0F">PICKLE</text>
+      <text x="55" y="46" font-family="'Space Grotesk', sans-serif" font-size="13" font-weight="600" fill="#6B7280" letter-spacing="3">ADVISORS</text>
+    </svg>
   </a>
-  <a href="https://pickleadvisors.com/audit" style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;">AI Audit</a>
+  <ul class="nav-links">
+    <li><a href="https://pickleadvisors.com/#services">Services</a></li>
+    <li><a href="https://pickleadvisors.com/#about">About</a></li>
+    <li><a href="https://pickleadvisors.com/#media">Media</a></li>
+    <li><a href="/audit" style="color:var(--red);font-weight:600;">AI Audit</a></li>
+    <li><a href="https://cal.com/jonathan-deeter-vlslzl/ai-audit-pickle-advisors" class="nav-cta">Book a Call</a></li>
+  </ul>
 </nav>
 
 <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
