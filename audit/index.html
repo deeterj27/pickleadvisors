@@ -336,7 +336,7 @@ textarea.text-input { resize: vertical; min-height: 100px; }
 <header class="hero">
   <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;">
     <div class="hero-badge">Free 30-Minute Audit</div>
-    <div class="hero-badge" style="background:var(--black);">⏱ Takes ~5 minutes</div>
+    <div class="hero-badge" style="background:var(--black);">⏱ Takes ~2 minutes</div>
   </div>
   <h1>AI Readiness <span>Audit</span></h1>
   <p style="font-style:italic;font-size:14px;color:rgba(26,26,26,0.45);margin-top:8px;">Join 20+ CPG founders who've already taken the audit</p>
@@ -419,11 +419,11 @@ textarea.text-input { resize: vertical; min-height: 100px; }
     <input class="text-input" type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
   </div>
 
-  <div class="section-label">Part 2 — Your Current Tools</div>
+  <div class="section-label">About Your Business</div>
 
   <!-- Q1: Tools -->
   <div class="card">
-    <div class="q-label"><span class="q-number">1</span>What tools are you currently using to run your business?</div>
+    <div class="q-label"><span class="q-number">1</span>What tools are you currently using?</div>
     <div class="hint">Check all that apply</div>
 
     <div style="font-weight:600;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin:16px 0 8px;">Sales & Distribution</div>
@@ -475,14 +475,12 @@ textarea.text-input { resize: vertical; min-height: 100px; }
       <label class="option-card"><input type="checkbox" name="q2_channels" value="Wholesale / distributors"><span class="indicator"></span>Wholesale / distributors</label>
       <label class="option-card"><input type="checkbox" name="q2_channels" value="Retail (grocery, specialty)"><span class="indicator"></span>Retail (grocery, specialty, etc.)</label>
       <label class="option-card"><input type="checkbox" name="q2_channels" value="Faire / marketplace"><span class="indicator"></span>Faire / online marketplace</label>
-      <label class="option-card"><input type="checkbox" name="q2_channels" value="Farmers markets / events"><span class="indicator"></span>Farmers markets / events / pop-ups</label>
       <label class="option-card"><input type="checkbox" name="q2_channels" value="TikTok Shop"><span class="indicator"></span>TikTok Shop</label>
+      <label class="option-card"><input type="checkbox" name="q2_channels" value="Farmers markets / events"><span class="indicator"></span>Farmers markets / events / pop-ups</label>
       <label class="option-card"><input type="checkbox" name="q2_channels" value="Food service"><span class="indicator"></span>Food service / restaurants</label>
       <label class="option-card"><input type="checkbox" name="q2_channels" value="Other"><span class="indicator"></span>Other <input class="other-text" type="text" name="q2_channels_other" placeholder="Where else?"></label>
     </div>
   </div>
-
-  <div class="section-label">Part 3 — Operations & AI Readiness</div>
 
   <!-- Q3: CPG bottlenecks -->
   <div class="card">
@@ -502,77 +500,9 @@ textarea.text-input { resize: vertical; min-height: 100px; }
     </div>
   </div>
 
-  <!-- Q4: How they track financials -->
+  <!-- Q4: How did you hear -->
   <div class="card">
-    <div class="q-label"><span class="q-number">4</span>How are you tracking your financials (COGS, margins, P&L)?</div>
-    <div class="option-grid">
-      <label class="option-card"><input type="radio" name="q4_financials" value="Vibes and bank balance"><span class="indicator"></span><span class="option-letter">A.</span> I'm not really — vibes and bank balance</label>
-      <label class="option-card"><input type="radio" name="q4_financials" value="Spreadsheets, updated manually"><span class="indicator"></span><span class="option-letter">B.</span> Spreadsheets I update manually</label>
-      <label class="option-card"><input type="radio" name="q4_financials" value="QuickBooks/Xero but messy or behind"><span class="indicator"></span><span class="option-letter">C.</span> QuickBooks / Xero but it's messy or behind</label>
-      <label class="option-card"><input type="radio" name="q4_financials" value="Clean books with real-time margin visibility"><span class="indicator"></span><span class="option-letter">D.</span> Clean books with real-time visibility into margins</label>
-    </div>
-  </div>
-
-  <!-- Q5: AI usage -->
-  <div class="card">
-    <div class="q-label"><span class="q-number">5</span>How is your team currently using AI?</div>
-    <div class="option-grid">
-      <label class="option-card"><input type="radio" name="q5_ai_usage" value="Not using AI"><span class="indicator"></span><span class="option-letter">A.</span> We're not, or we've barely experimented</label>
-      <label class="option-card"><input type="radio" name="q5_ai_usage" value="ChatGPT for ad-hoc tasks"><span class="indicator"></span><span class="option-letter">B.</span> A few people use ChatGPT or similar for ad-hoc tasks</label>
-      <label class="option-card"><input type="radio" name="q5_ai_usage" value="AI built into some workflows"><span class="indicator"></span><span class="option-letter">C.</span> We've built some AI into workflows (content, customer service, etc.)</label>
-      <label class="option-card"><input type="radio" name="q5_ai_usage" value="AI embedded in multiple core processes"><span class="indicator"></span><span class="option-letter">D.</span> AI is embedded in multiple core processes</label>
-    </div>
-  </div>
-
-  <!-- Q6: Manual hours -->
-  <div class="card">
-    <div class="q-label"><span class="q-number">6</span>How many hours/week does your team spend on repetitive manual tasks?</div>
-    <div class="hint">Copy-pasting data, manually sending follow-ups, updating spreadsheets, reformatting content…</div>
-    <div class="option-grid">
-      <label class="option-card"><input type="radio" name="q6_manual_hours" value="30+ hours/week"><span class="indicator"></span><span class="option-letter">A.</span> 30+ hours/week</label>
-      <label class="option-card"><input type="radio" name="q6_manual_hours" value="15-30 hours/week"><span class="indicator"></span><span class="option-letter">B.</span> 15–30 hours/week</label>
-      <label class="option-card"><input type="radio" name="q6_manual_hours" value="5-15 hours/week"><span class="indicator"></span><span class="option-letter">C.</span> 5–15 hours/week</label>
-      <label class="option-card"><input type="radio" name="q6_manual_hours" value="Under 5 hours, mostly automated"><span class="indicator"></span><span class="option-letter">D.</span> Under 5 hours — we've automated most of it</label>
-    </div>
-  </div>
-
-  <!-- Q7: Inventory -->
-  <div class="card">
-    <div class="q-label"><span class="q-number">7</span>How do you manage inventory and reordering?</div>
-    <div class="option-grid">
-      <label class="option-card"><input type="radio" name="q7_inventory" value="Gut feel"><span class="indicator"></span><span class="option-letter">A.</span> Gut feel — I reorder when I think I'm running low</label>
-      <label class="option-card"><input type="radio" name="q7_inventory" value="Manual spreadsheet tracking"><span class="indicator"></span><span class="option-letter">B.</span> Spreadsheet tracking but I have to update it manually</label>
-      <label class="option-card"><input type="radio" name="q7_inventory" value="Inventory tool connected to sales channels"><span class="indicator"></span><span class="option-letter">C.</span> Inventory tool connected to my sales channels</label>
-      <label class="option-card"><input type="radio" name="q7_inventory" value="Automated reorder alerts based on velocity"><span class="indicator"></span><span class="option-letter">D.</span> Automated reorder alerts based on velocity and lead times</label>
-    </div>
-  </div>
-
-  <!-- Q8: Budget -->
-  <div class="card">
-    <div class="q-label"><span class="q-number">8</span>Budget appetite for AI implementation over the next 6 months?</div>
-    <div class="option-grid">
-      <label class="option-card"><input type="radio" name="q8_budget" value="Under $500/mo"><span class="indicator"></span><span class="option-letter">A.</span> Minimal — only free tools or under $500/mo</label>
-      <label class="option-card"><input type="radio" name="q8_budget" value="$500-$2,000/mo"><span class="indicator"></span><span class="option-letter">B.</span> Moderate — $500–$2,000/mo for the right solution</label>
-      <label class="option-card"><input type="radio" name="q8_budget" value="$2,000-$5,000/mo"><span class="indicator"></span><span class="option-letter">C.</span> Meaningful — $2,000–$5,000/mo if ROI is clear</label>
-      <label class="option-card"><input type="radio" name="q8_budget" value="$5,000+/mo"><span class="indicator"></span><span class="option-letter">D.</span> Significant — $5,000+/mo, ready to invest</label>
-    </div>
-  </div>
-
-  <!-- Q9 -->
-  <div class="card">
-    <div class="q-label"><span class="q-number">9</span>What would you do with 10 extra hours per week?</div>
-    <textarea class="text-input" name="q9_extra_time" placeholder="Be specific — growth, product dev, sleep, actually taking a weekend off…"></textarea>
-  </div>
-
-  <!-- Q10 -->
-  <div class="card">
-    <div class="q-label"><span class="q-number">10</span>What does success look like 90 days from now?</div>
-    <textarea class="text-input" name="q10_success" placeholder="Know my exact margins per SKU, have inventory on autopilot, spend half the time on content…"></textarea>
-  </div>
-
-  <!-- Q11 -->
-  <div class="card">
-    <div class="q-label"><span class="q-number">11</span>How did you hear about us?</div>
+    <div class="q-label"><span class="q-number">4</span>How did you hear about us?</div>
     <select class="text-input" name="q11_source" style="cursor:pointer;">
       <option value="" disabled selected>Select one…</option>
       <option value="LinkedIn">LinkedIn</option>
@@ -587,7 +517,7 @@ textarea.text-input { resize: vertical; min-height: 100px; }
     </select>
   </div>
 
-  <button type="submit" class="submit-btn">Get My AI Readiness Score →</button>
+  <button type="submit" class="submit-btn">Submit & Get Started →</button>
 
 </form>
 </div>
@@ -661,7 +591,7 @@ textarea.text-input { resize: vertical; min-height: 100px; }
       }
     });
     if (firstInvalid) {
-      btn.textContent = 'Get My AI Readiness Score →';
+      btn.textContent = 'Submit & Get Started →';
       btn.disabled = false;
       firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
       firstInvalid.focus();
@@ -674,8 +604,7 @@ textarea.text-input { resize: vertical; min-height: 100px; }
     
     // Text/radio fields
     ['company_name','contact_name','industry','revenue_range','team_size',
-     'website','email','phone','q4_financials','q5_ai_usage','q6_manual_hours',
-     'q7_inventory','q8_budget','q9_extra_time','q10_success','q11_source',
+     'website','email','phone','q11_source',
      'q1_tools_other','q2_channels_other','q3_bottleneck_other'].forEach(key => {
       data[key] = fd.get(key) || '';
     });
