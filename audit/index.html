@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Readiness Audit — Pickle Advisors</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%234a7c59'/><text x='50%25' y='50%25' text-anchor='middle' dy='.35em' font-family='sans-serif' font-weight='bold' font-size='20' fill='white'>P</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red: #E8112D;
+  --cream: #FFF8E7;
+  --black: #1A1A1A;
+  --gold: #FFD700;
+  --gray: #f5f0e3;
+  --shadow: 0 2px 12px rgba(26,26,26,0.07);
+  --shadow-hover: 0 4px 20px rgba(26,26,26,0.12);
+  --radius: 12px;
+  --transition: 0.2s ease;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--cream);
+  color: var(--black);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--black);
+  padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { color: #fff; font-weight: 700; font-size: 18px; letter-spacing: 3px; }
+.nav-tag { color: rgba(255,255,255,0.5); font-size: 12px; letter-spacing: 1px; }
+
+/* ── HERO ── */
+.hero {
+  padding: 80px 24px 60px;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+.hero h1 span { color: var(--red); }
+.hero p {
+  font-size: 18px;
+  color: rgba(26,26,26,0.65);
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* ── PROGRESS ── */
+.progress-bar {
+  position: sticky; top: 56px; z-index: 90;
+  background: var(--black);
+  height: 4px;
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--red), var(--gold));
+  transition: width 0.4s ease;
+}
+
+/* ── FORM ── */
+.form-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 20px 100px;
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 48px 0 24px;
+}
+
+.card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32px;
+  margin-bottom: 20px;
+  transition: box-shadow var(--transition);
+}
+.card:hover { box-shadow: var(--shadow-hover); }
+
+.card label.field-label,
+.card .q-label {
+  display: block;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+.card .q-number {
+  display: inline-block;
+  background: var(--black);
+  color: #fff;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 28px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Text inputs */
+.text-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e8e3d5;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 15px;
+  background: var(--cream);
+  transition: border-color var(--transition);
+  outline: none;
+}
+.text-input:focus { border-color: var(--red); }
+.text-input::placeholder { color: #bbb; }
+
+textarea.text-input { resize: vertical; min-height: 100px; }
+
+/* Radio / Checkbox cards */
+.option-grid { display: flex; flex-direction: column; gap: 10px; }
+
+.option-card {
+  position: relative;
+  border: 2px solid #e8e3d5;
+  border-radius: 10px;
+  padding: 14px 18px 14px 48px;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-size: 15px;
+  line-height: 1.4;
+  user-select: none;
+}
+.option-card:hover { border-color: #ccc; background: rgba(232,17,45,0.02); }
+
+.option-card input { position: absolute; opacity: 0; pointer-events: none; }
+
+.option-card .indicator {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px; height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  transition: all var(--transition);
+}
+.option-card input[type="checkbox"] + .indicator { border-radius: 4px; }
+
+.option-card input:checked ~ .indicator {
+  border-color: var(--red);
+  background: var(--red);
+}
+.option-card input:checked ~ .indicator::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 8px; height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.option-card input[type="checkbox"]:checked ~ .indicator::after {
+  border-radius: 1px;
+  width: 10px; height: 6px;
+  background: transparent;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: translate(-50%, -60%) rotate(-45deg);
+}
+
+.option-card.selected {
+  border-color: var(--red);
+  background: rgba(232,17,45,0.04);
+}
+
+.option-letter {
+  font-weight: 700;
+  color: var(--red);
+  margin-right: 6px;
+}
+
+/* Other text field */
+.other-text {
+  margin-top: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  border: 2px solid #e8e3d5;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  background: var(--cream);
+  outline: none;
+  display: none;
+}
+.other-text:focus { border-color: var(--red); }
+.option-card.selected .other-text { display: block; }
+
+/* Row for inline fields */
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 540px) { .field-row { grid-template-columns: 1fr; } }
+
+/* Checkbox limit hint */
+.hint { font-size: 13px; color: #999; margin-bottom: 10px; }
+
+/* ── SUBMIT ── */
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 18px;
+  margin-top: 32px;
+  background: var(--red);
+  color: #fff;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.submit-btn:hover { background: #c50e26; transform: translateY(-1px); box-shadow: 0 6px 24px rgba(232,17,45,0.3); }
+.submit-btn:active { transform: translateY(0); }
+
+/* ── THANK YOU ── */
+.thank-you {
+  display: none;
+  text-align: center;
+  padding: 80px 24px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.thank-you .check {
+  width: 72px; height: 72px;
+  background: var(--red);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px;
+  font-size: 36px;
+  color: #fff;
+}
+.thank-you h2 { font-size: 32px; margin-bottom: 16px; }
+.thank-you p { font-size: 18px; color: rgba(26,26,26,0.6); }
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 40px 24px;
+  font-size: 13px;
+  color: rgba(26,26,26,0.35);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .hero { padding: 48px 20px 40px; }
+  .card { padding: 24px 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="https://pickleadvisors.com" style="text-decoration:none;">
+    <div class="nav-logo">PICKLE ADVISORS</div>
+    <div class="nav-tag">Your Brand's Operating System</div>
+  </a>
+  <a href="https://pickleadvisors.com/audit" style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;">AI Audit</a>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<header class="hero">
+  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;">
+    <div class="hero-badge">Free 30-Minute Audit</div>
+    <div class="hero-badge" style="background:var(--black);">⏱ Takes ~5 minutes</div>
+  </div>
+  <h1>AI Readiness <span>Audit</span></h1>
+  <p>Fill this out before your call. We'll score your AI readiness and come prepared with a quick win.</p>
+  <p style="font-style:italic;font-size:14px;color:rgba(26,26,26,0.45);margin-top:16px;">Join 20+ CPG founders who've already taken the audit</p>
+</header>
+
+<div class="form-wrap" id="formWrap">
+<form id="auditForm" action="#" method="POST">
+
+  <div class="section-label">Part 1 — Company Snapshot</div>
+
+  <div class="card">
+    <label class="field-label" for="company_name">Company Name <span style="color:var(--red)">*</span></label>
+    <input class="text-input" type="text" id="company_name" name="company_name" placeholder="Acme Inc." required>
+  </div>
+
+  <div class="card">
+    <label class="field-label" for="contact_name">Your Name &amp; Role <span style="color:var(--red)">*</span></label>
+    <input class="text-input" type="text" id="contact_name" name="contact_name" placeholder="Jane Smith, CEO" required>
+  </div>
+
+  <div class="card">
+    <label class="field-label" for="industry">Industry / Category</label>
+    <input class="text-input" type="text" id="industry" name="industry" placeholder="CPG, DTC Beauty, SaaS…">
+  </div>
+
+  <div class="card">
+    <div class="q-label">Monthly Revenue Range</div>
+    <div class="option-grid">
+      <label class="option-card"><input type="radio" name="revenue_range" value="Under $10K"><span class="indicator"></span>Under $10K</label>
+      <label class="option-card"><input type="radio" name="revenue_range" value="$10-25K"><span class="indicator"></span>$10–25K</label>
+      <label class="option-card"><input type="radio" name="revenue_range" value="$25-75K"><span class="indicator"></span>$25–75K</label>
+      <label class="option-card"><input type="radio" name="revenue_range" value="$75K+"><span class="indicator"></span>$75K+</label>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="q-label">Team Size</div>
+    <div class="option-grid">
+      <label class="option-card"><input type="radio" name="team_size" value="1-3"><span class="indicator"></span>1–3</label>
+      <label class="option-card"><input type="radio" name="team_size" value="4-10"><span class="indicator"></span>4–10</label>
+      <label class="option-card"><input type="radio" name="team_size" value="11-25"><span class="indicator"></span>11–25</label>
+      <label class="option-card"><input type="radio" name="team_size" value="25+"><span class="indicator"></span>25+</label>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="field-row">
+      <div>
+        <label class="field-label" for="website">Website</label>
+        <input class="text-input" type="text" id="website" name="website" placeholder="yourcompany.com">
+      </div>
+      <div>
+        <label class="field-label" for="email">Email <span style="color:var(--red)">*</span></label>
+        <input class="text-input" type="email" id="email" name="email" placeholder="you@company.com" required>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <label class="field-label" for="phone">Phone Number</label>
+    <input class="text-input" type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+  </div>
+
+  <div class="section-label">Part 2 — Your Current Tools</div>
+
+  <!-- Q1: Tools -->
+  <div class="card">
+    <div class="q-label"><span class="q-number">1</span>What tools are you currently using to run your business?</div>
+    <div class="hint">Check all that apply</div>
+
+    <div style="font-weight:600;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin:16px 0 8px;">Sales & Distribution</div>
+    <div class="option-grid" id="q1Grid">
+      <label class="option-card"><input type="checkbox" name="q1_tools" value="Shopify"><span class="indicator"></span>Shopify</label>
+      <label class="option-card"><input type="checkbox" name="q1_tools" value="Amazon Seller Central"><span class="indicator"></span>Amazon Seller Central</label>
+      <label class="option-card"><input type="checkbox" name="q1_tools" value="Faire"><span class="indicator"></span>Faire</label>
+      <label class="option-card"><input type="checkbox" name="q1_tools" value="Airegoods"><span class="indicator"></span>Airegoods</label>
+    </div>
+
+    <div style="font-weight:600;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin:20px 0 8px;">Finance & Banking</div>
+    <div class="option-grid">
+      <label class="option-card"><input type="checkbox" name="q1_tools" value="QuickBooks"><span class="indicator"></span>QuickBooks / Xero</label>
+      <label class="option-card"><input type="checkbox" name="q1_tools" value="Rho"><span class="indicator"></span>Rho</label>
+      <label class="option-card"><input type="checkbox" name="q1_tools" value="Mercury / Relay"><span class="indicator"></span>Mercury / Relay</label>
+      <label class="option-card"><input type="checkbox" name="q1_tools" value="Google Sheets"><span class="indicator"></span>Google Sheets / Excel</label>
+    </div>
+
+    <div style="font-weight:600;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin:20px 0 8px;">Marketing & Ads</div>
+    <div class="option-grid">
+      <label class="option-card"><input type="checkbox" name="q1_tools" value="Klaviyo"><span class="indicator"></span>Klaviyo / Mailchimp</label>
+      <label class="option-card"><input type="checkbox" name="q1_tools" value="Meta Ads"><span class="indicator"></span>Meta Ads Manager</label>
+      <label class="option-card"><input type="checkbox" name="q1_tools" value="Google Ads"><span class="indicator"></span>Google Ads</label>
+      <label class="option-card"><input type="checkbox" name="q1_tools" value="Triple Whale"><span class="indicator"></span>Triple Whale / Northbeam</label>
+      <label class="option-card"><input type="checkbox" name="q1_tools" value="Canva"><span class="indicator"></span>Canva</label>
+      <label class="option-card"><input type="checkbox" name="q1_tools" value="Social scheduler"><span class="indicator"></span>Later / Planoly / Hootsuite</label>
+    </div>
+
+    <div style="font-weight:600;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin:20px 0 8px;">Ops & Fulfillment</div>
+    <div class="option-grid">
+      <label class="option-card"><input type="checkbox" name="q1_tools" value="ShipStation"><span class="indicator"></span>ShipStation / ShipBob</label>
+      <label class="option-card"><input type="checkbox" name="q1_tools" value="Inventory tool"><span class="indicator"></span>Cin7 / Katana / inFlow</label>
+      <label class="option-card"><input type="checkbox" name="q1_tools" value="Notion"><span class="indicator"></span>Notion / Asana / Monday</label>
+      <label class="option-card"><input type="checkbox" name="q1_tools" value="Slack"><span class="indicator"></span>Slack / Teams</label>
+    </div>
+
+    <div style="margin-top:12px;" class="option-grid">
+      <label class="option-card"><input type="checkbox" name="q1_tools" value="Other"><span class="indicator"></span>Other <input class="other-text" type="text" name="q1_tools_other" placeholder="What else are you using?"></label>
+    </div>
+  </div>
+
+  <!-- Q2: Sales channels -->
+  <div class="card">
+    <div class="q-label"><span class="q-number">2</span>Where are you selling?</div>
+    <div class="hint">Check all that apply</div>
+    <div class="option-grid" id="q2Grid">
+      <label class="option-card"><input type="checkbox" name="q2_channels" value="DTC website"><span class="indicator"></span>DTC website (Shopify, etc.)</label>
+      <label class="option-card"><input type="checkbox" name="q2_channels" value="Amazon"><span class="indicator"></span>Amazon</label>
+      <label class="option-card"><input type="checkbox" name="q2_channels" value="Wholesale / distributors"><span class="indicator"></span>Wholesale / distributors</label>
+      <label class="option-card"><input type="checkbox" name="q2_channels" value="Retail (grocery, specialty)"><span class="indicator"></span>Retail (grocery, specialty, etc.)</label>
+      <label class="option-card"><input type="checkbox" name="q2_channels" value="Faire / marketplace"><span class="indicator"></span>Faire / online marketplace</label>
+      <label class="option-card"><input type="checkbox" name="q2_channels" value="Farmers markets / events"><span class="indicator"></span>Farmers markets / events / pop-ups</label>
+      <label class="option-card"><input type="checkbox" name="q2_channels" value="TikTok Shop"><span class="indicator"></span>TikTok Shop</label>
+      <label class="option-card"><input type="checkbox" name="q2_channels" value="Food service"><span class="indicator"></span>Food service / restaurants</label>
+      <label class="option-card"><input type="checkbox" name="q2_channels" value="Other"><span class="indicator"></span>Other <input class="other-text" type="text" name="q2_channels_other" placeholder="Where else?"></label>
+    </div>
+  </div>
+
+  <div class="section-label">Part 3 — Operations & AI Readiness</div>
+
+  <!-- Q3: CPG bottlenecks -->
+  <div class="card">
+    <div class="q-label"><span class="q-number">3</span>What's eating most of your time right now?</div>
+    <div class="hint">Pick up to 3</div>
+    <div class="option-grid" id="q3Grid">
+      <label class="option-card"><input type="checkbox" name="q3_bottleneck" value="COGS tracking"><span class="indicator"></span>COGS tracking / margin visibility</label>
+      <label class="option-card"><input type="checkbox" name="q3_bottleneck" value="Inventory management"><span class="indicator"></span>Inventory tracking / knowing when to reorder</label>
+      <label class="option-card"><input type="checkbox" name="q3_bottleneck" value="Production planning"><span class="indicator"></span>Production run planning / MOQs</label>
+      <label class="option-card"><input type="checkbox" name="q3_bottleneck" value="Purchase orders"><span class="indicator"></span>Purchase orders / vendor management</label>
+      <label class="option-card"><input type="checkbox" name="q3_bottleneck" value="ROAS tracking"><span class="indicator"></span>Ad spend / ROAS tracking</label>
+      <label class="option-card"><input type="checkbox" name="q3_bottleneck" value="Content creation"><span class="indicator"></span>Content creation / social media</label>
+      <label class="option-card"><input type="checkbox" name="q3_bottleneck" value="Wholesale orders"><span class="indicator"></span>Retail / wholesale order management</label>
+      <label class="option-card"><input type="checkbox" name="q3_bottleneck" value="Bookkeeping"><span class="indicator"></span>Bookkeeping / cash flow visibility</label>
+      <label class="option-card"><input type="checkbox" name="q3_bottleneck" value="Customer comms"><span class="indicator"></span>Customer support / responding to inquiries</label>
+      <label class="option-card"><input type="checkbox" name="q3_bottleneck" value="Other"><span class="indicator"></span>Other <input class="other-text" type="text" name="q3_bottleneck_other" placeholder="Tell us more…"></label>
+    </div>
+  </div>
+
+  <!-- Q4: How they track financials -->
+  <div class="card">
+    <div class="q-label"><span class="q-number">4</span>How are you tracking your financials (COGS, margins, P&L)?</div>
+    <div class="option-grid">
+      <label class="option-card"><input type="radio" name="q4_financials" value="Vibes and bank balance"><span class="indicator"></span><span class="option-letter">A.</span> I'm not really — vibes and bank balance</label>
+      <label class="option-card"><input type="radio" name="q4_financials" value="Spreadsheets, updated manually"><span class="indicator"></span><span class="option-letter">B.</span> Spreadsheets I update manually</label>
+      <label class="option-card"><input type="radio" name="q4_financials" value="QuickBooks/Xero but messy or behind"><span class="indicator"></span><span class="option-letter">C.</span> QuickBooks / Xero but it's messy or behind</label>
+      <label class="option-card"><input type="radio" name="q4_financials" value="Clean books with real-time margin visibility"><span class="indicator"></span><span class="option-letter">D.</span> Clean books with real-time visibility into margins</label>
+    </div>
+  </div>
+
+  <!-- Q5: AI usage -->
+  <div class="card">
+    <div class="q-label"><span class="q-number">5</span>How is your team currently using AI?</div>
+    <div class="option-grid">
+      <label class="option-card"><input type="radio" name="q5_ai_usage" value="Not using AI"><span class="indicator"></span><span class="option-letter">A.</span> We're not, or we've barely experimented</label>
+      <label class="option-card"><input type="radio" name="q5_ai_usage" value="ChatGPT for ad-hoc tasks"><span class="indicator"></span><span class="option-letter">B.</span> A few people use ChatGPT or similar for ad-hoc tasks</label>
+      <label class="option-card"><input type="radio" name="q5_ai_usage" value="AI built into some workflows"><span class="indicator"></span><span class="option-letter">C.</span> We've built some AI into workflows (content, customer service, etc.)</label>
+      <label class="option-card"><input type="radio" name="q5_ai_usage" value="AI embedded in multiple core processes"><span class="indicator"></span><span class="option-letter">D.</span> AI is embedded in multiple core processes</label>
+    </div>
+  </div>
+
+  <!-- Q6: Manual hours -->
+  <div class="card">
+    <div class="q-label"><span class="q-number">6</span>How many hours/week does your team spend on repetitive manual tasks?</div>
+    <div class="hint">Copy-pasting data, manually sending follow-ups, updating spreadsheets, reformatting content…</div>
+    <div class="option-grid">
+      <label class="option-card"><input type="radio" name="q6_manual_hours" value="30+ hours/week"><span class="indicator"></span><span class="option-letter">A.</span> 30+ hours/week</label>
+      <label class="option-card"><input type="radio" name="q6_manual_hours" value="15-30 hours/week"><span class="indicator"></span><span class="option-letter">B.</span> 15–30 hours/week</label>
+      <label class="option-card"><input type="radio" name="q6_manual_hours" value="5-15 hours/week"><span class="indicator"></span><span class="option-letter">C.</span> 5–15 hours/week</label>
+      <label class="option-card"><input type="radio" name="q6_manual_hours" value="Under 5 hours, mostly automated"><span class="indicator"></span><span class="option-letter">D.</span> Under 5 hours — we've automated most of it</label>
+    </div>
+  </div>
+
+  <!-- Q7: Inventory -->
+  <div class="card">
+    <div class="q-label"><span class="q-number">7</span>How do you manage inventory and reordering?</div>
+    <div class="option-grid">
+      <label class="option-card"><input type="radio" name="q7_inventory" value="Gut feel"><span class="indicator"></span><span class="option-letter">A.</span> Gut feel — I reorder when I think I'm running low</label>
+      <label class="option-card"><input type="radio" name="q7_inventory" value="Manual spreadsheet tracking"><span class="indicator"></span><span class="option-letter">B.</span> Spreadsheet tracking but I have to update it manually</label>
+      <label class="option-card"><input type="radio" name="q7_inventory" value="Inventory tool connected to sales channels"><span class="indicator"></span><span class="option-letter">C.</span> Inventory tool connected to my sales channels</label>
+      <label class="option-card"><input type="radio" name="q7_inventory" value="Automated reorder alerts based on velocity"><span class="indicator"></span><span class="option-letter">D.</span> Automated reorder alerts based on velocity and lead times</label>
+    </div>
+  </div>
+
+  <!-- Q8: Budget -->
+  <div class="card">
+    <div class="q-label"><span class="q-number">8</span>Budget appetite for AI implementation over the next 6 months?</div>
+    <div class="option-grid">
+      <label class="option-card"><input type="radio" name="q8_budget" value="Under $500/mo"><span class="indicator"></span><span class="option-letter">A.</span> Minimal — only free tools or under $500/mo</label>
+      <label class="option-card"><input type="radio" name="q8_budget" value="$500-$2,000/mo"><span class="indicator"></span><span class="option-letter">B.</span> Moderate — $500–$2,000/mo for the right solution</label>
+      <label class="option-card"><input type="radio" name="q8_budget" value="$2,000-$5,000/mo"><span class="indicator"></span><span class="option-letter">C.</span> Meaningful — $2,000–$5,000/mo if ROI is clear</label>
+      <label class="option-card"><input type="radio" name="q8_budget" value="$5,000+/mo"><span class="indicator"></span><span class="option-letter">D.</span> Significant — $5,000+/mo, ready to invest</label>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="card">
+    <div class="q-label"><span class="q-number">9</span>What would you do with 10 extra hours per week?</div>
+    <textarea class="text-input" name="q9_extra_time" placeholder="Be specific — growth, product dev, sleep, actually taking a weekend off…"></textarea>
+  </div>
+
+  <!-- Q10 -->
+  <div class="card">
+    <div class="q-label"><span class="q-number">10</span>What does success look like 90 days from now?</div>
+    <textarea class="text-input" name="q10_success" placeholder="Know my exact margins per SKU, have inventory on autopilot, spend half the time on content…"></textarea>
+  </div>
+
+  <!-- Q11 -->
+  <div class="card">
+    <div class="q-label"><span class="q-number">11</span>How did you hear about us?</div>
+    <select class="text-input" name="q11_source" style="cursor:pointer;">
+      <option value="" disabled selected>Select one…</option>
+      <option value="LinkedIn">LinkedIn</option>
+      <option value="Instagram">Instagram</option>
+      <option value="TikTok">TikTok</option>
+      <option value="Twitter/X">Twitter / X</option>
+      <option value="Podcast">Podcast</option>
+      <option value="Referral">Referral from a friend</option>
+      <option value="Google search">Google search</option>
+      <option value="Event/conference">Event / conference</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+
+  <button type="submit" class="submit-btn">Get My AI Readiness Score →</button>
+
+</form>
+</div>
+
+<div class="thank-you" id="thankYou">
+  <div class="check">✓</div>
+  <h2>You're all set.</h2>
+  <p>Thanks! We'll review your responses and see you on the call. Come ready to get a quick win.</p>
+</div>
+
+<footer class="footer">© 2026 Pickle Advisors LLC. All rights reserved.</footer>
+
+<script>
+(function() {
+  const form = document.getElementById('auditForm');
+  const formWrap = document.getElementById('formWrap');
+  const thankYou = document.getElementById('thankYou');
+  const progressFill = document.getElementById('progressFill');
+
+  // Progress bar
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    progressFill.style.width = docHeight > 0 ? (scrollTop / docHeight * 100) + '%' : '0%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+
+  // Selectable card styling
+  document.querySelectorAll('.option-card input').forEach(input => {
+    input.addEventListener('change', () => {
+      if (input.type === 'radio') {
+        input.closest('.option-grid').querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+      }
+      if (input.checked) {
+        input.closest('.option-card').classList.add('selected');
+      } else {
+        input.closest('.option-card').classList.remove('selected');
+      }
+    });
+  });
+
+  // Q3 checkbox limit (max 3)
+  const q3Grid = document.getElementById('q3Grid');
+  q3Grid.addEventListener('change', () => {
+    const checked = q3Grid.querySelectorAll('input[type="checkbox"]:checked');
+    const unchecked = q3Grid.querySelectorAll('input[type="checkbox"]:not(:checked)');
+    if (checked.length >= 3) {
+      unchecked.forEach(cb => { cb.disabled = true; cb.closest('.option-card').style.opacity = '0.45'; });
+    } else {
+      q3Grid.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.disabled = false; cb.closest('.option-card').style.opacity = '1'; });
+    }
+  });
+
+  // Submit
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = form.querySelector('.submit-btn');
+    btn.textContent = 'Submitting…';
+    btn.disabled = true;
+
+    // Validate required fields
+    const required = form.querySelectorAll('[required]');
+    let firstInvalid = null;
+    required.forEach(el => {
+      el.style.borderColor = '';
+      if (!el.value.trim()) {
+        el.style.borderColor = 'var(--red)';
+        if (!firstInvalid) firstInvalid = el;
+      }
+    });
+    if (firstInvalid) {
+      btn.textContent = 'Get My AI Readiness Score →';
+      btn.disabled = false;
+      firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      firstInvalid.focus();
+      return;
+    }
+
+    // Gather form data
+    const fd = new FormData(form);
+    const data = {};
+    
+    // Text/radio fields
+    ['company_name','contact_name','industry','revenue_range','team_size',
+     'website','email','phone','q4_financials','q5_ai_usage','q6_manual_hours',
+     'q7_inventory','q8_budget','q9_extra_time','q10_success','q11_source',
+     'q1_tools_other','q2_channels_other','q3_bottleneck_other'].forEach(key => {
+      data[key] = fd.get(key) || '';
+    });
+
+    // Checkbox fields (multiple values)
+    data.q1_tools = fd.getAll('q1_tools');
+    data.q2_channels = fd.getAll('q2_channels');
+    data.q3_bottleneck = fd.getAll('q3_bottleneck');
+
+    // Send as URL params via GET to avoid POST redirect issues with Apps Script
+    const params = new URLSearchParams();
+    params.set('data', JSON.stringify(data));
+    
+    fetch('https://script.google.com/macros/s/AKfycbx_gYGN8L6CZA0NmTtDWb5_VLmvAkkZFWyNV6rtgieq78FMXV3QF5YYsq0FWgWiK9Al/exec?' + params.toString(), {
+      method: 'GET',
+      mode: 'no-cors'
+    }).then(() => {
+      formWrap.style.display = 'none';
+      thankYou.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      progressFill.style.width = '100%';
+    }).catch(() => {
+      formWrap.style.display = 'none';
+      thankYou.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      progressFill.style.width = '100%';
+    });
+  });
+})();
+</script>
+</body>
+</html>
