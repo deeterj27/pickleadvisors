@@ -500,9 +500,20 @@ textarea.text-input { resize: vertical; min-height: 100px; }
     </div>
   </div>
 
-  <!-- Q4: How did you hear -->
+  <!-- Q4: Budget -->
   <div class="card">
-    <div class="q-label"><span class="q-number">4</span>How did you hear about us?</div>
+    <div class="q-label"><span class="q-number">4</span>Budget appetite for AI implementation over the next 6 months?</div>
+    <div class="option-grid">
+      <label class="option-card"><input type="radio" name="q8_budget" value="Under $500/mo"><span class="indicator"></span><span class="option-letter">A.</span> Minimal — only free tools or under $500/mo</label>
+      <label class="option-card"><input type="radio" name="q8_budget" value="$500-$2,000/mo"><span class="indicator"></span><span class="option-letter">B.</span> Moderate — $500–$2,000/mo for the right solution</label>
+      <label class="option-card"><input type="radio" name="q8_budget" value="$2,000-$5,000/mo"><span class="indicator"></span><span class="option-letter">C.</span> Meaningful — $2,000–$5,000/mo if ROI is clear</label>
+      <label class="option-card"><input type="radio" name="q8_budget" value="$5,000+/mo"><span class="indicator"></span><span class="option-letter">D.</span> Significant — $5,000+/mo, ready to invest</label>
+    </div>
+  </div>
+
+  <!-- Q5: How did you hear -->
+  <div class="card">
+    <div class="q-label"><span class="q-number">5</span>How did you hear about us?</div>
     <select class="text-input" name="q11_source" style="cursor:pointer;">
       <option value="" disabled selected>Select one…</option>
       <option value="LinkedIn">LinkedIn</option>
@@ -604,7 +615,7 @@ textarea.text-input { resize: vertical; min-height: 100px; }
     
     // Text/radio fields
     ['company_name','contact_name','industry','revenue_range','team_size',
-     'website','email','phone','q11_source',
+     'website','email','phone','q8_budget','q11_source',
      'q1_tools_other','q2_channels_other','q3_bottleneck_other'].forEach(key => {
       data[key] = fd.get(key) || '';
     });
