@@ -708,21 +708,6 @@
                 console.error('EmailJS lead error:', err); alert('Email error: ' + (err.text || JSON.stringify(err)));
             }
 
-            // Send notification to Jonathan
-            try {
-                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_NOTIFY_TEMPLATE_ID, {
-                    to_email: "jonathan@pickleadvisors.com",
-                    to_name: "Jonathan",
-                    from_name: firstName,
-                    subject: "New lead: " + firstName + " from " + companyName + " downloaded " + resourceName,
-                    company_name: companyName,
-                    resource_name: resourceName,
-                    lead_email: email
-                });
-            } catch (err) {
-                console.error('EmailJS notify error:', err);
-            }
-
             // Show thank you
             formState.style.display = 'none';
             thankYouState.style.display = 'block';
