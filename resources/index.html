@@ -642,7 +642,7 @@
         const EMAILJS_PUBLIC_KEY = "TXJUAYXkdfaoR8Qv4";
 
         // Init EmailJS
-        emailjs.init(EMAILJS_PUBLIC_KEY);
+        emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
         // DOM elements
         const downloadBtn = document.getElementById('downloadBtn');
@@ -705,7 +705,7 @@
                     from_name: "Jonathan Deeter"
                 });
             } catch (err) {
-                console.log('EmailJS lead email error (expected until configured):', err);
+                console.error('EmailJS lead error:', err); alert('Email error: ' + (err.text || JSON.stringify(err)));
             }
 
             // Send notification to Jonathan
@@ -720,7 +720,7 @@
                     lead_email: email
                 });
             } catch (err) {
-                console.log('EmailJS notify email error (expected until configured):', err);
+                console.error('EmailJS notify error:', err);
             }
 
             // Show thank you
