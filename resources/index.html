@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free tools, checklists, and frameworks for CPG founders from Pickle Advisors.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pickleadvisors.com/resources">
+    <meta property="og:title" content="Resources for Founders — Pickle Advisors">
+    <meta property="og:description" content="Free tools and frameworks to help you operate smarter.">
+    <meta property="og:image" content="https://pickleadvisors.com/og-image.png">
+    <link rel="icon" type="image/svg+xml" href="/logo-icon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/og-image-square.png">
+    <meta name="theme-color" content="#00C851">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2X2CE22ZED"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-2X2CE22ZED');
+    </script>
+    <title>Resources for Founders — Pickle Advisors</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --green: #00C851;
+            --green-dark: #00A844;
+            --pink: #FFB6C1;
+            --pink-light: #FFD6E0;
+            --black: #0F0F0F;
+            --white: #FFFFFF;
+            --gray: #6B7280;
+            --light: #F9FAFB;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 16px 24px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 3px solid var(--green);
+            transition: padding 0.3s;
+        }
+
+        nav.scrolled { padding: 10px 24px; }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo svg { height: 60px; width: auto; }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--green); }
+
+        .nav-cta {
+            background: var(--green) !important;
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,200,81,0.3);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .mobile-toggle span {
+            width: 28px;
+            height: 3px;
+            background: var(--green);
+            margin: 3px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 160px 24px 80px;
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0,200,81,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-bottom: 24px;
+            padding: 6px 16px;
+            border: 2px solid var(--green);
+            border-radius: 50px;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1.5px;
+        }
+
+        .hero h1 .green { color: var(--green); }
+
+        .hero p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.55);
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* RESOURCES */
+        .resources {
+            padding: 80px 24px 100px;
+            background: var(--light);
+        }
+
+        .resources-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .resources-inner .section-tag {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-bottom: 16px;
+        }
+
+        .resources-inner .section-title {
+            font-size: clamp(28px, 3.5vw, 40px);
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 48px;
+            line-height: 1.1;
+        }
+
+        /* RESOURCE CARD */
+        .resource-card {
+            background: var(--white);
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 48px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--green);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .resource-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--green);
+            background: rgba(0,200,81,0.1);
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+        }
+
+        .resource-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .resource-card p {
+            font-size: 16px;
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 28px;
+            max-width: 560px;
+        }
+
+        .resource-card .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            background: var(--green);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .resource-card .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0,200,81,0.3);
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15,15,15,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 48px;
+            max-width: 480px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.15);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--gray);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover { color: var(--black); }
+
+        .modal h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .modal p {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--black);
+            margin-bottom: 6px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 15px;
+            color: var(--black);
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--green);
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--green);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 8px;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0,200,81,0.3);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Thank you state */
+        .thank-you {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .thank-you .icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .thank-you h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .thank-you p {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--black);
+            color: rgba(255,255,255,0.4);
+            padding: 48px 24px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover { color: var(--green); }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: flex; }
+
+            .mobile-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: var(--black);
+                z-index: 999;
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 24px;
+            }
+
+            .mobile-menu.active { display: flex; }
+
+            .mobile-menu a {
+                color: var(--white);
+                text-decoration: none;
+                font-size: 24px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+
+            .mobile-menu .close-btn {
+                position: absolute;
+                top: 20px;
+                right: 24px;
+                font-size: 32px;
+                color: var(--white);
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+
+            .hero { padding: 120px 24px 60px; }
+
+            .resources { padding: 60px 24px 80px; }
+
+            .resource-card { padding: 32px 24px; }
+
+            .modal { padding: 32px 24px; }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="/" class="logo">
+                <svg width="220" height="60" viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 20 15 L 20 45 M 20 15 L 35 15 Q 43 15 43 23 Q 43 31 35 31 L 20 31" stroke="#00C851" stroke-width="5" fill="none" stroke-linecap="round"/>
+                    <path d="M 36 26 L 44 18 M 44 18 L 44 26 M 44 18 L 36 18" stroke="#FFB6C1" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <text x="55" y="30" font-family="'Space Grotesk', sans-serif" font-size="24" font-weight="700" fill="#0F0F0F">PICKLE</text>
+                    <text x="55" y="46" font-family="'Space Grotesk', sans-serif" font-size="13" font-weight="600" fill="#6B7280" letter-spacing="3">ADVISORS</text>
+                </svg>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#media">Media</a></li>
+                <li><a href="/resources">Resources</a></li>
+                <li><a href="/audit">AI Audit</a></li>
+                <li><a href="https://cal.com/jonathan-deeter-vlslzl/intro-call" class="nav-cta">Book a Call</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-btn" id="closeMenu">&times;</button>
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#media">Media</a>
+        <a href="/resources">Resources</a>
+        <a href="/audit">AI Audit</a>
+        <a href="https://cal.com/jonathan-deeter-vlslzl/intro-call">Book a Call</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-tag">Free Resources</span>
+            <h1>Resources for <span class="green">Founders</span></h1>
+            <p>Free tools and frameworks to help you operate smarter.</p>
+        </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section class="resources">
+        <div class="resources-inner">
+            <p class="section-tag">Downloads</p>
+            <h2 class="section-title">Frameworks you can use today.</h2>
+
+            <div class="resource-card">
+                <div class="resource-badge">Free Checklist</div>
+                <h3>GEO Checklist for CPG Founders</h3>
+                <p>The step-by-step checklist for getting your brand discovered by AI search engines like ChatGPT and Perplexity. 17 actionable items you can start implementing today.</p>
+                <button class="btn" id="downloadBtn">Download Free Checklist</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEAD CAPTURE MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <button class="modal-close" id="modalClose">&times;</button>
+
+            <!-- FORM STATE -->
+            <div id="formState">
+                <h3>Get the GEO Checklist</h3>
+                <p>Enter your info below and we'll send the checklist straight to your inbox.</p>
+                <form id="leadForm">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" required placeholder="Jane">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="jane@yourbrand.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="companyName">Company Name</label>
+                        <input type="text" id="companyName" name="companyName" required placeholder="Your Brand Co.">
+                    </div>
+                    <button type="submit" class="form-submit" id="submitBtn">Download Now</button>
+                </form>
+            </div>
+
+            <!-- THANK YOU STATE -->
+            <div id="thankYouState" style="display:none;">
+                <div class="thank-you">
+                    <div class="icon">🥒</div>
+                    <h3>You're all set!</h3>
+                    <p>Your checklist download should have started. Check your inbox — I'll be in touch shortly.</p>
+                    <a href="https://cal.com/jonathan-deeter-vlslzl/intro-call" class="form-submit" style="display:inline-block;text-decoration:none;margin-top:16px;width:auto;padding:14px 32px;">Book a Call</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <span>&copy; 2026 Pickle Advisors LLC. All rights reserved.</span>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/deetseatsnyc" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://www.tiktok.com/@deetseatsnyc" target="_blank" rel="noopener">TikTok</a>
+                <a href="https://substack.com/@deetseatsnyc" target="_blank" rel="noopener">Substack</a>
+                <a href="https://www.linkedin.com/company/pickle-advisors" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // =====================================================================
+        // EMAILJS SETUP (5 min):
+        // 1. Create free account at emailjs.com
+        // 2. Add Email Service (Gmail) → copy Service ID
+        // 3. Create Email Template with these variables: {{to_name}}, {{company_name}}, {{resource_name}}, {{calendar_link}}
+        //    Template subject: "Your {{resource_name}} is ready 🥒"
+        //    Template body: "Hey {{to_name}}, thanks for downloading the {{resource_name}}! I'd love to learn more about {{company_name}}. Book a call: {{calendar_link}}"
+        // 4. Copy Template ID and Public Key
+        // 5. Replace the three PLACEHOLDER values below
+        //
+        // ALSO: Create a second template for lead notifications to Jonathan:
+        //    Template subject: "New lead: {{to_name}} from {{company_name}} downloaded {{resource_name}}"
+        //    Template body: "{{to_name}} ({{to_email}}) from {{company_name}} just downloaded {{resource_name}}."
+        //    Use the same Service ID but a different Template ID (EMAILJS_NOTIFY_TEMPLATE_ID)
+        // =====================================================================
+
+        const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+        const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+        const EMAILJS_NOTIFY_TEMPLATE_ID = "YOUR_NOTIFY_TEMPLATE_ID";
+        const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+
+        // Init EmailJS
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+
+        // DOM elements
+        const downloadBtn = document.getElementById('downloadBtn');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalClose = document.getElementById('modalClose');
+        const leadForm = document.getElementById('leadForm');
+        const formState = document.getElementById('formState');
+        const thankYouState = document.getElementById('thankYouState');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Open modal
+        downloadBtn.addEventListener('click', () => {
+            modalOverlay.classList.add('active');
+            document.getElementById('firstName').focus();
+        });
+
+        // Close modal
+        modalClose.addEventListener('click', () => {
+            modalOverlay.classList.remove('active');
+        });
+
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) modalOverlay.classList.remove('active');
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') modalOverlay.classList.remove('active');
+        });
+
+        // Form submission
+        leadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const firstName = document.getElementById('firstName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const companyName = document.getElementById('companyName').value.trim();
+            const resourceName = "GEO Checklist for CPG Founders";
+            const calendarLink = "https://cal.com/jonathan-deeter-vlslzl/intro-call";
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            // Trigger download immediately
+            const link = document.createElement('a');
+            link.href = '/resources/geo-checklist.html';
+            link.download = 'GEO-Checklist-CPG-Founders.html';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Send follow-up email to lead via EmailJS
+            try {
+                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                    to_email: email,
+                    to_name: firstName,
+                    company_name: companyName,
+                    resource_name: resourceName,
+                    calendar_link: calendarLink,
+                    from_name: "Jonathan Deeter"
+                });
+            } catch (err) {
+                console.log('EmailJS lead email error (expected until configured):', err);
+            }
+
+            // Send notification to Jonathan
+            try {
+                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_NOTIFY_TEMPLATE_ID, {
+                    to_email: "jonathan@pickleadvisors.com",
+                    to_name: "Jonathan",
+                    from_name: firstName,
+                    subject: "New lead: " + firstName + " from " + companyName + " downloaded " + resourceName,
+                    company_name: companyName,
+                    resource_name: resourceName,
+                    lead_email: email
+                });
+            } catch (err) {
+                console.log('EmailJS notify email error (expected until configured):', err);
+            }
+
+            // Show thank you
+            formState.style.display = 'none';
+            thankYouState.style.display = 'block';
+        });
+
+        // Nav scroll
+        window.addEventListener('scroll', () => {
+            document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile menu
+        document.getElementById('mobileToggle').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.add('active');
+        });
+        document.getElementById('closeMenu').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.remove('active');
+        });
+        document.querySelectorAll('.mobile-menu a').forEach(a => {
+            a.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

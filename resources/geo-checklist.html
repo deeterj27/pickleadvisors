@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEO Checklist for CPG Founders — Pickle Advisors</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: #f5f5f0;
+    color: #0f0f0f;
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    background: #fff;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: #0f0f1a;
+    padding: 16px 32px 14px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: #00C851;
+  }
+  .header-left { flex: 1; }
+  .logo {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #00C851;
+    margin-bottom: 4px;
+  }
+  .header-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -0.3px;
+  }
+  .header-title span { color: #00C851; }
+  .header-sub {
+    font-size: 9px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.5);
+    margin-top: 3px;
+    line-height: 1.3;
+  }
+  .header-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: right;
+  }
+  .meta-item { display: flex; flex-direction: column; gap: 0; }
+  .meta-label { font-size: 7px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+  .meta-val { font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.7); }
+
+  /* ── INTRO BAND ── */
+  .intro-band {
+    background: #00C851;
+    padding: 6px 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .intro-band p {
+    font-size: 9px;
+    font-weight: 600;
+    color: #0f0f1a;
+    line-height: 1.3;
+  }
+  .intro-band .icon { font-size: 12px; flex-shrink: 0; }
+
+  /* ── BODY ── */
+  .body {
+    padding: 10px 32px 8px;
+    columns: 2;
+    column-gap: 24px;
+  }
+
+  /* What is GEO */
+  .explainer {
+    background: #f8f8f5;
+    border-left: 3px solid #00C851;
+    padding: 6px 10px;
+    margin-bottom: 10px;
+    break-inside: avoid;
+  }
+  .explainer h3 {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #00C851;
+    margin-bottom: 3px;
+  }
+  .explainer p {
+    font-size: 9px;
+    color: #333;
+    line-height: 1.3;
+  }
+  .explainer p + p { margin-top: 3px; }
+
+  /* Section header */
+  .section {
+    margin-bottom: 8px;
+    break-inside: avoid;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 5px;
+    padding-bottom: 3px;
+    border-bottom: 1.5px solid #f0f0ec;
+  }
+  .section-num {
+    width: 18px; height: 18px;
+    background: #0f0f1a;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 700; color: #00C851;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #0f0f1a;
+    letter-spacing: -0.2px;
+  }
+  .section-badge {
+    margin-left: auto;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 50px;
+    white-space: nowrap;
+  }
+  .badge-high { background: #fff0f0; color: #c0392b; }
+  .badge-med { background: #fffbec; color: #b7860b; }
+  .badge-low { background: #f0fff5; color: #1a7a3f; }
+
+  /* Checklist items */
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+  .checklist li {
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+    padding: 4px 6px;
+    background: #fafaf8;
+    border-radius: 4px;
+    border: 1px solid #ebebeb;
+    break-inside: avoid;
+  }
+  .check-box {
+    width: 12px; height: 12px;
+    border: 1.5px solid #00C851;
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .check-text { flex: 1; }
+  .check-title {
+    font-size: 10px;
+    font-weight: 600;
+    color: #0f0f1a;
+    line-height: 1.2;
+  }
+  .check-sub {
+    font-size: 8px;
+    color: #666;
+    line-height: 1.25;
+    margin-top: 1px;
+  }
+  .check-sub a { color: #00C851; text-decoration: none; }
+  .check-effort {
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.3);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* Callout box */
+  .callout {
+    background: #0f0f1a;
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin: 8px 0;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    break-inside: avoid;
+  }
+  .callout-icon { font-size: 14px; flex-shrink: 0; }
+  .callout-title { font-size: 10px; font-weight: 700; color: #00C851; margin-bottom: 2px; }
+  .callout-text { font-size: 8px; color: rgba(255,255,255,0.6); line-height: 1.3; }
+
+  /* Scoring */
+  .score-section {
+    break-inside: avoid;
+    margin-top: 8px;
+  }
+  .score-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin-top: 5px;
+  }
+  .score-card {
+    background: #fafaf8;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 5px 6px;
+  }
+  .score-label { font-size: 7px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #999; margin-bottom: 1px; }
+  .score-val { font-size: 12px; font-weight: 700; color: #0f0f1a; }
+  .score-sub { font-size: 7px; color: #888; margin-top: 1px; line-height: 1.2; }
+
+  /* Footer */
+  .footer {
+    background: #0f0f1a;
+    padding: 10px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-brand { font-size: 11px; font-weight: 700; color: #fff; letter-spacing: 1px; }
+  .footer-brand span { color: #00C851; }
+  .footer-cta {
+    background: #00C851;
+    color: #0f0f1a;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  .footer-tag {
+    font-size: 8px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 1px;
+  }
+  .footer-contact {
+    text-align: center;
+  }
+  .footer-contact div {
+    color: rgba(255,255,255,0.5);
+    font-size: 9px;
+    margin-top: 2px;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    @page {
+      size: letter;
+      margin: 0.25in;
+    }
+    body {
+      background: #fff;
+      font-size: 10px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .page {
+      max-width: 100%;
+      box-shadow: none;
+    }
+    .header { padding: 12px 24px 10px; }
+    .intro-band { padding: 4px 24px; }
+    .body { padding: 8px 24px 6px; }
+    .footer { padding: 8px 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="logo">Pickle Advisors</div>
+      <div class="header-title">GEO Checklist for <span>CPG Founders</span></div>
+      <div class="header-sub">How to get your brand recommended by AI — before your competitors figure out it matters.</div>
+    </div>
+    <div class="header-meta">
+      <div class="meta-item">
+        <div class="meta-label">Category</div>
+        <div class="meta-val">Generative Engine Optimization</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Time</div>
+        <div class="meta-val">2–4 Hours</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Difficulty</div>
+        <div class="meta-val">Beginner → Intermediate</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTRO BAND -->
+  <div class="intro-band">
+    <span class="icon">⚡</span>
+    <p>AI search is already recommending brands in your category. This checklist tells you exactly what to do so yours is one of them.</p>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- WHAT IS GEO -->
+    <div class="explainer">
+      <h3>What is GEO?</h3>
+      <p>Generative Engine Optimization is the practice of optimizing your brand's digital presence so AI tools — ChatGPT, Perplexity, Gemini, Google AI Overviews — recommend you when consumers ask for products in your category.</p>
+      <p>Unlike traditional SEO, GEO is about <strong>leaving the right signals in the right places</strong> so LLMs can find, understand, and recommend your brand. The brands doing this today are building a moat that won't be easy to replicate in 12 months.</p>
+    </div>
+
+    <!-- SECTION 1 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">1</div>
+        <div class="section-title">Audit Your Starting Point</div>
+        <div class="section-badge badge-high">Do First</div>
+      </div>
+      <ul class="checklist">
+        <li>
+          <div class="check-box"></div>
+          <div class="check-text">
+            <div class="check-title">Test your brand in 3 AI tools</div>
+            <div class="check-sub">Ask ChatGPT, Perplexity, and Gemini: "What are the best [your category] brands?" Screenshot results as your baseline.</div>
+          </div>
+          <div class="check-effort">15 min</div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-text">
+            <div class="check-title">Search your brand on Google</div>
+            <div class="check-sub">AI models are trained on Google-indexed content. Count pages: website, press, reviews, retailer pages, social profiles.</div>
+          </div>
+          <div class="check-effort">10 min</div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-text">
+            <div class="check-title">Check for a Wikidata entry</div>
+            <div class="check-sub">Search <a href="https://www.wikidata.org" target="_blank">wikidata.org</a> — one of the highest-trust signals for how LLMs form brand knowledge.</div>
+          </div>
+          <div class="check-effort">5 min</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- CALLOUT -->
+    <div class="callout">
+      <div class="callout-icon">🧠</div>
+      <div>
+        <div class="callout-title">How LLMs decide what to recommend</div>
+        <div class="callout-text">LLMs don't browse the internet live — they're trained on web snapshots. Wikipedia/Wikidata, review aggregators, and high-authority press carry disproportionate weight. One article in a trusted outlet can outperform 100 social posts.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">2</div>
+        <div class="section-title">Build Your Wikidata Entry</div>
+        <div class="section-badge badge-high">Highest Impact</div>
+      </div>
+      <ul class="checklist">
+        <li>
+          <div class="check-box"></div>
+          <div class="check-text">
+            <div class="check-title">Create a Wikidata account</div>
+            <div class="check-sub">Free at <a href="https://www.wikidata.org/wiki/Special:CreateAccount" target="_blank">wikidata.org</a>. Takes 2 minutes.</div>
+          </div>
+          <div class="check-effort">2 min</div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-text">
+            <div class="check-title">Create a new item for your brand</div>
+            <div class="check-sub">Add brand name + short description (e.g., "American CPG brand specializing in high-protein snacks").</div>
+          </div>
+          <div class="check-effort">10 min</div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-text">
+            <div class="check-title">Add structured statements</div>
+            <div class="check-sub">Key: <strong>instance of</strong>, <strong>industry</strong>, <strong>country</strong>, <strong>official website</strong>, <strong>founded</strong>, <strong>HQ location</strong>, <strong>product category</strong>.</div>
+          </div>
+          <div class="check-effort">20 min</div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-text">
+            <div class="check-title">Link official website + Wikipedia</div>
+            <div class="check-sub">Under "Identifiers" add your website. Link Wikipedia if applicable — Wikidata alone still sends strong signals.</div>
+          </div>
+          <div class="check-effort">5 min</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">3</div>
+        <div class="section-title">Get Indexed on Review Aggregators</div>
+        <div class="section-badge badge-med">High Priority</div>
+      </div>
+      <ul class="checklist">
+        <li>
+          <div class="check-box"></div>
+          <div class="check-text">
+            <div class="check-title">Influenster — claim your brand page</div>
+            <div class="check-sub">Major consumer review platform AI tools heavily reference. Encourage customers to leave reviews.</div>
+          </div>
+          <div class="check-effort">30 min</div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-text">
+            <div class="check-title">Amazon — complete, keyword-rich listings</div>
+            <div class="check-sub">Amazon pages are heavily indexed by AI. Full title, description, bullet points, and category tags increase discoverability.</div>
+          </div>
+          <div class="check-effort">45 min</div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-text">
+            <div class="check-title">Google Shopping — active product feed</div>
+            <div class="check-sub">Product titles should include category keywords. Feeds directly into AI shopping recommendations.</div>
+          </div>
+          <div class="check-effort">30 min</div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-text">
+            <div class="check-title">Instacart — optimize brand page</div>
+            <div class="check-sub">Increasingly referenced by AI for grocery and food brand recommendations. Complete product descriptions.</div>
+          </div>
+          <div class="check-effort">20 min</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">4</div>
+        <div class="section-title">Get Press — The Right Kind</div>
+        <div class="section-badge badge-med">Medium Term</div>
+      </div>
+      <ul class="checklist">
+        <li>
+          <div class="check-box"></div>
+          <div class="check-text">
+            <div class="check-title">Prioritize consumer outlets over trade press</div>
+            <div class="check-sub">Target: Well+Good, Eat This Not That, Men's/Women's Health, Healthline, Delish, Food52 — high in LLM training data.</div>
+          </div>
+          <div class="check-effort">Ongoing</div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-text">
+            <div class="check-title">Submit to "best of" roundup articles</div>
+            <div class="check-sub">"Best protein bars," "healthiest energy drinks" — these listicles carry enormous weight with AI. Use HARO and Qwoted.</div>
+          </div>
+          <div class="check-effort">Ongoing</div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-text">
+            <div class="check-title">Get a Forbes / Inc. / Entrepreneur feature</div>
+            <div class="check-sub">High-trust outlets for LLMs. Founder features become permanent AI knowledge signals. Consider contributor networks.</div>
+          </div>
+          <div class="check-effort">2–4 wk</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- SECTION 5 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">5</div>
+        <div class="section-title">Optimize Your Website for AI</div>
+        <div class="section-badge badge-low">Technical</div>
+      </div>
+      <ul class="checklist">
+        <li>
+          <div class="check-box"></div>
+          <div class="check-text">
+            <div class="check-title">Add Schema.org structured data</div>
+            <div class="check-sub">Add <strong>Product</strong>, <strong>Organization</strong>, and <strong>BreadcrumbList</strong> schemas. On Shopify: Schema Plus or Yoast.</div>
+          </div>
+          <div class="check-effort">1–2 hr</div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-text">
+            <div class="check-title">Write a clear, keyword-rich About page</div>
+            <div class="check-sub">State: what the product is, who it's for, what problem it solves, what makes it different. Use natural language.</div>
+          </div>
+          <div class="check-effort">45 min</div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-text">
+            <div class="check-title">Create an FAQ page for your category</div>
+            <div class="check-sub">"Is [product] healthy?" "How does it compare to [competitor]?" Clear answers become AI reference material.</div>
+          </div>
+          <div class="check-effort">1 hr</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- SCORING SELF-ASSESSMENT -->
+    <div class="score-section">
+      <div class="section-header">
+        <div class="section-num">✓</div>
+        <div class="section-title">Self-Assessment</div>
+      </div>
+      <div class="score-grid">
+        <div class="score-card">
+          <div class="score-label">0–3 items</div>
+          <div class="score-val" style="color:#c0392b;">🔴 Invisible</div>
+          <div class="score-sub">AI doesn't know you exist. Start with Wikidata.</div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">4–8 items</div>
+          <div class="score-val" style="color:#e67e22;">🟡 Emerging</div>
+          <div class="score-sub">Some signals. Focus on press and reviews.</div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">9–13 items</div>
+          <div class="score-val" style="color:#2980b9;">🔵 Visible</div>
+          <div class="score-sub">AI is finding you. Expand outlets and reviews.</div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">14–17 items</div>
+          <div class="score-val" style="color:#00C851;">🟢 Strong</div>
+          <div class="score-sub">Ahead of 95% of CPG brands. Monitor monthly.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINAL CALLOUT -->
+    <div class="callout" style="margin-top:8px;">
+      <div class="callout-icon">📌</div>
+      <div>
+        <div class="callout-title">The window is open — but it won't stay open</div>
+        <div class="callout-text">Every platform shift has an early-mover window: DTC SEO (2016), Instagram (2018), TikTok (2020). AI search is that window now. The brands building GEO today will show up in AI recommendations for years. Low barrier, compounding payoff.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <div class="footer-brand">Pickle <span>Advisors</span></div>
+      <div class="footer-tag">Your Brand's Operating System</div>
+    </div>
+    <div class="footer-contact">
+      <div class="footer-tag">Questions? Let's talk.</div>
+      <div>jonathan@pickleadvisors.com</div>
+    </div>
+    <a href="https://pickleadvisors.com" class="footer-cta">pickleadvisors.com</a>
+  </div>
+
+</div>
+</body>
+</html>
