@@ -42,5 +42,13 @@ class PickleHomepageContentTest(unittest.TestCase):
         self.assertIn('workflows', TEXT)
         self.assertIn('$1b+', TEXT)
 
+    def test_media_links_and_visual_tone_are_premium(self):
+        parser = LinkParser(); parser.feed(HTML)
+        spotify_links = [l for l in parser.links if 'open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f' in l['href']]
+        self.assertGreaterEqual(len(spotify_links), 2)
+        self.assertNotIn('linktr.ee/deetseatnyc', HTML)
+        cheap_symbol_ranges = ((0x2600, 0x27BF), (0x1F300, 0x1FAFF))
+        self.assertFalse(any(start <= ord(ch) <= end for ch in HTML for start, end in cheap_symbol_ranges))
+
 if __name__ == '__main__':
     unittest.main()

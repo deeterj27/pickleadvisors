@@ -240,14 +240,19 @@
             color: rgba(255,255,255,0.78);
             font-weight: 600;
             font-size: 14px;
-            padding-left: 22px;
+            padding-left: 20px;
             position: relative;
         }
 
         .hero-bullets li::before {
-            content: '✓';
+            content: '';
             position: absolute;
             left: 0;
+            top: 0.68em;
+            width: 8px;
+            height: 2px;
+            border-radius: 999px;
+            background: var(--green);
             color: var(--green);
         }
 
@@ -452,7 +457,19 @@
         .service-card:hover::before { transform: scaleX(1); }
 
         .service-icon {
-            font-size: 40px;
+            width: 48px;
+            height: 48px;
+            border: 1px solid rgba(0,200,81,0.22);
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,200,81,0.08);
+            color: var(--green);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
             margin-bottom: 20px;
         }
 
@@ -484,11 +501,14 @@
         }
 
         .service-card li::before {
-            content: '→';
+            content: '';
             position: absolute;
             left: 0;
-            color: var(--green);
-            font-weight: 700;
+            top: 1.05em;
+            width: 8px;
+            height: 2px;
+            border-radius: 999px;
+            background: var(--green);
         }
 
         /* DIFFERENTIATOR */
@@ -558,7 +578,7 @@
         /* MEDIA */
         .media { background: var(--black); color: var(--white); }
 
-        .media .section-subtitle { color: rgba(255,255,255,0.5); }
+        .media .section-subtitle { color: rgba(255,255,255,0.72); }
 
         .media-grid {
             display: grid;
@@ -567,8 +587,8 @@
         }
 
         .media-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.075);
+            border: 1px solid rgba(255,255,255,0.16);
             padding: 40px 32px;
             border-radius: 16px;
             transition: transform 0.3s, background 0.3s;
@@ -576,11 +596,23 @@
 
         .media-card:hover {
             transform: translateY(-8px);
-            background: rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.1);
         }
 
         .media-card-icon {
-            font-size: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 52px;
+            height: 32px;
+            padding: 0 12px;
+            border: 1px solid rgba(0,200,81,0.42);
+            border-radius: 999px;
+            color: #20E070;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
             margin-bottom: 16px;
         }
 
@@ -591,13 +623,13 @@
         }
 
         .media-card p {
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.72);
             line-height: 1.7;
             margin-bottom: 20px;
         }
 
         .media-card a {
-            color: var(--green);
+            color: #20E070;
             text-decoration: none;
             font-weight: 700;
             font-size: 14px;
@@ -645,28 +677,73 @@
 
         /* FOOTER */
         footer {
-            background: var(--black);
-            color: rgba(255,255,255,0.4);
-            padding: 48px 24px;
+            background: #050505;
+            color: rgba(255,255,255,0.72);
+            padding: 72px 24px 36px;
+            border-top: 1px solid rgba(255,255,255,0.08);
         }
 
         .footer-inner {
             max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: minmax(280px, 1.25fr) repeat(3, minmax(150px, 0.55fr));
+            gap: 48px;
+            align-items: start;
+        }
+
+        .footer-brand h3 {
+            color: var(--white);
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 14px;
+        }
+
+        .footer-brand p {
+            max-width: 420px;
+            color: rgba(255,255,255,0.76);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .footer-cta {
+            display: inline-flex;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
+            justify-content: center;
+            padding: 12px 18px;
+            border-radius: 999px;
+            background: var(--green);
+            color: var(--black);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .footer-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 26px rgba(0,200,81,0.22);
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            margin-bottom: 18px;
         }
 
         .footer-links {
             display: flex;
-            gap: 24px;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .footer-links a {
-            color: rgba(255,255,255,0.4);
+            color: rgba(255,255,255,0.72);
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
@@ -674,6 +751,21 @@
         }
 
         .footer-links a:hover { color: var(--green); }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 48px auto 0;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: rgba(255,255,255,0.66);
+            font-size: 13px;
+        }
+
+        .footer-bottom span:last-child { text-align: right; }
 
         /* ANIMATIONS */
         .reveal {
@@ -770,8 +862,19 @@
             }
 
             .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .footer-brand p { max-width: none; }
+
+            .footer-bottom {
                 flex-direction: column;
-                text-align: center;
+                gap: 10px;
+            }
+
+            .footer-bottom span:last-child {
+                text-align: left;
             }
         }
     </style>
@@ -863,7 +966,7 @@
             </div>
             <div class="services-grid">
                 <div class="service-card reveal">
-                    <div class="service-icon">🎯</div>
+                    <div class="service-icon">Ops</div>
                     <h3>Fix the Ops Stack</h3>
                     <p>Replace duct-taped spreadsheets with cleaner pricing, margin, cash, and operating workflows founders can trust.</p>
                     <ul>
@@ -874,7 +977,7 @@
                     </ul>
                 </div>
                 <div class="service-card reveal">
-                    <div class="service-icon">⚡</div>
+                    <div class="service-icon">OS</div>
                     <h3>Brand OS</h3>
                     <p>AI-powered dashboards, alerts, and internal tools that connect decisions across finance, ops, sales, and planning.</p>
                     <ul>
@@ -885,7 +988,7 @@
                     </ul>
                 </div>
                 <div class="service-card reveal">
-                    <div class="service-icon">📡</div>
+                    <div class="service-icon">Media</div>
                     <h3>Media & Distribution</h3>
                     <p>Exposure through Deets Eats Media. Your brand in front of consumers, retailers, and investors who care about CPG.</p>
                     <ul>
@@ -947,22 +1050,22 @@
             <p class="section-subtitle">Discovering emerging food brands, telling founder stories, and building a community that generates real deal flow.</p>
             <div class="media-grid">
                 <div class="media-card reveal">
-                    <div class="media-card-icon">📰</div>
+                    <div class="media-card-icon">Digest</div>
                     <h3>The Deeter Digest</h3>
                     <p>Weekly newsletter breaking down the biggest moves in CPG. Fundraising rounds, M&A, product launches, and unfiltered hot takes.</p>
-                    <a href="https://substack.com/@deetseatsnyc" target="_blank" rel="noopener">Read on Substack →</a>
+                    <a href="https://substack.com/@deetseatsnyc" target="_blank" rel="noopener">Read on Substack</a>
                 </div>
                 <div class="media-card reveal">
-                    <div class="media-card-icon">🎙️</div>
+                    <div class="media-card-icon">Podcast</div>
                     <h3>Unpackaged Goods</h3>
                     <p>The podcast. Interviews with CPG founders, deep dives on industry trends, and the stories behind the brands reshaping consumer culture.</p>
-                    <a href="https://linktr.ee/deetseatnyc" target="_blank" rel="noopener">Listen Now →</a>
+                    <a href="https://open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f?si=4c07e8fb3d3042a5" target="_blank" rel="noopener">Listen on Spotify</a>
                 </div>
                 <div class="media-card reveal">
-                    <div class="media-card-icon">📱</div>
+                    <div class="media-card-icon">Social</div>
                     <h3>Social</h3>
                     <p>Daily content across Instagram, TikTok, and LinkedIn. Brand discoveries, Whole Foods hauls, and behind-the-scenes of the CPG world.</p>
-                    <a href="https://www.instagram.com/deetseatsnyc" target="_blank" rel="noopener">@deetseatsnyc →</a>
+                    <a href="https://www.instagram.com/deetseatsnyc" target="_blank" rel="noopener">@deetseatsnyc</a>
                 </div>
             </div>
         </div>
@@ -981,13 +1084,41 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer-inner">
-            <span>&copy; 2026 Pickle Advisors LLC. All rights reserved.</span>
-            <div class="footer-links">
-                <a href="https://www.instagram.com/deetseatsnyc" target="_blank" rel="noopener">Instagram</a>
-                <a href="https://www.tiktok.com/@deetseatsnyc" target="_blank" rel="noopener">TikTok</a>
-                <a href="https://substack.com/@deetseatsnyc" target="_blank" rel="noopener">Substack</a>
-                <a href="https://www.linkedin.com/company/pickle-advisors" target="_blank" rel="noopener">LinkedIn</a>
+            <div class="footer-brand">
+                <h3>Pickle Advisors</h3>
+                <p>Ops, AI infrastructure, and practical advisory support for food and beverage brands that need cleaner systems before growth gets more expensive.</p>
+                <a class="footer-cta" href="https://cal.com/jonathan-deeter-vlslzl/ai-audit-pickle-advisors">Book a Strategy Call</a>
             </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <div class="footer-links">
+                    <a href="#services">Services</a>
+                    <a href="#about">About</a>
+                    <a href="/audit">AI Audit</a>
+                    <a href="/resources">Resources</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Media</h4>
+                <div class="footer-links">
+                    <a href="https://substack.com/@deetseatsnyc" target="_blank" rel="noopener">The Deeter Digest</a>
+                    <a href="https://open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f?si=4c07e8fb3d3042a5" target="_blank" rel="noopener">Unpackaged Goods on Spotify</a>
+                    <a href="https://www.instagram.com/deetseatsnyc" target="_blank" rel="noopener">Deets Eats Instagram</a>
+                    <a href="https://www.tiktok.com/@deetseatsnyc" target="_blank" rel="noopener">Deets Eats TikTok</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <div class="footer-links">
+                    <a href="mailto:jonathan@pickleadvisors.com">jonathan@pickleadvisors.com</a>
+                    <a href="https://www.linkedin.com/company/pickle-advisors" target="_blank" rel="noopener">Pickle Advisors LinkedIn</a>
+                    <a href="https://cal.com/jonathan-deeter-vlslzl/ai-audit-pickle-advisors">Strategy Call</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Pickle Advisors LLC. All rights reserved.</span>
+            <span>Brooklyn-based advisory for CPG operators building better systems.</span>
         </div>
     </footer>
 
