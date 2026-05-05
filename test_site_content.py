@@ -24,10 +24,11 @@ class LinkParser(HTMLParser):
             self._current = None
 
 class PickleHomepageContentTest(unittest.TestCase):
-    def test_hero_names_concrete_cpg_outcome_not_just_metaphor(self):
+    def test_hero_names_concrete_consumer_brand_outcome_not_just_metaphor(self):
         self.assertIn('operational bottlenecks', TEXT)
-        self.assertIn('food & beverage', TEXT)
+        self.assertIn('consumer brand', TEXT)
         self.assertIn('ai-ready operating system', TEXT)
+        self.assertNotIn('food & beverage brand', TEXT)
 
     def test_hero_has_ai_audit_secondary_conversion_path(self):
         parser = LinkParser(); parser.feed(HTML)
@@ -37,7 +38,7 @@ class PickleHomepageContentTest(unittest.TestCase):
 
     def test_above_fold_has_specific_proof_and_deliverables(self):
         self.assertIn('pricing', TEXT)
-        self.assertIn('forecasting', TEXT)
+        self.assertIn('channel planning', TEXT)
         self.assertIn('dashboards', TEXT)
         self.assertIn('workflows', TEXT)
         self.assertIn('$1b+', TEXT)
