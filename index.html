@@ -17,7 +17,7 @@
     <meta property="twitter:image" content="https://pickleadvisors.com/og-image.png">
     <link rel="icon" type="image/svg+xml" href="/logo-icon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="/og-image-square.png">
-    <meta name="theme-color" content="#0E7A3F">
+    <meta name="theme-color" content="#00C851">
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2X2CE22ZED"></script>
     <script>
@@ -28,37 +28,27 @@
     </script>
     <title>Pickle Advisors — Ops & AI Infrastructure for Consumer Brands</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --pickle: #0E7A3F;
-            --pickle-bright: #18B766;
-            --red: #E8112D;
-            --ink: #141414;
-            --charcoal: #24211D;
-            --cream: #FFF8F0;
-            --cream-deep: #F5EBDD;
-            --paper: #FFFFFF;
-            --line: #E5D8C8;
-            --muted: #655F56;
+            --green: #00C851;
+            --green-dark: #00A844;
+            --pink: #FFB6C1;
+            --pink-light: #FFD6E0;
+            --black: #0F0F0F;
             --white: #FFFFFF;
-            --green: var(--pickle);
-            --green-dark: #075C2D;
-            --pink: #F5D6CF;
-            --pink-light: #FFF0EA;
-            --black: var(--ink);
-            --gray: var(--muted);
-            --light: var(--cream);
+            --gray: #6B7280;
+            --light: #F9FAFB;
         }
 
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--cream);
-            color: var(--ink);
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--white);
+            color: var(--black);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
@@ -69,10 +59,10 @@
             top: 0;
             width: 100%;
             padding: 14px 24px;
-            background: rgba(255,248,240,0.92);
-            backdrop-filter: blur(16px);
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(20,20,20,0.1);
+            border-bottom: 3px solid var(--green);
             transition: padding 0.3s;
         }
 
@@ -97,10 +87,10 @@
         .nav-links a {
             color: var(--black);
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 14px;
             text-transform: uppercase;
-            letter-spacing: 0.7px;
+            letter-spacing: 1px;
             transition: color 0.3s;
         }
 
@@ -110,13 +100,13 @@
             background: var(--green) !important;
             color: var(--white) !important;
             padding: 10px 24px;
-            border-radius: 999px;
+            border-radius: 50px;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(14,122,63,0.28);
+            box-shadow: 0 4px 16px rgba(0,200,81,0.3);
         }
 
         .mobile-toggle {
@@ -125,11 +115,7 @@
             cursor: pointer;
             background: none;
             border: none;
-            padding: 9px;
-            min-width: 46px;
-            min-height: 46px;
-            align-items: center;
-            justify-content: center;
+            padding: 4px;
         }
 
         .mobile-toggle span {
@@ -143,11 +129,11 @@
 
         /* HERO */
         .hero {
-            min-height: 86vh;
+            min-height: 92vh;
             display: flex;
             align-items: center;
             padding: 108px 24px 72px;
-            background: radial-gradient(circle at 85% 10%, rgba(24,183,102,0.18), transparent 34%), linear-gradient(135deg, #141414 0%, #26221D 60%, #111 100%);
+            background: var(--black);
             color: var(--white);
             position: relative;
             overflow: hidden;
@@ -160,7 +146,7 @@
             right: -20%;
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(14,122,63,0.18) 0%, transparent 68%);
+            background: radial-gradient(circle, rgba(0,200,81,0.18) 0%, transparent 68%);
             pointer-events: none;
         }
 
@@ -188,24 +174,23 @@
             margin-bottom: 22px;
             padding: 6px 16px;
             border: 2px solid var(--green);
-            border-radius: 999px;
+            border-radius: 50px;
         }
 
         .hero h1 {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: clamp(44px, 6.4vw, 86px);
-            font-weight: 400;
+            font-size: clamp(36px, 5.5vw, 72px);
+            font-weight: 700;
             line-height: 1.08;
             margin-bottom: 22px;
-            letter-spacing: -2.4px;
+            letter-spacing: -2px;
             max-width: 780px;
         }
 
-        .hero h1 .green { color: #9EE8BC; font-style: italic; }
+        .hero h1 .green { color: var(--green); }
 
         .hero p {
             font-size: 20px;
-            color: rgba(255,255,255,0.80);
+            color: rgba(255,255,255,0.72);
             max-width: 650px;
             margin-bottom: 24px;
             line-height: 1.7;
@@ -221,13 +206,13 @@
             font-size: 16px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-radius: 999px;
+            border-radius: 50px;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 32px rgba(14,122,63,0.28);
+            box-shadow: 0 8px 32px rgba(0,200,81,0.3);
         }
 
         .btn-outline {
@@ -252,9 +237,9 @@
         }
 
         .hero-bullets li {
-            color: rgba(255,255,255,0.84);
-            font-weight: 650;
-            font-size: 15px;
+            color: rgba(255,255,255,0.78);
+            font-weight: 600;
+            font-size: 14px;
             padding-left: 20px;
             position: relative;
         }
@@ -283,7 +268,7 @@
         .proof-chip {
             border: 1px solid rgba(255,255,255,0.12);
             background: rgba(255,255,255,0.05);
-            border-radius: 22px;
+            border-radius: 16px;
             padding: 14px 16px;
         }
 
@@ -297,16 +282,16 @@
         .proof-chip span {
             display: block;
             margin-top: 4px;
-            color: rgba(255,255,255,0.78);
-            font-size: 13px;
+            color: rgba(255,255,255,0.68);
+            font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.6px;
+            letter-spacing: 1px;
             line-height: 1.35;
         }
 
         .hero-system-card {
-            border: 1px solid rgba(255,255,255,0.16);
+            border: 1px solid rgba(255,255,255,0.12);
             background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.035));
             border-radius: 28px;
             padding: 28px;
@@ -319,7 +304,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at top right, rgba(14,122,63,0.18), transparent 42%);
+            background: radial-gradient(circle at top right, rgba(0,200,81,0.18), transparent 42%);
             pointer-events: none;
         }
 
@@ -356,14 +341,14 @@
         }
 
         .system-layer b { font-size: 14px; white-space: nowrap; }
-        .system-layer span { color: rgba(255,255,255,0.84); font-size: 13px; font-weight: 650; text-align: right; line-height: 1.45; }
+        .system-layer span { color: rgba(255,255,255,0.72); font-size: 12px; font-weight: 650; text-align: right; line-height: 1.35; }
 
         .system-note {
             margin-top: 18px;
             padding-top: 18px;
             border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.80);
-            font-size: 15px;
+            color: rgba(255,255,255,0.68);
+            font-size: 14px;
             line-height: 1.55;
         }
 
@@ -379,8 +364,8 @@
 
         .section-tag {
             font-size: 13px;
-            font-weight: 800;
-            letter-spacing: 2.4px;
+            font-weight: 700;
+            letter-spacing: 4px;
             text-transform: uppercase;
             color: var(--green);
             margin-bottom: 16px;
@@ -420,8 +405,8 @@
 
         .process-step {
             background: var(--white);
-            border: 1px solid var(--line);
-            border-radius: 22px;
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
             padding: 22px;
         }
 
@@ -440,13 +425,13 @@
         }
 
         .process-step b { display: block; font-size: 16px; margin-bottom: 6px; }
-        .process-step p { color: #504A43; font-size: 15px; line-height: 1.6; }
+        .process-step p { color: var(--gray); font-size: 14px; line-height: 1.55; }
 
         .service-card {
             background: var(--white);
             padding: 48px 36px;
-            border-radius: 22px;
-            border: 1px solid var(--line);
+            border-radius: 16px;
+            border: 1px solid #E5E7EB;
             transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
             overflow: hidden;
@@ -474,12 +459,12 @@
         .service-icon {
             width: 48px;
             height: 48px;
-            border: 1px solid rgba(14,122,63,0.22);
+            border: 1px solid rgba(0,200,81,0.22);
             border-radius: 14px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: rgba(14,122,63,0.08);
+            background: rgba(0,200,81,0.08);
             color: var(--green);
             font-size: 13px;
             font-weight: 800;
@@ -497,7 +482,7 @@
         }
 
         .service-card p {
-            color: #504A43;
+            color: var(--gray);
             line-height: 1.7;
             margin-bottom: 20px;
         }
@@ -526,66 +511,9 @@
             background: var(--green);
         }
 
-
-
-        /* PREMIUM CONVERSION MODULES */
-        .fit-section { background: var(--paper); }
-        .fit-grid {
-            display: grid;
-            grid-template-columns: 0.82fr 1.18fr;
-            gap: 56px;
-            align-items: start;
-        }
-        .fit-intro {
-            position: sticky;
-            top: 110px;
-        }
-        .fit-list {
-            display: grid;
-            gap: 14px;
-        }
-        .fit-row {
-            display: grid;
-            grid-template-columns: 160px minmax(0, 1fr);
-            gap: 24px;
-            padding: 24px 0;
-            border-top: 1px solid var(--line);
-        }
-        .fit-row:last-child { border-bottom: 1px solid var(--line); }
-        .fit-row b { color: var(--ink); font-size: 15px; letter-spacing: -0.01em; }
-        .fit-row p { color: var(--muted); line-height: 1.7; margin: 0; }
-        .engagement { background: var(--cream-deep); }
-        .engagement-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 18px;
-        }
-        .engagement-card {
-            background: rgba(255,255,255,0.58);
-            border: 1px solid rgba(20,20,20,0.12);
-            border-radius: 28px;
-            padding: 30px;
-        }
-        .engagement-card small {
-            display: inline-block;
-            margin-bottom: 18px;
-            color: var(--green);
-            font-weight: 800;
-            letter-spacing: 1.8px;
-            text-transform: uppercase;
-        }
-        .engagement-card h3 {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 34px;
-            font-weight: 400;
-            line-height: 1;
-            margin-bottom: 14px;
-        }
-        .engagement-card p { color: var(--muted); line-height: 1.7; }
-
         /* DIFFERENTIATOR */
         .differentiator {
-            background: #171612;
+            background: var(--green);
             color: var(--white);
             text-align: center;
         }
@@ -627,7 +555,7 @@
             width: 100%;
             aspect-ratio: 4/5;
             background: linear-gradient(135deg, var(--pink), var(--pink-light));
-            border-radius: 22px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -662,7 +590,7 @@
             background: rgba(255,255,255,0.075);
             border: 1px solid rgba(255,255,255,0.16);
             padding: 40px 32px;
-            border-radius: 22px;
+            border-radius: 16px;
             transition: transform 0.3s, background 0.3s;
         }
 
@@ -678,7 +606,7 @@
             min-width: 52px;
             height: 32px;
             padding: 0 12px;
-            border: 1px solid rgba(14,122,63,0.42);
+            border: 1px solid rgba(0,200,81,0.42);
             border-radius: 999px;
             color: #20E070;
             font-size: 12px;
@@ -695,7 +623,7 @@
         }
 
         .media-card p {
-            color: rgba(255,255,255,0.82);
+            color: rgba(255,255,255,0.72);
             line-height: 1.7;
             margin-bottom: 20px;
         }
@@ -720,25 +648,25 @@
 
         /* CONTACT */
         .contact {
-            background: linear-gradient(135deg, #F1E0D3, #FFF8F0);
-            color: var(--ink);
+            background: linear-gradient(135deg, var(--pink), var(--pink-light));
+            color: var(--white);
             text-align: center;
             padding: 120px 24px;
         }
 
-        .contact .section-tag { color: var(--green); }
-        .contact .section-title { color: var(--ink); font-size: clamp(36px, 5vw, 64px); }
+        .contact .section-tag { color: rgba(255,255,255,0.7); }
+        .contact .section-title { color: var(--white); font-size: clamp(36px, 5vw, 56px); }
 
         .contact p {
             font-size: 20px;
             max-width: 500px;
             margin: 0 auto 40px;
-            color: var(--muted);
+            opacity: 0.9;
         }
 
         .contact .btn {
-            background: var(--green);
-            color: var(--white);
+            background: var(--white);
+            color: var(--green);
             font-size: 18px;
             padding: 20px 48px;
         }
@@ -781,7 +709,6 @@
 
         .footer-cta {
             display: inline-flex;
-            min-height: 44px;
             align-items: center;
             justify-content: center;
             padding: 12px 18px;
@@ -798,7 +725,7 @@
 
         .footer-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 26px rgba(14,122,63,0.22);
+            box-shadow: 0 8px 26px rgba(0,200,81,0.22);
         }
 
         .footer-col h4 {
@@ -812,17 +739,15 @@
         .footer-links {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
         }
 
         .footer-links a {
-            color: rgba(255,255,255,0.78);
+            color: rgba(255,255,255,0.72);
             text-decoration: none;
-            font-size: 15px;
-            line-height: 1.45;
+            font-size: 14px;
             font-weight: 500;
             transition: color 0.3s;
-            padding: 3px 0;
         }
 
         .footer-links a:hover { color: var(--green); }
@@ -836,8 +761,8 @@
             justify-content: space-between;
             gap: 20px;
             flex-wrap: wrap;
-            color: rgba(255,255,255,0.74);
-            font-size: 14px;
+            color: rgba(255,255,255,0.66);
+            font-size: 13px;
         }
 
         .footer-bottom span:last-child { text-align: right; }
@@ -878,9 +803,6 @@
 
             .mobile-menu a {
                 color: var(--white);
-                min-height: 44px;
-                display: flex;
-                align-items: center;
                 text-decoration: none;
                 font-size: 24px;
                 font-weight: 700;
@@ -902,9 +824,9 @@
             .hero { padding: 92px 20px 56px; min-height: auto; }
             .hero-inner { display: block; }
             .hero-copy { max-width: none; }
-            .hero-tag { font-size: 11px; letter-spacing: 1.3px; margin-bottom: 18px; padding: 7px 12px; }
-            .hero h1 { font-size: clamp(36px, 10.5vw, 48px); letter-spacing: -1.2px; }
-            .hero p { font-size: 18px; line-height: 1.62; margin-bottom: 22px; }
+            .hero-tag { font-size: 10px; letter-spacing: 1.7px; margin-bottom: 18px; padding: 6px 12px; }
+            .hero h1 { font-size: clamp(34px, 10.5vw, 46px); letter-spacing: -1.2px; }
+            .hero p { font-size: 17px; line-height: 1.6; margin-bottom: 22px; }
             .hero-bullets { grid-template-columns: 1fr; gap: 8px; margin-bottom: 24px; }
             .hero-actions { display: grid; gap: 12px; margin-bottom: 22px; }
             .hero-actions .btn { width: 100%; text-align: center; padding: 15px 22px; }
@@ -932,9 +854,6 @@
             }
 
             .about-photo { max-height: 400px; object-position: center top; }
-            .fit-grid, .engagement-grid { grid-template-columns: 1fr; }
-            .fit-intro { position: static; }
-            .fit-row { grid-template-columns: 1fr; gap: 8px; padding: 20px 0; }
 
             .btn-outline {
                 margin-left: 0;
@@ -965,16 +884,14 @@
         <div class="nav-inner">
             <a href="#" class="logo">
                 <svg width="220" height="60" viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 20 15 L 20 45 M 20 15 L 35 15 Q 43 15 43 23 Q 43 31 35 31 L 20 31" stroke="#0E7A3F" stroke-width="5" fill="none" stroke-linecap="round"/>
-                    <path d="M 36 26 L 44 18 M 44 18 L 44 26 M 44 18 L 36 18" stroke="#E8112D" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                    <text x="55" y="30" font-family="'Inter', sans-serif" font-size="24" font-weight="800" fill="#141414">PICKLE</text>
-                    <text x="55" y="46" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#655F56" letter-spacing="3">ADVISORS</text>
+                    <path d="M 20 15 L 20 45 M 20 15 L 35 15 Q 43 15 43 23 Q 43 31 35 31 L 20 31" stroke="#00C851" stroke-width="5" fill="none" stroke-linecap="round"/>
+                    <path d="M 36 26 L 44 18 M 44 18 L 44 26 M 44 18 L 36 18" stroke="#FFB6C1" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <text x="55" y="30" font-family="'Space Grotesk', sans-serif" font-size="24" font-weight="700" fill="#0F0F0F">PICKLE</text>
+                    <text x="55" y="46" font-family="'Space Grotesk', sans-serif" font-size="13" font-weight="600" fill="#6B7280" letter-spacing="3">ADVISORS</text>
                 </svg>
             </a>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
-                <li><a href="#fit">Fit</a></li>
-                <li><a href="#engagement">How We Work</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#media">Media</a></li>
                 <li><a href="/resources">Resources</a></li>
@@ -990,12 +907,10 @@
     <div class="mobile-menu" id="mobileMenu">
         <button class="close-btn" id="closeMenu">&times;</button>
         <a href="#services">Services</a>
-        <a href="#fit">Fit</a>
-        <a href="#engagement">How We Work</a>
         <a href="#about">About</a>
         <a href="#media">Media</a>
         <a href="/resources">Resources</a>
-        <a href="/audit" style="color:#9EE8BC;">AI Audit</a>
+        <a href="/audit" style="color:#E8112D;">AI Audit</a>
         <a href="https://cal.com/jonathan-deeter-vlslzl/ai-audit-pickle-advisors">Strategy Call</a>
     </div>
 
@@ -1003,9 +918,9 @@
     <section class="hero">
         <div class="hero-inner">
             <div class="hero-copy">
-                <span class="hero-tag">Your brand's operating system</span>
-                <h1>Turn spreadsheet chaos into a <span class="green">cleaner operating layer</span>.</h1>
-                <p>Pickle Advisors builds the workflows, dashboards, pricing tools, forecasting systems, and AI automation that give consumer founders clearer control over operational bottlenecks, cash, margin, inventory, and weekly decisions — the practical base for an AI-ready operating system.</p>
+                <span class="hero-tag">Ops + AI infrastructure for consumer brands</span>
+                <h1>Fix the <span class="green">operational bottlenecks</span> slowing your consumer brand down.</h1>
+                <p>Pickle Advisors builds the workflows, dashboards, pricing tools, forecasting systems, and AI automation that turn scattered spreadsheets into an <strong style="color:#fff;">AI-ready operating system</strong>.</p>
                 <ul class="hero-bullets">
                     <li>Pricing, margin, and cash visibility</li>
                     <li>Inventory, SKU, and channel planning</li>
@@ -1025,7 +940,7 @@
             <aside class="hero-system-card" aria-label="What Pickle Advisors builds">
                 <div class="system-card-inner">
                     <div class="system-card-kicker">What gets installed</div>
-                    <div class="system-card-title">The premium ops stack your team can actually run.</div>
+                    <div class="system-card-title">A cleaner operating layer for the work founders keep doing manually.</div>
                     <div class="system-layers">
                         <div class="system-layer"><b>1. Diagnose</b><span>Find the leaks in pricing, ops, cash, channels, and reporting</span></div>
                         <div class="system-layer"><b>2. Build</b><span>Dashboards, SOPs, workflows, and AI automations</span></div>
@@ -1041,8 +956,8 @@
     <section class="services" id="services">
         <div class="section-inner">
             <p class="section-tag">What We Do</p>
-            <h2 class="section-title">What gets installed when your brand outgrows founder memory.</h2>
-            <p class="section-subtitle">We start with the bottlenecks that affect cash, margin, inventory, and founder time — then turn them into tools, reporting rhythms, and workflows your team can keep using.</p>
+            <h2 class="section-title">Three ways we turn messy growth into a real operating system.</h2>
+            <p class="section-subtitle">We start with the bottlenecks that affect cash, margin, and founder time — then build the operating layer your team can keep using.</p>
             <div class="process-strip reveal" aria-label="How Pickle Advisors works">
                 <div class="process-step"><span>1</span><b>Audit the mess</b><p>Map the tools, spreadsheets, handoffs, and decisions slowing the business down.</p></div>
                 <div class="process-step"><span>2</span><b>Prioritize ROI</b><p>Pick the workflows where better data or automation actually changes margin, cash, or speed.</p></div>
@@ -1074,47 +989,15 @@
                 </div>
                 <div class="service-card reveal">
                     <div class="service-icon">Media</div>
-                    <h3>Market Visibility</h3>
-                    <p>Consumer-brand pattern recognition from Deets Eats Media and the broader Pickle network, translated into sharper launches, retail stories, and operator decisions.</p>
+                    <h3>Media & Distribution</h3>
+                    <p>Exposure through Deets Eats Media and the broader Pickle network. Your brand in front of consumers, retailers, operators, and investors who care about what is next in consumer.</p>
                     <ul>
-                        <li>Consumer founder and investor pattern recognition</li>
-                        <li>Retail, ecommerce, and launch storytelling</li>
-                        <li>Market context for weekly decisions</li>
-                        <li>Selective media and network opportunities</li>
+                        <li>Featured on Deets Eats social channels</li>
+                        <li>Podcast guest spots on Unpackaged Goods</li>
+                        <li>Newsletter features and launch storytelling</li>
+                        <li>Community introductions and deal flow</li>
                     </ul>
                 </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- FIT -->
-    <section class="fit-section" id="fit">
-        <div class="section-inner fit-grid">
-            <div class="fit-intro reveal">
-                <p class="section-tag">Who This Is For</p>
-                <h2 class="section-title">Built for brands that have traction, but not enough operating leverage.</h2>
-                <p class="section-subtitle" style="margin-bottom:0;">The best clients already have demand. The problem is that growth is exposing weak reporting, disconnected tools, and too many decisions trapped in the founder's head.</p>
-            </div>
-            <div class="fit-list reveal" aria-label="Pickle Advisors ideal client fit">
-                <div class="fit-row"><b>Omnichannel growth</b><p>DTC, retail, wholesale, marketplaces, and field sales are all moving at once, but the weekly view is still stitched together manually.</p></div>
-                <div class="fit-row"><b>Margin pressure</b><p>Pricing, promos, freight, chargebacks, and channel mix are changing faster than the model. You need a clearer read before decisions get expensive.</p></div>
-                <div class="fit-row"><b>Founder bottleneck</b><p>The team waits on you for context because the operating system is still memory, Slack threads, and scattered Google Sheets.</p></div>
-                <div class="fit-row"><b>AI-ready ambition</b><p>You want useful automation, but first the data, workflows, and decision rules need to be clean enough for AI to help.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ENGAGEMENT -->
-    <section class="engagement" id="engagement">
-        <div class="section-inner">
-            <p class="section-tag">How We Work</p>
-            <h2 class="section-title">A simple path from audit to operating rhythm.</h2>
-            <p class="section-subtitle">No generic transformation deck. We diagnose the bottleneck, build the tool or workflow, and stay close enough that it actually gets used.</p>
-            <div class="engagement-grid">
-                <div class="engagement-card reveal"><small>01</small><h3>AI Ops Audit</h3><p>Map the current stack, find the highest-ROI workflow gaps, and identify where AI can support real decisions instead of adding noise.</p></div>
-                <div class="engagement-card reveal"><small>02</small><h3>System Buildout</h3><p>Install dashboards, pricing models, forecasting views, SOPs, automations, and reporting cadences around the workflows that matter most.</p></div>
-                <div class="engagement-card reveal"><small>03</small><h3>Operating Partner</h3><p>Weekly advisory and iteration so the system stays current as sales channels, inventory, cash, and founder priorities change.</p></div>
             </div>
         </div>
     </section>
@@ -1123,7 +1006,7 @@
     <section class="differentiator">
         <div class="section-inner">
             <p class="section-tag">Why Us</p>
-            <h2 class="section-title">We do not just advise. We build the operating layer.</h2>
+            <h2 class="section-title">We don't just advise. We build the operating layer.</h2>
             <p style="font-size:18px;max-width:680px;margin:0 auto;opacity:0.85;line-height:1.7;">Most advisors hand you a deck, a spreadsheet, or a generic AI roadmap. Pickle installs working systems: pricing models, dashboards, workflows, automations, and the weekly rhythm to keep using them.</p>
             <div class="diff-stats">
                 <div class="reveal">
@@ -1153,7 +1036,7 @@
                     <p><strong>Founder of Pickle Advisors.</strong> Based in Brooklyn. 10+ years across startups, fintech, structured products, and consumer brand media.</p>
                     <p>I built AI-powered dashboards for institutional investment funds managing over a billion dollars — portfolio tracking, automated alerts, financial modeling. Then I realized <strong>consumer brand founders need this even more</strong>. Most brands are running pricing, inventory, retailer planning, ecommerce, and reporting from scattered Google Sheets and founder memory.</p>
                     <p>Now I help consumer brand founders turn that mess into a real operating system: cleaner data, better workflows, AI-enabled reporting, and practical advisory support through the decisions that actually move margin and growth.</p>
-                    <a href="https://cal.com/jonathan-deeter-vlslzl/ai-audit-pickle-advisors" class="btn" style="margin-top:12px;">Book a Strategy Call</a>
+                    <a href="https://cal.com/jonathan-deeter-vlslzl/ai-audit-pickle-advisors" class="btn" style="margin-top:12px;">Let's Talk</a>
                 </div>
             </div>
         </div>
@@ -1193,7 +1076,7 @@
         <div class="section-inner">
             <p class="section-tag">Get Started</p>
             <h2 class="section-title">Ready to find the bottlenecks?</h2>
-            <p>Start with a strategy call. We will identify where cleaner systems can move margin, cash, inventory visibility, or founder time first.</p>
+            <p>Start with the AI audit. We’ll look at your operations, reporting, and workflows, then identify where better systems can actually move margin, cash, or founder time.</p>
             <a href="https://cal.com/jonathan-deeter-vlslzl/ai-audit-pickle-advisors" class="btn">Book a Strategy Call</a>
         </div>
     </section>
@@ -1210,9 +1093,7 @@
                 <h4>Company</h4>
                 <div class="footer-links">
                     <a href="#services">Services</a>
-                    <a href="#fit">Fit</a>
-        <a href="#engagement">How We Work</a>
-        <a href="#about">About</a>
+                    <a href="#about">About</a>
                     <a href="/audit">AI Audit</a>
                     <a href="/resources">Resources</a>
                 </div>
