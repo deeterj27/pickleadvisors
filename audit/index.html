@@ -327,7 +327,7 @@ textarea.text-input { resize: vertical; min-height: 100px; }
   </a>
   <div class="nav-right">
     <a href="https://pickleadvisors.com">Home</a>
-    <a href="https://cal.com/jonathan-deeter-vlslzl/ai-audit-pickle-advisors" class="nav-cta">Book a Call</a>
+    <a href="#auditForm" class="nav-cta">Start Audit</a>
   </div>
 </nav>
 
@@ -347,9 +347,9 @@ textarea.text-input { resize: vertical; min-height: 100px; }
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="steps-grid">
     <div style="background:var(--black);border-radius:var(--radius);padding:28px;text-align:center;">
       <div style="background:var(--red);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;margin-bottom:12px;">1</div>
-      <h3 style="color:#fff;font-size:18px;margin-bottom:8px;">Book Your Call</h3>
-      <p style="color:rgba(255,255,255,0.5);font-size:13px;margin-bottom:16px;">Grab a free 30-min slot</p>
-      <a href="https://cal.com/jonathan-deeter-vlslzl/ai-audit-pickle-advisors" target="_blank" style="display:inline-block;padding:12px 24px;background:var(--red);color:#fff;font-family:inherit;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;transition:all 0.2s ease;">Book Now →</a>
+      <h3 style="color:#fff;font-size:18px;margin-bottom:8px;">Start With the Audit</h3>
+      <p style="color:rgba(255,255,255,0.5);font-size:13px;margin-bottom:16px;">Screened submissions get the calendar link after the form</p>
+      <a href="#auditForm" style="display:inline-block;padding:12px 24px;background:var(--red);color:#fff;font-family:inherit;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;transition:all 0.2s ease;">Start Audit ↓</a>
     </div>
     <div style="background:#fff;border-radius:var(--radius);padding:28px;text-align:center;box-shadow:var(--shadow);">
       <div style="background:var(--black);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;margin-bottom:12px;">2</div>
@@ -358,11 +358,13 @@ textarea.text-input { resize: vertical; min-height: 100px; }
       <a href="#auditForm" style="display:inline-block;padding:12px 24px;background:var(--black);color:#fff;font-family:inherit;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;transition:all 0.2s ease;">Start Form ↓</a>
     </div>
   </div>
-  <p style="text-align:center;margin-top:16px;font-size:13px;color:rgba(26,26,26,0.4);">Already booked? Skip straight to the form. Haven't booked yet? Do that first — we'll review your answers before the call.</p>
+  <p style="text-align:center;margin-top:16px;font-size:13px;color:rgba(26,26,26,0.4);">To keep the calendar clean, the booking link is shown only after a valid audit submission. No links in form fields, please.</p>
 </div>
 
 <div class="form-wrap" id="formWrap">
 <form id="auditForm" action="#" method="POST">
+  <input type="text" id="company_url" name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+  <div id="formError" role="alert" style="display:none;background:#fff4f4;border:1px solid rgba(232,17,45,0.35);color:var(--red);border-radius:12px;padding:14px 16px;margin-bottom:18px;font-size:14px;font-weight:600;"></div>
 
   <div class="section-label">Part 1 — Company Snapshot</div>
 
@@ -532,8 +534,8 @@ textarea.text-input { resize: vertical; min-height: 100px; }
   <div class="check">✓</div>
   <h2>You're all set.</h2>
   <p>Thanks! We'll review your responses and come prepared with a quick win you can implement immediately.</p>
-  <p style="margin-top:24px;font-size:16px;color:rgba(26,26,26,0.6);">Haven't booked your call yet?</p>
-  <a href="https://cal.com/jonathan-deeter-vlslzl/ai-audit-pickle-advisors" target="_blank" style="display:inline-block;margin-top:16px;padding:16px 32px;background:var(--red);color:#fff;font-family:inherit;font-size:16px;font-weight:700;border-radius:var(--radius);text-decoration:none;transition:all 0.2s ease;">Book Your Free 30-Min Audit Call →</a>
+  <p style="margin-top:24px;font-size:16px;color:rgba(26,26,26,0.6);">Ready to book your call?</p>
+  <a id="bookingLink" href="#" rel="nofollow noopener noreferrer" style="display:none;margin-top:16px;padding:16px 32px;background:var(--red);color:#fff;font-family:inherit;font-size:16px;font-weight:700;border-radius:var(--radius);text-decoration:none;transition:all 0.2s ease;">Book Your Free 30-Min Audit Call →</a>
 </div>
 
 <footer class="footer">© 2026 Pickle Advisors LLC. All rights reserved.</footer>
@@ -544,6 +546,50 @@ textarea.text-input { resize: vertical; min-height: 100px; }
   const formWrap = document.getElementById('formWrap');
   const thankYou = document.getElementById('thankYou');
   const progressFill = document.getElementById('progressFill');
+  const formError = document.getElementById('formError');
+  const bookingLink = document.getElementById('bookingLink');
+  const blockedEmails = new Set(['callum_rafferty174@gmail.com']);
+  const urlPattern = /(?:https?:\/\/|www\.|[a-z0-9-]+\.(?:com|net|org|io|co|ru|cn|xyz|top|site|online|info|biz|click|link|zip|mov|app|dev|shop|store)(?:\/|\b))/i;
+  const bookingUrlParts = ['https://cal.com/', 'jonathan-deeter-vlslzl/', 'ai-audit-pickle-advisors'];
+
+  function showError(message, field) {
+    formError.textContent = message;
+    formError.style.display = 'block';
+    if (field) {
+      field.style.borderColor = 'var(--red)';
+      field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      field.focus();
+    } else {
+      formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  function clearError() {
+    formError.textContent = '';
+    formError.style.display = 'none';
+  }
+
+  function hasBlockedContent() {
+    const honeypot = form.querySelector('[name="company_url"]');
+    if (honeypot && honeypot.value.trim()) {
+      return { message: 'Submission blocked.', field: null };
+    }
+
+    const email = (form.querySelector('[name="email"]')?.value || '').trim().toLowerCase();
+    if (blockedEmails.has(email)) {
+      return { message: 'This email address cannot submit the audit form.', field: form.querySelector('[name="email"]') };
+    }
+
+    const freeTextFields = Array.from(form.querySelectorAll('input[type="text"], input[type="tel"], input:not([type])'))
+      .filter(el => !['website', 'company_url'].includes(el.name));
+    for (const field of freeTextFields) {
+      const value = (field.value || '').trim();
+      if (value && urlPattern.test(value)) {
+        return { message: 'Please remove links from the form fields. The only URL field should be your company website.', field };
+      }
+    }
+    return null;
+  }
 
   // Progress bar
   function updateProgress() {
@@ -585,6 +631,7 @@ textarea.text-input { resize: vertical; min-height: 100px; }
     const btn = form.querySelector('.submit-btn');
     btn.textContent = 'Submitting…';
     btn.disabled = true;
+    clearError();
 
     // Validate required fields
     const required = form.querySelectorAll('[required]');
@@ -599,8 +646,15 @@ textarea.text-input { resize: vertical; min-height: 100px; }
     if (firstInvalid) {
       btn.textContent = 'Submit & Get Started →';
       btn.disabled = false;
-      firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      firstInvalid.focus();
+      showError('Please fill out the required fields before submitting.', firstInvalid);
+      return;
+    }
+
+    const blocked = hasBlockedContent();
+    if (blocked) {
+      btn.textContent = 'Submit & Get Started →';
+      btn.disabled = false;
+      showError(blocked.message, blocked.field);
       return;
     }
 
@@ -630,11 +684,17 @@ textarea.text-input { resize: vertical; min-height: 100px; }
     }).then(() => {
       formWrap.style.display = 'none';
       thankYou.style.display = 'block';
+      bookingLink.href = bookingUrlParts.join('');
+      bookingLink.target = '_blank';
+      bookingLink.style.display = 'inline-block';
       window.scrollTo({ top: 0, behavior: 'smooth' });
       progressFill.style.width = '100%';
     }).catch(() => {
       formWrap.style.display = 'none';
       thankYou.style.display = 'block';
+      bookingLink.href = bookingUrlParts.join('');
+      bookingLink.target = '_blank';
+      bookingLink.style.display = 'inline-block';
       window.scrollTo({ top: 0, behavior: 'smooth' });
       progressFill.style.width = '100%';
     });
