@@ -348,7 +348,7 @@ textarea.text-input { resize: vertical; min-height: 100px; }
     <div style="background:var(--black);border-radius:var(--radius);padding:28px;text-align:center;">
       <div style="background:var(--red);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;margin-bottom:12px;">1</div>
       <h3 style="color:#fff;font-size:18px;margin-bottom:8px;">Start With the Audit</h3>
-      <p style="color:rgba(255,255,255,0.5);font-size:13px;margin-bottom:16px;">Screened submissions get the calendar link after the form</p>
+      <p style="color:rgba(255,255,255,0.5);font-size:13px;margin-bottom:16px;">Screened submissions get next steps by email after review</p>
       <a href="#auditForm" style="display:inline-block;padding:12px 24px;background:var(--red);color:#fff;font-family:inherit;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;transition:all 0.2s ease;">Start Audit ↓</a>
     </div>
     <div style="background:#fff;border-radius:var(--radius);padding:28px;text-align:center;box-shadow:var(--shadow);">
@@ -358,7 +358,7 @@ textarea.text-input { resize: vertical; min-height: 100px; }
       <a href="#auditForm" style="display:inline-block;padding:12px 24px;background:var(--black);color:#fff;font-family:inherit;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;transition:all 0.2s ease;">Start Form ↓</a>
     </div>
   </div>
-  <p style="text-align:center;margin-top:16px;font-size:13px;color:rgba(26,26,26,0.4);">To keep the calendar clean, the booking link is shown only after a valid audit submission. No links in form fields, please.</p>
+  <p style="text-align:center;margin-top:16px;font-size:13px;color:rgba(26,26,26,0.4);">To keep the calendar clean, qualified submissions get next steps by email after review. No links in form fields, please.</p>
 </div>
 
 <div class="form-wrap" id="formWrap">
@@ -532,10 +532,9 @@ textarea.text-input { resize: vertical; min-height: 100px; }
 
 <div class="thank-you" id="thankYou">
   <div class="check">✓</div>
-  <h2>You're all set.</h2>
-  <p>Thanks! We'll review your responses and come prepared with a quick win you can implement immediately.</p>
-  <p style="margin-top:24px;font-size:16px;color:rgba(26,26,26,0.6);">Ready to book your call?</p>
-  <a id="bookingLink" href="#" rel="nofollow noopener noreferrer" style="display:none;margin-top:16px;padding:16px 32px;background:var(--red);color:#fff;font-family:inherit;font-size:16px;font-weight:700;border-radius:var(--radius);text-decoration:none;transition:all 0.2s ease;">Book Your Free 30-Min Audit Call →</a>
+  <h2>Thanks — submission received.</h2>
+  <p>We’ll review your responses first so the calendar stays clean and the conversation is actually useful.</p>
+  <p style="margin-top:24px;font-size:16px;color:rgba(26,26,26,0.6);">If it looks like a fit, we’ll send the booking link directly by email with next steps.</p>
 </div>
 
 <footer class="footer">© 2026 Pickle Advisors LLC. All rights reserved.</footer>
@@ -547,10 +546,11 @@ textarea.text-input { resize: vertical; min-height: 100px; }
   const thankYou = document.getElementById('thankYou');
   const progressFill = document.getElementById('progressFill');
   const formError = document.getElementById('formError');
-  const bookingLink = document.getElementById('bookingLink');
   const blockedEmails = new Set(['callum_rafferty174@gmail.com']);
+  const freeEmailDomains = new Set(['gmail.com','googlemail.com','yahoo.com','hotmail.com','outlook.com','live.com','icloud.com','me.com','aol.com','proton.me','protonmail.com']);
   const urlPattern = /(?:https?:\/\/|www\.|[a-z0-9-]+\.(?:com|net|org|io|co|ru|cn|xyz|top|site|online|info|biz|click|link|zip|mov|app|dev|shop|store)(?:\/|\b))/i;
-  const bookingUrlParts = ['https://cal.com/', 'jonathan-deeter-vlslzl/', 'ai-audit-pickle-advisors'];
+  const minimumCompletionMs = 12000;
+  const startedAt = Date.now();
 
   function showError(message, field) {
     formError.textContent = message;
@@ -569,6 +569,40 @@ textarea.text-input { resize: vertical; min-height: 100px; }
     formError.style.display = 'none';
   }
 
+  function normalizeWebsiteHost(raw) {
+    const value = (raw || '').trim();
+    if (!value) return '';
+    const withProtocol = /^https?:\/\//i.test(value) ? value : `https://${value}`;
+    try {
+      return new URL(withProtocol).hostname.replace(/^www\./, '').toLowerCase();
+    } catch (_) {
+      return '';
+    }
+  }
+
+  function isFreeEmail(email) {
+    const domain = (email.split('@')[1] || '').toLowerCase();
+    return freeEmailDomains.has(domain);
+  }
+
+  function hasRequiredSelections() {
+    const requiredGroups = [
+      { name: 'revenue_range', message: 'Please choose your monthly revenue range.' },
+      { name: 'q1_tools', message: 'Please select at least one tool you are currently using.' },
+      { name: 'q2_channels', message: 'Please select at least one sales channel.' },
+      { name: 'q3_bottleneck', message: 'Please choose at least one current bottleneck.' },
+      { name: 'q8_budget', message: 'Please choose your budget appetite for implementation.' }
+    ];
+
+    for (const group of requiredGroups) {
+      const selected = form.querySelectorAll(`[name="${group.name}"]:checked`);
+      if (!selected.length) {
+        return { message: group.message, field: form.querySelector(`[name="${group.name}"]`) };
+      }
+    }
+
+    return null;
+  }
   function hasBlockedContent() {
     const honeypot = form.querySelector('[name="company_url"]');
     if (honeypot && honeypot.value.trim()) {
@@ -576,10 +610,18 @@ textarea.text-input { resize: vertical; min-height: 100px; }
     }
 
     const email = (form.querySelector('[name="email"]')?.value || '').trim().toLowerCase();
+    const website = (form.querySelector('[name="website"]')?.value || '').trim();
     if (blockedEmails.has(email)) {
       return { message: 'This email address cannot submit the audit form.', field: form.querySelector('[name="email"]') };
     }
 
+    if (Date.now() - startedAt < minimumCompletionMs) {
+      return { message: 'Please take a moment to complete the audit before submitting.', field: null };
+    }
+
+    if (isFreeEmail(email) && !normalizeWebsiteHost(website)) {
+      return { message: 'Please include your company website when using a personal email address.', field: form.querySelector('[name="website"]') };
+    }
     const freeTextFields = Array.from(form.querySelectorAll('input[type="text"], input[type="tel"], input:not([type])'))
       .filter(el => !['website', 'company_url'].includes(el.name));
     for (const field of freeTextFields) {
@@ -650,6 +692,13 @@ textarea.text-input { resize: vertical; min-height: 100px; }
       return;
     }
 
+    const missingSelections = hasRequiredSelections();
+    if (missingSelections) {
+      btn.textContent = 'Submit & Get Started →';
+      btn.disabled = false;
+      showError(missingSelections.message, missingSelections.field);
+      return;
+    }
     const blocked = hasBlockedContent();
     if (blocked) {
       btn.textContent = 'Submit & Get Started →';
@@ -684,17 +733,11 @@ textarea.text-input { resize: vertical; min-height: 100px; }
     }).then(() => {
       formWrap.style.display = 'none';
       thankYou.style.display = 'block';
-      bookingLink.href = bookingUrlParts.join('');
-      bookingLink.target = '_blank';
-      bookingLink.style.display = 'inline-block';
       window.scrollTo({ top: 0, behavior: 'smooth' });
       progressFill.style.width = '100%';
     }).catch(() => {
       formWrap.style.display = 'none';
       thankYou.style.display = 'block';
-      bookingLink.href = bookingUrlParts.join('');
-      bookingLink.target = '_blank';
-      bookingLink.style.display = 'inline-block';
       window.scrollTo({ top: 0, behavior: 'smooth' });
       progressFill.style.width = '100%';
     });
