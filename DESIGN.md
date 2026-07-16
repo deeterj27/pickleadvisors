@@ -42,7 +42,7 @@ A working editorial desk for companies being built, backed, and published. The s
 - Rules, rails, issue codes, timestamps, and section markers
 - A repeatable system that makes every artifact recognizable
 
-### Approved Deet's Eats agency sell sheet: adopt
+### Deet's Eats editorial system: adopt
 
 - Warm paper, ink, deep green, and acid-lime palette
 - Serif display type paired with utilitarian sans
@@ -51,7 +51,7 @@ A working editorial desk for companies being built, backed, and published. The s
 - Crisp bordered modules and one black inversion module
 - Confident CTA band and visible footer metadata
 
-### Sell sheet: reject
+### Public sell sheets: reject
 
 - A literal one-page print layout on the web
 - Dense pricing-card rhythm on the homepage
@@ -77,7 +77,7 @@ A working editorial desk for companies being built, backed, and published. The s
 - Ink is the primary type and dark-surface color.
 - Deep green identifies Pickle and structural rails.
 - Acid lime is reserved for active signals, underlines, small data labels, and one primary CTA at a time.
-- Bright legacy green may appear in the existing Pickle mark and Deet's D bug but should not flood large surfaces.
+- Bright legacy green may appear in Deet's D bug but should not flood large surfaces.
 - Pink/coral is removed from the core website system. It may appear only inside an original media artifact that already uses it.
 
 ## Typography
@@ -103,6 +103,10 @@ Use for prices if ever approved, issue codes, data values, CTA labels, and compa
 ### Metadata
 
 Use Archivo or Space Grotesk at small sizes with generous letter spacing. Monospace may be used sparingly for dates, route-like labels, or system status, but not as a default AI cliché.
+
+### Punctuation
+
+Do not use em dashes anywhere on the website. Use a period, comma, colon, or rewrite the sentence.
 
 ## Layout
 
@@ -138,7 +142,7 @@ Use Archivo or Space Grotesk at small sizes with generous letter spacing. Monosp
 
 ### Masthead
 
-Pickle mark + compact wordmark, ecosystem navigation, one primary CTA, and a visible mobile menu control.
+Text-led Pickle Advisors wordmark, ecosystem navigation, one primary CTA, and a visible mobile menu control. The retired arrow-P mark is not used in the masthead or public assets.
 
 ### Signal rail
 
@@ -159,7 +163,7 @@ The three modules should not be identical cards. Each gets a distinct compositio
 
 ### Artifact frame
 
-Use real work: audit pages, reports, content cards, sell-sheet excerpts, podcast covers, editorial graphics, or genuine workflow screenshots. Include source/category/date metadata. Never invent metrics or UI.
+Use real work: audit pages, reports, content cards, podcast covers, editorial graphics, or genuine workflow screenshots. Include source/category/date metadata. Never invent metrics or UI. Do not publish sell sheets as website content.
 
 ### Founder block
 
@@ -185,11 +189,11 @@ More restrained and institutional: ink, paper, lime signal, sparse copy, explici
 
 ### Media
 
-Most expressive page. Use real Deet's cards and canonical logo assets, stronger image density, content taxonomy, and sell-sheet motifs.
+Most expressive page. Use real Deet's cards, stronger image density, content taxonomy, an official Substack signup embed, and the latest verified Spotify episode embed.
 
-### Resources
+### Retired resource routes
 
-Editorial index with dates, tags, strong titles, and clear handoffs to audit or media. No empty thumbnail grid.
+There is no Resources section in the public information architecture. Legacy Resources and GEO checklist URLs redirect to Deet's Eats Media and remain `noindex` so old links do not break.
 
 ## Motion
 

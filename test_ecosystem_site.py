@@ -11,9 +11,13 @@ PAGES = {
     "advisory": ROOT / "advisory" / "index.html",
     "capital": ROOT / "capital" / "index.html",
     "media": ROOT / "media" / "index.html",
-    "resources": ROOT / "resources" / "index.html",
     "audit": ROOT / "audit" / "index.html",
 }
+LEGACY_ROUTES = [
+    ROOT / "resources" / "index.html",
+    ROOT / "resources" / "geo-checklist.html",
+    ROOT / "GEO-Checklist-CPG-Founders.html",
+]
 
 
 def visible_text(path: Path) -> str:
@@ -66,6 +70,8 @@ class PickleEcosystemSiteTest(unittest.TestCase):
         for name, path in PAGES.items():
             with self.subTest(name=name):
                 self.assertTrue(path.exists(), path)
+        for path in LEGACY_ROUTES:
+            self.assertTrue(path.exists(), path)
 
     def test_every_primary_page_is_semantic_and_titled(self):
         for name, path in PAGES.items():
@@ -87,9 +93,10 @@ class PickleEcosystemSiteTest(unittest.TestCase):
 
     def test_navigation_reaches_each_ecosystem_pillar(self):
         links = parse(PAGES["home"]).links
-        for href in ["/advisory/", "/capital/", "/media/", "/resources/", "/audit/"]:
+        for href in ["/advisory/", "/capital/", "/media/", "/audit/"]:
             with self.subTest(href=href):
                 self.assertIn(href, links)
+        self.assertNotIn("/resources/", links)
 
     def test_advisory_explains_installation_not_generic_strategy(self):
         text = visible_text(PAGES["advisory"])
@@ -113,11 +120,26 @@ class PickleEcosystemSiteTest(unittest.TestCase):
                 self.assertIn(phrase, text)
         source = PAGES["media"].read_text()
         self.assertIn("/assets/media/", source)
+        self.assertIn("https://deetseatsnyc.substack.com/embed", source)
+        self.assertIn("https://open.spotify.com/embed/episode/1zSN3tonCYxCceXIx5GfS9", source)
+        self.assertNotIn("agency-partner-sell-sheet", source)
 
-    def test_resources_preserve_high_intent_paths(self):
-        source = PAGES["resources"].read_text()
-        self.assertTrue("geo-checklist" in source.lower())
-        self.assertIn("/audit/", source)
+    def test_retired_resource_routes_redirect_to_media(self):
+        for path in LEGACY_ROUTES:
+            source = path.read_text().lower()
+            with self.subTest(path=path):
+                self.assertIn('content="0;url=/media/"', source)
+                self.assertIn('name="robots" content="noindex"', source)
+
+    def test_retired_design_and_content_do_not_return(self):
+        for path in ROOT.rglob("*.html"):
+            source = path.read_text()
+            with self.subTest(path=path):
+                self.assertNotIn("—", source)
+                self.assertNotIn("logo-icon.svg", source)
+                self.assertNotIn("agency-partner-sell-sheet", source)
+        for path in PAGES.values():
+            self.assertNotIn('/resources/', path.read_text())
 
     def test_no_public_advisory_pricing(self):
         for name in ["home", "advisory", "capital"]:

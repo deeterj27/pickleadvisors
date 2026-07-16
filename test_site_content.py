@@ -42,13 +42,13 @@ class PickleHomepageContentTest(unittest.TestCase):
         self.assertIn('dashboards', TEXT)
         self.assertIn('workflows', TEXT)
         self.assertIn('the ai audit', TEXT)
-        self.assertIn('ai visibility checklist', TEXT)
+        self.assertIn('inside the summer fancy food show', TEXT)
         self.assertIn('counter-service-ep060.webp', HTML)
         self.assertIn('breaking-news-shopify-doordash.webp', HTML)
 
     def test_media_links_and_visual_tone_are_premium(self):
         parser = LinkParser(); parser.feed(HTML)
-        spotify_links = [l for l in parser.links if 'open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f' in l['href']]
+        spotify_links = [l for l in parser.links if 'open.spotify.com/episode/1zSN3tonCYxCceXIx5GfS9' in l['href']]
         self.assertGreaterEqual(len(spotify_links), 2)
         self.assertNotIn('linktr.ee/deetseatnyc', HTML)
         cheap_symbol_ranges = ((0x2600, 0x27BF), (0x1F300, 0x1FAFF))
