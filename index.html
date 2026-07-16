@@ -1,1162 +1,306 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pickle Advisors builds operational systems, dashboards, workflows, and AI automation for scaling consumer brands.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pickleadvisors.com/">
-    <meta property="og:title" content="Pickle Advisors - Ops & AI Infrastructure for Consumer Brands">
-    <meta property="og:description" content="Operational systems, dashboards, workflows, and AI automation for scaling consumer brands.">
-    <meta property="og:image" content="https://pickleadvisors.com/og-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Pickle Advisors - Ops & AI Infrastructure for Consumer Brands">
-    <meta property="twitter:description" content="Operational systems, dashboards, workflows, and AI automation for scaling consumer brands.">
-    <meta property="twitter:image" content="https://pickleadvisors.com/og-image.png">
-    <link rel="icon" type="image/svg+xml" href="/logo-icon.svg">
-    <link rel="apple-touch-icon" sizes="180x180" href="/og-image-square.png">
-    <meta name="theme-color" content="#00C851">
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2X2CE22ZED"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-2X2CE22ZED');
-    </script>
-    <title>Pickle Advisors — Ops & AI Infrastructure for Consumer Brands</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --green: #00C851;
-            --green-dark: #00A844;
-            --pink: #FFB6C1;
-            --pink-light: #FFD6E0;
-            --black: #0F0F0F;
-            --white: #FFFFFF;
-            --gray: #6B7280;
-            --light: #F9FAFB;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--white);
-            color: var(--black);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* NAV */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 14px 24px;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            border-bottom: 3px solid var(--green);
-            transition: padding 0.3s;
-        }
-
-        nav.scrolled { padding: 10px 24px; }
-
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo svg { height: 52px; width: auto; }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--black);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover { color: var(--green); }
-
-        .nav-cta {
-            background: var(--green) !important;
-            color: var(--white) !important;
-            padding: 10px 24px;
-            border-radius: 50px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(0,200,81,0.3);
-        }
-
-        .mobile-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 4px;
-        }
-
-        .mobile-toggle span {
-            width: 28px;
-            height: 3px;
-            background: var(--green);
-            margin: 3px 0;
-            border-radius: 2px;
-            transition: 0.3s;
-        }
-
-        /* HERO */
-        .hero {
-            min-height: 92vh;
-            display: flex;
-            align-items: center;
-            padding: 108px 24px 72px;
-            background: var(--black);
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(0,200,81,0.18) 0%, transparent 68%);
-            pointer-events: none;
-        }
-
-        .hero-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-            position: relative;
-            z-index: 1;
-            display: grid;
-            grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.78fr);
-            align-items: center;
-            gap: 64px;
-        }
-
-        .hero-copy { max-width: 760px; }
-
-        .hero-tag {
-            display: inline-block;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 2.7px;
-            text-transform: uppercase;
-            color: var(--green);
-            margin-bottom: 22px;
-            padding: 6px 16px;
-            border: 2px solid var(--green);
-            border-radius: 50px;
-        }
-
-        .hero h1 {
-            font-size: clamp(36px, 5.5vw, 72px);
-            font-weight: 700;
-            line-height: 1.08;
-            margin-bottom: 22px;
-            letter-spacing: -2px;
-            max-width: 780px;
-        }
-
-        .hero h1 .green { color: var(--green); }
-
-        .hero p {
-            font-size: 20px;
-            color: rgba(255,255,255,0.72);
-            max-width: 650px;
-            margin-bottom: 24px;
-            line-height: 1.7;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 16px 40px;
-            background: var(--green);
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 16px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 50px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 32px rgba(0,200,81,0.3);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--green);
-            color: var(--green);
-            margin-left: 16px;
-        }
-
-        .btn-outline:hover {
-            background: var(--green);
-            color: var(--white);
-        }
-
-        .hero-bullets {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 10px 16px;
-            max-width: 690px;
-            margin: 0 0 28px;
-            list-style: none;
-        }
-
-        .hero-bullets li {
-            color: rgba(255,255,255,0.78);
-            font-weight: 600;
-            font-size: 14px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .hero-bullets li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.68em;
-            width: 8px;
-            height: 2px;
-            border-radius: 999px;
-            background: var(--green);
-            color: var(--green);
-        }
-
-        .hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
-
-        .hero-proof {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 12px;
-            max-width: 720px;
-        }
-
-        .proof-chip {
-            border: 1px solid rgba(255,255,255,0.12);
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            padding: 14px 16px;
-        }
-
-        .proof-chip strong {
-            display: block;
-            color: var(--white);
-            font-size: 18px;
-            line-height: 1.1;
-        }
-
-        .proof-chip span {
-            display: block;
-            margin-top: 4px;
-            color: rgba(255,255,255,0.68);
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            line-height: 1.35;
-        }
-
-        .hero-system-card {
-            border: 1px solid rgba(255,255,255,0.12);
-            background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.035));
-            border-radius: 28px;
-            padding: 28px;
-            box-shadow: 0 28px 80px rgba(0,0,0,0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-system-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at top right, rgba(0,200,81,0.18), transparent 42%);
-            pointer-events: none;
-        }
-
-        .system-card-inner { position: relative; z-index: 1; }
-
-        .system-card-kicker {
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--green);
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-
-        .system-card-title {
-            font-size: 28px;
-            line-height: 1.1;
-            font-weight: 700;
-            margin-bottom: 18px;
-            letter-spacing: -0.7px;
-        }
-
-        .system-layers { display: grid; gap: 10px; }
-
-        .system-layer {
-            display: grid;
-            grid-template-columns: minmax(112px, 0.8fr) minmax(0, 1.2fr);
-            align-items: center;
-            gap: 14px;
-            padding: 14px 16px;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 14px;
-            background: rgba(15,15,15,0.55);
-        }
-
-        .system-layer b { font-size: 14px; white-space: nowrap; }
-        .system-layer span { color: rgba(255,255,255,0.72); font-size: 12px; font-weight: 650; text-align: right; line-height: 1.35; }
-
-        .system-note {
-            margin-top: 18px;
-            padding-top: 18px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.68);
-            font-size: 14px;
-            line-height: 1.55;
-        }
-
-        .system-note strong { color: var(--white); }
-
-        /* SECTIONS */
-        section { padding: 100px 24px; }
-
-        .section-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-tag {
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--green);
-            margin-bottom: 16px;
-        }
-
-        .section-title {
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 700;
-            letter-spacing: -1px;
-            margin-bottom: 20px;
-            line-height: 1.1;
-        }
-
-        .section-subtitle {
-            font-size: 18px;
-            color: var(--gray);
-            max-width: 560px;
-            line-height: 1.7;
-            margin-bottom: 60px;
-        }
-
-        /* SERVICES */
-        .services { background: var(--light); }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-
-        .process-strip {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 16px;
-            margin-bottom: 34px;
-        }
-
-        .process-step {
-            background: var(--white);
-            border: 1px solid #E5E7EB;
-            border-radius: 16px;
-            padding: 22px;
-        }
-
-        .process-step span {
-            display: inline-flex;
-            width: 30px;
-            height: 30px;
-            align-items: center;
-            justify-content: center;
-            border-radius: 999px;
-            background: var(--green);
-            color: var(--white);
-            font-weight: 700;
-            font-size: 13px;
-            margin-bottom: 14px;
-        }
-
-        .process-step b { display: block; font-size: 16px; margin-bottom: 6px; }
-        .process-step p { color: var(--gray); font-size: 14px; line-height: 1.55; }
-
-        .service-card {
-            background: var(--white);
-            padding: 48px 36px;
-            border-radius: 16px;
-            border: 1px solid #E5E7EB;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--green);
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 16px 48px rgba(0,0,0,0.08);
-        }
-
-        .service-card:hover::before { transform: scaleX(1); }
-
-        .service-icon {
-            width: 48px;
-            height: 48px;
-            border: 1px solid rgba(0,200,81,0.22);
-            border-radius: 14px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0,200,81,0.08);
-            color: var(--green);
-            font-size: 13px;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        .service-card h3 {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .service-card p {
-            color: var(--gray);
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        .service-card ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .service-card li {
-            padding: 6px 0;
-            color: var(--gray);
-            font-weight: 500;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .service-card li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 1.05em;
-            width: 8px;
-            height: 2px;
-            border-radius: 999px;
-            background: var(--green);
-        }
-
-        /* DIFFERENTIATOR */
-        .differentiator {
-            background: var(--green);
-            color: var(--white);
-            text-align: center;
-        }
-
-        .differentiator .section-tag { color: rgba(255,255,255,0.7); }
-        .differentiator .section-title { color: var(--white); }
-
-        .diff-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 48px;
-            margin-top: 48px;
-        }
-
-        .diff-stat-number {
-            font-size: 48px;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .diff-stat-label {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.8;
-            font-weight: 600;
-        }
-
-        /* ABOUT */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .about-photo {
-            width: 100%;
-            aspect-ratio: 4/5;
-            background: linear-gradient(135deg, var(--pink), var(--pink-light));
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            color: var(--white);
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .about-content p {
-            font-size: 18px;
-            color: var(--gray);
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .about-content strong { color: var(--black); }
-
-        /* MEDIA */
-        .media { background: var(--black); color: var(--white); }
-
-        .media .section-subtitle { color: rgba(255,255,255,0.72); }
-
-        .media-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-
-        .media-card {
-            background: rgba(255,255,255,0.075);
-            border: 1px solid rgba(255,255,255,0.16);
-            padding: 40px 32px;
-            border-radius: 16px;
-            transition: transform 0.3s, background 0.3s;
-        }
-
-        .media-card:hover {
-            transform: translateY(-8px);
-            background: rgba(255,255,255,0.1);
-        }
-
-        .media-card-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 52px;
-            height: 32px;
-            padding: 0 12px;
-            border: 1px solid rgba(0,200,81,0.42);
-            border-radius: 999px;
-            color: #20E070;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 1.4px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-
-        .media-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .media-card p {
-            color: rgba(255,255,255,0.72);
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        .media-card a {
-            color: #20E070;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-
-        .media-card a:hover { color: var(--pink); }
-
-        .media-deets-logo {
-            width: 64px;
-            height: 64px;
-            margin-bottom: 16px;
-        }
-
-        /* CONTACT */
-        .contact {
-            background: linear-gradient(135deg, var(--pink), var(--pink-light));
-            color: var(--white);
-            text-align: center;
-            padding: 120px 24px;
-        }
-
-        .contact .section-tag { color: rgba(255,255,255,0.7); }
-        .contact .section-title { color: var(--white); font-size: clamp(36px, 5vw, 56px); }
-
-        .contact p {
-            font-size: 20px;
-            max-width: 500px;
-            margin: 0 auto 40px;
-            opacity: 0.9;
-        }
-
-        .contact .btn {
-            background: var(--white);
-            color: var(--green);
-            font-size: 18px;
-            padding: 20px 48px;
-        }
-
-        .contact .btn:hover {
-            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-        }
-
-        /* FOOTER */
-        footer {
-            background: #050505;
-            color: rgba(255,255,255,0.72);
-            padding: 72px 24px 36px;
-            border-top: 1px solid rgba(255,255,255,0.08);
-        }
-
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: minmax(280px, 1.25fr) repeat(3, minmax(150px, 0.55fr));
-            gap: 48px;
-            align-items: start;
-        }
-
-        .footer-brand h3 {
-            color: var(--white);
-            font-size: 24px;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin-bottom: 14px;
-        }
-
-        .footer-brand p {
-            max-width: 420px;
-            color: rgba(255,255,255,0.76);
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-
-        .footer-cta {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 18px;
-            border-radius: 999px;
-            background: var(--green);
-            color: var(--black);
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: transform 0.25s, box-shadow 0.25s;
-        }
-
-        .footer-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 26px rgba(0,200,81,0.22);
-        }
-
-        .footer-col h4 {
-            color: var(--white);
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1.8px;
-            margin-bottom: 18px;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.72);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover { color: var(--green); }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 48px auto 0;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            flex-wrap: wrap;
-            color: rgba(255,255,255,0.66);
-            font-size: 13px;
-        }
-
-        .footer-bottom span:last-child { text-align: right; }
-
-        /* ANIMATIONS */
-        .reveal {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.25s ease, transform 0.25s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* MOBILE */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .mobile-toggle { display: flex; }
-
-            .mobile-menu {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100vh;
-                background: var(--black);
-                z-index: 999;
-                display: none;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 24px;
-            }
-
-            .mobile-menu.active { display: flex; }
-
-            .mobile-menu a {
-                color: var(--white);
-                text-decoration: none;
-                font-size: 24px;
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-            }
-
-            .mobile-menu .close-btn {
-                position: absolute;
-                top: 20px;
-                right: 24px;
-                font-size: 32px;
-                color: var(--white);
-                background: none;
-                border: none;
-                cursor: pointer;
-            }
-
-            .hero { padding: 92px 20px 56px; min-height: auto; }
-            .hero-inner { display: block; }
-            .hero-copy { max-width: none; }
-            .hero-tag { font-size: 10px; letter-spacing: 1.7px; margin-bottom: 18px; padding: 6px 12px; }
-            .hero h1 { font-size: clamp(34px, 10.5vw, 46px); letter-spacing: -1.2px; }
-            .hero p { font-size: 17px; line-height: 1.6; margin-bottom: 22px; }
-            .hero-bullets { grid-template-columns: 1fr; gap: 8px; margin-bottom: 24px; }
-            .hero-actions { display: grid; gap: 12px; margin-bottom: 22px; }
-            .hero-actions .btn { width: 100%; text-align: center; padding: 15px 22px; }
-            .hero-proof { grid-template-columns: 1fr; gap: 10px; }
-            .proof-chip { padding: 12px 14px; }
-            .hero-system-card { margin-top: 28px; padding: 20px; border-radius: 22px; }
-            .system-card-title { font-size: 23px; }
-            .system-layer { padding: 12px; align-items: flex-start; grid-template-columns: 1fr; gap: 6px; }
-            .system-layer span { text-align: left; }
-            .process-strip { grid-template-columns: 1fr; gap: 12px; }
-            .hero h1 { letter-spacing: -1px; }
-
-            section { padding: 60px 24px; }
-
-            .services-grid,
-            .media-grid,
-            .diff-stats {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .about-photo { max-height: 400px; object-position: center top; }
-
-            .btn-outline {
-                margin-left: 0;
-                margin-top: 12px;
-                display: inline-block;
-            }
-
-            .footer-inner {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .footer-brand p { max-width: none; }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .footer-bottom span:last-child {
-                text-align: left;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pickle is an operator-led ecosystem that builds AI and operating systems, backs selective opportunities, and publishes Deet's Eats Media.">
+  <link rel="canonical" href="https://pickleadvisors.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pickleadvisors.com/">
+  <meta property="og:title" content="Pickle — Build. Back. Publish.">
+  <meta property="og:description" content="An operating platform for ambitious brands, combining AI implementation, operator-led advisory, selective capital, and Deet's Eats Media.">
+  <meta property="og:image" content="https://pickleadvisors.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pickle — Build. Back. Publish.">
+  <meta name="twitter:description" content="An operating platform for ambitious brands.">
+  <meta name="twitter:image" content="https://pickleadvisors.com/og-image.png">
+  <meta name="theme-color" content="#087B36">
+  <link rel="icon" type="image/svg+xml" href="/logo-icon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/og-image-square.png">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2X2CE22ZED"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2X2CE22ZED');
+  </script>
+  <title>Pickle — Build Better Companies. Back the Right Ones. Publish What Matters.</title>
 </head>
 <body>
-    <nav>
-        <div class="nav-inner">
-            <a href="#" class="logo">
-                <svg width="220" height="60" viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 20 15 L 20 45 M 20 15 L 35 15 Q 43 15 43 23 Q 43 31 35 31 L 20 31" stroke="#00C851" stroke-width="5" fill="none" stroke-linecap="round"/>
-                    <path d="M 36 26 L 44 18 M 44 18 L 44 26 M 44 18 L 36 18" stroke="#FFB6C1" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                    <text x="55" y="30" font-family="'Space Grotesk', sans-serif" font-size="24" font-weight="700" fill="#0F0F0F">PICKLE</text>
-                    <text x="55" y="46" font-family="'Space Grotesk', sans-serif" font-size="13" font-weight="600" fill="#6B7280" letter-spacing="3">ADVISORS</text>
-                </svg>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#media">Media</a></li>
-                <li><a href="/resources">Resources</a></li>
-                <li><a href="/audit">AI Audit</a></li>
-                <li><a href="https://pickleadvisors.com/audit/" class="nav-cta">Strategy Call</a></li>
-            </ul>
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="close-btn" id="closeMenu">&times;</button>
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#media">Media</a>
-        <a href="/resources">Resources</a>
-        <a href="/audit" style="color:#E8112D;">AI Audit</a>
-        <a href="https://pickleadvisors.com/audit/">Strategy Call</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="Pickle Advisors home" aria-current="page">
+        <img src="/logo-icon.svg" alt="">
+        <span class="brand-copy"><strong>PICKLE</strong><span>ADVISORS</span></span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="/advisory/">Build</a>
+        <a href="/capital/">Back</a>
+        <a href="/media/">Publish</a>
+        <a href="/resources/">Resources</a>
+        <a class="nav-cta" href="/audit/">Start an AI Audit</a>
+      </nav>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-navigation" aria-expanded="false" data-nav-toggle>
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </header>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-inner">
-            <div class="hero-copy">
-                <span class="hero-tag">Ops + AI infrastructure for consumer brands</span>
-                <h1>Fix the <span class="green">operational bottlenecks</span> slowing your consumer brand down.</h1>
-                <p>Pickle Advisors builds the workflows, dashboards, pricing tools, forecasting systems, and AI automation that turn scattered spreadsheets into an <strong style="color:#fff;">AI-ready operating system</strong>.</p>
-                <ul class="hero-bullets">
-                    <li>Pricing, margin, and cash visibility</li>
-                    <li>Inventory, SKU, and channel planning</li>
-                    <li>Dashboards and weekly reporting</li>
-                    <li>Workflows your team can actually run</li>
-                </ul>
-                <div class="hero-actions">
-                    <a href="https://pickleadvisors.com/audit/" class="btn">Book a Strategy Call</a>
-                    <a href="/audit" class="btn btn-outline">Get the AI Audit</a>
-                </div>
-                <div class="hero-proof" aria-label="Pickle Advisors proof points">
-                    <div class="proof-chip"><strong>$1B+</strong><span>In fund systems experience</span></div>
-                    <div class="proof-chip"><strong>10+ yrs</strong><span>Across startups, finance, ops</span></div>
-                    <div class="proof-chip"><strong>Consumer-native</strong><span>Retail + media network</span></div>
-                </div>
+  <nav class="mobile-nav" id="mobile-navigation" aria-label="Mobile navigation" data-mobile-nav>
+    <a href="/advisory/">Build</a>
+    <a href="/capital/">Back</a>
+    <a href="/media/">Publish</a>
+    <a href="/resources/">Resources</a>
+    <a href="/audit/">Start an AI Audit</a>
+  </nav>
+
+  <div class="signal-rail" aria-label="Pickle operating signals">
+    <div class="container signal-inner">
+      <span>AI implementation</span>
+      <span>Operator systems</span>
+      <span>Capital perspective</span>
+      <span>Media intelligence</span>
+      <span>Brooklyn / NYC</span>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="hero dot-grid" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">The operating platform for ambitious brands</p>
+            <h1 class="display" id="hero-title">Build better companies. Back the right ones. <mark>Publish what matters.</mark></h1>
+          </div>
+          <div class="hero-side">
+            <h2>Your brand's operating system.</h2>
+            <p>Pickle combines AI implementation, operator-led advisory, selective capital, and Deet's Eats Media in one ecosystem built around ambitious brands.</p>
+            <div class="hero-actions">
+              <a class="button button--primary" href="/audit/">Start with an AI Audit <span class="arrow" aria-hidden="true">→</span></a>
+              <a class="button button--line" href="#ecosystem">Explore the ecosystem</a>
             </div>
-            <aside class="hero-system-card" aria-label="What Pickle Advisors builds">
-                <div class="system-card-inner">
-                    <div class="system-card-kicker">What gets installed</div>
-                    <div class="system-card-title">A cleaner operating layer for the work founders keep doing manually.</div>
-                    <div class="system-layers">
-                        <div class="system-layer"><b>1. Diagnose</b><span>Find the leaks in pricing, ops, cash, channels, and reporting</span></div>
-                        <div class="system-layer"><b>2. Build</b><span>Dashboards, SOPs, workflows, and AI automations</span></div>
-                        <div class="system-layer"><b>3. Operate</b><span>Weekly visibility so decisions stop living in your head</span></div>
-                    </div>
-                    <div class="system-note"><strong>Outcome:</strong> fewer founder bottlenecks, cleaner margins, faster reporting, and a team that can scale without another messy spreadsheet.</div>
-                </div>
-            </aside>
+          </div>
         </div>
+        <div class="hero-meta" aria-label="The Pickle ecosystem">
+          <div><strong>01 / Build</strong><span>Diagnose, install, operate</span></div>
+          <div><strong>02 / Back</strong><span>Diligence, capital, support</span></div>
+          <div><strong>03 / Publish</strong><span>Coverage, formats, partnerships</span></div>
+        </div>
+      </div>
     </section>
 
-    <!-- SERVICES -->
-    <section class="services" id="services">
-        <div class="section-inner">
-            <p class="section-tag">What We Do</p>
-            <h2 class="section-title">Three ways we turn messy growth into a real operating system.</h2>
-            <p class="section-subtitle">We start with the bottlenecks that affect cash, margin, and founder time — then build the operating layer your team can keep using.</p>
-            <div class="process-strip reveal" aria-label="How Pickle Advisors works">
-                <div class="process-step"><span>1</span><b>Audit the mess</b><p>Map the tools, spreadsheets, handoffs, and decisions slowing the business down.</p></div>
-                <div class="process-step"><span>2</span><b>Prioritize ROI</b><p>Pick the workflows where better data or automation actually changes margin, cash, or speed.</p></div>
-                <div class="process-step"><span>3</span><b>Build the system</b><p>Install dashboards, SOPs, automations, and AI workflows around the way your team already works.</p></div>
-                <div class="process-step"><span>4</span><b>Operate weekly</b><p>Keep decisions moving with reporting, alerts, and advisory support instead of another static PDF.</p></div>
-            </div>
-            <div class="services-grid">
-                <div class="service-card reveal">
-                    <div class="service-icon">Ops</div>
-                    <h3>Fix the Ops Stack</h3>
-                    <p>Replace duct-taped spreadsheets with cleaner pricing, margin, cash, and operating workflows founders can trust.</p>
-                    <ul>
-                        <li>Financial modeling and forecasting</li>
-                        <li>Margin analysis and unit economics</li>
-                        <li>Supply chain, fulfillment, and vendor workflows</li>
-                        <li>Retail, ecommerce, and marketplace planning</li>
-                    </ul>
-                </div>
-                <div class="service-card reveal">
-                    <div class="service-icon">OS</div>
-                    <h3>Brand OS</h3>
-                    <p>AI-powered dashboards, alerts, and internal tools that connect decisions across finance, ops, sales, and planning.</p>
-                    <ul>
-                        <li>Live financial dashboards</li>
-                        <li>SKU simulation and forecasting</li>
-                        <li>Automated alerts and reporting</li>
-                        <li>Capital planning and cash flow modeling</li>
-                    </ul>
-                </div>
-                <div class="service-card reveal">
-                    <div class="service-icon">Media</div>
-                    <h3>Media & Distribution</h3>
-                    <p>Exposure through Deets Eats Media and the broader Pickle network. Your brand in front of consumers, retailers, operators, and investors who care about what is next in consumer.</p>
-                    <ul>
-                        <li>Featured on Deets Eats social channels</li>
-                        <li>Podcast guest spots on Unpackaged Goods</li>
-                        <li>Newsletter features and launch storytelling</li>
-                        <li>Community introductions and deal flow</li>
-                    </ul>
-                </div>
-            </div>
+    <section class="section section--light" id="ecosystem" aria-labelledby="ecosystem-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Three operating desks</p>
+          <div>
+            <h2 class="section-title" id="ecosystem-title">One ecosystem. Three distinct jobs.</h2>
+            <p class="section-intro">Practical systems, informed capital perspective, and independent media—connected by operator judgment, not bundled promises.</p>
+          </div>
         </div>
+        <div class="desk-grid">
+          <article class="desk">
+            <span class="desk-number">01 / BUILD</span>
+            <h3>AI advisory + implementation</h3>
+            <p>Across consumer brands and beyond, find the operational bottlenecks, then install an AI-ready operating system: pricing and margin tools, channel planning, dashboards, workflows, automations, and a cadence your team can keep using.</p>
+            <a class="desk-link" href="/advisory/">See the build desk →</a>
+          </article>
+          <article class="desk desk--dark">
+            <span class="desk-number">02 / BACK</span>
+            <h3>Pickle VC</h3>
+            <p>Operator-led diligence, selective capital, and founder support informed by real operating work, market signals, and a connected network.</p>
+            <a class="desk-link" href="/capital/">Start a private conversation →</a>
+          </article>
+          <article class="desk">
+            <span class="desk-number">03 / PUBLISH</span>
+            <h3>Deet's Eats Media</h3>
+            <p>Independent coverage and disclosed partnerships across food, brands, culture, capital, retail, and the operators shaping what comes next.</p>
+            <a class="desk-link" href="/media/">Work with Deet's Eats →</a>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- DIFFERENTIATOR -->
-    <section class="differentiator">
-        <div class="section-inner">
-            <p class="section-tag">Why Us</p>
-            <h2 class="section-title">We don't just advise. We build the operating layer.</h2>
-            <p style="font-size:18px;max-width:680px;margin:0 auto;opacity:0.85;line-height:1.7;">Most advisors hand you a deck, a spreadsheet, or a generic AI roadmap. Pickle installs working systems: pricing models, dashboards, workflows, automations, and the weekly rhythm to keep using them.</p>
-            <div class="diff-stats">
-                <div class="reveal">
-                    <span class="diff-stat-number">$1B+</span>
-                    <span class="diff-stat-label">Assets Under AI Tooling</span>
-                </div>
-                <div class="reveal">
-                    <span class="diff-stat-number">10+</span>
-                    <span class="diff-stat-label">Years in Startups & Fintech</span>
-                </div>
-                <div class="reveal">
-                    <span class="diff-stat-number">100s</span>
-                    <span class="diff-stat-label">Founders Advised</span>
-                </div>
-            </div>
+    <section class="section section--ink" aria-labelledby="thesis-title">
+      <div class="container thesis-grid">
+        <div>
+          <p class="section-kicker">The operating thesis</p>
+          <h2 class="thesis-quote" id="thesis-title">Better signals create better decisions. Better systems turn those decisions into work.</h2>
         </div>
+        <div class="thesis-list">
+          <div class="thesis-step"><div><strong>Media sees the market move.</strong><span>A high-frequency view of founders, launches, culture, retail, and capital.</span></div></div>
+          <div class="thesis-step"><div><strong>Advisory sees how companies run.</strong><span>Firsthand understanding of the systems behind growth, margin, and execution.</span></div></div>
+          <div class="thesis-step"><div><strong>Capital applies the judgment.</strong><span>Selective conversations shaped by operator diligence and long-term founder support.</span></div></div>
+          <div class="thesis-step"><div><strong>The ecosystem compounds.</strong><span>Relationships, market intelligence, and operating credibility reinforce one another.</span></div></div>
+        </div>
+      </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about">
-        <div class="section-inner">
-            <div class="about-grid">
-                <img class="about-photo" src="jonathan.jpeg" alt="Jonathan Deeter" style="object-fit:cover;object-position:center top;">
-                <div class="about-content reveal">
-                    <p class="section-tag">About</p>
-                    <h2 class="section-title">Jonathan Deeter</h2>
-                    <p><strong>Founder of Pickle Advisors.</strong> Based in Brooklyn. 10+ years across startups, fintech, structured products, and consumer brand media.</p>
-                    <p>I built AI-powered dashboards for institutional investment funds managing over a billion dollars — portfolio tracking, automated alerts, financial modeling. Then I realized <strong>consumer brand founders need this even more</strong>. Most brands are running pricing, inventory, retailer planning, ecommerce, and reporting from scattered Google Sheets and founder memory.</p>
-                    <p>Now I help consumer brand founders turn that mess into a real operating system: cleaner data, better workflows, AI-enabled reporting, and practical advisory support through the decisions that actually move margin and growth.</p>
-                    <a href="https://pickleadvisors.com/audit/" class="btn" style="margin-top:12px;">Let's Talk</a>
-                </div>
-            </div>
+    <section class="section" aria-labelledby="artifacts-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Selected work + artifacts</p>
+          <div>
+            <h2 class="section-title" id="artifacts-title">Real starting points. Useful outputs.</h2>
+            <p class="section-intro">No abstract AI theater. Start with a diagnosis, leave with a prioritized operating brief, and build only what the business can use.</p>
+          </div>
         </div>
+        <div class="artifact-grid">
+          <a class="artifact artifact--ink artifact--tall" href="/audit/">
+            <div class="artifact-copy">
+              <div class="artifact-meta"><span>Build / Diagnostic</span><span>Start here</span></div>
+              <h3>The AI Audit</h3>
+              <p>A focused review of workflows, reporting, decisions, and tool friction—built to identify practical opportunities for AI and automation.</p>
+            </div>
+          </a>
+          <a class="artifact" href="/resources/geo-checklist.html">
+            <div class="artifact-copy">
+              <div class="artifact-meta"><span>Resource / GEO</span><span>Field guide</span></div>
+              <h3>AI visibility checklist</h3>
+              <p>A practical resource for understanding how a brand appears in AI-powered discovery.</p>
+            </div>
+          </a>
+          <a class="artifact" href="/media/">
+            <div class="artifact-media"><img src="/assets/media/counter-service-ep060.webp" alt="Counter Service episode 060 cover artwork" loading="lazy"></div>
+            <div class="artifact-copy">
+              <div class="artifact-meta"><span>Publish / Counter Service</span><span>Episode 060</span></div>
+              <h3>Market signals, made useful</h3>
+              <p>Editorial formats built around the people and ideas moving food and consumer culture.</p>
+            </div>
+          </a>
+          <a class="artifact" href="/media/">
+            <div class="artifact-media"><img src="/assets/media/breaking-news-shopify-doordash.webp" alt="Deet's Eats Breaking News Desk graphic about Shopify and DoorDash" loading="lazy"></div>
+            <div class="artifact-copy">
+              <div class="artifact-meta"><span>Publish / News Desk</span><span>Market brief</span></div>
+              <h3>Breaking News Desk</h3>
+              <p>Fast, direct context on the partnerships and moves shaping commerce.</p>
+            </div>
+          </a>
+        </div>
+      </div>
     </section>
 
-    <!-- MEDIA -->
-    <section class="media" id="media">
-        <div class="section-inner">
-            <p class="section-tag">Deets Eats Media</p>
-            <h2 class="section-title" style="color:#fff;">The content engine behind the advisory.</h2>
-            <p class="section-subtitle">Discovering emerging consumer brands, telling founder stories, and building a community that generates real deal flow.</p>
-            <div class="media-grid">
-                <div class="media-card reveal">
-                    <div class="media-card-icon">Digest</div>
-                    <h3>The Deeter Digest</h3>
-                    <p>Weekly newsletter breaking down the biggest moves in consumer brands. Fundraising rounds, M&A, product launches, and unfiltered hot takes.</p>
-                    <a href="https://substack.com/@deetseatsnyc" target="_blank" rel="noopener">Read on Substack</a>
-                </div>
-                <div class="media-card reveal">
-                    <div class="media-card-icon">Podcast</div>
-                    <h3>Unpackaged Goods</h3>
-                    <p>The podcast. Interviews with consumer founders, deep dives on industry trends, and the stories behind the brands reshaping consumer culture.</p>
-                    <a href="https://open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f?si=4c07e8fb3d3042a5" target="_blank" rel="noopener">Listen on Spotify</a>
-                </div>
-                <div class="media-card reveal">
-                    <div class="media-card-icon">Social</div>
-                    <h3>Social</h3>
-                    <p>Daily content across Instagram, TikTok, and LinkedIn. Brand discoveries, retail finds, and behind-the-scenes of the consumer brand world.</p>
-                    <a href="https://www.instagram.com/deetseatsnyc" target="_blank" rel="noopener">@deetseatsnyc</a>
-                </div>
-            </div>
+    <section class="section section--light" aria-labelledby="founder-title">
+      <div class="container founder-grid">
+        <div class="founder-photo">
+          <img src="/jonathan.jpeg" alt="Jonathan Deeter, founder of Pickle Advisors" loading="lazy">
         </div>
+        <div class="founder-copy">
+          <p class="section-kicker">Founder / operator / publisher</p>
+          <h2 id="founder-title">Jonathan Deeter works across the whole table.</h2>
+          <p class="lead">From institutional finance systems to startup operations and consumer media, Jonathan's work has always lived where better information meets better execution.</p>
+          <p>He built AI-enabled reporting and decision systems in finance and fund environments, then brought that operating discipline to founders: practical workflows, models, dashboards, and automations that teams can actually run. Through Deet's Eats Media, he builds market intelligence and relationships across brands, retail, culture, and capital. Pickle VC applies that operator perspective to selective opportunities and founder support.</p>
+          <div class="proof-rail" aria-label="Jonathan's areas of experience">
+            <div><strong>BUILD</strong><span>Systems + implementation</span></div>
+            <div><strong>BACK</strong><span>Diligence + support</span></div>
+            <div><strong>PUBLISH</strong><span>Media + intelligence</span></div>
+          </div>
+          <a class="button button--ink" href="/audit/">Start with an AI Audit <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="contact" id="contact">
-        <div class="section-inner">
-            <p class="section-tag">Get Started</p>
-            <h2 class="section-title">Ready to find the bottlenecks?</h2>
-            <p>Start with the AI audit. We’ll look at your operations, reporting, and workflows, then identify where better systems can actually move margin, cash, or founder time.</p>
-            <a href="https://pickleadvisors.com/audit/" class="btn">Book a Strategy Call</a>
+    <section class="section" aria-labelledby="live-desk-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Deet's Eats / Live desk</p>
+          <div>
+            <h2 class="section-title" id="live-desk-title">Food, brands, culture, capital—and who is moving all four.</h2>
+            <p class="section-intro">Independent editorial formats and disclosed brand partnerships, each with a clear job and a real point of view.</p>
+          </div>
         </div>
+        <div class="media-mosaic">
+          <article class="media-feature">
+            <img src="/assets/media/agency-partner-sell-sheet.webp" alt="Deet's Eats agency partner overview" loading="lazy">
+            <div class="media-copy">
+              <span>Partnership desk</span>
+              <h3>Work with Deet's Eats</h3>
+              <p>Creative, disclosed partnerships for brands and agencies that want credible access to an engaged food and consumer audience.</p>
+              <p><a class="desk-link" href="/media/">Explore media partnerships →</a></p>
+            </div>
+          </article>
+          <div class="media-stack">
+            <article>
+              <img src="/assets/media/unpackaged-goods-ep030.webp" alt="Unpackaged Goods episode 030 cover artwork" loading="lazy">
+              <div class="media-copy">
+                <span>Podcast</span>
+                <h3>Unpackaged Goods</h3>
+                <p>Founder conversations and the stories behind emerging brands.</p>
+                <p><a href="https://open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f?si=4c07e8fb3d3042a5" target="_blank" rel="noopener noreferrer">Listen on Spotify →</a></p>
+              </div>
+            </article>
+            <article>
+              <img src="/assets/media/breaking-news-shopify-doordash.webp" alt="Deet's Eats Breaking News Desk graphic" loading="lazy">
+              <div class="media-copy">
+                <span>Newsletter + social</span>
+                <h3>The Deeter Digest</h3>
+                <p>News, launches, deals, and direct commentary from the consumer market.</p>
+                <p><a href="https://substack.com/@deetseatsnyc" target="_blank" rel="noopener noreferrer">Read the Digest →</a></p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <h3>Pickle Advisors</h3>
-                <p>Ops, AI infrastructure, and practical advisory support for consumer brands that need cleaner systems before growth gets more expensive.</p>
-                <a class="footer-cta" href="https://pickleadvisors.com/audit/">Book a Strategy Call</a>
-            </div>
-            <div class="footer-col">
-                <h4>Company</h4>
-                <div class="footer-links">
-                    <a href="#services">Services</a>
-                    <a href="#about">About</a>
-                    <a href="/audit">AI Audit</a>
-                    <a href="/resources">Resources</a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Media</h4>
-                <div class="footer-links">
-                    <a href="https://substack.com/@deetseatsnyc" target="_blank" rel="noopener">The Deeter Digest</a>
-                    <a href="https://open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f?si=4c07e8fb3d3042a5" target="_blank" rel="noopener">Unpackaged Goods on Spotify</a>
-                    <a href="https://www.instagram.com/deetseatsnyc" target="_blank" rel="noopener">Deets Eats Instagram</a>
-                    <a href="https://www.tiktok.com/@deetseatsnyc" target="_blank" rel="noopener">Deets Eats TikTok</a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <div class="footer-links">
-                    <a href="mailto:jonathan@pickleadvisors.com">jonathan@pickleadvisors.com</a>
-                    <a href="https://www.linkedin.com/company/pickle-advisors" target="_blank" rel="noopener">Pickle Advisors LinkedIn</a>
-                    <a href="https://pickleadvisors.com/audit/">Strategy Call</a>
-                </div>
-            </div>
+    <section class="cta-band" aria-labelledby="cta-title">
+      <div class="container cta-grid">
+        <div>
+          <p class="section-kicker">The highest-leverage place to begin</p>
+          <h2 id="cta-title">Find the work worth fixing first.</h2>
+          <p>The AI Audit maps the operational bottlenecks, reporting gaps, and repetitive workflows where better systems can create practical leverage.</p>
         </div>
-        <div class="footer-bottom">
-            <span>&copy; 2026 Pickle Advisors LLC. All rights reserved.</span>
-            <span>Brooklyn-based advisory for consumer brand operators building better systems.</span>
+        <div class="cta-actions">
+          <a class="button button--primary" href="/audit/">Start with an AI Audit <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="button button--line" href="mailto:jonathan@pickleadvisors.com?subject=Pickle%20strategy%20call">Book a strategy call</a>
         </div>
-    </footer>
+      </div>
+    </section>
+  </main>
 
-    <script>
-        // Nav scroll
-        window.addEventListener('scroll', () => {
-            document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
-        });
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h2>Build. Back. Publish.</h2>
+          <p>Pickle is an operator-led ecosystem for ambitious brands. Your brand's operating system—across systems, capital perspective, and media intelligence.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Ecosystem</h3>
+          <a href="/advisory/">Build / Advisory</a>
+          <a href="/capital/">Back / Pickle VC</a>
+          <a href="/media/">Publish / Deet's Eats</a>
+        </div>
+        <div class="footer-column">
+          <h3>Start here</h3>
+          <a href="/audit/">AI Audit</a>
+          <a href="/resources/">Resources</a>
+          <a href="mailto:jonathan@pickleadvisors.com">Contact</a>
+        </div>
+        <div class="footer-column">
+          <h3>Follow</h3>
+          <a href="https://www.instagram.com/deetseatsnyc" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.tiktok.com/@deetseatsnyc" target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a href="https://open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f?si=4c07e8fb3d3042a5" target="_blank" rel="noopener noreferrer">Unpackaged Goods</a>
+          <a href="https://www.linkedin.com/company/pickle-advisors" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+      <div class="boundary">
+        <strong>Clear boundaries</strong>
+        <p>Editorial judgment remains independent. Paid partnerships are disclosed. Advisory work does not guarantee coverage or capital. Capital conversations are private and selective.</p>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> Pickle Advisors LLC. All rights reserved.</span>
+        <span>Brooklyn / New York City</span>
+      </div>
+    </div>
+  </footer>
 
-        // Mobile menu
-        document.getElementById('mobileToggle').addEventListener('click', () => {
-            document.getElementById('mobileMenu').classList.add('active');
-        });
-        document.getElementById('closeMenu').addEventListener('click', () => {
-            document.getElementById('mobileMenu').classList.remove('active');
-        });
-        document.querySelectorAll('.mobile-menu a').forEach(a => {
-            a.addEventListener('click', () => {
-                document.getElementById('mobileMenu').classList.remove('active');
-            });
-        });
-
-        // Scroll reveal
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', (e) => {
-                const href = a.getAttribute('href');
-                if (!href || href === '#') return;
-                e.preventDefault();
-                const t = document.querySelector(href);
-                if (t) window.scrollTo({ top: t.offsetTop - 80, behavior: 'smooth' });
-            });
-        });
-    </script>
+  <script src="/assets/site.js" defer></script>
 </body>
 </html>

@@ -41,7 +41,10 @@ class PickleHomepageContentTest(unittest.TestCase):
         self.assertIn('channel planning', TEXT)
         self.assertIn('dashboards', TEXT)
         self.assertIn('workflows', TEXT)
-        self.assertIn('$1b+', TEXT)
+        self.assertIn('the ai audit', TEXT)
+        self.assertIn('ai visibility checklist', TEXT)
+        self.assertIn('counter-service-ep060.webp', HTML)
+        self.assertIn('breaking-news-shopify-doordash.webp', HTML)
 
     def test_media_links_and_visual_tone_are_premium(self):
         parser = LinkParser(); parser.feed(HTML)
