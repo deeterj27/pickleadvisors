@@ -1,0 +1,21 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+  <!-- Green background -->
+  <rect width="1080" height="1080" fill="#00C851"/>
+  
+  <!-- Happy D character - centered -->
+  <g transform="translate(540, 540)">
+    <path d="M -180 -260 L -180 260 L -40 260 Q 180 260 180 0 Q 180 -260 -40 -260 L -180 -260 Z" 
+          fill="white" stroke="#0F0F0F" stroke-width="30"/>
+    
+    <!-- Eyes -->
+    <circle cx="-95" cy="-80" r="28" fill="#0F0F0F"/>
+    <circle cx="40" cy="-80" r="28" fill="#0F0F0F"/>
+    
+    <!-- Eye sparkles -->
+    <circle cx="-88" cy="-90" r="12" fill="white"/>
+    <circle cx="47" cy="-90" r="12" fill="white"/>
+    
+    <!-- Big smile -->
+    <path d="M -120 40 Q 0 120 120 40" stroke="#0F0F0F" stroke-width="30" fill="none" stroke-linecap="round"/>
+  </g>
+</svg>
