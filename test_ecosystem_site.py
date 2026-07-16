@@ -99,6 +99,9 @@ class PickleEcosystemSiteTest(unittest.TestCase):
 
     def test_capital_page_has_required_boundaries(self):
         text = visible_text(PAGES["capital"])
+        home = visible_text(PAGES["home"])
+        self.assertIn("pickle vc coming soon", home)
+        self.assertIn("coming soon", text)
         for phrase in ["selective", "diligence", "private", "does not guarantee", "not an offer"]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
