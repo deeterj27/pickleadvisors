@@ -35,6 +35,8 @@ function send(method, params = {}) {
 }
 await send('Page.enable');
 await send('Runtime.enable');
+await send('Network.enable');
+await send('Network.setCacheDisabled', { cacheDisabled: true });
 await send('Emulation.setDeviceMetricsOverride', {
   width, height, deviceScaleFactor: 1, mobile: width < 700, screenWidth: width, screenHeight: height,
 });

@@ -1,233 +1,218 @@
-# Pickle Ecosystem Editorial Design System
+# Pickle Advisors clean editorial design system
 
 ## Concept
 
-**The Operator's Newsroom**
+**Three businesses. One clear front door.**
 
-A working editorial desk for companies being built, backed, and published. The system borrows the authority of a financial briefing, the speed of a newsroom, and the precision of an operator's dashboard without becoming a newspaper costume or a generic SaaS interface.
+Pickle should be understood before it is admired. The website explains three distinct businesses in plain language, then proves them with real work. Editorial character comes from typography, photography, and judgment. It does not come from newsroom decoration.
 
 ## Reference translation
 
-### Fitt Insider: adopt
+### Fitt Insider: primary structural reference
 
-- Clear category thesis before the content grid
-- Editorial metadata, rules, and disciplined modular rhythm
-- Media and platform/services in one navigation system
-- Publication as proof of domain intelligence
-- Repeated but restrained newsletter/conversion modules
+Adopt:
 
-### Fitt Insider: reject
+- One sentence that explains the product
+- Restrained navigation with actual destination names
+- One clear conversion near the top
+- Real content visible in the first viewport
+- Simple section labels, rules, and repeatable image cards
+- Wide whitespace and a mostly neutral canvas
+- Media integrations that feel native to the page
 
-- A homepage dominated by a large article archive
-- Media-first hierarchy that buries high-intent advisory conversion
-- Generic publication thumbnails without a strong Pickle point of view
+Do not copy:
 
-### Feed Me: adopt
+- Fitt's logo, typeface, green-yellow, health taxonomy, or article archive
+- A publication-first hierarchy that hides Pickle's advisory conversion
+- Sticky newsletter overlays
 
-- Founder voice as a core product feature
-- One-line publication promise
-- Visible social proof and personality
-- Commercial/community links that feel native to the editorial identity
+### The New Consumer: supporting editorial reference
 
-### Feed Me: reject
+Adopt:
 
-- Substack-native modal dependence
-- Personal-brand whimsy that weakens implementation and capital credibility
-- Newsletter subscription as the only meaningful conversion
+- Founder point of view
+- Real consumer-market artifacts
+- Clear value to operators, founders, and investors
 
-### Counter Service and Breaking News Desk: adopt
+Reject:
 
-- Strong mastheads and compact utility labels
-- High-contrast headlines
-- Rules, rails, issue codes, timestamps, and section markers
-- A repeatable system that makes every artifact recognizable
+- Long introductory copy
+- Membership pricing and gated research structure
+- Personal publication identity as the entire company
 
-### Deet's Eats editorial system: adopt
+### Forerunner: supporting capital reference
 
-- Warm paper, ink, deep green, and acid-lime palette
-- Serif display type paired with utilitarian sans
-- Dot-grid paper texture
-- Left rail / desk label concept
-- Crisp bordered modules and one black inversion module
-- Confident CTA band and visible footer metadata
+Adopt:
 
-### Public sell sheets: reject
+- Sparse capital language
+- Confidence through restraint
+- Simple navigation and low visual noise
 
-- A literal one-page print layout on the web
-- Dense pricing-card rhythm on the homepage
-- Full-height decorative rail on mobile
-- Public exact advisory pricing
+Reject:
+
+- Minimalism so extreme that the three businesses become unclear
+- Venture language that implies Pickle VC is already operating
+
+## Information architecture
+
+Primary navigation uses business names:
+
+1. **Advisory**: Pickle Advisors
+2. **Pickle VC**: coming soon
+3. **Deet's Eats**: media
+4. **AI Audit**: primary conversion
+
+Build, Back, and Publish are supporting verbs. They are not the navigation labels or the only explanation of the company.
+
+## Homepage flow
+
+1. One plain-language company statement and one primary CTA
+2. Three clearly separated business blocks
+3. One consolidated Deet's Eats proof section with direct signup
+4. One compact founder and AI Audit conversion section
+5. Simple footer with boundaries
+
+Remove repeated ecosystem thesis sections, decorative signal rails, duplicated media sections, and artifact grids that restate the same idea.
+
+## Media page flow
+
+1. Clear Deet's Eats promise
+2. Three uniform format cards using real assets
+3. Compact latest-episode player
+4. Direct Deeter Digest signup
+5. Simple partnership explanation and CTA
+
+The Spotify player should use the compact 152px format. The official Substack embed remains the subscription system.
+
+## Copy rules
+
+- Name the business before describing its philosophy
+- Use concrete nouns: workflows, dashboards, podcast, newsletter, video, investment platform
+- Keep paragraphs to two or three sentences
+- Do not use em dashes
+- Do not use “ecosystem” when “company,” “business,” or a specific brand name is clearer
+- Do not imply Pickle VC is active before launch
+- Do not imply advisory guarantees media coverage or capital
 
 ## Color tokens
 
-- `--paper: #E8DED0`
-- `--paper-light: #F6F0E7`
-- `--ink: #10110F`
-- `--rule: #282A25`
-- `--pickle: #087B36`
-- `--pickle-bright: #00C851`
-- `--lime: #B8FF38`
-- `--muted: #625F57`
-- `--white: #FFFDF8`
-- `--danger: #B23A2E`
+- `--canvas: #FAF8F3` for the primary page background
+- `--surface: #FFFFFF` for cards and embeds
+- `--surface-soft: #F1EDE5` for secondary bands
+- `--ink: #11120F` for primary type
+- `--muted: #66665F` for supporting type
+- `--rule: #D6D1C7` for quiet borders
+- `--green: #087B36` for brand and links
+- `--green-dark: #075C2A` for hover and dark sections
+- `--lime: #DDF77A` for the single primary action highlight
 
 ### Color rules
 
-- Warm paper is the default editorial canvas.
-- Ink is the primary type and dark-surface color.
-- Deep green identifies Pickle and structural rails.
-- Acid lime is reserved for active signals, underlines, small data labels, and one primary CTA at a time.
-- Bright legacy green may appear in Deet's D bug but should not flood large surfaces.
-- Pink/coral is removed from the core website system. It may appear only inside an original media artifact that already uses it.
+- The canvas is mostly neutral and untextured
+- Green is an accent, not a full-page costume
+- Lime appears on one primary action at a time
+- Black inversion is limited to the final CTA or a compact capital module
+- Original Deet's Eats assets keep their own colors inside image frames
 
 ## Typography
 
-### Display
+### Primary display and body
 
-`Georgia, 'Times New Roman', serif`
+Use Archivo for navigation, body, hero statements, and clean interface hierarchy.
 
-Use for editorial hero statements, major section theses, and selected pull quotes. Large, high-contrast, tight line-height. Do not use for body copy or every card title.
+### Editorial accent
 
-### Body and UI
+Use Georgia for business names, selected section headings, and Deet's Eats titles. Do not use oversized serif type for every major statement.
 
-`Archivo, Arial, sans-serif`
+### Utility
 
-Use local Archivo 400, 700, and 900 files. This is the primary body, navigation, card, and CTA face.
+Use Space Grotesk for small labels, status, and compact metadata.
 
-### Utility and numbers
+### Scale
 
-`'Space Grotesk', Arial, sans-serif`
-
-Use for prices if ever approved, issue codes, data values, CTA labels, and compact system readouts.
-
-### Metadata
-
-Use Archivo or Space Grotesk at small sizes with generous letter spacing. Monospace may be used sparingly for dates, route-like labels, or system status, but not as a default AI cliché.
-
-### Punctuation
-
-Do not use em dashes anywhere on the website. Use a period, comma, colon, or rewrite the sentence.
+- Homepage H1: 64 to 78px desktop, 42 to 52px mobile
+- Page H1: 58 to 72px desktop, 42 to 50px mobile
+- Section title: 38 to 54px desktop, 32 to 40px mobile
+- Card title: 24 to 32px
+- Body: 16 to 19px
 
 ## Layout
 
-### Desktop
+- Maximum width: 1240px
+- Desktop gutters: 48 to 64px
+- Mobile gutters: 20px
+- Header height: 72px desktop, 68px mobile
+- Section padding: 80 to 96px desktop, 52 to 64px mobile
+- Use two or three columns only when the content genuinely benefits
+- First proof should appear within the first mobile viewport or immediately after it
 
-- Max content width: 1320px
-- Outer gutters: 40 to 64px
-- Twelve-column editorial grid
-- Major sections separated by full-width rules, not floating rounded containers
-- Alternating dense editorial bands and quieter reading space
-- Asymmetry is intentional: 7/5, 8/4, and 5/7 splits are preferred over repeated thirds
-
-### Mobile
-
-- 20px outer gutters at 390px and 430px
-- No horizontal overflow
-- Navigation control remains visible and operable
-- Hero display type uses controlled line breaks and `overflow-wrap`
-- Rails collapse into top labels, not left-side vertical strips
-- Primary CTA remains visible without forcing two full-width buttons above the first proof point
-- Editorial modules reorder by argument, not by desktop source order alone
-
-## Surfaces and rules
-
-- Square or 2 to 8px corner radii; avoid pill-card saturation
-- One-pixel ink rules are the primary divider
-- Three-pixel green rule may be used for mastheads or active desk labels
-- Dot-grid texture: 7px repeat, `#50493F` at approximately 0.12 to 0.14 opacity
-- Shadows are rare. Use border, contrast, and whitespace first.
-- Dark modules invert to ink background with paper type and lime details
-
-## Core components
+## Components
 
 ### Masthead
 
-Text-led Pickle Advisors wordmark, ecosystem navigation, one primary CTA, and a visible mobile menu control. The retired arrow-P mark is not used in the masthead or public assets.
+Text-led PICKLE ADVISORS wordmark. Navigation uses Advisory, Pickle VC, Deet's Eats, and AI Audit. No signal rail below the header.
 
-### Signal rail
+### Primary button
 
-A horizontal or wrapping strip of short operating signals such as `AI IMPLEMENTATION`, `CAPITAL PERSPECTIVE`, `MEDIA INTELLIGENCE`, and `BROOKLYN / NYC`. It should feel like metadata, not a stock ticker.
+Solid lime or green, 4 to 8px radius, no shadow, no transform-heavy interaction.
 
-### Desk module
+### Business block
 
-Each pillar receives:
+Each business receives:
 
-- Issue-style number
-- Verb: Build, Back, Publish
-- One-line job
-- Three concrete outputs
-- One relevant proof artifact
-- One CTA
+- supporting verb and number
+- actual business name
+- one plain-language sentence
+- launch status when relevant
+- one destination link
 
-The three modules should not be identical cards. Each gets a distinct composition while sharing the same type and rule system.
+All three use the same calm surface. Pickle VC does not become a dramatic black card.
 
-### Artifact frame
+### Media card
 
-Use real work: audit pages, reports, content cards, podcast covers, editorial graphics, or genuine workflow screenshots. Include source/category/date metadata. Never invent metrics or UI. Do not publish sell sheets as website content.
+Uniform image ratio, simple format label, title, one sentence, and destination link. No oversized vertical card paired with tiny horizontal cards.
 
-### Founder block
+### Provider embed
 
-Use the current `jonathan.jpeg`. Crop deliberately with `object-position` tuned at desktop, 430px, and 390px. Pair the portrait with a concise ecosystem biography and verified proof. Avoid a large generic rounded photo card.
+Bordered white surface with no decorative shadow. Spotify uses 152px compact height. Substack remains large enough to show its complete form and terms.
 
-### CTA band
+### Founder proof
 
-One strong sentence, one primary action, one secondary text link, and utility metadata. Use deep green or ink with lime details. Do not return to a disconnected pink section.
+Use the current Jonathan photo at a restrained size. The copy explains why one operator can credibly connect the three businesses. It does not repeat the entire career history.
 
-## Page signatures
+## Mobile rules
 
-### Homepage
-
-Editorial overview with ecosystem thesis and high-intent conversion.
-
-### Advisory
-
-System diagrams, operating artifacts, audit flow, and installed outcomes. Dark ink plus paper.
-
-### Capital
-
-More restrained and institutional: ink, paper, lime signal, sparse copy, explicit private-conversation boundary.
-
-### Media
-
-Most expressive page. Use real Deet's cards, stronger image density, content taxonomy, an official Substack signup embed, and the latest verified Spotify episode embed.
-
-### Retired resource routes
-
-There is no Resources section in the public information architecture. Legacy Resources and GEO checklist URLs redirect to Deet's Eats Media and remain `noindex` so old links do not break.
-
-## Motion
-
-- Small hover shifts on arrows, rules, and underlines only
-- Respect `prefers-reduced-motion`
-- No scroll-jacking, floating gradient blobs, or continuous marquees that impede reading
-- If a signal rail moves, it must pause on hover/focus and remain readable without animation
-
-## Accessibility
-
-- Body text contrast must meet WCAG AA
-- Lime must not carry body text on paper without a dark container
-- Visible focus states use ink + lime outline
-- All navigation and menu controls are keyboard accessible
-- Semantic headings remain sequential
-- Images require meaningful alt text or empty alt when decorative
-- Minimum 44px touch targets on mobile
+- No horizontal signal rail
+- No giant multi-line serif headline
+- One primary CTA in the hero
+- Business blocks stack with visible names and boundaries
+- Media cards use consistent image proportions
+- Spotify and Substack embeds fill the available width
+- Navigation remains a simple full-screen menu
+- No horizontal overflow at 390px or 430px
 
 ## Anti-patterns
 
-- Generic SaaS three-card service grid
-- AI gradients, glowing orbs, circuit patterns, robot icons
-- Fake dashboards or invented client metrics
-- Excessive pills and rounded rectangles
-- Newspaper cosplay: fake paper tears, random stamps, or overused typewriter effects
-- Making every section green
-- Treating Deet's Eats as a logo row instead of a media product
+- Newsroom costume
+- Dot-grid texture across large sections
+- Giant highlighted serif headlines
+- Repeated explanations of the ecosystem
+- Dark card inserted only for visual drama
+- Multiple media grids showing the same assets
+- Decorative metadata that does not help a decision
+- Large blank provider iframe areas
+- Generic three-card SaaS services with icons
+- Public sell sheets or Resources navigation
 
 ## Quality gate
 
-The redesigned site must:
+The redesign must:
 
-1. Be visibly stronger than the current production baseline at 1440px.
-2. Have no horizontal overflow at 390px or 430px.
-3. Preserve a readable hero, visible navigation, primary CTA, and first ecosystem proof at mobile sizes.
-4. Use real artifacts and current Jonathan photography.
-5. Keep advisory conversion primary while making capital and media first-class pillars.
+1. Explain all three businesses in one viewport on desktop
+2. Reach the first business proof faster than the current mobile baseline
+3. Keep AI Audit as the primary revenue CTA
+4. Show real Deet's Eats assets without duplicate sections
+5. Keep Pickle VC visibly marked Coming Soon
+6. Keep editorial, advisory, and capital boundaries intact
+7. Pass desktop, 390px, and 430px visual QA with no overflow
+8. Be visibly quieter and easier to scan than the current candidate
