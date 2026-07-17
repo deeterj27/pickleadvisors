@@ -1,14 +1,33 @@
-# Pickle Advisors clean editorial design system
+# Pickle Advisors / Deet's Eats editorial design system
 
 ## Concept
 
 **Three businesses. One clear front door.**
 
-Pickle should be understood before it is admired. The website explains three distinct businesses in plain language, then proves them with real work. Editorial character comes from typography, photography, and judgment. It does not come from newsroom decoration.
+Pickle should be understood before it is admired. The website explains three distinct businesses in plain language, then proves them with real work. The spacing and information architecture stay clean. The visual identity comes from the approved Deet's Eats Breaking News Desk and agency partner sell sheet.
 
 ## Reference translation
 
-### Fitt Insider: primary structural reference
+### Breaking News Desk and agency sell sheet: visual authority
+
+Adopt:
+
+- Exact paper `#E8DED0`, ink `#10110F`, green `#087B36`, and lime `#B8FF38`
+- Subtle 7px dot texture on paper fields
+- Georgia or Libre Caslon editorial headlines with Archivo or DM Sans utility copy
+- Connected green masthead blocks and narrow rails
+- Heavy 2px black rules and square card geometry
+- Lime headline underlines and detail accents
+- One controlled dark featured module
+
+Do not copy literally:
+
+- Fixed print-canvas geometry
+- Permanent vertical side labels on every section
+- Social-card image placement on transactional or form surfaces
+- Sell-sheet pricing or public package details
+
+### Fitt Insider: structural reference only
 
 Adopt:
 
@@ -17,12 +36,12 @@ Adopt:
 - One clear conversion near the top
 - Real content visible in the first viewport
 - Simple section labels, rules, and repeatable image cards
-- Wide whitespace and a mostly neutral canvas
+- Wide whitespace and fast movement into real content
 - Media integrations that feel native to the page
 
 Do not copy:
 
-- Fitt's logo, typeface, green-yellow, health taxonomy, or article archive
+- Fitt's logo, typeface, white canvas, green-yellow, health taxonomy, or article archive
 - A publication-first hierarchy that hides Pickle's advisory conversion
 - Sticky newsletter overlays
 
@@ -62,7 +81,7 @@ Primary navigation uses business names:
 3. **Deet's Eats**: media
 4. **AI Audit**: primary conversion
 
-Build, Back, and Publish are supporting verbs. They are not the navigation labels or the only explanation of the company.
+Build, Back, and Cover are supporting verbs. They are not the navigation labels or the only explanation of the company.
 
 ## Homepage flow
 
@@ -96,22 +115,22 @@ The Spotify player should use the compact 152px format. The official Substack em
 
 ## Color tokens
 
-- `--canvas: #FAF8F3` for the primary page background
-- `--surface: #FFFFFF` for cards and embeds
-- `--surface-soft: #F1EDE5` for secondary bands
-- `--ink: #11120F` for primary type
-- `--muted: #66665F` for supporting type
-- `--rule: #D6D1C7` for quiet borders
+- `--canvas: #E8DED0` for the primary paper background
+- `--surface: #FFFDF7` for cards and embeds
+- `--surface-soft: #D7CABC` for secondary bands
+- `--ink: #10110F` for primary type
+- `--muted: #625F57` for supporting type
+- `--rule: #282A25` for editorial borders
 - `--green: #087B36` for brand and links
 - `--green-dark: #075C2A` for hover and dark sections
-- `--lime: #DDF77A` for the single primary action highlight
+- `--lime: #B8FF38` for primary action and editorial highlights
 
 ### Color rules
 
-- The canvas is mostly neutral and untextured
-- Green is an accent, not a full-page costume
-- Lime appears on one primary action at a time
-- Black inversion is limited to the final CTA or a compact capital module
+- The canvas uses the approved paper and subtle dot texture
+- Green connects masthead blocks, rails, CTA fields, and the footer
+- Lime highlights primary actions, underlines, and utility labels
+- Black inversion is limited to one featured module at a time
 - Original Deet's Eats assets keep their own colors inside image frames
 
 ## Typography
@@ -150,11 +169,11 @@ Use Space Grotesk for small labels, status, and compact metadata.
 
 ### Masthead
 
-Text-led PICKLE ADVISORS wordmark. Navigation uses Advisory, Pickle VC, Deet's Eats, and AI Audit. No signal rail below the header.
+Text-led PICKLE ADVISORS wordmark inside a connected green masthead block. Navigation uses Advisory, Pickle VC, Deet's Eats, and AI Audit. No signal ticker below the header.
 
 ### Primary button
 
-Solid lime or green, 4 to 8px radius, no shadow, no transform-heavy interaction.
+Solid lime or green, square corners, 2px ink border, no shadow, no transform-heavy interaction.
 
 ### Business block
 
@@ -166,7 +185,7 @@ Each business receives:
 - launch status when relevant
 - one destination link
 
-All three use the same calm surface. Pickle VC does not become a dramatic black card.
+All three use the same warm-white surface, heavy black rule, green utility labels, and square geometry. Pickle VC does not become a dramatic black card.
 
 ### Media card
 
@@ -193,8 +212,8 @@ Use the current Jonathan photo at a restrained size. The copy explains why one o
 
 ## Anti-patterns
 
-- Newsroom costume
-- Dot-grid texture across large sections
+- Copying fixed social-card composition onto every web section
+- Dot texture with contrast high enough to compete with copy
 - Giant highlighted serif headlines
 - Repeated explanations of the ecosystem
 - Dark card inserted only for visual drama

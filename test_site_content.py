@@ -6,6 +6,7 @@ import unittest
 
 HOME_HTML = Path("index.html").read_text()
 MEDIA_HTML = Path("media/index.html").read_text()
+SITE_CSS = Path("assets/site.css").read_text().lower()
 
 
 def visible_text(source: str) -> str:
@@ -44,7 +45,7 @@ class PickleHomepageContentTest(unittest.TestCase):
             "three businesses built around better consumer brands",
             "pickle advisors installs ai operating systems",
             "pickle vc is a future investment platform",
-            "deet's eats publishes food and consumer media",
+            "deet's eats covers consumer, wellness, and food culture",
         ]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, HOME_TEXT)
@@ -57,6 +58,7 @@ class PickleHomepageContentTest(unittest.TestCase):
             self.assertIn(label, link_text)
         for old_label in ["build", "back", "publish"]:
             self.assertNotIn(old_label, link_text)
+        self.assertIn("cover", HOME_TEXT)
 
     def test_homepage_is_concise_and_revenue_led(self):
         self.assertLessEqual(len(re.findall(r"<section\b", HOME_HTML, flags=re.I)), 4)
@@ -92,6 +94,27 @@ class PickleHomepageContentTest(unittest.TestCase):
                 self.assertNotIn(retired, combined)
         self.assertNotIn("—", combined)
         self.assertNotIn("linktr.ee/deetseatnyc", combined)
+
+    def test_approved_deets_palette_and_brand_layer_are_locked(self):
+        for token in [
+            "--canvas:#e8ded0",
+            "--surface:#fffdf7",
+            "--ink:#10110f",
+            "--green:#087b36",
+            "--lime:#b8ff38",
+            "background-size:7px 7px",
+            "approved deet's eats brand layer",
+        ]:
+            with self.subTest(token=token):
+                self.assertIn(token, SITE_CSS)
+        self.assertNotIn("#faf8f3", SITE_CSS)
+        self.assertNotIn("#ddf77a", SITE_CSS)
+
+    def test_media_scope_is_broad_and_concise(self):
+        phrase = "consumer, wellness, and food culture"
+        self.assertIn(phrase, HOME_TEXT)
+        self.assertIn(phrase, MEDIA_TEXT)
+        self.assertNotIn(">Publish<", HOME_HTML)
 
 
 if __name__ == "__main__":

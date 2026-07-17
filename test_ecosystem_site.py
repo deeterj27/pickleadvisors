@@ -83,7 +83,7 @@ class PickleEcosystemSiteTest(unittest.TestCase):
 
     def test_homepage_names_the_full_ecosystem_and_primary_conversion(self):
         text = visible_text(PAGES["home"])
-        for phrase in ["build", "back", "publish", "ai advisory", "pickle vc", "deet's eats", "ai audit"]:
+        for phrase in ["build", "back", "cover", "ai advisory", "pickle vc", "deet's eats", "ai audit"]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
         source = PAGES["home"].read_text()
