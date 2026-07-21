@@ -40,15 +40,42 @@ class LinkParser(HTMLParser):
 
 
 class PickleHomepageContentTest(unittest.TestCase):
-    def test_hero_explains_all_three_businesses_plainly(self):
+    def test_hero_leads_with_buyer_outcome_and_explains_all_three_businesses(self):
         for phrase in [
-            "three businesses built around better consumer brands",
-            "pickle advisors installs ai operating systems",
-            "pickle vc is a future investment platform",
-            "deet's eats covers consumer, wellness, and food culture",
+            "build a stronger consumer brand, without more chaos",
+            "operational drag costing your team time, margin, and attention",
+            "pickle advisors builds systems",
+            "deet's eats tracks the market",
+            "pickle vc is a future selective investment platform",
         ]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, HOME_TEXT)
+        match = re.search(r'<h1[^>]*>(.*?)</h1>', HOME_HTML, flags=re.I | re.S)
+        self.assertIsNotNone(match)
+        headline = re.sub(r'<[^>]+>', ' ', match.group(1) if match else '')
+        self.assertLessEqual(len(re.findall(r"[A-Za-z']+", headline)), 10)
+
+    def test_trust_objections_and_final_cta_reduce_purchase_friction(self):
+        for phrase in [
+            "10+ years",
+            "daily market view",
+            "will this become another software project",
+            "is ai worth it for a team our size",
+            "will you work with our existing team and tools",
+            "manual work compounds",
+            "no generic ai roadmap",
+        ]:
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, HOME_TEXT)
+        self.assertNotIn("placeholder testimonial", HOME_TEXT)
+        self.assertNotIn("client name", HOME_TEXT)
+
+    def test_business_order_matches_current_revenue_and_maturity(self):
+        advisor = HOME_HTML.index('<h3>Pickle Advisors</h3>')
+        media = HOME_HTML.index("<h3>Deet's Eats</h3>")
+        capital = HOME_HTML.index('<h3>Pickle VC</h3>')
+        self.assertLess(advisor, media)
+        self.assertLess(media, capital)
 
     def test_navigation_uses_business_names_not_abstract_verbs(self):
         parser = LinkParser()
@@ -66,7 +93,8 @@ class PickleHomepageContentTest(unittest.TestCase):
         parser.feed(HOME_HTML)
         audit_links = [link for link in parser.links if "/audit/" in link["href"]]
         self.assertGreaterEqual(len(audit_links), 3)
-        self.assertIn("the highest-intent place to begin is the ai audit", HOME_TEXT)
+        self.assertIn("start with the ai audit", HOME_TEXT)
+        self.assertIn("the cost of waiting is compounding work", HOME_TEXT)
 
     def test_three_businesses_are_visually_equal_and_bounded(self):
         self.assertEqual(HOME_HTML.count('class="business-card"'), 3)

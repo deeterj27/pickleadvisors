@@ -1,188 +1,190 @@
-# Pickle Ecosystem Website Strategy
+# Pickle Advisors Website Strategy and CRO Foundation
 
-## Project north star
+## 1. Premium brand strategy
 
-Reposition Pickle Advisors as one operator-led ecosystem for ambitious brands:
+### Business type
 
-1. **Build** through AI advisory and implementation.
-2. **Back** through selective capital, operator diligence, and founder support.
-3. **Publish** through Deet's Eats Media and market intelligence.
+Pickle is a founder-led operating company for ambitious consumer brands. It combines three separate businesses:
 
-The site must make the three parts feel mutually reinforcing without implying that advisory clients buy editorial coverage or that Pickle VC is making a public securities offering.
+1. **Pickle Advisors** builds practical AI-enabled operating systems.
+2. **Deet's Eats** covers consumer, wellness, food, retail, and founder culture through independent media and disclosed partnerships.
+3. **Pickle VC** is a future selective investment platform informed by operator judgment and market intelligence.
 
-## Category
+The homepage must lead with the paid, available-now offer: Pickle Advisors. Deet's Eats is differentiated proof and a separate media business. Pickle VC stays clearly marked Coming Soon.
 
-**An operating platform for ambitious brands.**
+### Homepage sections in conversion order
 
-Pickle is not a generic AI consultancy, a traditional agency, a public investment fund, or a media company with consulting bolted on. It is an operator-led platform that combines practical implementation, capital perspective, and editorial intelligence.
+1. **Outcome-led hero**: state the buyer's desired outcome, name the operational pain, and make the AI Audit the only primary action.
+2. **Three businesses**: explain Pickle Advisors, Deet's Eats, and Pickle VC in order of current buyer relevance and maturity.
+3. **Real market proof**: show current Deet's Eats formats and real artifacts instead of logos, fake dashboards, or unsupported claims.
+4. **Founder trust, objections, and final CTA**: establish Jonathan's credibility, answer purchase hesitations, and close on the AI Audit.
 
-## Primary promise
+### Premium design choices
 
-**Build better companies. Back the right ones. Publish the stories that matter.**
+- Use the approved Deet's Eats paper, ink, green, and lime palette. It is distinctive and owned, not borrowed luxury shorthand.
+- Pair editorial serif headlines with precise utility type and restrained body copy.
+- Use strong rules, square geometry, generous spacing, and controlled density instead of gradients, glow, and soft SaaS cards.
+- Show real editorial work and the real founder. Premium pricing is justified by judgment, specificity, and direct senior involvement, not decorative polish.
+- Keep one clear CTA hierarchy. AI Audit is primary. Business-page links and media links are secondary.
+- Avoid exact public advisory pricing. The site should earn the conversation before anchoring scope.
 
-Supporting line:
+### Tone of voice
 
-**Pickle combines AI implementation, operator-led advisory, selective capital, and Deet's Eats Media in one ecosystem built around ambitious brands.**
+Direct, calm, specific, founder-friendly, and commercially literate. The copy should sound like an operator who understands margin, cash, handoffs, retail, ecommerce, and implementation. Avoid consultant theater, AI hype, generic transformation language, and legal ambiguity.
 
-Legacy line retained as a supporting signature:
+### Three common industry mistakes
 
-**Your Brand's Operating System.**
+1. **Leading with AI instead of the business problem.** Avoid this by naming the operational drag, decision gap, or margin risk first. AI is one implementation method.
+2. **Selling advice without showing what gets built.** Avoid this by naming workflows, reporting systems, planning tools, automations, owners, and operating cadence.
+3. **Using inflated proof or fake product visuals.** Avoid this by using real Deet's Eats artifacts, the actual founder, verified experience, and honest lifecycle labels.
 
-## Revenue hierarchy
+## 2. Homepage hero
 
-1. Primary conversion: **Start with an AI Audit**
-2. Secondary conversion: **Book a strategy call**
-3. Media conversion: **Work with Deet's Eats**
-4. Capital conversion: **Start a private conversation**
-5. Audience conversion: **Read / watch / subscribe**
+### Headline
 
-Do not publish exact advisory or implementation pricing. Media products may link to approved public media materials where appropriate. Capital language must remain private-conversation oriented and must not promise funding, returns, or access.
+**Build a stronger consumer brand, without more chaos.**
 
-## Audience hierarchy
+This is eight words, natural, outcome-led, and specific to a scaling consumer company.
 
-### Primary buyer
+### Supporting line
 
-Founders and operators at ambitious consumer, commerce, service, and creator-led businesses who have outgrown founder-memory operations and disconnected tools.
-
-### Secondary buyers
-
-- Agencies and operators that need an implementation partner
-- Investors and portfolio teams that need operator diligence or portfolio support
-- Brands and PR teams that need credible media partnerships
-- Founders seeking selective capital and a connected operator network
-
-### Important wedge
-
-Consumer brands and CPG remain a visible source of credibility, relationships, and media intelligence. They are not the boundary of the advisory business.
-
-## Ecosystem architecture
-
-### 01 Build: Pickle AI advisory + implementation
-
-Pickle diagnoses operational bottlenecks, then installs the systems: AI workflows, reporting, dashboards, planning tools, automations, GEO visibility, and the operating cadence to keep using them.
-
-Proof posture:
-
-- Show real artifacts, working methods, and installed outcomes
-- Avoid generic dashboard mockups and abstract AI diagrams
-- Emphasize diagnose, build, operate
-
-Primary CTA: **Start with an AI Audit**
-
-### 02 Back: Pickle VC
-
-Pickle brings operator-led diligence, selective capital, founder support, and a network informed by real operating and market signals.
-
-Proof posture:
-
-- Describe perspective, selection, diligence, and support
-- Do not imply a currently open fund, guaranteed capital, or public solicitation
-- Keep specific opportunities in private conversations
-
-Primary CTA: **Start a private conversation**
-
-### 03 Publish: Deet's Eats Media
-
-Deet's Eats is a first-class media property covering food, brands, culture, capital, retail, and the operators shaping what is next. It includes Counter Service, Breaking News Desk, The Deeter Digest, Unpackaged Goods, social channels, and disclosed brand/agency partnerships.
-
-Proof posture:
-
-- Use real covers, reports, show art, and media products
-- Distinguish independent editorial coverage from paid partnerships
-- Do not reduce Deet's Eats to “the content engine behind the advisory”
-
-Primary CTA: **Work with Deet's Eats**
-
-## The flywheel
-
-1. Media creates a high-frequency view of founders, launches, culture, and capital.
-2. Advisory work creates firsthand understanding of the systems that make companies scale.
-3. Capital applies that intelligence to selective opportunities and founder support.
-4. The ecosystem compounds relationships, judgment, audience, and operating credibility.
-
-### Required boundary language
-
-Editorial judgment remains independent. Paid partnerships are disclosed. Advisory work does not guarantee coverage or capital. Capital conversations are private and selective.
-
-## Homepage message sequence
-
-1. **Utility rail:** Pickle Advisors / Build / Back / Publish / Resources / Start an AI Audit
-2. **Hero:** ecosystem category, primary promise, concise explainer, two CTAs
-3. **Ticker / signal rail:** AI implementation, operator systems, capital perspective, media intelligence
-4. **Three operating desks:** Build, Back, Publish with distinct jobs and CTAs
-5. **The operating thesis:** why the combination creates better judgment and execution
-6. **Selected work / artifacts:** real audits, systems, editorial cards, media formats, resources
-7. **Jonathan:** current photo plus rewritten ecosystem biography
-8. **Deet's Eats live desk:** real formats and links, not an empty article grid
-9. **Proof / credibility:** only verified metrics and claims
-10. **Primary close:** Start with an AI Audit
-11. **Footer:** ecosystem map, contact, legal/editorial boundary language
-
-## Homepage copy direction
-
-### Hero label
-
-`THE OPERATING PLATFORM FOR AMBITIOUS BRANDS`
-
-### Hero headline
-
-**Build better companies. Back the right ones. Publish the stories that matter.**
-
-### Hero body
-
-**Pickle combines AI implementation, operator-led advisory, selective capital, and Deet's Eats Media in one ecosystem built around ambitious brands.**
+**Pickle finds the operational drag costing your team time, margin, and attention, then installs practical AI workflows and decision systems around the way your business actually runs.**
 
 ### Primary CTA
 
-**START WITH AN AI AUDIT**
+**Start with the AI Audit**
 
 ### Secondary CTA
 
-**EXPLORE THE ECOSYSTEM**
+**See how Pickle works**
 
-### Three desk labels
+### Ideal hero visual
 
-- `01 / BUILD` — AI advisory + implementation
-- `02 / BACK` — Pickle VC
-- `03 / PUBLISH` — Deet's Eats Media
+Do not use a stock luxury image or fake dashboard. Use an editorial proof ledger that combines three honest signals: senior operator experience, founder-led implementation, and daily consumer-market intelligence through Deet's Eats. The first real imagery should be current Deet's Eats work immediately below the business architecture.
 
-## Jonathan biography direction
+## 3. Trust-building system
 
-Preserve the current photograph and the factual spine of the current biography. Rewrite it as one coherent operator story:
+### Trust signals
 
-- Built AI-enabled reporting and decision systems in finance and fund environments
-- Worked across startups, operations, structured products, and consumer businesses
-- Now installs practical AI and operating systems for founders
-- Builds market intelligence and relationships through Deet's Eats Media
-- Applies operator judgment to selective capital and founder support
+1. **10+ years across finance, startups, and consumer operations.** This signals technical and commercial pattern recognition without unsupported client-name theater.
+2. **Founder-led from diagnosis through implementation.** The buyer knows senior judgment will not disappear after the sale.
+3. **Daily consumer-market intelligence through Deet's Eats.** Pickle stays close to launches, retailers, founders, capital, and changing consumer behavior.
 
-Do not invent client logos, portfolio companies, exits, audience numbers, or testimonials. Every quantitative claim must be sourced before publication.
+### Draft-only testimonial placeholder
 
-## Voice
+**[PLACEHOLDER TESTIMONIAL. DO NOT PUBLISH.]**
 
-- Direct, analytical, founder-friendly
-- Editorial without magazine cosplay
-- Confident without inflated claims
-- Specific about installed work and business outcomes
-- Slightly irreverent in labels and punch lines, never in legal or capital language
-- No generic “unlock,” “transform,” “revolutionize,” or “future-proof” copy
+> "Pickle helped us replace recurring operational guesswork with a system our team could actually run."
+>
+> [Client name, title, company]
 
-## What the redesign must remove
+This must be replaced with a real, approved client quote before any testimonial appears on the public site. Until then, verified artifacts and honest experience are stronger than fabricated social proof.
 
-- Consumer-brand-only category framing in the hero
-- The current “consultancy plus media footer” hierarchy
-- Repetitive SaaS service cards
-- Generic green gradient/glow treatments
-- The disconnected pink CTA field
-- Unsupported proof language
-- Mobile overflow and clipped hero copy
-- Media positioned as a subsidiary proof point rather than a first-class pillar
+### Biggest concern response
 
-## Non-negotiables
+**Pickle does not force a software overhaul or automate work that is not ready. The first recommendation may be to simplify a process, clean an input, or keep a decision human.**
 
-- Preserve `jonathan.jpeg` and Jonathan's core biography
-- Preserve `/audit/`, `/resources/`, CNAME, analytics, sitemap, and robots behavior
-- No public exact advisory pricing
-- Real artifacts over fake software
-- Desktop, 390px, and 430px must be deliberately composed and verified
-- Live production proof before closure
+## 4. Offers in display order
+
+### 1. Pickle Advisors
+
+**Outcome:** Turn recurring operational drag into working workflows, reporting, planning, and AI-enabled decisions your team can actually run.
+
+### 2. Deet's Eats
+
+**Outcome:** Put a real launch or founder story in front of an informed consumer and operator audience through clearly disclosed media products, without buying favorable editorial opinion.
+
+### 3. Pickle VC, Coming Soon
+
+**Outcome:** A future selective investment platform designed to pair operator diligence, market context, and practical founder support.
+
+## 5. Top purchase objections
+
+### Will this become another software project?
+
+No. Pickle starts with the way work moves today and changes only what has a clear operating or commercial reason to change.
+
+### Is AI worth it for a team our size?
+
+Only when the work is repeatable, the inputs are usable, and a person can own the result. If those conditions are missing, Pickle fixes the foundation first or recommends not automating yet.
+
+### Will you work with our existing team and tools?
+
+Yes. Pickle is designed to clarify ownership and connect the people, agencies, operators, and systems already doing the work, not replace them by default.
+
+### What if our problems are bigger than one workflow?
+
+The AI Audit ranks the constraints so the first build creates leverage without pretending the entire company should be rebuilt at once.
+
+### Are advisory, media coverage, and capital bundled together?
+
+No. Each business stands on its own. Advisory does not guarantee media coverage or capital. Editorial judgment remains independent, paid partnerships are disclosed, and capital conversations are private and selective.
+
+## 6. Final call to action
+
+### Headline
+
+**Manual work compounds. Fix the first bottleneck now.**
+
+### Benefit of acting now
+
+**Identify the highest-leverage operating fix before growth adds another layer of exceptions, reporting gaps, and founder dependency.**
+
+### CTA
+
+**Start with the AI Audit**
+
+### Trust reminder
+
+**Founder-led. Built around your existing tools. No generic AI roadmap.**
+
+## 7. AI website-builder implementation prompt
+
+Build a premium, responsive static website for Pickle Advisors, a founder-led operating company for ambitious consumer brands. The site has three distinct businesses: Pickle Advisors for practical AI advisory and implementation, Deet's Eats for independent consumer-market media and disclosed partnerships, and Pickle VC as a clearly labeled future selective investment platform.
+
+Use this page order:
+
+1. Sticky masthead with Pickle Advisors wordmark, Advisory, Pickle VC, Deet's Eats, and AI Audit.
+2. Split hero with the headline "Build a stronger consumer brand, without more chaos." Add the supporting line, primary AI Audit CTA, secondary method anchor, three verified trust signals, and one concise sentence explaining the three-business company.
+3. Three business blocks ordered Pickle Advisors, Deet's Eats, Pickle VC. Keep the first two active and Pickle VC marked Coming Soon. Use outcome-focused copy and clear destination links.
+4. Deet's Eats proof section with real Counter Service, Breaking News Desk, and Unpackaged Goods assets plus The Deeter Digest signup CTA.
+5. Founder section with Jonathan Deeter's real photo, concise credibility copy, three trust points, five objection responses, and the final AI Audit CTA.
+6. Footer with business links and explicit independence boundaries.
+
+Use these colors: paper `#E8DED0`, warm surface `#FFFDF7`, ink `#10110F`, muted text `#625F57`, editorial green `#087B36`, dark green `#075C2A`, lime `#B8FF38`, and rule `#282A25`.
+
+Use Georgia for editorial display moments, Archivo for body/navigation, and Space Grotesk for metadata. Use square geometry, 2px editorial rules, no heavy shadows, no gradients, no glassmorphism, no emoji icons, no generic SaaS feature-card rhythm, and no fake dashboard. Keep the canvas warm and lightly textured. Use 1240px maximum width, 48 to 60px desktop gutters, 20px mobile gutters, 72px desktop header, 68px mobile header, and 72 to 96px desktop section spacing. Ensure the mobile hierarchy is intentionally composed at 390px and 430px with zero horizontal overflow. Keep the hero headline readable in the first viewport and the primary CTA visible without excessive scrolling.
+
+Do not publish exact advisory pricing, invented testimonials, unsupported metrics, client logos without permission, public funding language, or any suggestion that advisory buys coverage or capital.
+
+## 8. Skeptical first-time visitor review
+
+### Weaknesses in the previous candidate
+
+- "Three businesses built around better consumer brands" described Pickle's structure before giving the buyer a reason to care.
+- The future investment platform appeared before the active media business and interrupted the revenue path.
+- The hero had no immediate trust signals beyond confident design.
+- "AI operating systems" could sound like a software product or a large transformation project.
+- The final close explained the AI Audit but did not create a genuine reason to act now.
+- The site had no testimonial, case study, or direct objection handling. Since no approved testimonial exists, the correct fix is verified experience, real artifacts, honest boundaries, and purchase-risk answers.
+
+### Rewrite principle
+
+Lead with the buyer's operating outcome. Explain the method in plain language. Show real market proof. Make senior involvement explicit. Answer objections before the CTA. Keep the three businesses separate and honest.
+
+## 9. CRO review
+
+### Conversion opportunities
+
+- Keep AI Audit as the only primary action across masthead, hero, founder section, and close.
+- Move Pickle Advisors first, Deet's Eats second, and Pickle VC last to match availability and buyer intent.
+- Replace organization-first hero copy with an outcome-led headline and concrete operating pain.
+- Add trust near the first CTA rather than waiting for the founder section.
+- Use Deet's Eats artifacts as differentiated market proof, not as generic content cards.
+- Answer the five most likely objections before the final CTA.
+- Add honest urgency around compounding manual work, not fake scarcity.
+- Repeat the trust reminder under the final button to reduce perceived implementation risk.
+
+### Conversion standard
+
+A skeptical founder should understand within five seconds that Pickle helps growing consumer brands remove operational drag by installing practical systems, that the engagement is founder-led, that Deet's Eats provides real market intelligence, that Pickle VC is not yet active, and that the next step is the AI Audit.
