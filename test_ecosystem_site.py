@@ -6,11 +6,13 @@ import re
 import unittest
 
 ROOT = Path(__file__).parent
+REDIRECTS = {
+    "advisory": (ROOT / "advisory" / "index.html", "/#advisory"),
+    "capital": (ROOT / "capital" / "index.html", "/#capital"),
+    "media": (ROOT / "media" / "index.html", "/#media"),
+}
 PAGES = {
     "home": ROOT / "index.html",
-    "advisory": ROOT / "advisory" / "index.html",
-    "capital": ROOT / "capital" / "index.html",
-    "media": ROOT / "media" / "index.html",
     "audit": ROOT / "audit" / "index.html",
 }
 LEGACY_ROUTES = [
@@ -70,6 +72,12 @@ class PickleEcosystemSiteTest(unittest.TestCase):
         for name, path in PAGES.items():
             with self.subTest(name=name):
                 self.assertTrue(path.exists(), path)
+        for name, (path, target) in REDIRECTS.items():
+            with self.subTest(name=name):
+                self.assertTrue(path.exists(), path)
+                source = path.read_text().lower()
+                self.assertIn(f'content="0;url={target}"', source)
+                self.assertIn('name="robots" content="noindex"', source)
         for path in LEGACY_ROUTES:
             self.assertTrue(path.exists(), path)
 
@@ -93,32 +101,32 @@ class PickleEcosystemSiteTest(unittest.TestCase):
 
     def test_navigation_reaches_each_ecosystem_pillar(self):
         links = parse(PAGES["home"]).links
-        for href in ["/advisory/", "/capital/", "/media/", "/audit/"]:
+        for href in ["#advisory", "#media", "#capital", "/audit/"]:
             with self.subTest(href=href):
                 self.assertIn(href, links)
         self.assertNotIn("/resources/", links)
 
     def test_advisory_explains_installation_not_generic_strategy(self):
-        text = visible_text(PAGES["advisory"])
+        text = visible_text(PAGES["home"])
         for phrase in ["diagnose", "build", "operate", "workflows", "automation", "geo", "ai audit"]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
 
     def test_capital_page_has_required_boundaries(self):
-        text = visible_text(PAGES["capital"])
-        home = visible_text(PAGES["home"])
-        self.assertIn("pickle vc coming soon", home)
+        text = visible_text(PAGES["home"])
+        home = text
+        self.assertIn("pickle vc", home)
         self.assertIn("coming soon", text)
         for phrase in ["selective", "diligence", "private", "does not guarantee", "not an offer"]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
 
     def test_media_page_uses_real_formats_and_boundary_language(self):
-        text = visible_text(PAGES["media"])
+        text = visible_text(PAGES["home"])
         for phrase in ["counter service", "breaking news desk", "the deeter digest", "unpackaged goods", "paid partnerships", "editorial"]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
-        source = PAGES["media"].read_text()
+        source = PAGES["home"].read_text()
         self.assertIn("/assets/media/", source)
         self.assertIn("https://deetseatsnyc.substack.com/embed", source)
         self.assertIn("https://open.spotify.com/embed/show/6moZEYjORSb5XZ7LVu8b3f/video", source)
@@ -130,7 +138,7 @@ class PickleEcosystemSiteTest(unittest.TestCase):
         for path in LEGACY_ROUTES:
             source = path.read_text().lower()
             with self.subTest(path=path):
-                self.assertIn('content="0;url=/media/"', source)
+                self.assertIn('content="0;url=/#media"', source)
                 self.assertIn('name="robots" content="noindex"', source)
 
     def test_retired_design_and_content_do_not_return(self):
@@ -144,10 +152,8 @@ class PickleEcosystemSiteTest(unittest.TestCase):
             self.assertNotIn('/resources/', path.read_text())
 
     def test_no_public_advisory_pricing(self):
-        for name in ["home", "advisory", "capital"]:
-            text = visible_text(PAGES[name])
-            with self.subTest(name=name):
-                self.assertIsNone(re.search(r"\$\s?\d[\d,]*(?:\s?\/\s?month)?", text))
+        text = visible_text(PAGES["home"])
+        self.assertIsNone(re.search(r"\$\s?\d[\d,]*(?:\s?\/\s?month)?", text))
 
     def test_images_have_alt_attributes(self):
         for name, path in PAGES.items():

@@ -5,7 +5,7 @@ import re
 import unittest
 
 HOME_HTML = Path("index.html").read_text()
-MEDIA_HTML = Path("media/index.html").read_text()
+MEDIA_HTML = HOME_HTML
 SITE_CSS = Path("assets/site.css").read_text().lower()
 
 
@@ -71,9 +71,9 @@ class PickleHomepageContentTest(unittest.TestCase):
         self.assertNotIn("client name", HOME_TEXT)
 
     def test_business_order_matches_current_revenue_and_maturity(self):
-        advisor = HOME_HTML.index('<h3>Pickle Advisors</h3>')
-        media = HOME_HTML.index("<h3>Deet's Eats</h3>")
-        capital = HOME_HTML.index('<h3>Pickle VC</h3>')
+        advisor = HOME_HTML.index('id="advisory"')
+        media = HOME_HTML.index('id="media"')
+        capital = HOME_HTML.index('id="capital"')
         self.assertLess(advisor, media)
         self.assertLess(media, capital)
 
@@ -88,7 +88,7 @@ class PickleHomepageContentTest(unittest.TestCase):
         self.assertIn("cover", HOME_TEXT)
 
     def test_homepage_is_concise_and_revenue_led(self):
-        self.assertLessEqual(len(re.findall(r"<section\b", HOME_HTML, flags=re.I)), 4)
+        self.assertEqual(len(re.findall(r"<section\b", HOME_HTML, flags=re.I)), 5)
         parser = LinkParser()
         parser.feed(HOME_HTML)
         audit_links = [link for link in parser.links if "/audit/" in link["href"]]
@@ -96,11 +96,12 @@ class PickleHomepageContentTest(unittest.TestCase):
         self.assertIn("start with the ai audit", HOME_TEXT)
         self.assertIn("the cost of waiting is compounding work", HOME_TEXT)
 
-    def test_three_businesses_are_visually_equal_and_bounded(self):
-        self.assertEqual(HOME_HTML.count('class="business-card"'), 3)
-        self.assertIn("pickle vc coming soon", HOME_TEXT)
-        self.assertIn("each business stands on its own", HOME_TEXT)
-        self.assertIn("advisory does not guarantee media coverage or capital", HOME_TEXT)
+    def test_three_businesses_are_full_homepage_sections_and_bounded(self):
+        for section_id in ["advisory", "media", "capital"]:
+            self.assertRegex(HOME_HTML, rf'<section[^>]+id="{section_id}"')
+        self.assertIn("coming soon", HOME_TEXT)
+        self.assertIn("advisory does not guarantee capital", HOME_TEXT)
+        self.assertIn("editorial judgment remains independent", HOME_TEXT)
 
     def test_media_uses_real_assets_and_compact_live_integrations(self):
         for asset in [

@@ -16,46 +16,46 @@
 
 ## Architecture decision
 
-Retain static HTML/CSS/JavaScript and GitHub Pages. Add shared assets instead of introducing a framework:
+Retain static HTML/CSS/JavaScript and GitHub Pages. Use one continuous homepage for the three businesses instead of separate page designs:
 
-- `assets/site.css`
-- `assets/site.js`
-- `assets/fonts/`
-- `assets/media/`
-- `index.html`
-- `advisory/index.html`
-- `capital/index.html`
-- `media/index.html`
-- `resources/index.html`
-- Preserve `audit/index.html`
+- `index.html` contains full `#advisory`, `#media`, and `#capital` sections
+- `assets/site.css` provides one shared visual system
+- `assets/site.js` provides smooth in-page navigation and the mobile menu
+- `advisory/index.html`, `media/index.html`, and `capital/index.html` are noindex compatibility redirects to homepage anchors
+- `resources/` legacy routes redirect to `/#media`
+- `audit/index.html` remains the functional conversion workflow
 
-A static architecture is the lowest-risk option, keeps deployment trivial, and is fully capable of the required editorial system.
+A single-page static architecture creates one coherent buyer journey, keeps every business in the same visual language, preserves inbound URLs, and avoids framework or hosting risk.
 
 ## Route map
 
 ### `/`
 
-Ecosystem homepage and primary conversion surface.
+Primary company and conversion surface. Scroll order: hero, Pickle Advisors, Deet's Eats, Pickle VC, founder proof, objections, and final AI Audit CTA.
 
-### `/advisory/`
+### `/#advisory`
 
-AI advisory and implementation. Primary CTA to `/audit/` and strategy call.
+AI advisory and implementation method, systems, boundaries, and primary AI Audit action.
 
-### `/capital/`
+### `/#media`
 
-Pickle VC / capital perspective and private conversation.
+Deet's Eats formats, real editorial artifacts, live Spotify show player, Substack signup, Instagram, and brand or agency inquiry.
 
-### `/media/`
+### `/#capital`
 
-Deet's Eats Media, programs, real editorial artifacts, and brand/agency inquiries.
+Pickle VC coming-soon perspective, operating lens, private conversation, and legal boundaries.
+
+### `/advisory/`, `/media/`, `/capital/`
+
+Noindex compatibility routes that immediately return visitors to the correct homepage section.
 
 ### `/resources/`
 
-Editorial resources and high-intent lead magnets.
+Retired resource URLs redirect to the Deet's Eats homepage section.
 
 ### `/audit/`
 
-Preserve current secure AI Audit flow, then restyle to the shared system after functionality is verified.
+Preserve the current AI Audit flow as the dedicated functional conversion step, using the shared Pickle palette and brand system.
 
 ## Delivery phases
 
@@ -68,13 +68,14 @@ Preserve current secure AI Audit flow, then restyle to the shared system after f
 - Define shared tokens/components in `assets/site.css`
 - Define mobile navigation and minimal JS
 
-### Phase 2: parallel page builds
+### Phase 2: single-page build
 
-- Homepage
-- Advisory + capital
-- Media + resources
-
-Each lane writes unique files and may only read shared assets after the foundation commit.
+- Outcome-first hero
+- Full Pickle Advisors section
+- Full Deet's Eats section with live providers
+- Full Pickle VC section with maturity and legal boundaries
+- Founder proof, objections, and conversion
+- Compatibility redirects for retired business pages
 
 ### Phase 3: integration
 
@@ -107,7 +108,7 @@ Each lane writes unique files and may only read shared assets after the foundati
 - No horizontal overflow at 390px or 430px
 - Visible, operable mobile menu
 - Hero names the ecosystem and primary revenue action
-- Build / Back / Publish are all visible above or immediately after the fold
+- Build / Cover / Back are full scroll destinations on the homepage
 - Current Jonathan photo remains
 - Biography supports advisory, capital, and media
 - No public exact advisory pricing
