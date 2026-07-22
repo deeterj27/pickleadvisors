@@ -25,4 +25,18 @@
 
   const year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
+
+  const alignInitialHash = () => {
+    if (!window.location.hash) return;
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    const target = document.getElementById(id);
+    if (target?.classList.contains('home-business')) {
+      target.scrollIntoView({ block: 'start', behavior: 'auto' });
+    }
+  };
+  if (window.location.hash) {
+    const fontsReady = document.fonts?.ready || Promise.resolve();
+    fontsReady.then(() => requestAnimationFrame(() => requestAnimationFrame(alignInitialHash)));
+    window.addEventListener('load', () => setTimeout(alignInitialHash, 0), { once: true });
+  }
 })();

@@ -83,6 +83,9 @@ class PickleHomepageContentTest(unittest.TestCase):
         link_text = {link["text"].strip().lower() for link in parser.links}
         for label in ["advisory", "pickle vc", "deet's eats", "ai audit"]:
             self.assertIn(label, link_text)
+        site_js = Path("assets/site.js").read_text()
+        self.assertIn("scrollIntoView", site_js)
+        self.assertIn("document.fonts", site_js)
         for old_label in ["build", "back", "publish"]:
             self.assertNotIn(old_label, link_text)
         self.assertIn("cover", HOME_TEXT)
