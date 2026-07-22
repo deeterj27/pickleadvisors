@@ -110,8 +110,11 @@ class PickleHomepageContentTest(unittest.TestCase):
         ]:
             with self.subTest(asset=asset):
                 self.assertIn(asset, MEDIA_HTML)
-        self.assertIn("https://open.spotify.com/embed/episode/1zSN3tonCYxCceXIx5GfS9", MEDIA_HTML)
-        self.assertRegex(MEDIA_HTML, r'height="152"[^>]*title="Latest Unpackaged Goods episode')
+        self.assertIn("https://open.spotify.com/embed/show/6moZEYjORSb5XZ7LVu8b3f/video", MEDIA_HTML)
+        self.assertRegex(MEDIA_HTML, r'width="624"[^>]*height="351"[^>]*title="Latest Unpackaged Goods episode')
+        self.assertIn("https://open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f", MEDIA_HTML)
+        self.assertNotIn("open.spotify.com/embed/episode/1zSN3tonCYxCceXIx5GfS9", MEDIA_HTML)
+        self.assertNotIn("open.spotify.com/episode/1zSN3tonCYxCceXIx5GfS9", HOME_HTML)
         self.assertIn("https://deetseatsnyc.substack.com/embed", MEDIA_HTML)
         self.assertIn("Subscribe to The Deeter Digest on Substack", MEDIA_HTML)
 

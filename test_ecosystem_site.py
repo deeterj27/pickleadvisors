@@ -121,7 +121,9 @@ class PickleEcosystemSiteTest(unittest.TestCase):
         source = PAGES["media"].read_text()
         self.assertIn("/assets/media/", source)
         self.assertIn("https://deetseatsnyc.substack.com/embed", source)
-        self.assertIn("https://open.spotify.com/embed/episode/1zSN3tonCYxCceXIx5GfS9", source)
+        self.assertIn("https://open.spotify.com/embed/show/6moZEYjORSb5XZ7LVu8b3f/video", source)
+        self.assertIn("https://open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f", source)
+        self.assertIn("https://www.instagram.com/deetseatsnyc/", source)
         self.assertNotIn("agency-partner-sell-sheet", source)
 
     def test_retired_resource_routes_redirect_to_media(self):
