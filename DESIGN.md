@@ -1,5 +1,14 @@
 # Pickle Advisors / Deet's Eats editorial design system
 
+## 2026-07-28 organic editorial flow revision
+
+- The closest style in Mayank Vora's ten-style thread is **Organic Editorial**. Pickle already uses a warm paper canvas, editorial display type, green, real food/media imagery, and a handcrafted premium tone.
+- Translate that template through Pickle's existing identity: balanced chapter spacing, a permanent media-source directory, one deep-green workflow chapter, a compact dark capital chapter, an editorial founder pull quote, and gentler transitions.
+- Preserve clarity without compressing every gap. The page should breathe and unfold; it should not return to repeated oversized headlines or unnecessary modules.
+- Mobile preserves the editorial system while keeping the CTA and first proof close to the first viewport.
+- Crafty Crow is a messaging-structure reference only: clear CPG audience, named pain, concrete workflows, compatibility with existing process, and human approval. Its language, proof, clients, claims, and identity are not copied.
+- The complete adapted implementation brief is `ORGANIC_EDITORIAL_PROMPT.md`.
+
 ## Concept
 
 **Three businesses. One clear front door.**
@@ -87,8 +96,8 @@ Build, Back, and Cover are supporting verbs. They are not the navigation labels 
 
 1. One plain-language company statement and one primary CTA
 2. Three clearly separated business blocks
-3. One consolidated Deet's Eats proof section with direct signup
-4. One compact founder and AI Audit conversion section
+3. One durable Deet's Eats directory linking Instagram, TikTok, Unpackaged Goods, and The Deeter Digest without stale issue artwork or provider embeds
+4. One paced founder note and cohesive ecosystem close with the AI Audit as the available-now entry point
 5. Simple footer with boundaries
 
 Remove repeated ecosystem thesis sections, decorative signal rails, duplicated media sections, and artifact grids that restate the same idea.
@@ -96,12 +105,12 @@ Remove repeated ecosystem thesis sections, decorative signal rails, duplicated m
 ## Media page flow
 
 1. Clear Deet's Eats promise
-2. Three uniform format cards using real assets
+2. Three format cards using real assets with one featured visual and two supporting destinations
 3. Compact latest-episode player
 4. Direct Deeter Digest signup
 5. Simple partnership explanation and CTA
 
-The Spotify player should use the compact 152px format. The official Substack embed remains the subscription system.
+The homepage links directly to Spotify and Substack. It does not embed provider players or issue-specific artwork that creates a freshness obligation.
 
 ## Copy rules
 
@@ -185,15 +194,15 @@ Each business receives:
 - launch status when relevant
 - one destination link
 
-All three use the same warm-white surface, heavy black rule, green utility labels, and square geometry. Pickle VC does not become a dramatic black card.
+The homepage shares heavy rules, green utility labels, editorial typography, and square geometry across all three businesses. Pickle VC may use one controlled ink-black chapter to present a specific investment thesis, mandate, diligence lens, and legal boundary; it must not become a vague dramatic card.
 
 ### Media card
 
 Uniform image ratio, simple format label, title, one sentence, and destination link. No oversized vertical card paired with tiny horizontal cards.
 
-### Provider embed
+### Media source directory
 
-Bordered white surface with no decorative shadow. Spotify uses 152px compact height. Substack remains large enough to show its complete form and terms.
+Four bordered editorial links with identical hierarchy: channel type, source name, concise promise, and direct destination.
 
 ### Founder proof
 
@@ -205,8 +214,7 @@ Use the current Jonathan photo at a restrained size. The copy explains why one o
 - No giant multi-line serif headline
 - One primary CTA in the hero
 - Business blocks stack with visible names and boundaries
-- Media cards use consistent image proportions
-- Spotify and Substack embeds fill the available width
+- Media sources stack as four consistent destination links
 - Navigation remains a simple full-screen menu
 - No horizontal overflow at 390px or 430px
 
@@ -230,7 +238,7 @@ The redesign must:
 1. Explain all three businesses in one viewport on desktop
 2. Reach the first business proof faster than the current mobile baseline
 3. Keep AI Audit as the primary revenue CTA
-4. Show real Deet's Eats assets without duplicate sections
+4. Link the four durable Deet's Eats sources without stale issue artwork
 5. Keep Pickle VC visibly marked Coming Soon
 6. Keep editorial, advisory, and capital boundaries intact
 7. Pass desktop, 390px, and 430px visual QA with no overflow

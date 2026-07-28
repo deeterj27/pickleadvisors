@@ -1,0 +1,142 @@
+{
+  "status": "PASS",
+  "failures": [],
+  "records": [
+    {
+      "width": 390,
+      "noHorizontalOverflow": true,
+      "nav": {
+        "opened": true,
+        "focusMoved": true,
+        "escaped": true,
+        "menuLinkClosed": true,
+        "toggleWidth": 44,
+        "toggleHeight": 44
+      },
+      "buttonsContained": true,
+      "buttonsMinHeight44": true,
+      "buttonRects": [
+        {
+          "text": "Start with the AI Audit →",
+          "width": 342,
+          "height": 48,
+          "left": 28,
+          "right": 370
+        },
+        {
+          "text": "Start with the AI Audit →",
+          "width": 350,
+          "height": 48,
+          "left": 20,
+          "right": 370
+        },
+        {
+          "text": "Discuss a company →",
+          "width": 350,
+          "height": 48,
+          "left": 20,
+          "right": 370
+        },
+        {
+          "text": "Start with the AI Audit →",
+          "width": 302,
+          "height": 48,
+          "left": 44,
+          "right": 346
+        }
+      ],
+      "sourceTapTargetsMin44": true,
+      "sourceRects": [
+        184,
+        184,
+        209,
+        184
+      ],
+      "founderImageLoaded": true,
+      "finalCtaPresent": true,
+      "fontsLoaded": true,
+      "headings": [
+        {
+          "text": "Fix the work behind growth.",
+          "size": "40px"
+        },
+        {
+          "text": "Market judgment, published daily.",
+          "size": "40px"
+        },
+        {
+          "text": "An operator's edge in consumer.",
+          "size": "40px"
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "noHorizontalOverflow": true,
+      "nav": {
+        "opened": true,
+        "focusMoved": true,
+        "escaped": true,
+        "menuLinkClosed": true,
+        "toggleWidth": 44,
+        "toggleHeight": 44
+      },
+      "buttonsContained": true,
+      "buttonsMinHeight44": true,
+      "buttonRects": [
+        {
+          "text": "Start with the AI Audit →",
+          "width": 382,
+          "height": 48,
+          "left": 28,
+          "right": 410
+        },
+        {
+          "text": "Start with the AI Audit →",
+          "width": 390,
+          "height": 48,
+          "left": 20,
+          "right": 410
+        },
+        {
+          "text": "Discuss a company →",
+          "width": 390,
+          "height": 48,
+          "left": 20,
+          "right": 410
+        },
+        {
+          "text": "Start with the AI Audit →",
+          "width": 342,
+          "height": 48,
+          "left": 44,
+          "right": 386
+        }
+      ],
+      "sourceTapTargetsMin44": true,
+      "sourceRects": [
+        184,
+        184,
+        184,
+        184
+      ],
+      "founderImageLoaded": true,
+      "finalCtaPresent": true,
+      "fontsLoaded": true,
+      "headings": [
+        {
+          "text": "Fix the work behind growth.",
+          "size": "40px"
+        },
+        {
+          "text": "Market judgment, published daily.",
+          "size": "40px"
+        },
+        {
+          "text": "An operator's edge in consumer.",
+          "size": "40px"
+        }
+      ]
+    }
+  ]
+}

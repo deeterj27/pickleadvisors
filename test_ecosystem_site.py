@@ -108,30 +108,45 @@ class PickleEcosystemSiteTest(unittest.TestCase):
 
     def test_advisory_explains_installation_not_generic_strategy(self):
         text = visible_text(PAGES["home"])
-        for phrase in ["diagnose", "build", "operate", "workflows", "automation", "geo", "ai audit"]:
+        for phrase in [
+            "ai audit", "pdf", "email", "edi", "shopify", "faire", "amazon",
+            "skus", "case packs", "3pl", "freight", "bols", "invoices",
+            "payment follow-up", "human approval",
+        ]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
+        self.assertIn("no forced erp replacement", text)
+        self.assertIn("no generic roadmap", text)
 
     def test_capital_page_has_required_boundaries(self):
         text = visible_text(PAGES["home"])
         home = text
         self.assertIn("pickle vc", home)
         self.assertIn("coming soon", text)
-        for phrase in ["selective", "diligence", "private", "does not guarantee", "not an offer"]:
+        for phrase in [
+            "early-stage consumer", "operations + market",
+            "selective conviction", "private",
+            "does not guarantee", "not an offer",
+        ]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
 
     def test_media_page_uses_real_formats_and_boundary_language(self):
         text = visible_text(PAGES["home"])
-        for phrase in ["counter service", "breaking news desk", "the deeter digest", "unpackaged goods", "paid partnerships", "editorial"]:
+        for phrase in [
+            "@deetseatsnyc", "the deeter digest", "unpackaged goods",
+            "tiktok", "the weekly signal behind the daily feed",
+            "brand + agency partnerships", "editorial",
+        ]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
         source = PAGES["home"].read_text()
-        self.assertIn("/assets/media/", source)
-        self.assertIn("https://deetseatsnyc.substack.com/embed", source)
-        self.assertIn("https://open.spotify.com/embed/show/6moZEYjORSb5XZ7LVu8b3f/video", source)
+        self.assertNotIn("/assets/media/", source)
+        self.assertNotIn("https://deetseatsnyc.substack.com/embed", source)
+        self.assertNotIn("https://open.spotify.com/embed/", source)
         self.assertIn("https://open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f", source)
         self.assertIn("https://www.instagram.com/deetseatsnyc/", source)
+        self.assertIn("https://www.tiktok.com/@deetseatsnyc", source)
         self.assertNotIn("agency-partner-sell-sheet", source)
 
     def test_retired_resource_routes_redirect_to_media(self):

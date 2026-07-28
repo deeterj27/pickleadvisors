@@ -1,0 +1,457 @@
+{
+  "status": "PASS",
+  "base_url": "http://127.0.0.1:8765/",
+  "label": "local-final",
+  "records": [
+    {
+      "route": "home",
+      "width": 1440,
+      "first": {
+        "url": "http://127.0.0.1:8765/",
+        "title": "Pickle Advisors | Your Brand's Operating System",
+        "h1": "Build a stronger consumer brand, without more chaos.",
+        "innerWidth": 1440,
+        "clientWidth": 1425,
+        "scrollWidth": 1425,
+        "bodyScrollWidth": 1425,
+        "innerHeight": 1000,
+        "scrollHeight": 4603,
+        "links": [
+          {
+            "text": "Skip to content",
+            "href": "http://127.0.0.1:8765/#main"
+          },
+          {
+            "text": "PICKLEADVISORS",
+            "href": "http://127.0.0.1:8765/#main"
+          },
+          {
+            "text": "Advisory",
+            "href": "http://127.0.0.1:8765/#advisory"
+          },
+          {
+            "text": "Deet's Eats",
+            "href": "http://127.0.0.1:8765/#media"
+          },
+          {
+            "text": "Pickle VC",
+            "href": "http://127.0.0.1:8765/#capital"
+          },
+          {
+            "text": "AI Audit",
+            "href": "http://127.0.0.1:8765/audit/"
+          },
+          {
+            "text": "Advisory",
+            "href": "http://127.0.0.1:8765/#advisory"
+          },
+          {
+            "text": "Deet's Eats",
+            "href": "http://127.0.0.1:8765/#media"
+          },
+          {
+            "text": "Pickle VC",
+            "href": "http://127.0.0.1:8765/#capital"
+          },
+          {
+            "text": "AI Audit",
+            "href": "http://127.0.0.1:8765/audit/"
+          },
+          {
+            "text": "Start with the AI Audit \u2192",
+            "href": "http://127.0.0.1:8765/audit/"
+          },
+          {
+            "text": "See how Pickle works",
+            "href": "http://127.0.0.1:8765/#advisory"
+          },
+          {
+            "text": "Start with the AI Audit \u2192",
+            "href": "http://127.0.0.1:8765/audit/"
+          },
+          {
+            "text": "01 / Daily socialInstagram@deetseatsnycOpen channel \u2197",
+            "href": "https://www.instagram.com/deetseatsnyc/"
+          },
+          {
+            "text": "02 / Daily videoTikTok@deetseatsnycOpen channel \u2197",
+            "href": "https://www.tiktok.com/@deetseatsnyc"
+          },
+          {
+            "text": "03 / PodcastUnpackaged GoodsFounder conversations beyond the launch story.Listen on Spotify \u2197",
+            "href": "https://open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f"
+          },
+          {
+            "text": "04 / NewsletterThe Deeter DigestThe weekly signal behind the daily feed.Read the Digest \u2197",
+            "href": "https://deetseatsnyc.substack.com/"
+          },
+          {
+            "text": "Discuss a media partnership \u2192",
+            "href": "mailto:jonathan@pickleadvisors.com?subject=Deet%27s%20Eats%20partnership%20inquiry"
+          },
+          {
+            "text": "Discuss a company \u2192",
+            "href": "mailto:jonathan@pickleadvisors.com?subject=Pickle%20VC%20company%20or%20investment%20opportunity"
+          },
+          {
+            "text": "Start with the AI Audit \u2192",
+            "href": "http://127.0.0.1:8765/audit/"
+          }
+        ]
+      },
+      "full": {
+        "url": "http://127.0.0.1:8765/",
+        "width": 1440,
+        "viewportHeight": 1000,
+        "contentWidth": 1425,
+        "contentHeight": 4603,
+        "outPath": "/Users/jonathandeeter/.openclaw/workspace/projects/pickleadvisors-site-redesign/qa/release-local-final/home-1440-full.png"
+      }
+    },
+    {
+      "route": "home",
+      "width": 390,
+      "first": {
+        "url": "http://127.0.0.1:8765/",
+        "title": "Pickle Advisors | Your Brand's Operating System",
+        "h1": "Build a stronger consumer brand, without more chaos.",
+        "innerWidth": 390,
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "innerHeight": 844,
+        "scrollHeight": 7259,
+        "links": [
+          {
+            "text": "Skip to content",
+            "href": "http://127.0.0.1:8765/#main"
+          },
+          {
+            "text": "PICKLEADVISORS",
+            "href": "http://127.0.0.1:8765/#main"
+          },
+          {
+            "text": "Advisory",
+            "href": "http://127.0.0.1:8765/#advisory"
+          },
+          {
+            "text": "Deet's Eats",
+            "href": "http://127.0.0.1:8765/#media"
+          },
+          {
+            "text": "Pickle VC",
+            "href": "http://127.0.0.1:8765/#capital"
+          },
+          {
+            "text": "AI Audit",
+            "href": "http://127.0.0.1:8765/audit/"
+          },
+          {
+            "text": "Advisory",
+            "href": "http://127.0.0.1:8765/#advisory"
+          },
+          {
+            "text": "Deet's Eats",
+            "href": "http://127.0.0.1:8765/#media"
+          },
+          {
+            "text": "Pickle VC",
+            "href": "http://127.0.0.1:8765/#capital"
+          },
+          {
+            "text": "AI Audit",
+            "href": "http://127.0.0.1:8765/audit/"
+          },
+          {
+            "text": "Start with the AI Audit \u2192",
+            "href": "http://127.0.0.1:8765/audit/"
+          },
+          {
+            "text": "See how Pickle works",
+            "href": "http://127.0.0.1:8765/#advisory"
+          },
+          {
+            "text": "Start with the AI Audit \u2192",
+            "href": "http://127.0.0.1:8765/audit/"
+          },
+          {
+            "text": "01 / Daily socialInstagram@deetseatsnycOpen channel \u2197",
+            "href": "https://www.instagram.com/deetseatsnyc/"
+          },
+          {
+            "text": "02 / Daily videoTikTok@deetseatsnycOpen channel \u2197",
+            "href": "https://www.tiktok.com/@deetseatsnyc"
+          },
+          {
+            "text": "03 / PodcastUnpackaged GoodsFounder conversations beyond the launch story.Listen on Spotify \u2197",
+            "href": "https://open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f"
+          },
+          {
+            "text": "04 / NewsletterThe Deeter DigestThe weekly signal behind the daily feed.Read the Digest \u2197",
+            "href": "https://deetseatsnyc.substack.com/"
+          },
+          {
+            "text": "Discuss a media partnership \u2192",
+            "href": "mailto:jonathan@pickleadvisors.com?subject=Deet%27s%20Eats%20partnership%20inquiry"
+          },
+          {
+            "text": "Discuss a company \u2192",
+            "href": "mailto:jonathan@pickleadvisors.com?subject=Pickle%20VC%20company%20or%20investment%20opportunity"
+          },
+          {
+            "text": "Start with the AI Audit \u2192",
+            "href": "http://127.0.0.1:8765/audit/"
+          }
+        ]
+      },
+      "full": {
+        "url": "http://127.0.0.1:8765/",
+        "width": 390,
+        "viewportHeight": 844,
+        "contentWidth": 390,
+        "contentHeight": 7259,
+        "outPath": "/Users/jonathandeeter/.openclaw/workspace/projects/pickleadvisors-site-redesign/qa/release-local-final/home-390-full.png"
+      }
+    },
+    {
+      "route": "home",
+      "width": 430,
+      "first": {
+        "url": "http://127.0.0.1:8765/",
+        "title": "Pickle Advisors | Your Brand's Operating System",
+        "h1": "Build a stronger consumer brand, without more chaos.",
+        "innerWidth": 430,
+        "clientWidth": 430,
+        "scrollWidth": 430,
+        "bodyScrollWidth": 430,
+        "innerHeight": 932,
+        "scrollHeight": 7005,
+        "links": [
+          {
+            "text": "Skip to content",
+            "href": "http://127.0.0.1:8765/#main"
+          },
+          {
+            "text": "PICKLEADVISORS",
+            "href": "http://127.0.0.1:8765/#main"
+          },
+          {
+            "text": "Advisory",
+            "href": "http://127.0.0.1:8765/#advisory"
+          },
+          {
+            "text": "Deet's Eats",
+            "href": "http://127.0.0.1:8765/#media"
+          },
+          {
+            "text": "Pickle VC",
+            "href": "http://127.0.0.1:8765/#capital"
+          },
+          {
+            "text": "AI Audit",
+            "href": "http://127.0.0.1:8765/audit/"
+          },
+          {
+            "text": "Advisory",
+            "href": "http://127.0.0.1:8765/#advisory"
+          },
+          {
+            "text": "Deet's Eats",
+            "href": "http://127.0.0.1:8765/#media"
+          },
+          {
+            "text": "Pickle VC",
+            "href": "http://127.0.0.1:8765/#capital"
+          },
+          {
+            "text": "AI Audit",
+            "href": "http://127.0.0.1:8765/audit/"
+          },
+          {
+            "text": "Start with the AI Audit \u2192",
+            "href": "http://127.0.0.1:8765/audit/"
+          },
+          {
+            "text": "See how Pickle works",
+            "href": "http://127.0.0.1:8765/#advisory"
+          },
+          {
+            "text": "Start with the AI Audit \u2192",
+            "href": "http://127.0.0.1:8765/audit/"
+          },
+          {
+            "text": "01 / Daily socialInstagram@deetseatsnycOpen channel \u2197",
+            "href": "https://www.instagram.com/deetseatsnyc/"
+          },
+          {
+            "text": "02 / Daily videoTikTok@deetseatsnycOpen channel \u2197",
+            "href": "https://www.tiktok.com/@deetseatsnyc"
+          },
+          {
+            "text": "03 / PodcastUnpackaged GoodsFounder conversations beyond the launch story.Listen on Spotify \u2197",
+            "href": "https://open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f"
+          },
+          {
+            "text": "04 / NewsletterThe Deeter DigestThe weekly signal behind the daily feed.Read the Digest \u2197",
+            "href": "https://deetseatsnyc.substack.com/"
+          },
+          {
+            "text": "Discuss a media partnership \u2192",
+            "href": "mailto:jonathan@pickleadvisors.com?subject=Deet%27s%20Eats%20partnership%20inquiry"
+          },
+          {
+            "text": "Discuss a company \u2192",
+            "href": "mailto:jonathan@pickleadvisors.com?subject=Pickle%20VC%20company%20or%20investment%20opportunity"
+          },
+          {
+            "text": "Start with the AI Audit \u2192",
+            "href": "http://127.0.0.1:8765/audit/"
+          }
+        ]
+      },
+      "full": {
+        "url": "http://127.0.0.1:8765/",
+        "width": 430,
+        "viewportHeight": 932,
+        "contentWidth": 430,
+        "contentHeight": 7005,
+        "outPath": "/Users/jonathandeeter/.openclaw/workspace/projects/pickleadvisors-site-redesign/qa/release-local-final/home-430-full.png"
+      }
+    },
+    {
+      "route": "audit",
+      "width": 1440,
+      "first": {
+        "url": "http://127.0.0.1:8765/audit/",
+        "title": "AI Readiness Audit: Pickle Advisors",
+        "h1": "AI Readiness Audit",
+        "innerWidth": 1440,
+        "clientWidth": 1425,
+        "scrollWidth": 1425,
+        "bodyScrollWidth": 1425,
+        "innerHeight": 1000,
+        "scrollHeight": 6149,
+        "links": [
+          {
+            "text": "PICKLE ADVISORS\n    Your Brand's Operating System",
+            "href": "https://pickleadvisors.com/"
+          },
+          {
+            "text": "Home",
+            "href": "https://pickleadvisors.com/"
+          },
+          {
+            "text": "Start Audit",
+            "href": "http://127.0.0.1:8765/audit/#auditForm"
+          },
+          {
+            "text": "Start Audit \u2193",
+            "href": "http://127.0.0.1:8765/audit/#auditForm"
+          },
+          {
+            "text": "Start Form \u2193",
+            "href": "http://127.0.0.1:8765/audit/#auditForm"
+          }
+        ]
+      },
+      "full": {
+        "url": "http://127.0.0.1:8765/audit/",
+        "width": 1440,
+        "viewportHeight": 1000,
+        "contentWidth": 1425,
+        "contentHeight": 6149,
+        "outPath": "/Users/jonathandeeter/.openclaw/workspace/projects/pickleadvisors-site-redesign/qa/release-local-final/audit-1440-full.png"
+      }
+    },
+    {
+      "route": "audit",
+      "width": 390,
+      "first": {
+        "url": "http://127.0.0.1:8765/audit/",
+        "title": "AI Readiness Audit: Pickle Advisors",
+        "h1": "AI Readiness Audit",
+        "innerWidth": 390,
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "innerHeight": 844,
+        "scrollHeight": 6603,
+        "links": [
+          {
+            "text": "PICKLE ADVISORS\n    Your Brand's Operating System",
+            "href": "https://pickleadvisors.com/"
+          },
+          {
+            "text": "Home",
+            "href": "https://pickleadvisors.com/"
+          },
+          {
+            "text": "Start Audit",
+            "href": "http://127.0.0.1:8765/audit/#auditForm"
+          },
+          {
+            "text": "Start Audit \u2193",
+            "href": "http://127.0.0.1:8765/audit/#auditForm"
+          },
+          {
+            "text": "Start Form \u2193",
+            "href": "http://127.0.0.1:8765/audit/#auditForm"
+          }
+        ]
+      },
+      "full": {
+        "url": "http://127.0.0.1:8765/audit/",
+        "width": 390,
+        "viewportHeight": 844,
+        "contentWidth": 390,
+        "contentHeight": 6603,
+        "outPath": "/Users/jonathandeeter/.openclaw/workspace/projects/pickleadvisors-site-redesign/qa/release-local-final/audit-390-full.png"
+      }
+    },
+    {
+      "route": "audit",
+      "width": 430,
+      "first": {
+        "url": "http://127.0.0.1:8765/audit/",
+        "title": "AI Readiness Audit: Pickle Advisors",
+        "h1": "AI Readiness Audit",
+        "innerWidth": 430,
+        "clientWidth": 430,
+        "scrollWidth": 430,
+        "bodyScrollWidth": 430,
+        "innerHeight": 932,
+        "scrollHeight": 6557,
+        "links": [
+          {
+            "text": "PICKLE ADVISORS\n    Your Brand's Operating System",
+            "href": "https://pickleadvisors.com/"
+          },
+          {
+            "text": "Home",
+            "href": "https://pickleadvisors.com/"
+          },
+          {
+            "text": "Start Audit",
+            "href": "http://127.0.0.1:8765/audit/#auditForm"
+          },
+          {
+            "text": "Start Audit \u2193",
+            "href": "http://127.0.0.1:8765/audit/#auditForm"
+          },
+          {
+            "text": "Start Form \u2193",
+            "href": "http://127.0.0.1:8765/audit/#auditForm"
+          }
+        ]
+      },
+      "full": {
+        "url": "http://127.0.0.1:8765/audit/",
+        "width": 430,
+        "viewportHeight": 932,
+        "contentWidth": 430,
+        "contentHeight": 6557,
+        "outPath": "/Users/jonathandeeter/.openclaw/workspace/projects/pickleadvisors-site-redesign/qa/release-local-final/audit-430-full.png"
+      }
+    }
+  ]
+}

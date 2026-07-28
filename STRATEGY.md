@@ -1,5 +1,14 @@
 # Pickle Advisors Website Strategy and CRO Foundation
 
+## 2026-07-28 clarity revision
+
+- AI Audit remains the only primary revenue action.
+- Lead with concrete consumer-operations work: PO intake, PDF/email/EDI normalization, SKU and case-pack reconciliation, 3PL/freight/BOL coordination, invoicing, payment follow-up, commerce reporting, and launch exceptions.
+- Adapt around the brand's existing process; do not imply an ERP replacement.
+- Deet's Eats resolves to four durable destinations: Instagram, TikTok, Unpackaged Goods, and The Deeter Digest.
+- Pickle VC is the future selective expression of operating intelligence from Advisory plus market intelligence from Deet's Eats.
+- Every section must earn its scroll length. Repeated thesis, duplicate proof, and redundant objections are removed.
+
 ## 1. Premium brand strategy
 
 ### Business type
@@ -16,8 +25,8 @@ The homepage must lead with the paid, available-now offer: Pickle Advisors. Deet
 
 1. **Outcome-led hero**: state the buyer's desired outcome, name the operational pain, and make the AI Audit the only primary action.
 2. **Three businesses**: explain Pickle Advisors, Deet's Eats, and Pickle VC in order of current buyer relevance and maturity.
-3. **Real market proof**: show current Deet's Eats formats and real artifacts instead of logos, fake dashboards, or unsupported claims.
-4. **Founder trust, objections, and final CTA**: establish Jonathan's credibility, answer purchase hesitations, and close on the AI Audit.
+3. **Durable media access**: link the four Deet's Eats sources directly instead of showing issue artwork that goes stale or embeds that distort section height.
+4. **Founder trust and ecosystem close**: establish Jonathan's credibility, connect Build, Cover, and Back in one concise chapter, and close on the available-now AI Audit.
 
 ### Premium design choices
 
@@ -48,7 +57,7 @@ This is eight words, natural, outcome-led, and specific to a scaling consumer co
 
 ### Supporting line
 
-**Pickle finds the operational drag costing your team time, margin, and attention, then installs practical AI workflows and decision systems around the way your business actually runs.**
+**Pickle turns retailer orders, inventory handoffs, reporting, and launch exceptions into practical AI workflows your team can trust and run.**
 
 ### Primary CTA
 
@@ -98,45 +107,25 @@ This must be replaced with a real, approved client quote before any testimonial 
 
 **Outcome:** A future selective investment platform designed to pair operator diligence, market context, and practical founder support.
 
-## 5. Top purchase objections
-
-### Will this become another software project?
-
-No. Pickle starts with the way work moves today and changes only what has a clear operating or commercial reason to change.
-
-### Is AI worth it for a team our size?
-
-Only when the work is repeatable, the inputs are usable, and a person can own the result. If those conditions are missing, Pickle fixes the foundation first or recommends not automating yet.
-
-### Will you work with our existing team and tools?
-
-Yes. Pickle is designed to clarify ownership and connect the people, agencies, operators, and systems already doing the work, not replace them by default.
-
-### What if our problems are bigger than one workflow?
-
-The AI Audit ranks the constraints so the first build creates leverage without pretending the entire company should be rebuilt at once.
-
-### Are advisory, media coverage, and capital bundled together?
-
-No. Each business stands on its own. Advisory does not guarantee media coverage or capital. Editorial judgment remains independent, paid partnerships are disclosed, and capital conversations are private and selective.
-
-## 6. Final call to action
+## 5. Ecosystem close
 
 ### Headline
 
-**Manual work compounds. Fix the first bottleneck now.**
+**Build the company. Read the market. Back what earns conviction.**
 
-### Benefit of acting now
+### Synthesis
 
-**Identify the highest-leverage operating fix before growth adds another layer of exceptions, reporting gaps, and founder dependency.**
+Pickle Advisors strengthens the operation. Deet's Eats reads the market. Pickle VC is the future selective expression of both.
+
+### Status rail
+
+- **01 / Build:** Pickle Advisors, available now
+- **02 / Cover:** Deet's Eats, publishing now
+- **03 / Back:** Pickle VC, coming soon
 
 ### CTA
 
 **Start with the AI Audit**
-
-### Trust reminder
-
-**Founder-led. Built around your existing tools. No generic AI roadmap.**
 
 ## 7. AI website-builder implementation prompt
 
@@ -145,10 +134,10 @@ Build a premium, responsive static website for Pickle Advisors, a founder-led op
 Use this page order:
 
 1. Sticky masthead with Pickle Advisors wordmark, Advisory, Pickle VC, Deet's Eats, and AI Audit.
-2. Split hero with the headline "Build a stronger consumer brand, without more chaos." Add the supporting line, primary AI Audit CTA, secondary method anchor, three verified trust signals, and one concise sentence explaining the three-business company.
+2. Split hero with the headline "Build a stronger consumer brand, without more chaos." Add the concrete CPG supporting line, primary AI Audit CTA, secondary method anchor, and three verified trust signals.
 3. Three business blocks ordered Pickle Advisors, Deet's Eats, Pickle VC. Keep the first two active and Pickle VC marked Coming Soon. Use outcome-focused copy and clear destination links.
-4. Deet's Eats proof section with real Counter Service, Breaking News Desk, and Unpackaged Goods assets plus The Deeter Digest signup CTA.
-5. Founder section with Jonathan Deeter's real photo, concise credibility copy, three trust points, five objection responses, and the final AI Audit CTA.
+4. Deet's Eats directory with durable links to Instagram, TikTok, Unpackaged Goods, and The Deeter Digest.
+5. Founder section with Jonathan Deeter's real photo, concise credibility copy, three trust points, and one ecosystem close tying Build, Cover, and Back to the final AI Audit CTA.
 6. Footer with business links and explicit independence boundaries.
 
 Use these colors: paper `#E8DED0`, warm surface `#FFFDF7`, ink `#10110F`, muted text `#625F57`, editorial green `#087B36`, dark green `#075C2A`, lime `#B8FF38`, and rule `#282A25`.
@@ -165,12 +154,12 @@ Do not publish exact advisory pricing, invented testimonials, unsupported metric
 - The future investment platform appeared before the active media business and interrupted the revenue path.
 - The hero had no immediate trust signals beyond confident design.
 - "AI operating systems" could sound like a software product or a large transformation project.
-- The final close explained the AI Audit but did not create a genuine reason to act now.
-- The site had no testimonial, case study, or direct objection handling. Since no approved testimonial exists, the correct fix is verified experience, real artifacts, honest boundaries, and purchase-risk answers.
+- The final close repeated advisory urgency instead of resolving how the three businesses fit together.
+- The site had no approved testimonial or case study. The correct fix is verified founder experience, concrete workflows, honest boundaries, and a clear ecosystem synthesis rather than a generic FAQ.
 
 ### Rewrite principle
 
-Lead with the buyer's operating outcome. Explain the method in plain language. Show real market proof. Make senior involvement explicit. Answer objections before the CTA. Keep the three businesses separate and honest.
+Lead with the buyer's operating outcome. Explain the method in plain language. Make senior involvement explicit. End by connecting the three independent businesses and making the available-now entry point unmistakable.
 
 ## 9. CRO review
 
@@ -180,10 +169,9 @@ Lead with the buyer's operating outcome. Explain the method in plain language. S
 - Move Pickle Advisors first, Deet's Eats second, and Pickle VC last to match availability and buyer intent.
 - Replace organization-first hero copy with an outcome-led headline and concrete operating pain.
 - Add trust near the first CTA rather than waiting for the founder section.
-- Use Deet's Eats artifacts as differentiated market proof, not as generic content cards.
-- Answer the five most likely objections before the final CTA.
-- Add honest urgency around compounding manual work, not fake scarcity.
-- Repeat the trust reminder under the final button to reduce perceived implementation risk.
+- Use the durable Deet's Eats source directory as differentiated market proof.
+- Let the founder section establish trust, then use one concise ecosystem close instead of a separate FAQ and urgency block.
+- Make the three maturity states explicit: available now, publishing now, and coming soon.
 
 ### Conversion standard
 

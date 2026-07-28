@@ -1,5 +1,15 @@
 # Pickle Ecosystem Website Implementation Plan
 
+## 2026-07-28 revision lane
+
+- Preserve `97548e05e633554d05d0dbd1285c51f0d8e60159` and its screenshot set as the prior-candidate baseline.
+- Tighten the homepage first viewport at 1440px, 390px, and 430px.
+- Replace generic AI/service language with named CPG workflows and human-controlled exceptions.
+- Consolidate Deet's Eats to permanent Instagram, TikTok, Unpackaged Goods, and The Deeter Digest destination links without issue artwork or provider embeds.
+- Explain Pickle VC as a future selective vehicle built on combined operating and market intelligence.
+- Measure word count and page height against the prior candidate, then capture production vs prior candidate vs revised candidate proof.
+- No merge or publish before a new exact-head packet receives Jonathan's renewed approval.
+
 ## Production baseline
 
 - Repository: `deeterj27/pickleadvisors`
@@ -31,7 +41,7 @@ A single-page static architecture creates one coherent buyer journey, keeps ever
 
 ### `/`
 
-Primary company and conversion surface. Scroll order: hero, Pickle Advisors, Deet's Eats, Pickle VC, founder proof, objections, and final AI Audit CTA.
+Primary company and conversion surface. Scroll order: hero, Pickle Advisors, Deet's Eats, Pickle VC, founder proof, and one ecosystem close with the final AI Audit CTA.
 
 ### `/#advisory`
 
@@ -39,7 +49,7 @@ AI advisory and implementation method, systems, boundaries, and primary AI Audit
 
 ### `/#media`
 
-Deet's Eats formats, real editorial artifacts, live Spotify show player, Substack signup, Instagram, and brand or agency inquiry.
+Deet's Eats source directory for Instagram, TikTok, Unpackaged Goods, and The Deeter Digest, plus a compact brand or agency inquiry.
 
 ### `/#capital`
 
@@ -74,7 +84,7 @@ Preserve the current AI Audit flow as the dedicated functional conversion step, 
 - Full Pickle Advisors section
 - Full Deet's Eats section with live providers
 - Full Pickle VC section with maturity and legal boundaries
-- Founder proof, objections, and conversion
+- Founder proof and cohesive ecosystem conversion close
 - Compatibility redirects for retired business pages
 
 ### Phase 3: integration

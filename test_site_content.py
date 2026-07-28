@@ -43,10 +43,11 @@ class PickleHomepageContentTest(unittest.TestCase):
     def test_hero_leads_with_buyer_outcome_and_explains_all_three_businesses(self):
         for phrase in [
             "build a stronger consumer brand, without more chaos",
-            "operational drag costing your team time, margin, and attention",
-            "pickle advisors builds systems",
-            "deet's eats tracks the market",
-            "pickle vc is a future selective investment platform",
+            "practical ai workflows your team can trust and run",
+            "built for cpg",
+            "independent consumer-market intelligence",
+            "an operator's edge in consumer",
+            "operations + market",
         ]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, HOME_TEXT)
@@ -55,18 +56,23 @@ class PickleHomepageContentTest(unittest.TestCase):
         headline = re.sub(r'<[^>]+>', ' ', match.group(1) if match else '')
         self.assertLessEqual(len(re.findall(r"[A-Za-z']+", headline)), 10)
 
-    def test_trust_objections_and_final_cta_reduce_purchase_friction(self):
+    def test_founder_proof_and_ecosystem_close_tie_the_businesses_together(self):
         for phrase in [
-            "10+ years",
-            "daily market view",
-            "will this become another software project",
-            "is ai worth it for a team our size",
-            "will you work with our existing team and tools",
-            "manual work compounds",
-            "no generic ai roadmap",
+            "built for cpg",
+            "human-controlled",
+            "build the company",
+            "read the market",
+            "back what earns conviction",
+            "three businesses. clear boundaries",
+            "available now",
+            "publishing now",
+            "coming soon",
         ]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, HOME_TEXT)
+        for retired in ["the honest answers", "manual work compounds", "will this become another software project"]:
+            with self.subTest(retired=retired):
+                self.assertNotIn(retired, HOME_TEXT)
         self.assertNotIn("placeholder testimonial", HOME_TEXT)
         self.assertNotIn("client name", HOME_TEXT)
 
@@ -97,7 +103,8 @@ class PickleHomepageContentTest(unittest.TestCase):
         audit_links = [link for link in parser.links if "/audit/" in link["href"]]
         self.assertGreaterEqual(len(audit_links), 3)
         self.assertIn("start with the ai audit", HOME_TEXT)
-        self.assertIn("the cost of waiting is compounding work", HOME_TEXT)
+        self.assertIn("the pickle view", HOME_TEXT)
+        self.assertIn("available now", HOME_TEXT)
 
     def test_three_businesses_are_full_homepage_sections_and_bounded(self):
         for section_id in ["advisory", "media", "capital"]:
@@ -106,21 +113,26 @@ class PickleHomepageContentTest(unittest.TestCase):
         self.assertIn("advisory does not guarantee capital", HOME_TEXT)
         self.assertIn("editorial judgment remains independent", HOME_TEXT)
 
-    def test_media_uses_real_assets_and_compact_live_integrations(self):
-        for asset in [
-            "counter-service-ep060.webp",
-            "breaking-news-shopify-doordash.webp",
-            "unpackaged-goods-ep030.webp",
+    def test_media_uses_a_permanent_source_directory(self):
+        self.assertIn("media-source-directory", MEDIA_HTML)
+        for destination in [
+            "https://www.instagram.com/deetseatsnyc/",
+            "https://www.tiktok.com/@deetseatsnyc",
+            "https://open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f",
+            "https://deetseatsnyc.substack.com/",
         ]:
-            with self.subTest(asset=asset):
-                self.assertIn(asset, MEDIA_HTML)
-        self.assertIn("https://open.spotify.com/embed/show/6moZEYjORSb5XZ7LVu8b3f/video", MEDIA_HTML)
-        self.assertRegex(MEDIA_HTML, r'width="624"[^>]*height="351"[^>]*title="Latest Unpackaged Goods episode')
-        self.assertIn("https://open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f", MEDIA_HTML)
-        self.assertNotIn("open.spotify.com/embed/episode/1zSN3tonCYxCceXIx5GfS9", MEDIA_HTML)
-        self.assertNotIn("open.spotify.com/episode/1zSN3tonCYxCceXIx5GfS9", HOME_HTML)
-        self.assertIn("https://deetseatsnyc.substack.com/embed", MEDIA_HTML)
-        self.assertIn("Subscribe to The Deeter Digest on Substack", MEDIA_HTML)
+            with self.subTest(destination=destination):
+                self.assertIn(destination, MEDIA_HTML)
+        for stale_or_dynamic in [
+            "counter-service-ep060.webp",
+            "unpackaged-goods-ep030.webp",
+            "breaking-news-shopify-doordash.webp",
+            "image-cdn-ak.spotifycdn.com",
+            "open.spotify.com/embed/",
+            "deetseatsnyc.substack.com/embed",
+        ]:
+            with self.subTest(stale_or_dynamic=stale_or_dynamic):
+                self.assertNotIn(stale_or_dynamic, MEDIA_HTML)
 
     def test_retired_decorative_system_does_not_return(self):
         combined = HOME_HTML + MEDIA_HTML
@@ -146,9 +158,13 @@ class PickleHomepageContentTest(unittest.TestCase):
         self.assertNotIn("#ddf77a", SITE_CSS)
 
     def test_media_scope_is_broad_and_concise(self):
-        phrase = "consumer, wellness, and food culture"
-        self.assertIn(phrase, HOME_TEXT)
-        self.assertIn(phrase, MEDIA_TEXT)
+        for phrase in [
+            "independent consumer-market intelligence",
+            "the weekly signal behind the daily feed",
+            "founder conversations beyond the launch story",
+        ]:
+            self.assertIn(phrase, HOME_TEXT)
+            self.assertIn(phrase, MEDIA_TEXT)
         self.assertNotIn(">Publish<", HOME_HTML)
 
 
