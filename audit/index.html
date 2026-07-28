@@ -298,22 +298,13 @@ textarea.text-input { resize: vertical; min-height: 100px; }
 .submit-btn:hover { background: #c50e26; transform: translateY(-1px); box-shadow: 0 6px 24px rgba(232,17,45,0.3); }
 .submit-btn:active { transform: translateY(0); }
 
-/* ── THANK YOU ── */
+/* THANK YOU */
 .thank-you {
   display: none;
   text-align: center;
   padding: 80px 24px;
   max-width: 600px;
   margin: 0 auto;
-}
-.thank-you .check {
-  width: 72px; height: 72px;
-  background: var(--red);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 24px;
-  font-size: 36px;
-  color: #fff;
 }
 .thank-you h2 { font-size: 32px; margin-bottom: 16px; }
 .thank-you p { font-size: 18px; color: rgba(26,26,26,0.6); }
@@ -384,13 +375,13 @@ body{font-family:Archivo,Arial,sans-serif;background-image:radial-gradient(rgba(
       <div style="background:var(--red);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;margin-bottom:12px;">1</div>
       <h3 style="color:#fff;font-size:18px;margin-bottom:8px;">Start With the Audit</h3>
       <p style="color:rgba(255,255,255,0.5);font-size:13px;margin-bottom:16px;">Screened submissions get next steps by email after review</p>
-      <a href="#auditForm" style="display:inline-block;padding:12px 24px;background:var(--red);color:#fff;font-family:inherit;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;transition:all 0.2s ease;">Start Audit ↓</a>
+      <a href="#auditForm" style="display:inline-block;padding:12px 24px;background:var(--red);color:#fff;font-family:inherit;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;transition:all 0.2s ease;">Start Audit</a>
     </div>
     <div style="background:#fff;border-radius:var(--radius);padding:28px;text-align:center;box-shadow:var(--shadow);">
       <div style="background:var(--black);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;margin-bottom:12px;">2</div>
       <h3 style="color:var(--black);font-size:18px;margin-bottom:8px;">Fill Out the Form</h3>
       <p style="color:rgba(26,26,26,0.5);font-size:13px;margin-bottom:16px;">So we can hit the ground running</p>
-      <a href="#auditForm" style="display:inline-block;padding:12px 24px;background:var(--black);color:#fff;font-family:inherit;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;transition:all 0.2s ease;">Start Form ↓</a>
+      <a href="#auditForm" style="display:inline-block;padding:12px 24px;background:var(--black);color:#fff;font-family:inherit;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;transition:all 0.2s ease;">Start Form</a>
     </div>
   </div>
   <p style="text-align:center;margin-top:16px;font-size:13px;color:rgba(26,26,26,0.4);">To keep the calendar clean, qualified submissions get next steps by email after review. No links in form fields, please.</p>
@@ -560,13 +551,12 @@ body{font-family:Archivo,Arial,sans-serif;background-image:radial-gradient(rgba(
     </select>
   </div>
 
-  <button type="submit" class="submit-btn">Submit & Get Started →</button>
+  <button type="submit" class="submit-btn">Submit & Get Started</button>
 
 </form>
 </div>
 
 <div class="thank-you" id="thankYou">
-  <div class="check">✓</div>
   <h2>Thanks: submission received.</h2>
   <p>We’ll review your responses first so the calendar stays clean and the conversation is actually useful.</p>
   <p style="margin-top:24px;font-size:16px;color:rgba(26,26,26,0.6);">If it looks like a fit, we’ll send the booking link directly by email with next steps.</p>
@@ -724,7 +714,7 @@ body{font-family:Archivo,Arial,sans-serif;background-image:radial-gradient(rgba(
       }
     });
     if (firstInvalid) {
-      btn.textContent = 'Submit & Get Started →';
+      btn.textContent = 'Submit & Get Started';
       btn.disabled = false;
       showError('Please fill out the required fields before submitting.', firstInvalid);
       return;
@@ -732,14 +722,14 @@ body{font-family:Archivo,Arial,sans-serif;background-image:radial-gradient(rgba(
 
     const missingSelections = hasRequiredSelections();
     if (missingSelections) {
-      btn.textContent = 'Submit & Get Started →';
+      btn.textContent = 'Submit & Get Started';
       btn.disabled = false;
       showError(missingSelections.message, missingSelections.field);
       return;
     }
     const blocked = hasBlockedContent();
     if (blocked) {
-      btn.textContent = 'Submit & Get Started →';
+      btn.textContent = 'Submit & Get Started';
       btn.disabled = false;
       showError(blocked.message, blocked.field);
       return;

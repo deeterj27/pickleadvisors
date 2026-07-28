@@ -107,6 +107,30 @@ class ReleaseMetadataTest(unittest.TestCase):
         self.assertIn("We could not submit your audit", catch_body)
         self.assertNotIn("thankYou.style.display = 'block'", catch_body)
 
+    def test_public_site_contains_no_emoji_or_decorative_arrows(self):
+        public_suffixes = {".html", ".css", ".js", ".xml", ".svg"}
+        excluded_parts = {".git", "qa", "evidence"}
+        decorative_symbols = set("→↗↓✓")
+
+        def is_emoji(character):
+            codepoint = ord(character)
+            return (
+                0x1F000 <= codepoint <= 0x1FAFF
+                or 0x2600 <= codepoint <= 0x27BF
+                or codepoint == 0xFE0F
+            )
+
+        violations = []
+        for path in ROOT.rglob("*"):
+            if not path.is_file() or path.suffix.lower() not in public_suffixes:
+                continue
+            if excluded_parts.intersection(path.parts):
+                continue
+            for character in path.read_text(errors="ignore"):
+                if character in decorative_symbols or is_emoji(character):
+                    violations.append(f"{path.relative_to(ROOT)}: U+{ord(character):04X}")
+        self.assertEqual(violations, [])
+
     def test_robots_and_sitemap_cover_public_conversion_routes(self):
         robots = (ROOT / "robots.txt").read_text()
         self.assertIn("Sitemap: https://pickleadvisors.com/sitemap.xml", robots)
