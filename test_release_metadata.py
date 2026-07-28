@@ -95,6 +95,18 @@ class ReleaseMetadataTest(unittest.TestCase):
         types = {entry["@type"] for entry in home_graph}
         self.assertEqual(types, {"Organization", "WebSite"})
 
+    def test_audit_receiver_uses_single_write_redirect_handling(self):
+        source = (ROOT / "audit/index.html").read_text()
+        self.assertIn("mode: 'cors'", source)
+        self.assertIn("redirect: 'manual'", source)
+        self.assertIn("cache: 'no-store'", source)
+        self.assertIn("response.type !== 'opaqueredirect'", source)
+        self.assertNotIn("mode: 'no-cors'", source)
+        catch_body = source.split("}).catch(() => {", 1)[1].split("});", 1)[0]
+        self.assertIn("btn.disabled = false", catch_body)
+        self.assertIn("We could not submit your audit", catch_body)
+        self.assertNotIn("thankYou.style.display = 'block'", catch_body)
+
     def test_robots_and_sitemap_cover_public_conversion_routes(self):
         robots = (ROOT / "robots.txt").read_text()
         self.assertIn("Sitemap: https://pickleadvisors.com/sitemap.xml", robots)

@@ -708,6 +708,7 @@ body{font-family:Archivo,Arial,sans-serif;background-image:radial-gradient(rgba(
   form.addEventListener('submit', e => {
     e.preventDefault();
     const btn = form.querySelector('.submit-btn');
+    const original = btn.textContent;
     btn.textContent = 'Submitting…';
     btn.disabled = true;
     clearError();
@@ -766,17 +767,24 @@ body{font-family:Archivo,Arial,sans-serif;background-image:radial-gradient(rgba(
     
     fetch('https://script.google.com/macros/s/AKfycbx_gYGN8L6CZA0NmTtDWb5_VLmvAkkZFWyNV6rtgieq78FMXV3QF5YYsq0FWgWiK9Al/exec?' + params.toString(), {
       method: 'GET',
-      mode: 'no-cors'
-    }).then(() => {
+      mode: 'cors',
+      redirect: 'manual',
+      cache: 'no-store'
+    }).then((response) => {
+      if (response.type !== 'opaqueredirect') {
+        throw new Error('Unexpected audit receiver response');
+      }
       formWrap.style.display = 'none';
       thankYou.style.display = 'block';
       window.scrollTo({ top: 0, behavior: 'smooth' });
       progressFill.style.width = '100%';
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'audit_complete' });
     }).catch(() => {
-      formWrap.style.display = 'none';
-      thankYou.style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      progressFill.style.width = '100%';
+      btn.disabled = false;
+      btn.textContent = original;
+      formError.innerHTML = 'We could not submit your audit. Email <a href="mailto:jonathan@pickleadvisors.com">jonathan@pickleadvisors.com</a> and we will take care of it.';
+      formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   });
 })();
