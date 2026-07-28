@@ -61,18 +61,25 @@ class ReleaseMetadataTest(unittest.TestCase):
             "og:type": "website",
             "og:site_name": "Pickle Advisors",
             "og:url": "https://pickleadvisors.com/",
-            "og:image": "https://pickleadvisors.com/og-image-v2.png",
+            "og:image": "https://pickleadvisors.com/og-image-v3.png",
             "og:image:width": "1200",
             "og:image:height": "630",
             "twitter:card": "summary_large_image",
-            "twitter:image": "https://pickleadvisors.com/og-image-v2.png",
+            "twitter:image": "https://pickleadvisors.com/og-image-v3.png",
         }
         for key, value in expected.items():
             self.assertEqual(head.meta.get(key), value, key)
         for key in ["og:title", "og:description", "og:image:alt", "twitter:title", "twitter:description", "twitter:image:alt"]:
             self.assertTrue(head.meta.get(key), key)
+        self.assertEqual(head.meta["og:title"], "Pickle Advisors | Build a Stronger Consumer Brand")
+        self.assertEqual(head.meta["twitter:title"], "Pickle Advisors | Build a Stronger Consumer Brand")
+        self.assertNotIn("operating system", head.meta["og:title"].lower())
+        card_source = (ROOT / "assets/social/og-card.html").read_text()
+        self.assertIn("Built for Consumer Brands", card_source)
+        self.assertNotIn("Operating System", card_source)
+        self.assertFalse((ROOT / "og-image-v2.png").exists())
         self.assertNotIn("three businesses built around", head.meta["og:title"].lower())
-        self.assertEqual(png_dimensions("og-image-v2.png"), (1200, 630))
+        self.assertEqual(png_dimensions("og-image-v3.png"), (1200, 630))
 
     def test_audit_has_its_own_social_card_and_canonical(self):
         head = parse_head("audit/index.html")
