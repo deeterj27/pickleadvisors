@@ -93,14 +93,14 @@ class ReleaseMetadataTest(unittest.TestCase):
 
     def test_touch_icon_and_structured_data_are_valid(self):
         self.assertEqual(png_dimensions("apple-touch-icon.png"), (180, 180))
-        for page in ["index.html", "audit/index.html"]:
+        for page in ["index.html", "advisory/index.html", "media/index.html", "about/index.html", "audit/index.html"]:
             head = parse_head(page)
             touch = [link for link in head.links if link.get("rel") == "apple-touch-icon"]
             self.assertEqual(touch[0]["href"], "/apple-touch-icon.png")
             self.assertTrue(head.json_ld)
         home_graph = parse_head("index.html").json_ld[0]["@graph"]
         types = {entry["@type"] for entry in home_graph}
-        self.assertEqual(types, {"Organization", "WebSite"})
+        self.assertEqual(types, {"Organization", "Person", "NewsMediaOrganization", "WebSite"})
 
     def test_audit_receiver_uses_single_write_redirect_handling(self):
         source = (ROOT / "audit/index.html").read_text()
@@ -144,7 +144,13 @@ class ReleaseMetadataTest(unittest.TestCase):
         tree = ET.parse(ROOT / "sitemap.xml")
         namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
         urls = {node.text for node in tree.findall("sm:url/sm:loc", namespace)}
-        self.assertEqual(urls, {"https://pickleadvisors.com/", "https://pickleadvisors.com/audit/"})
+        self.assertEqual(urls, {
+            "https://pickleadvisors.com/",
+            "https://pickleadvisors.com/advisory/",
+            "https://pickleadvisors.com/media/",
+            "https://pickleadvisors.com/about/",
+            "https://pickleadvisors.com/audit/",
+        })
         dates = [node.text for node in tree.findall("sm:url/sm:lastmod", namespace)]
         self.assertTrue(all(re.fullmatch(r"\d{4}-\d{2}-\d{2}", value or "") for value in dates))
 

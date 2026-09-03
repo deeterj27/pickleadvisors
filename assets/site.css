@@ -45,6 +45,17 @@
 @media(max-width:620px){.home-business{padding:66px 0;scroll-margin-top:70px}.home-business-heading{gap:28px;margin-bottom:42px}.home-business-heading h2{font-size:51px}.home-business-heading>div:last-child>p{font-size:17px}.home-service-list,.capital-lens{grid-template-columns:1fr}.home-service-list article,.capital-lens article{padding:22px 0}.home-service-list article+article,.capital-lens article+article,.home-service-list article:nth-child(3),.capital-lens article:nth-child(3){border-left:0;border-top:1px solid rgba(255,255,255,.3);padding-left:0}.home-provider-row{gap:28px;padding:48px 0}.home-provider-row .provider-frame{width:100%}.home-provider-copy h3{font-size:42px}.media-partnership-strip{gap:28px}.media-partnership-strip .button{width:100%;text-align:center}.home-boundary{margin-top:34px}}
 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important}}
+
+/* Indexable authority-page refinements */
+.home-business--light{background:rgba(255,253,247,.34);color:var(--ink)}
+.home-business--light .home-business-heading>div:last-child>p{color:var(--muted)}
+.home-business--light .objection-list{border-color:var(--rule)}
+.home-business--light .objection-list article{border-color:var(--rule)}
+.ecosystem-close-action--light p{color:var(--muted)}
+.ecosystem-close-action--light .button--primary{background:var(--lime);color:var(--ink);border:2px solid var(--ink)}
+.media-source-directory--five>a:last-child{grid-column:1/-1}
+.ecosystem-close .text-link{color:#fff}
+@media(max-width:700px){.media-source-directory--five>a:last-child{grid-column:auto}}
 /* 2026-07-28 concise hierarchy revision */
 @media (min-width:981px){
   .clean-hero{padding:58px 0 60px}
@@ -224,3 +235,7 @@
   .ecosystem-close-action{display:grid;margin-top:28px}
   .ecosystem-close-action .button{width:100%}
 }
+
+/* Final authority-page contrast guarantees */
+.home-business--light .ecosystem-close-action p{color:var(--muted)}
+.home-advisory .text-link,.home-capital .text-link{color:#fff}

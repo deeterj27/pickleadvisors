@@ -7,12 +7,13 @@ import unittest
 
 ROOT = Path(__file__).parent
 REDIRECTS = {
-    "advisory": (ROOT / "advisory" / "index.html", "/#advisory"),
     "capital": (ROOT / "capital" / "index.html", "/#capital"),
-    "media": (ROOT / "media" / "index.html", "/#media"),
 }
 PAGES = {
     "home": ROOT / "index.html",
+    "advisory": ROOT / "advisory" / "index.html",
+    "media": ROOT / "media" / "index.html",
+    "about": ROOT / "about" / "index.html",
     "audit": ROOT / "audit" / "index.html",
 }
 LEGACY_ROUTES = [
@@ -101,7 +102,7 @@ class PickleEcosystemSiteTest(unittest.TestCase):
 
     def test_navigation_reaches_each_ecosystem_pillar(self):
         links = parse(PAGES["home"]).links
-        for href in ["#advisory", "#media", "#capital", "/audit/"]:
+        for href in ["/advisory/", "/media/", "/about/", "#capital", "/audit/"]:
             with self.subTest(href=href):
                 self.assertIn(href, links)
         self.assertNotIn("/resources/", links)

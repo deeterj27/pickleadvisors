@@ -1,0 +1,34 @@
+# Pickle Advisors
+
+> Pickle Advisors is a founder-led operating company that builds practical AI workflows for growing consumer brands. It is founded by Jonathan Deeter and operates Deet's Eats Media, an independent consumer-brand media publication.
+
+## Canonical entities
+
+- [Pickle Advisors](https://pickleadvisors.com/): Consumer-brand operations advisory and AI workflow implementation.
+- [Advisory and implementation](https://pickleadvisors.com/advisory/): Services, operating areas, audience, and direct answers.
+- [Jonathan Deeter](https://pickleadvisors.com/about/): Founder of Pickle Advisors and Deet's Eats Media.
+- [Deet's Eats Media](https://pickleadvisors.com/media/): Independent consumer-brand news and market intelligence.
+- [AI Readiness Audit](https://pickleadvisors.com/audit/): Diagnostic for identifying operational bottlenecks and workflows suitable for implementation.
+
+## Pickle Advisors
+
+Pickle Advisors works with founders and operators at growing consumer brands. Its work covers retailer and distributor orders, inventory and logistics handoffs, reporting, launches, invoicing, cash follow-up, and other operational exceptions. Pickle adapts workflows around existing systems rather than requiring a forced ERP replacement. Human owners retain approval over exceptions and accountable decisions.
+
+## Deet's Eats Media
+
+Deet's Eats is an independent consumer-brand media publication founded by Jonathan Deeter. It covers food, beverage, wellness, retail, funding, launches, acquisitions, and operating implications. Sponsored work is clearly labeled, and editorial judgment remains independent.
+
+- [The Deeter Digest](https://deetseatsnyc.substack.com/): Weekly newsletter.
+- [X](https://x.com/deetseatsnyc): Daily analysis.
+- [Instagram](https://www.instagram.com/deetseatsnyc/): Daily social coverage.
+- [TikTok](https://www.tiktok.com/@deetseatsnyc): Counter Service video coverage.
+- [Unpackaged Goods](https://open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f): Founder interview podcast.
+
+## Contact
+
+- Email: jonathan@pickleadvisors.com
+- AI Audit: https://pickleadvisors.com/audit/
+
+## Boundaries
+
+Pickle Advisors advisory clients do not receive guaranteed Deet's Eats media coverage. Deet's Eats media participation does not imply advisory work or investment. Pickle VC is in development and is not an open public fund.
