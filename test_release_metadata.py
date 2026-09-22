@@ -114,10 +114,10 @@ class ReleaseMetadataTest(unittest.TestCase):
         self.assertIn("We could not submit your audit", catch_body)
         self.assertNotIn("thankYou.style.display = 'block'", catch_body)
 
-    def test_public_site_contains_no_emoji(self):
+    def test_public_site_contains_no_emoji_or_decorative_arrows(self):
         public_suffixes = {".html", ".css", ".js", ".xml", ".svg"}
         excluded_parts = {".git", "qa", "evidence"}
-        decorative_symbols = set()
+        decorative_symbols = set("→↗↓✓")
 
         def is_emoji(character):
             codepoint = ord(character)
