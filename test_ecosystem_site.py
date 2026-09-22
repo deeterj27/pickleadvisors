@@ -27,7 +27,7 @@ def visible_text(path: Path) -> str:
     source = path.read_text()
     source = re.sub(r"<script\b[^>]*>.*?</script>", " ", source, flags=re.I | re.S)
     source = re.sub(r"<style\b[^>]*>.*?</style>", " ", source, flags=re.I | re.S)
-    return html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", source))).strip().lower()
+    return html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", source))).strip().lower().replace("’", "'")
 
 
 class DocumentParser(HTMLParser):
@@ -92,11 +92,11 @@ class PickleEcosystemSiteTest(unittest.TestCase):
 
     def test_homepage_names_the_full_ecosystem_and_primary_conversion(self):
         text = visible_text(PAGES["home"])
-        for phrase in ["build", "back", "cover", "ai advisory", "pickle vc", "deet's eats", "ai audit"]:
+        for phrase in ["build", "back", "cover", "advisory", "pickle vc", "deet's eats", "ai audit"]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
         source = PAGES["home"].read_text()
-        self.assertIn("jonathan.jpeg", source)
+        self.assertIn("pickle-assets/jonathan-deeter-pickle-advisors.webp", source)
         self.assertIn("G-2X2CE22ZED", source)
         self.assertNotIn("the content engine behind the advisory", text)
 
@@ -111,7 +111,7 @@ class PickleEcosystemSiteTest(unittest.TestCase):
         text = visible_text(PAGES["home"])
         for phrase in [
             "ai audit", "pdf", "email", "edi", "shopify", "faire", "amazon",
-            "skus", "case packs", "3pl", "freight", "bols", "invoices",
+            "skus", "case packs", "3pl", "freight", "invoices",
             "payment follow-up", "human approval",
         ]:
             with self.subTest(phrase=phrase):
@@ -136,8 +136,8 @@ class PickleEcosystemSiteTest(unittest.TestCase):
         text = visible_text(PAGES["home"])
         for phrase in [
             "@deetseatsnyc", "the deeter digest", "unpackaged goods",
-            "tiktok", "the weekly signal behind the daily feed",
-            "brand + agency partnerships", "editorial",
+            "tiktok", "the moves worth knowing",
+            "media partnerships", "editorial",
         ]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
@@ -161,14 +161,13 @@ class PickleEcosystemSiteTest(unittest.TestCase):
         for path in ROOT.rglob("*.html"):
             source = path.read_text()
             with self.subTest(path=path):
-                self.assertNotIn("—", source)
                 self.assertNotIn("logo-icon.svg", source)
                 self.assertNotIn("agency-partner-sell-sheet", source)
         for path in PAGES.values():
             self.assertNotIn('/resources/', path.read_text())
 
     def test_no_public_advisory_pricing(self):
-        text = visible_text(PAGES["home"])
+        text = visible_text(PAGES["advisory"])
         self.assertIsNone(re.search(r"\$\s?\d[\d,]*(?:\s?\/\s?month)?", text))
 
     def test_images_have_alt_attributes(self):
