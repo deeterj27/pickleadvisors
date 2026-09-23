@@ -6,7 +6,7 @@ A static site with shared Python templates, plain HTML, and small browser script
 
 - `content/site.json`: navigation, social destinations, contact, analytics ID, existing audit receiver.
 - `content/advisory.json`: service fit, audit expectations, implementation scope, boundaries.
-- `content/newsletter.json`: last validated newsletter snapshot. The daily workflow refreshes the three newest public RSS stories and optimized images.
+- `content/newsletter.json`: last validated newsletter snapshot. The local scheduled task refreshes the three newest public RSS stories and optimized images.
 - `content/social.json`: the curated Instagram selection used on Home and Media. Edit title, destination, date, image, and dimensions here; these posts are deliberately curated, not scraped automatically.
 - `content/audit.json`: backend-compatible selections.
 - `templates/pages/`: page-specific content and metadata.
@@ -34,7 +34,10 @@ The checks cover links and anchors, structured data, sharing metadata, common na
 
 ## Publishing and freshness
 
-GitHub Pages uses `.github/workflows/site.yml`. Pushes and pull requests run the checks; only non-PR runs deploy after the checks succeed. The daily run at 12:17 UTC refreshes RSS and saves the validated snapshot. Manual workflow runs also refresh it. A feed or artwork error fails the refresh and leaves the live site unchanged. GitHub can delay scheduled jobs and disables inactive public-repository schedules after 60 days; check Actions if editorial updates stop.
+GitHub Pages uses `.github/workflows/site.yml`. Pushes, pull requests, and manual runs execute the checks; only non-PR runs deploy after the checks succeed.
+
+A Codex task on the owner's Mac refreshes the public RSS selection daily at 8:17 AM America/New_York, validates changes, and commits only the newsletter snapshot, artwork, generated pages, and sitemap. The Mac and Codex must be available for that task. The refresh was moved out of GitHub Actions because Substack returns HTTP 403 from GitHub's hosted runner; the approved local feed fetch works. On failure, the last valid published selection remains in place. The task does not overwrite a dirty working tree and reports actionable failures. To run a refresh manually, use `python scripts/refresh_newsletter.py`, then the build and checks above before committing and pushing.
+
 
 `python scripts/package_site.py` produces `_site/` with only public assets and pages, retaining legacy redirects and verification files. The custom domain and existing sitemap/robots settings are preserved. Revert a problematic change in Git and publish through the same checked workflow.
 
