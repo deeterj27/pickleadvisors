@@ -4,6 +4,8 @@
   if (toggle && menu) {
     const close = () => {
       menu.classList.remove('is-open');
+      menu.hidden = true;
+      toggle.setAttribute('aria-label', 'Open navigation');
       toggle.setAttribute('aria-expanded', 'false');
       document.body.classList.remove('menu-open');
     };
@@ -11,12 +13,14 @@
       const open = toggle.getAttribute('aria-expanded') !== 'true';
       toggle.setAttribute('aria-expanded', String(open));
       menu.classList.toggle('is-open', open);
+      menu.hidden = !open;
+      toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
       document.body.classList.toggle('menu-open', open);
       if (open) menu.querySelector('a')?.focus();
     });
     menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', close));
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
         close();
         toggle.focus();
       }
@@ -30,7 +34,7 @@
     if (!window.location.hash) return;
     const id = decodeURIComponent(window.location.hash.slice(1));
     const target = document.getElementById(id);
-    if (target?.classList.contains('home-business')) {
+    if (target) {
       target.scrollIntoView({ block: 'start', behavior: 'auto' });
     }
   };

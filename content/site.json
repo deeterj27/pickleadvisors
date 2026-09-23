@@ -1,0 +1,55 @@
+{
+  "name": "Pickle Advisors",
+  "base_url": "https://pickleadvisors.com",
+  "email": "jonathan@pickleadvisors.com",
+  "analytics_id": "G-2X2CE22ZED",
+  "navigation": [
+    {
+      "label": "Advisory",
+      "href": "/advisory/"
+    },
+    {
+      "label": "Deet’s Eats",
+      "href": "/media/"
+    },
+    {
+      "label": "Jonathan",
+      "href": "/about/"
+    },
+    {
+      "label": "Pickle VC",
+      "href": "/#capital"
+    },
+    {
+      "label": "AI Audit",
+      "href": "/audit/"
+    }
+  ],
+  "social": [
+    {
+      "label": "The Deeter Digest",
+      "href": "https://deetseatsnyc.substack.com/"
+    },
+    {
+      "label": "Instagram",
+      "href": "https://www.instagram.com/deetseatsnyc/"
+    },
+    {
+      "label": "TikTok",
+      "href": "https://www.tiktok.com/@deetseatsnyc"
+    },
+    {
+      "label": "X",
+      "href": "https://x.com/deetseatsnyc"
+    },
+    {
+      "label": "Unpackaged Goods",
+      "href": "https://open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f"
+    }
+  ],
+  "newsletter_feed": "https://deetseatsnyc.substack.com/feed",
+  "audit_endpoint": "https://script.google.com/macros/s/AKfycbx_gYGN8L6CZA0NmTtDWb5_VLmvAkkZFWyNV6rtgieq78FMXV3QF5YYsq0FWgWiK9Al/exec",
+  "blocked_emails": [
+    "callum_rafferty174@gmail.com"
+  ]
+}

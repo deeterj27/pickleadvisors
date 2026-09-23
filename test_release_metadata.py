@@ -103,16 +103,14 @@ class ReleaseMetadataTest(unittest.TestCase):
         self.assertEqual(types, {"Organization", "Person", "NewsMediaOrganization", "WebSite", "WebPage", "Service"})
 
     def test_audit_receiver_uses_single_write_redirect_handling(self):
-        source = (ROOT / "audit/index.html").read_text()
-        self.assertIn("mode: 'cors'", source)
-        self.assertIn("redirect: 'manual'", source)
-        self.assertIn("cache: 'no-store'", source)
-        self.assertIn("response.type !== 'opaqueredirect'", source)
-        self.assertNotIn("mode: 'no-cors'", source)
-        catch_body = source.split("}).catch(() => {", 1)[1].split("});", 1)[0]
-        self.assertIn("btn.disabled = false", catch_body)
-        self.assertIn("We could not submit your audit", catch_body)
-        self.assertNotIn("thankYou.style.display = 'block'", catch_body)
+        source = (ROOT / "assets/audit-core.js").read_text()
+        self.assertIn("mode:'cors'", source)
+        self.assertIn("redirect:'follow'", source)
+        self.assertIn("cache:'no-store'", source)
+        self.assertIn("method:'POST'", source)
+        self.assertNotIn("return {state:'sent'}", source)
+        self.assertIn("result.saved === true", source)
+        self.assertNotIn("mode:'no-cors'", source)
 
     def test_public_site_contains_no_emoji_or_decorative_arrows(self):
         public_suffixes = {".html", ".css", ".js", ".xml", ".svg"}

@@ -102,7 +102,7 @@ class PickleEcosystemSiteTest(unittest.TestCase):
 
     def test_navigation_reaches_each_ecosystem_pillar(self):
         links = parse(PAGES["home"]).links
-        for href in ["/advisory/", "/media/", "/about/", "#capital", "/audit/"]:
+        for href in ["/advisory/", "/media/", "/about/", "/#capital", "/audit/"]:
             with self.subTest(href=href):
                 self.assertIn(href, links)
         self.assertNotIn("/resources/", links)

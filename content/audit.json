@@ -1,0 +1,46 @@
+{
+  "revenue_range": [
+    "Under $10K",
+    "$10-25K",
+    "$25-75K",
+    "$75K+"
+  ],
+  "q8_budget": [
+    "Under $500/mo",
+    "$500-$2,000/mo",
+    "$2,000-$5,000/mo",
+    "$5,000+/mo"
+  ],
+  "q1_tools": [
+    "Shopify",
+    "Amazon Seller Central",
+    "Faire",
+    "Airegoods",
+    "QuickBooks",
+    "Rho",
+    "Mercury / Relay",
+    "Google Sheets",
+    "Klaviyo",
+    "Meta Ads",
+    "Google Ads",
+    "Triple Whale",
+    "Canva",
+    "Social scheduler",
+    "ShipStation",
+    "Inventory tool",
+    "Notion",
+    "Slack",
+    "Other"
+  ],
+  "q2_channels": [
+    "DTC website",
+    "Amazon",
+    "Wholesale / distributors",
+    "Retail (grocery, specialty)",
+    "Faire / marketplace",
+    "TikTok Shop",
+    "Farmers markets / events",
+    "Food service",
+    "Other"
+  ]
+}
