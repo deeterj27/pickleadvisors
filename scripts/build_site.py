@@ -24,6 +24,9 @@ def social_cards(items):
  return ''.join(f'<a class="social-post" href="{esc(x["url"])}" target="_blank" rel="noopener"><div class="social-image">{image(x)}<span class="format">{esc(x["format"])}</span></div><span class="meta">Instagram · <time datetime="{x["date"]}">{date_label(x["date"])}</time></span><h3>{esc(clean_text(x["title"]))}</h3><p>{"Watch on Instagram" if "/reel/" in x["url"] else "View on Instagram"}</p></a>' for x in items)
 def podcast_episode(item):
  episode_id=item['episode_id']
+ youtube_id=item['youtube_id'];apple_id=item['apple_episode_id']
+ if not re.fullmatch(r'[A-Za-z0-9_-]{11}',youtube_id):raise ValueError('Invalid YouTube video ID')
+ if not re.fullmatch(r'[0-9]+',apple_id):raise ValueError('Invalid Apple Podcasts episode ID')
  if not re.fullmatch(r'[A-Za-z0-9]{22}',episode_id):raise ValueError('Invalid Spotify episode ID')
  if not isinstance(item['video'],bool):raise ValueError('Podcast video must be boolean')
  start=item.get('interview_start','')
@@ -33,6 +36,8 @@ def podcast_episode(item):
  if not title or not summary:raise ValueError('Podcast title and summary are required')
  context={
   'podcast_title':esc(title),'podcast_summary':esc(summary),
+  'podcast_youtube_url':'https://www.youtube.com/watch?v='+youtube_id,
+  'podcast_apple_url':'https://podcasts.apple.com/us/podcast/unpackaged-goods/id1841218206?i='+apple_id,
   'podcast_url':'https://open.spotify.com/episode/'+episode_id,
   'podcast_embed_url':'https://open.spotify.com/embed/episode/'+episode_id+('/video' if item['video'] else '')+'?utm_source=generator',
   'podcast_start_note':f'<span>Interview starts at {esc(start)}.</span>' if start else ''

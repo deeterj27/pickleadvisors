@@ -31,6 +31,8 @@ class PodcastTest(unittest.TestCase):
                 self.assertIn(self.item['title'], frame['title'])
                 self.assertEqual(frame['loading'], 'lazy')
                 self.assertIn('allowfullscreen', frame)
+                self.assertTrue(any(a['href'] == 'https://www.youtube.com/watch?v=' + self.item['youtube_id'] for a in page.links))
+                self.assertTrue(any(a['href'] == 'https://podcasts.apple.com/us/podcast/unpackaged-goods/id1841218206?i=' + self.item['apple_episode_id'] for a in page.links))
                 self.assertTrue(any(a['href'] == 'https://open.spotify.com/episode/' + self.item['episode_id'] for a in page.links))
 
     def test_refresh_cannot_inject_markup_or_an_arbitrary_player(self):
@@ -39,7 +41,7 @@ class PodcastTest(unittest.TestCase):
         self.assertNotIn('<script>', result)
         self.assertIn('&lt;script&gt;', result)
         self.assertEqual(len(Elements(result).frames), 1)
-        for changes in ({'episode_id': 'https://example.com'}, {'interview_start':'14:99'}, {'video':'true'}, {'title':''}):
+        for changes in ({'episode_id': 'https://example.com'}, {'interview_start':'14:99'}, {'video':'true'}, {'title':''}, {'youtube_id':'javascript:alert(1)'}, {'apple_episode_id':'1&other=2'}):
             with self.subTest(changes=changes), self.assertRaises(ValueError):
                 podcast_episode(dict(self.item, **changes))
 
