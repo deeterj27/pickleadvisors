@@ -22,6 +22,22 @@ def newsletter(items):
  return '<div class="digest-grid">'+feature+'<div class="story-list">'+stories+'<div class="subscribe-panel"><span class="eyebrow">A little signal for your inbox</span><h3>The moves worth knowing.</h3><p>Your regular briefing from The Deeter Digest.</p><a class="button" href="https://deetseatsnyc.substack.com/" target="_blank" rel="noopener">Subscribe on Substack</a></div></div></div>'
 def social_cards(items):
  return ''.join(f'<a class="social-post" href="{esc(x["url"])}" target="_blank" rel="noopener"><div class="social-image">{image(x)}<span class="format">{esc(x["format"])}</span></div><span class="meta">Instagram · <time datetime="{x["date"]}">{date_label(x["date"])}</time></span><h3>{esc(clean_text(x["title"]))}</h3><p>{"Watch on Instagram" if "/reel/" in x["url"] else "View on Instagram"}</p></a>' for x in items)
+def podcast_episode(item):
+ episode_id=item['episode_id']
+ if not re.fullmatch(r'[A-Za-z0-9]{22}',episode_id):raise ValueError('Invalid Spotify episode ID')
+ if not isinstance(item['video'],bool):raise ValueError('Podcast video must be boolean')
+ start=item.get('interview_start','')
+ if start and not re.fullmatch(r'(?:[0-9]+:)?[0-5]?[0-9]:[0-5][0-9]',start):raise ValueError('Invalid interview start time')
+ date.fromisoformat(item['verified_on'])
+ title=clean_text(item['title']);summary=clean_text(item['summary'])
+ if not title or not summary:raise ValueError('Podcast title and summary are required')
+ context={
+  'podcast_title':esc(title),'podcast_summary':esc(summary),
+  'podcast_url':'https://open.spotify.com/episode/'+episode_id,
+  'podcast_embed_url':'https://open.spotify.com/embed/episode/'+episode_id+('/video' if item['video'] else '')+'?utm_source=generator',
+  'podcast_start_note':f'<span>Interview starts at {esc(start)}.</span>' if start else ''
+ }
+ return render((ROOT/'templates/partials/podcast.html').read_text(),context)
 def choices(key,label,values):
  controls=''.join(f'<label class="choice"><input type="checkbox" name="{key}" value="{esc(v)}"><span>{esc(v)}</span></label>' for v in values)
  extra=f'<label for="{key}_other">If other, tell us more <span>(optional)</span></label><input id="{key}_other" name="{key}_other" maxlength="300">'
@@ -29,7 +45,7 @@ def choices(key,label,values):
 def build(check=False):
  site=read_json('site.json');articles=read_json('newsletter.json');posts=read_json('social.json');audit=read_json('audit.json');facts=read_json('advisory.json')
  version=hashlib.sha256(b''.join(p.read_bytes() for p in sorted((ROOT/'assets').glob('*.css')))+b''.join(p.read_bytes() for p in sorted((ROOT/'assets').glob('*.js')))).hexdigest()[:12]
- common={'email':esc(site['email']),'asset_version':version,'audit_endpoint':esc(site['audit_endpoint']), 'newsletter':newsletter(articles),'social_cards':social_cards(posts)}
+ common={'email':esc(site['email']),'asset_version':version,'audit_endpoint':esc(site['audit_endpoint']), 'newsletter':newsletter(articles),'social_cards':social_cards(posts),'podcast':podcast_episode(read_json('podcast.json'))}
  common['footer_navigation']=''.join(f'<a href="{esc(x["href"])}">{esc(x["label"])}</a>' for x in site['navigation'])
  common['social_links']=''.join(f'<a href="{esc(x["href"])}" target="_blank" rel="noopener">{esc(x["label"])}</a>' for x in site['social'])
  common['proof']=(ROOT/'templates/partials/proof.html').read_text()

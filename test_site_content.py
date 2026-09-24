@@ -5,7 +5,7 @@ import re
 import unittest
 
 HOME_HTML = Path("index.html").read_text()
-MEDIA_HTML = HOME_HTML
+MEDIA_HTML = Path("media/index.html").read_text()
 SITE_CSS = Path("assets/site.css").read_text().lower()
 
 
@@ -123,7 +123,6 @@ class PickleHomepageContentTest(unittest.TestCase):
             "unpackaged-goods-ep030.webp",
             "breaking-news-shopify-doordash.webp",
             "image-cdn-ak.spotifycdn.com",
-            "open.spotify.com/embed/",
             "deetseatsnyc.substack.com/embed",
         ]:
             with self.subTest(stale_or_dynamic=stale_or_dynamic):

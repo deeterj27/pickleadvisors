@@ -144,7 +144,7 @@ class PickleEcosystemSiteTest(unittest.TestCase):
         source = PAGES["home"].read_text()
         self.assertNotIn("/assets/media/", source)
         self.assertNotIn("https://deetseatsnyc.substack.com/embed", source)
-        self.assertNotIn("https://open.spotify.com/embed/", source)
+        self.assertIn("https://open.spotify.com/embed/episode/", source)
         self.assertIn("https://open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f", source)
         self.assertIn("https://www.instagram.com/deetseatsnyc/", source)
         self.assertIn("https://www.tiktok.com/@deetseatsnyc", source)

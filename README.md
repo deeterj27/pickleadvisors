@@ -8,6 +8,7 @@ A static site with shared Python templates, plain HTML, and small browser script
 - `content/advisory.json`: service fit, audit expectations, implementation scope, boundaries.
 - `content/newsletter.json`: last validated newsletter snapshot. The local scheduled task refreshes the three newest public RSS stories and optimized images.
 - `content/social.json`: the latest three verified Instagram posts used on Home and Media. The daily task reads the public profile in the browser, orders posts by actual publication date (ignoring pinned position), and imports observed cover assets using `scripts/update_instagram.py <local-manifest.json>`. It never uses private APIs or stores Instagram credentials.
+- `content/podcast.json`: the latest verified Unpackaged Goods interview, shared by Home and Media. The official Spotify player is lazy-loaded with a direct episode link as a fallback.
 - `content/audit.json`: backend-compatible selections.
 - `templates/pages/`: page-specific content and metadata.
 - `templates/partials/`: shared navigation, footer, workflow demonstration, and audit form.
@@ -36,7 +37,7 @@ The checks cover links and anchors, structured data, sharing metadata, common na
 
 GitHub Pages uses `.github/workflows/site.yml`. Pushes, pull requests, and manual runs execute the checks; only non-PR runs deploy after the checks succeed.
 
-A Codex task on the owner's Mac refreshes the public RSS selection and checks the public Instagram grid daily at 8:17 AM America/New_York, validates changes, and commits only the newsletter and Instagram snapshots, artwork, generated pages, and sitemap. The Mac and Codex must be available for that task. The refresh was moved out of GitHub Actions because Substack returns HTTP 403 from GitHub's hosted runner; the approved local feed fetch works. On failure, the last valid published selection remains in place. The task does not overwrite a dirty working tree and reports actionable failures. To run a refresh manually, use `python scripts/refresh_newsletter.py`, then the build and checks above before committing and pushing.
+A Codex task on the owner's Mac refreshes the public RSS selection and checks the public Instagram grid and latest Unpackaged Goods interview daily at 8:17 AM America/New_York, validates changes, and commits only the newsletter, Instagram, and podcast snapshots, artwork, generated pages, and sitemap. The Mac and Codex must be available for that task. The refresh was moved out of GitHub Actions because Substack returns HTTP 403 from GitHub's hosted runner; the approved local feed fetch works. On failure, the last valid published selection remains in place. The task does not overwrite a dirty working tree and reports actionable failures. To run a refresh manually, use `python scripts/refresh_newsletter.py`, then the build and checks above before committing and pushing.
 
 
 `python scripts/package_site.py` produces `_site/` with only public assets and pages, retaining legacy redirects and verification files. The custom domain and existing sitemap/robots settings are preserved. Revert a problematic change in Git and publish through the same checked workflow.
@@ -62,3 +63,9 @@ Tests use a mock sheet and a local form receiver. The deployed endpoint's health
 The workflow demonstration is labeled illustrative. Do not replace it with client claims or measured outcomes without supporting evidence and permission.
 
 Instagram manifests contain exactly three objects with `url`, `title`, `date` (ISO), `format` (REEL / WATCH, CAROUSEL / READ, or POST / READ), `alt`, and `source_image` (absolute local cover path). Verify titles against visible captions or artwork; do not invent captions. When no newer post exists, retain the existing snapshot and artwork. If Instagram blocks the public grid or dates/artwork cannot be verified, retain the last valid Instagram snapshot and report the problem; independent newsletter updates can still proceed.
+
+## Latest podcast interview
+
+Inspect the public [Unpackaged Goods show](https://open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f) in the supported browser. Choose the newest published guest interview; skip solo news episodes. Verify the guest, title, and episode link in the public description, and obtain the official player using Share > Embed episode. Update `content/podcast.json` only when a newer interview is verified. `episode_id` is the 22-character ID in its episode URL; `video` reflects whether the official embed uses `/video`; `title` and `summary` are factual, emoji-free text. `interview_start` is a confirmed timestamp from the description (or an empty string when none is given). `verified_on` is the ISO date of verification, not a guessed publication date. Keep existing metadata when the episode has not changed. Never embed arbitrary supplied HTML or URLs. No Spotify credentials or private APIs are required.
+
+Build, test, and check reproducibility before publishing. Confirm the iframe loads the selected interview on both Home and Media, including a narrow mobile viewport. If Spotify cannot be verified, retain the last valid podcast snapshot and allow independent newsletter/Instagram updates. The player does not autoplay; Spotify controls playback availability. The visible episode title, summary, and direct link remain available if a visitor blocks the embed.
