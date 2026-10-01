@@ -1,5 +1,25 @@
 [
   {
+    "url": "https://www.instagram.com/deetseatsnyc/reel/Dd7ym6iJ9GF/",
+    "title": "Lucali, in focus.",
+    "date": "2026-09-30",
+    "format": "REEL / WATCH",
+    "image": "/pickle-assets/instagram-e3c8e928de05cea1.webp",
+    "width": 360,
+    "height": 640,
+    "alt": "Jonathan with two Nonna’s oil bottles and the cover text Lucali"
+  },
+  {
+    "url": "https://www.instagram.com/deetseatsnyc/p/Dd6_nNnlkvX/",
+    "title": "Wellness Wednesday.",
+    "date": "2026-09-30",
+    "format": "CAROUSEL / READ",
+    "image": "/pickle-assets/instagram-ce84947bfcb54873.webp",
+    "width": 480,
+    "height": 640,
+    "alt": "Deet’s Eats Wellness Wednesday cover for September 23–30, 2026, featuring a ring"
+  },
+  {
     "url": "https://www.instagram.com/deetseatsnyc/reel/Dd4IqKiJJfV/",
     "title": "Molly, in focus.",
     "date": "2026-09-29",
@@ -8,25 +28,5 @@
     "width": 360,
     "height": 640,
     "alt": "Jonathan behind a cutout of a woman holding a salad bowl, with the cover text Molly"
-  },
-  {
-    "url": "https://www.instagram.com/deetseatsnyc/p/Dd32xCSJfPU/",
-    "title": "Something & Nothing raises $6.4M.",
-    "date": "2026-09-29",
-    "format": "POST / READ",
-    "image": "/pickle-assets/instagram-f2d8c2a69af96e09.webp",
-    "width": 640,
-    "height": 640,
-    "alt": "Something & Nothing drinks beneath a headline announcing a $6.4 million raise and expansion in America"
-  },
-  {
-    "url": "https://www.instagram.com/deetseatsnyc/p/Dd3yW4jp6tt/",
-    "title": "Tiny Health raises $33M.",
-    "date": "2026-09-29",
-    "format": "POST / READ",
-    "image": "/pickle-assets/instagram-967704fe26f51542.webp",
-    "width": 640,
-    "height": 640,
-    "alt": "Hands holding Tiny Health test kits beneath a headline announcing a $33 million raise"
   }
 ]
