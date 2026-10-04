@@ -96,7 +96,7 @@ class PickleHomepageContentTest(unittest.TestCase):
         self.assertGreaterEqual(len(re.findall(r"<section\b", HOME_HTML, flags=re.I)), 5)
         parser = LinkParser()
         parser.feed(HOME_HTML)
-        audit_links = [link for link in parser.links if "/audit/" in link["href"]]
+        audit_links = [link for link in parser.links if link["href"] in ["/audit/", "#audit", "/#audit"]]
         self.assertGreaterEqual(len(audit_links), 3)
         self.assertIn("start with the ai audit", HOME_TEXT)
         self.assertIn("read the market", HOME_TEXT)

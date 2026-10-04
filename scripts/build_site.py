@@ -17,7 +17,7 @@ def date_label(value):return date.fromisoformat(value).strftime('%B %d, %Y').rep
 def image(item):return f'<img src="{esc(item["image"])}" width="{int(item["width"])}" height="{int(item["height"])}" alt="{esc(clean_text(item["alt"]))}" loading="lazy" decoding="async">'
 def newsletter(items):
  first,*rest=items
- feature=f'<a class="feature" href="{esc(first["url"])}" target="_blank" rel="noopener"><div class="feature-art">{image(first)}</div><div class="feature-body"><span class="meta">The Deeter Digest · <time datetime="{first["date"]}">{date_label(first["date"])}</time></span><h3>{esc(clean_text(first["title"]))}</h3><p>Consumer-brand news and the decisions underneath it.</p><span class="textlink">Read this issue</span></div></a>'
+ feature=f'<a class="feature" href="{esc(first["url"])}" target="_blank" rel="noopener"><div class="feature-art">{image(first)}</div><div class="feature-body"><span class="meta">The Deeter Digest · <time datetime="{first["date"]}">{date_label(first["date"])}</time></span><h3>{esc(clean_text(first["title"]))}</h3><span class="textlink">Read this issue</span></div></a>'
  stories=''.join(f'<a class="story" href="{esc(x["url"])}" target="_blank" rel="noopener">{image(x)}<div><span class="meta"><time datetime="{x["date"]}">{date_label(x["date"])}</time></span><h3>{esc(clean_text(x["title"]))}</h3><span class="read">Read the story</span></div></a>' for x in rest)
  return '<div class="digest-grid">'+feature+'<div class="story-list">'+stories+'<div class="subscribe-panel"><span class="eyebrow">A little signal for your inbox</span><h3>The moves worth knowing.</h3><p>Your regular briefing from The Deeter Digest.</p><a class="button" href="https://deetseatsnyc.substack.com/" target="_blank" rel="noopener">Subscribe on Substack</a></div></div></div>'
 def social_cards(items):
@@ -50,7 +50,7 @@ def choices(key,label,values):
 def build(check=False):
  site=read_json('site.json');articles=read_json('newsletter.json');posts=read_json('social.json');audit=read_json('audit.json');facts=read_json('advisory.json')
  version=hashlib.sha256(b''.join(p.read_bytes() for p in sorted((ROOT/'assets').glob('*.css')))+b''.join(p.read_bytes() for p in sorted((ROOT/'assets').glob('*.js')))).hexdigest()[:12]
- common={'email':esc(site['email']),'asset_version':version,'audit_endpoint':esc(site['audit_endpoint']), 'newsletter':newsletter(articles),'social_cards':social_cards(posts),'podcast':podcast_episode(read_json('podcast.json'))}
+ common={'audit_starting_point':esc(facts['starting_point']),'audit_focus':esc(facts['audit_focus']),'email':esc(site['email']),'asset_version':version,'audit_endpoint':esc(site['audit_endpoint']), 'newsletter':newsletter(articles),'social_cards':social_cards(posts),'podcast':podcast_episode(read_json('podcast.json'))}
  common['footer_navigation']=''.join(f'<a href="{esc(x["href"])}">{esc(x["label"])}</a>' for x in site['navigation'])
  common['social_links']=''.join(f'<a href="{esc(x["href"])}" target="_blank" rel="noopener">{esc(x["label"])}</a>' for x in site['social'])
  common['proof']=(ROOT/'templates/partials/proof.html').read_text()
@@ -66,7 +66,7 @@ def build(check=False):
  for name in ['home','advisory','media','about','audit']:
   route='/' if name=='home' else '/'+name+'/'
   context=dict(common)
-  context['navigation']=''.join(f'<a href="{esc(x["href"])}"'+(' class="nav-cta"' if x['href']=='/audit/' else '')+(' aria-current="page"' if x['href']==route else '')+f'>{esc(x["label"])}</a>' for x in site['navigation'])
+  context['navigation']=''.join(f'<a href="{esc(x["href"])}"'+(' class="nav-cta"' if x['href']=='/#audit' else '')+(' aria-current="page"' if x['href']==route else '')+f'>{esc(x["label"])}</a>' for x in site['navigation'])
   context['header']=render((ROOT/'templates/partials/header.html').read_text(),context)
   body=render((ROOT/f'templates/pages/{name}.html').read_text(),context)
   body='\n'.join(line.rstrip() for line in body.splitlines())+'\n'

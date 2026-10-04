@@ -6,15 +6,15 @@
   "navigation": [
     {
       "label": "Advisory",
-      "href": "/advisory/"
+      "href": "/#advisory"
     },
     {
       "label": "Deet’s Eats",
-      "href": "/media/"
+      "href": "/#media"
     },
     {
       "label": "Jonathan",
-      "href": "/about/"
+      "href": "/#jonathan"
     },
     {
       "label": "Pickle VC",
@@ -22,7 +22,7 @@
     },
     {
       "label": "AI Audit",
-      "href": "/audit/"
+      "href": "/#audit"
     }
   ],
   "social": [
