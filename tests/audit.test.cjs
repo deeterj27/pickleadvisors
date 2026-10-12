@@ -1,7 +1,7 @@
 const {test} = require('node:test');
 const assert = require('node:assert/strict');
 const core = require('../assets/audit-core.js');
-const valid = {company_name:'Sample brand',contact_name:'Sample operator',email:'operator@example.org',q3_bottleneck_other:'Orders do not match inventory',q1_tools:['Shopify'],q2_channels:['Retail (grocery, specialty)'],revenue_range:'$75K+',q8_budget:'$500-$2,000/mo',website:''};
+const valid = {company_name:'Sample brand',contact_name:'Sample operator',email:'operator@example.org',q3_bottleneck_other:'Orders do not match inventory',q1_tools:['Shopify'],q2_channels:['Retail (grocery, specialty)'],revenue_range:'$75K+',q8_budget:'$500-$2,000/mo',website:'',request_id:'test-request-id-123456789'};
 test('each step validates only its own questions',()=>{
  assert.equal(core.validate(valid,0),null);assert.equal(core.validate(valid,1),null);assert.equal(core.validate(valid,2),null);
  assert.equal(core.validate({...valid,q1_tools:[]},0),null);
@@ -30,11 +30,11 @@ test('payload retains the receiver fields and preserves the problem, idempotency
 });
 test('one private POST follows the result redirect without an automatic retry',async()=>{
  let calls=0;
- const result=await core.send('https://example.org/receiver',{...valid,request_id:'test-request-id-123456789'},async(url,options)=>{calls++;assert.equal(url,'https://example.org/receiver');assert.equal(options.method,'POST');assert.equal(options.redirect,'follow');assert.equal(options.credentials,'omit');assert.equal(JSON.parse(options.body.get('data')).request_id,'test-request-id-123456789');return {ok:true,json:async()=>({saved:true,receiptId:'test-receipt'})};});
+ const result=await core.send('https://example.org/receiver',{...valid,request_id:'test-request-id-123456789'},async(url,options)=>{calls++;assert.equal(url,'https://example.org/receiver');assert.equal(options.method,'POST');assert.equal(options.redirect,'follow');assert.equal(options.credentials,'omit');assert.equal(JSON.parse(options.body.get('data')).request_id,'test-request-id-123456789');return {ok:true,json:async()=>({saved:true,receiptId:valid.request_id})};});
  assert.equal(result.state,'confirmed');assert.equal(calls,1);
 });
 test('only a saved receipt can count as a confirmed lead',async()=>{
- assert.equal((await core.send('https://example.org',valid,async()=>({ok:true,json:async()=>({saved:true,receiptId:'test-receipt'})}))).state,'confirmed');
- for (const body of [{ok:true},{saved:true},{saved:false,receiptId:'x'}]) await assert.rejects(core.send('https://example.org',valid,async()=>({ok:true,json:async()=>body})));
+ assert.equal((await core.send('https://example.org',valid,async()=>({ok:true,json:async()=>({saved:true,receiptId:valid.request_id})}))).state,'confirmed');
+ for (const body of [{ok:true},{saved:true},{saved:false,receiptId:'x'},{saved:true,receiptId:'wrong-receipt'}]) await assert.rejects(core.send('https://example.org',valid,async()=>({ok:true,json:async()=>body})));
 });
 test('network failure is not automatically retried',async()=>{let calls=0;await assert.rejects(core.send('https://example.org',valid,async()=>{calls++;throw new Error('offline');}));assert.equal(calls,1);});

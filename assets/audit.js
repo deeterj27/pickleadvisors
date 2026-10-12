@@ -10,7 +10,7 @@
   const errorBox = document.getElementById('formError');
   const status = document.getElementById('sendingStatus');
   const requestId = crypto.randomUUID();
-  let step = 0, started = false, submitting = false, completed = false;
+  let step = 0, started = false, submitting = false, completed = false, pendingData = null;
   const track = (name,detail) => window.pickleTrack?.(name,detail);
   function collect() {
     const fd = new FormData(form), data = Object.fromEntries(fd.entries());
@@ -65,24 +65,26 @@
   form.addEventListener('submit',async event=>{
     event.preventDefault();if(submitting || completed)return;
     if(step<2){advance();return;}
-    clearError();const data=collect();
+    clearError();const data=pendingData || collect();
     for(let i=0;i<3;i++){const error=core.validate(data,i,config.blocked_emails);if(error){showStep(i,false);showError(error);return;}}
+    pendingData=data;
+    form.querySelectorAll('input,select,textarea').forEach(el=>{el.disabled=true;});
     submitting=true;submit.disabled=true;back.disabled=true;submit.textContent='Sending request…';
     status.textContent='Sending once. Please keep this page open.';track('audit_submit_attempt');
     const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),25000);
     try{
-      await core.send(form.dataset.endpoint,data,fetch,controller.signal);
+      const result=await core.send(form.dataset.endpoint,data,fetch,controller.signal);
       completed=true;form.hidden=true;
       const thanks=document.getElementById('thankYou');thanks.hidden=false;
       document.getElementById('responseTitle').textContent='Your request is received.';
-      document.getElementById('responseDetail').textContent='Jonathan will review your answers and email next steps. A call has not been booked automatically.';
+      document.getElementById('responseDetail').textContent='Your AI audit is free. Implementation services are scoped and priced separately. Jonathan will review your answers and email next steps. If there is a fit, the next step is a free 30-minute fit call. A call has not been booked automatically. Reference: '+result.receiptId;
       track('generate_lead');thanks.focus();
     }catch(error){
       status.textContent='';
-      errorBox.replaceChildren();const text=document.createElement('p');text.textContent='We could not confirm your request. It may have reached us, so please email Jonathan before trying again.';
+      errorBox.replaceChildren();const text=document.createElement('p');text.textContent='We could not confirm your request. It may have reached us. Retry here to resend the same request safely, or email Jonathan with reference '+requestId+'. Keep this page open; starting a new form creates a separate request.';
       const link=document.createElement('a');link.href='mailto:'+config.email;link.textContent=config.email;errorBox.append(text,link);errorBox.hidden=false;errorBox.focus();
       track('audit_submit_error',{error_code:error.name==='AbortError'?'timeout':'unconfirmed'});
-      submit.textContent='Retry request';submit.disabled=false;back.disabled=false;
+      submit.textContent='Retry request';submit.disabled=false;back.disabled=true;
     }finally{clearTimeout(timer);submitting=false;}
   });
   showStep(0,false);
