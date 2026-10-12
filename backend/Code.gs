@@ -1,6 +1,6 @@
 // Keep the existing spreadsheet, execution identity, and web-app access at deployment.
 var AUDIT_SHEET_ID = 'SET_EXISTING_SHEET_ID_BEFORE_DEPLOYMENT';
-var AUDIT_VERSION = '2026-10-12';
+var AUDIT_VERSION = '2026-10-12-receipt2';
 var AUDIT_TAB = 'Audit Intake v2';
 var AUDIT_OWNER = 'jonathan@pickleadvisors.com';
 // Enable only after approval of script.send_mail and a controlled live email test.
@@ -97,9 +97,11 @@ function notifyAudit_(sheet,row) {
       if (MailApp.getRemainingDailyQuota()<1) return;
       var owner=column===24;
       var recipient=String(values[7]).replace(/^'(?=[=+\-@])/, '');
-      var message={to:owner ? AUDIT_OWNER : recipient,name:'Pickle Advisors',replyTo:owner ? recipient : AUDIT_OWNER,
-        subject:owner ? 'New AI audit request — '+receipt : 'Your Pickle Advisors audit request was received',
-        body:owner ? 'A new AI audit request is saved.\n\n'+AUDIT_HEADERS.slice(1,20).map(function(label,i){return label+': '+values[i+1];}).join('\n')+'\n\nReference: '+receipt+'\nReview the '+AUDIT_TAB+' tab in the existing AI Audit Responses spreadsheet.' : 'Thanks for requesting your free AI audit. The audit is free; any implementation services would be scoped and priced separately. Jonathan will review your answers and email next steps. If there is a fit, the next step is a free 30-minute fit call. No appointment has been booked automatically.\n\nReference: '+receipt+'\n\nQuestions? Reply to this email.\nJonathan\nPickle Advisors'};
+      var message=owner ? {
+        to:AUDIT_OWNER,name:'Pickle Advisors',replyTo:recipient,
+        subject:'New AI audit request — '+receipt,
+        body:'A new AI audit request is saved.\n\n'+AUDIT_HEADERS.slice(1,20).map(function(label,i){return label+': '+values[i+1];}).join('\n')+'\n\nReference: '+receipt+'\nReview the '+AUDIT_TAB+' tab in the existing AI Audit Responses spreadsheet.'
+      } : auditReceiptMessage_(recipient,receipt);
       status.setValue('sending');SpreadsheetApp.flush();
       try {MailApp.sendEmail(message);} catch(error) {status.setValue('review');SpreadsheetApp.flush();return;}
       status.setValue('sent');SpreadsheetApp.flush();
@@ -120,4 +122,25 @@ function retryPendingAuditNotifications() {
       if (sheet.getRange(row,23,1,2).getValues()[0].indexOf('pending')!==-1) {notifyAudit_(sheet,row);processed++;}
     }
   } finally {lock.releaseLock();}
+}
+
+// Shared content keeps the HTML email and plain-text fallback in sync.
+function auditReceiptMessage_(recipient,receipt) {
+  var paragraphs=[
+    'Hi there,',
+    "Thanks for reaching out. I've received your request for a free AI audit.",
+    "I'll review your answers and email you with next steps. If it looks like a fit, we'll arrange a free 30-minute conversation. No call has been booked yet.",
+    'The audit is free. Any implementation work would be scoped and priced separately.',
+    "If you'd like to add anything, just reply to this email."
+  ];
+  function escape(value) {return String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+  var body=paragraphs.join('\n\n')+'\n\nJonathan\nPickle Advisors\n\nReference: '+receipt;
+  var html='<html><head><meta name="viewport" content="width=device-width, initial-scale=1"></head><body style="margin:0;padding:0;background:#ffffff;">'+
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="left" style="padding:24px 16px;">'+
+    '<div style="max-width:560px;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.6;color:#202020;">'+
+    paragraphs.map(function(p){return '<p style="margin:0 0 18px;">'+escape(p)+'</p>';}).join('')+
+    '<p style="margin:24px 0 0;">Jonathan<br><span style="color:#555555;">Pickle Advisors</span></p>'+
+    '<p style="margin:28px 0 0;padding-top:16px;border-top:1px solid #e5e5e5;font-size:12px;line-height:1.5;color:#666666;word-break:break-all;">Reference: '+escape(receipt)+'</p>'+
+    '</div></td></tr></table></body></html>';
+  return {to:recipient,name:'Jonathan at Pickle Advisors',replyTo:AUDIT_OWNER,subject:'Your free AI audit request is in',body:body,htmlBody:html};
 }
