@@ -52,7 +52,7 @@
     const response = await fetcher(endpoint, {method:'POST', body:params, mode:'cors', credentials:'omit', redirect:'follow', cache:'no-store', signal});
     if (response.ok) {
       const result = await response.json();
-      if (result.saved === true && typeof result.receiptId === 'string' && result.receiptId.length > 0) return {state:'confirmed'};
+      if (result.saved === true && typeof result.receiptId === 'string' && result.receiptId === data.request_id) return {state:'confirmed',receiptId:result.receiptId,notifications:result.notifications};
     }
     throw new Error('unconfirmed_receiver');
   }

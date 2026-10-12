@@ -3,21 +3,22 @@
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlparse,parse_qs
-import argparse,re
+import argparse,re,json
 ROOT=Path(__file__).resolve().parents[1]
 class Preview(SimpleHTTPRequestHandler):
  def __init__(self,*args,**kwargs):super().__init__(*args,directory=str(ROOT),**kwargs)
  def do_POST(self):
   if not self.path.startswith('/qa-receiver/'):
    self.send_error(405);return
-  self.rfile.read(int(self.headers.get('Content-Length',0)))
+  raw=self.rfile.read(int(self.headers.get('Content-Length',0)))
+  self.receipt=json.loads(parse_qs(raw.decode()).get('data',['{}'])[0]).get('request_id','local-test-only')
   return self.do_GET()
  def do_GET(self):
   parsed=urlparse(self.path)
   if parsed.path.startswith('/qa-receiver/'):
    mode=parsed.path.rstrip('/').rsplit('/',1)[1]
    status=200 if mode=='confirmed' else 500
-   body=b'{"saved":true,"receiptId":"local-test-only"}' if status==200 else b'{"saved":false}'
+   body=json.dumps({'saved':True,'receiptId':getattr(self,'receipt','local-test-only')}).encode() if status==200 else b'{"saved":false}'
    self.send_response(status);self.send_header('Content-Type','application/json');self.end_headers();self.wfile.write(body);return
   if parsed.path in ['/audit/','/audit/index.html']:
    mode=parse_qs(parsed.query).get('test',['confirmed'])[0]
