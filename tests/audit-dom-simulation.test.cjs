@@ -3,7 +3,7 @@ const assert=require('node:assert/strict');
 const vm=require('node:vm');
 const fs=require('node:fs');
 const core=require('../assets/audit-core.js');
-test('browser handler reveals the populated trap, focuses it, and continues after manual clearing',()=>{
+test('simulated DOM handler reveals the populated trap, focuses it, and continues after manual clearing',()=>{
  class Element {
   constructor(){this.attrs={};this.events={};this.classes=new Set();this.classList={remove:x=>this.classes.delete(x),add:x=>this.classes.add(x)};}
   setAttribute(k,v){this.attrs[k]=v;} getAttribute(k){return this.attrs[k];} removeAttribute(k){delete this.attrs[k];}
