@@ -16,6 +16,7 @@ threading.Thread(target=server.serve_forever,daemon=True).start()
 base=f'http://127.0.0.1:{server.server_port}'
 baseline='51433f63d3dfd6aa16af26f69f2c7864175f1597'
 old=subprocess.check_output(['git','show',baseline+':assets/audit-core.js'],cwd=ROOT,text=True)
+old_page=subprocess.check_output(['git','show',baseline+':audit/index.html'],cwd=ROOT,text=True)
 old_handler=subprocess.check_output(['git','show',baseline+':assets/audit.js'],cwd=ROOT,text=True)
 results=[]
 try:
@@ -32,27 +33,33 @@ try:
     page.locator('#q3_bottleneck_other').fill('Synthetic local validation. No lead or email should be sent.')
    page.route('**/assets/audit-core.js*',lambda route:route.fulfill(body=old,content_type='text/javascript'))
    page.route('**/assets/audit.js*',lambda route:route.fulfill(body=old_handler,content_type='text/javascript'))
+   page.route('**/audit/',lambda route:route.fulfill(body=old_page,content_type='text/html'))
    page.goto(base+'/audit/')
    first_step()
    page.locator('#company_url').evaluate("el=>el.value='https://synthetic.example'")
    page.locator('#nextStep').click()
    assert page.locator('#formError').inner_text()=='We could not send this request. Please contact Jonathan by email.'
-   assert page.locator('#auditVerification').get_attribute('aria-hidden')=='true'
+   assert page.locator('.bot-trap').get_attribute('aria-hidden')=='true'
+   page.unroute('**/audit/')
    page.unroute('**/assets/audit-core.js*')
    page.unroute('**/assets/audit.js*')
    page.goto(base+'/audit/')
    first_step()
-   page.locator('#company_url').evaluate("el=>el.value='https://synthetic.example'")
+   assert page.locator('#company_url').get_attribute('type')=='checkbox'
+   assert page.evaluate("new FormData(document.querySelector('#auditForm')).has('company_url')")==False
+   page.locator('#company_url').evaluate('el=>el.checked=true')
    page.locator('#nextStep').click()
    trap=page.locator('#company_url')
    assert trap.is_visible() and trap.evaluate('el=>el===document.activeElement')
    metrics=trap.evaluate('el=>({height:el.getBoundingClientRect().height,font:getComputedStyle(el).fontSize})')
-   assert metrics['height']>=48 and metrics['font']=='16px'
+   assert metrics['height']>=24
+   assert page.locator('label[for=company_url]').evaluate('el=>el.getBoundingClientRect().height')>=48
    assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
    page.screenshot(path=str(OUT/f'recovery-{width}.png'),full_page=True)
    # Keyboard edits the real input; production collect() reads native FormData.
-   trap.press('Meta+A');trap.press('Backspace')
-   assert trap.input_value()==''
+   trap.press('Space')
+   assert not trap.is_checked()
+   assert page.evaluate("new FormData(document.querySelector('#auditForm')).has('company_url')")==False
    assert page.locator('#company_name').input_value()=='QA TEST — local fake receiver only'
    page.locator('#nextStep').focus();page.keyboard.press('Enter')
    page.locator('input[name=q1_tools]').first.check()

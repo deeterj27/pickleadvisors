@@ -40,11 +40,11 @@ test('only a saved receipt can count as a confirmed lead',async()=>{
 test('network failure is not automatically retried',async()=>{let calls=0;await assert.rejects(core.send('https://example.org',valid,async()=>{calls++;throw new Error('offline');}));assert.equal(calls,1);});
 
 test('a populated verification field offers recovery without losing answers or bypassing the check',()=>{
- const autofilled={...valid,company_url:'https://example.org'};
+ const autofilled={...valid,company_url:'flagged'};
  for (const step of [0,1,2]) {
    const failure=core.validate(autofilled,step);
    assert.equal(failure.field,'company_url');
-   assert.match(failure.message,/clear the verification field/);
+   assert.match(failure.message,/uncheck the verification box/);
    assert.equal(core.validate({...autofilled,company_url:''},step),null);
  }
  assert.equal(autofilled.company_name,valid.company_name);

@@ -18,7 +18,7 @@ test('simulated DOM handler reveals the populated trap, focuses it, and continue
  form.querySelectorAll=q=>q==='.audit-step'?steps:[];
  ids.auditVerification.classes.add('bot-trap');ids.auditVerification.setAttribute('aria-hidden','true');
  form.elements.company_url.setAttribute('tabindex','-1');
- const values={contact_name:'Synthetic QA',company_name:'QA brand',email:'qa@example.org',q3_bottleneck_other:'Synthetic test only',company_url:'https://example.org'};
+ const values={contact_name:'Synthetic QA',company_name:'QA brand',email:'qa@example.org',q3_bottleneck_other:'Synthetic test only',company_url:'flagged'};
  class FormData {entries(){return Object.entries(values);}getAll(){return [];}}
  vm.runInNewContext(fs.readFileSync(require.resolve('../assets/audit.js'),'utf8'),{document:{getElementById:id=>ids[id]},window:{PickleAudit:core},crypto:{randomUUID:()=> 'qa-reference-123456789'},Element,FormData});
  ids.nextStep.events.click();
@@ -28,7 +28,7 @@ test('simulated DOM handler reveals the populated trap, focuses it, and continue
  assert.equal(form.elements.company_url.getAttribute('tabindex'),undefined);
  assert.equal(form.elements.company_url.focused,true);
  assert.equal(form.elements.company_url.getAttribute('aria-invalid'),'true');
- assert.match(ids.formError.textContent,/clear the verification field/);
+ assert.match(ids.formError.textContent,/uncheck the verification box/);
  assert.equal(values.company_name,'QA brand');
  values.company_url='';
  ids.nextStep.events.click();
