@@ -29,7 +29,14 @@
     errorBox.textContent = error.message; errorBox.hidden = false;
     const field = form.elements.namedItem(error.field);
     const focus = field instanceof Element ? field : field?.[0];
-    if (focus && error.field !== 'company_url') {
+    if (focus && error.field === 'company_url') {
+      const verification = document.getElementById('auditVerification');
+      verification.classList.remove('bot-trap');
+      verification.classList.add('form-message');
+      verification.removeAttribute('aria-hidden');
+      focus.removeAttribute('tabindex');
+    }
+    if (focus) {
       focus.setAttribute('aria-invalid','true');
       focus.setAttribute('aria-describedby',((focus.getAttribute('aria-describedby') || '') + ' formError').trim());
       focus.focus();

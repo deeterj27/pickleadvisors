@@ -34,7 +34,7 @@
       if (personalEmail(data.email) && !websiteHost(data.website)) return error('website','website_required','Please include your company website when using a personal email address.');
       if (data.website && !websiteHost(data.website)) return error('website','website','Please enter a valid company website, such as yourcompany.com.');
     }
-    if (data.company_url) return error('company_url','blocked','We could not send this request. Please contact Jonathan by email.');
+    if (data.company_url) return error('company_url','blocked','Please clear the verification field below, then continue. Your other answers will stay in place.');
     return null;
   }
   function payload(data) {
