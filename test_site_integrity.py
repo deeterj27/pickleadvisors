@@ -60,3 +60,16 @@ class SiteIntegrity(unittest.TestCase):
   from refresh_newsletter import fetch
   for url in ['http://substackcdn.com/image','https://example.org/image','https://127.0.0.1/image']:
    with self.assertRaises(ValueError):fetch(url,{'substackcdn.com'},10)
+ def test_mixed_newsletter_feed_uses_three_written_stories(self):
+  import sys
+  sys.path.insert(0, str(ROOT/'scripts'))
+  from refresh_newsletter import PUBLICATION_HOSTS, require_host, written_stories
+  require_host('https://www.deetseatsmedia.com/feed', PUBLICATION_HOSTS)
+  with self.assertRaises(ValueError):
+   require_host('https://www.deetseatsmedia.com.example.org/feed', PUBLICATION_HOSTS)
+  types = ['audio/mpeg', 'image/jpeg', 'video/mp4', 'image/jpeg', 'image/png', 'image/jpeg']
+  entries = ''.join(f'<item><title>{i}</title><enclosure type="{kind}"/></item>' for i, kind in enumerate(types))
+  items = written_stories(f'<rss><channel>{entries}</channel></rss>')
+  self.assertEqual([item.findtext('title') for item in items], ['1', '3', '4'])
+  with self.assertRaises(ValueError):
+   written_stories('<rss><channel><item><enclosure type="audio/mpeg"/></item></channel></rss>')

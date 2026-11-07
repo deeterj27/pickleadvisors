@@ -135,7 +135,7 @@ class PickleEcosystemSiteTest(unittest.TestCase):
     def test_media_page_uses_real_formats_and_boundary_language(self):
         text = visible_text(PAGES["home"])
         for phrase in [
-            "@deetseatsnyc", "the deeter digest", "unpackaged goods",
+            "@deetseatsnyc", "the deets", "unpackaged goods",
             "tiktok", "the moves worth knowing",
             "media partnerships", "editorial",
         ]:

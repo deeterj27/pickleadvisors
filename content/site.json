@@ -27,8 +27,8 @@
   ],
   "social": [
     {
-      "label": "The Deeter Digest",
-      "href": "https://deetseatsnyc.substack.com/"
+      "label": "The Deets",
+      "href": "https://www.deetseatsmedia.com/"
     },
     {
       "label": "Instagram",
@@ -55,7 +55,7 @@
       "href": "https://podcasts.apple.com/us/podcast/unpackaged-goods/id1841218206"
     }
   ],
-  "newsletter_feed": "https://deetseatsnyc.substack.com/feed",
+  "newsletter_feed": "https://www.deetseatsmedia.com/feed",
   "audit_endpoint": "https://script.google.com/macros/s/AKfycbx_gYGN8L6CZA0NmTtDWb5_VLmvAkkZFWyNV6rtgieq78FMXV3QF5YYsq0FWgWiK9Al/exec",
   "blocked_emails": [
     "callum_rafferty174@gmail.com"

@@ -114,7 +114,7 @@ class PickleHomepageContentTest(unittest.TestCase):
             "https://www.instagram.com/deetseatsnyc/",
             "https://www.tiktok.com/@deetseatsnyc",
             "https://open.spotify.com/show/6moZEYjORSb5XZ7LVu8b3f",
-            "https://deetseatsnyc.substack.com/",
+            "https://www.deetseatsmedia.com/",
         ]:
             with self.subTest(destination=destination):
                 self.assertIn(destination, MEDIA_HTML)

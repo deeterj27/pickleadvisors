@@ -5,31 +5,51 @@ from datetime import timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 from urllib.parse import urlparse
-from urllib.request import Request, urlopen
+from urllib.request import HTTPRedirectHandler, Request, build_opener
 import xml.etree.ElementTree as ET
 from PIL import Image, ImageOps
 from build_site import ROOT, clean_text
 USER_AGENT='PickleAdvisors-Newsletter/1.0 (+https://pickleadvisors.com)'
+PUBLICATION_HOSTS = {'www.deetseatsmedia.com', 'deetseatsnyc.substack.com'}
+
+def require_host(url, hosts):
+ parsed = urlparse(url)
+ if parsed.scheme != 'https' or parsed.netloc not in hosts:
+  raise ValueError('Unapproved feed or image host')
+
 def fetch(url, hosts, limit):
- parsed=urlparse(url)
- if parsed.scheme!='https' or parsed.hostname not in hosts:raise ValueError('Unapproved feed or image host')
- with urlopen(Request(url,headers={'User-Agent':USER_AGENT}),timeout=25) as response:
-  final=urlparse(response.url)
-  if final.scheme!='https' or final.hostname not in hosts:raise ValueError('Unapproved redirect host')
+ class ApprovedRedirects(HTTPRedirectHandler):
+  def redirect_request(self, req, fp, code, msg, headers, newurl):
+   require_host(newurl, hosts)
+   return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+ require_host(url, hosts)
+ opener = build_opener(ApprovedRedirects())
+ with opener.open(Request(url, headers={'User-Agent': USER_AGENT}), timeout=25) as response:
   blob=response.read(limit+1)
  if len(blob)>limit:raise ValueError('Feed or image exceeds limit')
  return blob
 
+def written_stories(blob):
+ items = []
+ for item in ET.fromstring(blob).findall('./channel/item'):
+  enclosure = item.find('enclosure')
+  if enclosure is not None and enclosure.get('type', '').startswith(('audio/', 'video/')):
+   continue
+  items.append(item)
+  if len(items) == 3:
+   return items
+ raise ValueError('Feed does not contain three written stories')
+
 def refresh(feed_bytes=None):
  site=json.loads((ROOT/'content/site.json').read_text())
- blob=feed_bytes or fetch(site['newsletter_feed'],{'deetseatsnyc.substack.com'},5_000_000)
- feed=ET.fromstring(blob);items=feed.findall('./channel/item')[:3]
- if len(items)<3:raise ValueError('Feed does not contain three complete articles')
+ blob=feed_bytes or fetch(site['newsletter_feed'],PUBLICATION_HOSTS,5_000_000)
+ items=written_stories(blob)
  staged=[];articles=[]
  for item in items:
   title=clean_text(item.findtext('title') or '');url=item.findtext('link') or ''
-  parsed=urlparse(url)
-  if parsed.scheme!='https' or parsed.hostname!='deetseatsnyc.substack.com' or not parsed.path.startswith('/p/') or not title:raise ValueError('Invalid article')
+  require_host(url, PUBLICATION_HOSTS)
+  if not urlparse(url).path.startswith('/p/') or not title:raise ValueError('Invalid article')
   published=parsedate_to_datetime(item.findtext('pubDate')).astimezone(timezone.utc).date().isoformat()
   enclosure=item.find('enclosure')
   if enclosure is None:raise ValueError('Article image missing')
