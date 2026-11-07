@@ -16,10 +16,10 @@ class Page(HTMLParser):
   if tag=='nav':self.nav=None
 class HomeNavigation(unittest.TestCase):
  def test_all_primary_navigation_targets_home_sections_from_every_route(self):
-  expected=['/#advisory','/#media','/#jonathan','/#capital','/#audit']
+  expected=['/#advisory','/#media','/#jonathan','/#capital','/audit/']
   home=Page((ROOT/'index.html').read_text())
   self.assertEqual([x['href'] for x in json.loads((ROOT/'content/site.json').read_text())['navigation']],expected)
-  for href in expected:self.assertEqual(home.ids[href.split('#')[1]]['tabindex'],'-1')
+  for href in expected[:-1]:self.assertEqual(home.ids[href.split('#')[1]]['tabindex'],'-1')
   for name in ['index.html','advisory/index.html','media/index.html','about/index.html','audit/index.html']:
    with self.subTest(page=name):
     navs=Page((ROOT/name).read_text()).navs

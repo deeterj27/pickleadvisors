@@ -66,7 +66,7 @@ def build(check=False):
  for name in ['home','advisory','media','about','audit']:
   route='/' if name=='home' else '/'+name+'/'
   context=dict(common)
-  context['navigation']=''.join(f'<a href="{esc(x["href"])}"'+(' class="nav-cta"' if x['href']=='/#audit' else '')+(' aria-current="page"' if x['href']==route else '')+f'>{esc(x["label"])}</a>' for x in site['navigation'])
+  context['navigation']=''.join(f'<a href="{esc(x["href"])}"'+(' class="nav-cta"' if x['href']=='/audit/' else '')+(' aria-current="page"' if x['href']==route else '')+f'>{esc(x["label"])}</a>' for x in site['navigation'])
   context['header']=render((ROOT/'templates/partials/header.html').read_text(),context)
   body=render((ROOT/f'templates/pages/{name}.html').read_text(),context)
   body='\n'.join(line.rstrip() for line in body.splitlines())+'\n'
