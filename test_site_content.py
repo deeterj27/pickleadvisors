@@ -42,11 +42,11 @@ class LinkParser(HTMLParser):
 class PickleHomepageContentTest(unittest.TestCase):
     def test_hero_leads_with_buyer_outcome_and_explains_all_three_businesses(self):
         for phrase in [
-            "build a stronger consumer brand, without more chaos",
-            "practical ai workflows",
+            "bookkeeping and finance operations for consumer brands",
+            "ai-assisted workflows",
             "built for cpg",
             "independent publication",
-            "an operator's eye",
+            "sat in the finance seat",
             "operations + market",
         ]:
             with self.subTest(phrase=phrase):
@@ -83,7 +83,7 @@ class PickleHomepageContentTest(unittest.TestCase):
         parser = LinkParser()
         parser.feed(HOME_HTML)
         link_text = {link["text"].strip().lower().replace("’", "'") for link in parser.links}
-        for label in ["advisory", "pickle vc", "deet's eats", "ai audit"]:
+        for label in ["advisory", "pickle vc", "deet's eats", "finance consultation"]:
             self.assertIn(label, link_text)
         site_js = Path("assets/site.js").read_text()
         self.assertIn("scrollIntoView", site_js)
@@ -98,7 +98,7 @@ class PickleHomepageContentTest(unittest.TestCase):
         parser.feed(HOME_HTML)
         audit_links = [link for link in parser.links if link["href"] in ["/audit/", "#audit", "/#audit"]]
         self.assertGreaterEqual(len(audit_links), 3)
-        self.assertIn("start with the ai audit", HOME_TEXT)
+        self.assertIn("discuss your finance needs", HOME_TEXT)
         self.assertIn("read the market", HOME_TEXT)
 
     def test_three_businesses_are_full_homepage_sections_and_bounded(self):

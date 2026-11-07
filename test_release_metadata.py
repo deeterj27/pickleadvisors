@@ -61,35 +61,35 @@ class ReleaseMetadataTest(unittest.TestCase):
             "og:type": "website",
             "og:site_name": "Pickle Advisors",
             "og:url": "https://pickleadvisors.com/",
-            "og:image": "https://pickleadvisors.com/assets/social/home-20260922.png",
+            "og:image": "https://pickleadvisors.com/assets/social/home-20261107.png",
             "og:image:width": "1200",
             "og:image:height": "630",
             "twitter:card": "summary_large_image",
-            "twitter:image": "https://pickleadvisors.com/assets/social/home-20260922.png",
+            "twitter:image": "https://pickleadvisors.com/assets/social/home-20261107.png",
         }
         for key, value in expected.items():
             self.assertEqual(head.meta.get(key), value, key)
         for key in ["og:title", "og:description", "og:image:alt", "twitter:title", "twitter:description", "twitter:image:alt"]:
             self.assertTrue(head.meta.get(key), key)
-        self.assertEqual(head.meta["og:title"], "Pickle Advisors | AI Workflows & Advisory for CPG Brands")
-        self.assertEqual(head.meta["twitter:title"], "Pickle Advisors | AI Workflows & Advisory for CPG Brands")
+        self.assertEqual(head.meta["og:title"], "Pickle Advisors | Bookkeeping & Finance for Consumer Brands")
+        self.assertEqual(head.meta["twitter:title"], "Pickle Advisors | Bookkeeping & Finance for Consumer Brands")
         self.assertNotIn("operating system", head.meta["og:title"].lower())
         card_source = (ROOT / "assets/social/og-card.html").read_text()
         self.assertIn("Built for Consumer Brands", card_source)
         self.assertNotIn("Operating System", card_source)
         self.assertFalse((ROOT / "og-image-v2.png").exists())
         self.assertNotIn("three businesses built around", head.meta["og:title"].lower())
-        self.assertEqual(png_dimensions("assets/social/home-20260922.png"), (1200, 630))
+        self.assertEqual(png_dimensions("assets/social/home-20261107.png"), (1200, 630))
 
     def test_audit_has_its_own_social_card_and_canonical(self):
         head = parse_head("audit/index.html")
         self.assertEqual(head.meta["og:url"], "https://pickleadvisors.com/audit/")
-        self.assertEqual(head.meta["og:image"], "https://pickleadvisors.com/assets/social/audit-20260922.png")
-        self.assertEqual(head.meta["twitter:image"], "https://pickleadvisors.com/assets/social/audit-20260922.png")
+        self.assertEqual(head.meta["og:image"], "https://pickleadvisors.com/assets/social/audit-20261107.png")
+        self.assertEqual(head.meta["twitter:image"], "https://pickleadvisors.com/assets/social/audit-20261107.png")
         self.assertTrue(head.meta["og:image:alt"])
         canonical = [link for link in head.links if link.get("rel") == "canonical"]
         self.assertEqual(canonical[0]["href"], "https://pickleadvisors.com/audit/")
-        self.assertEqual(png_dimensions("assets/social/audit-20260922.png"), (1200, 630))
+        self.assertEqual(png_dimensions("assets/social/audit-20261107.png"), (1200, 630))
 
     def test_touch_icon_and_structured_data_are_valid(self):
         self.assertEqual(png_dimensions("apple-touch-icon.png"), (180, 180))

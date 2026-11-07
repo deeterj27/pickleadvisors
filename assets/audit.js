@@ -84,7 +84,7 @@
       completed=true;form.hidden=true;
       const thanks=document.getElementById('thankYou');thanks.hidden=false;
       document.getElementById('responseTitle').textContent='Your request is received.';
-      document.getElementById('responseDetail').textContent='Your AI audit is free. Implementation services are scoped and priced separately. Jonathan will review your answers and email next steps. If there is a fit, the next step is a free 30-minute fit call. A call has not been booked automatically. Reference: '+result.receiptId;
+      document.getElementById('responseDetail').textContent='Your introductory finance conversation is free. Bookkeeping and finance services are scoped and priced separately. Jonathan will review your answers and email next steps. If there is a fit, the next step is a free 30-minute fit call. A call has not been booked automatically. Reference: '+result.receiptId;
       track('generate_lead');thanks.focus();
     }catch(error){
       status.textContent='';

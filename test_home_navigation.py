@@ -25,6 +25,6 @@ class HomeNavigation(unittest.TestCase):
     navs=Page((ROOT/name).read_text()).navs
     self.assertEqual(navs[0],expected);self.assertEqual(navs[1],expected)
  def test_existing_intake_and_legacy_routes_survive(self):
-  self.assertIn('href="/audit/">Start the audit intake', (ROOT/'index.html').read_text())
+  self.assertIn('href="/audit/">Discuss your finance needs', (ROOT/'index.html').read_text())
   for route in ['advisory','media','about','audit','capital','resources']:
    self.assertTrue((ROOT/route/'index.html').exists())

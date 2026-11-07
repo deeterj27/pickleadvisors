@@ -54,7 +54,7 @@ def build(check=False):
  common['footer_navigation']=''.join(f'<a href="{esc(x["href"])}">{esc(x["label"])}</a>' for x in site['navigation'])
  common['social_links']=''.join(f'<a href="{esc(x["href"])}" target="_blank" rel="noopener">{esc(x["label"])}</a>' for x in site['social'])
  common['proof']=(ROOT/'templates/partials/proof.html').read_text()
- common['service_facts']='<section class="section service-facts"><div class="container"><span class="eyebrow">Working with Pickle</span><h2>A clear starting point.</h2><dl>'+''.join(f'<div><dt>{label}</dt><dd>{esc(facts[k])}</dd></div>' for k,label in [('audience','Who it is for'),('starting_point','How to start'),('audit_focus','What the audit covers'),('implementation','What implementation includes'),('boundaries','Clear boundaries')])+'</dl></div></section>'
+ common['service_facts']='<section class="section service-facts"><div class="container"><span class="eyebrow">Working with Pickle</span><h2>A clear starting point.</h2><dl>'+''.join(f'<div><dt>{label}</dt><dd>{esc(facts[k])}</dd></div>' for k,label in [('audience','Who it is for'),('starting_point','How to start'),('audit_focus','What we discuss'),('implementation','What support includes'),('boundaries','Clear boundaries')])+'</dl></div></section>'
  common['tool_choices']=choices('q1_tools','Which tools are involved?',audit['q1_tools'])
  common['channel_choices']=choices('q2_channels','Where do you sell?',audit['q2_channels'])
  common['revenue_choices']=''.join(f'<option value="{esc(v)}">{esc(v)}</option>' for v in audit['revenue_range'])

@@ -92,7 +92,7 @@ class PickleEcosystemSiteTest(unittest.TestCase):
 
     def test_homepage_names_the_full_ecosystem_and_primary_conversion(self):
         text = visible_text(PAGES["home"])
-        for phrase in ["build", "back", "cover", "advisory", "pickle vc", "deet's eats", "ai audit"]:
+        for phrase in ["build", "back", "cover", "advisory", "pickle vc", "deet's eats", "finance consultation"]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
         source = PAGES["home"].read_text()
@@ -110,9 +110,9 @@ class PickleEcosystemSiteTest(unittest.TestCase):
     def test_advisory_explains_installation_not_generic_strategy(self):
         text = visible_text(PAGES["home"])
         for phrase in [
-            "ai audit", "pdf", "email", "edi", "shopify", "faire", "amazon",
-            "skus", "case packs", "3pl", "freight", "invoices",
-            "payment follow-up", "human approval",
+            "finance consultation", "bookkeeping", "email", "reconciled", "shopify", "faire", "amazon",
+            "cash", "margin", "month-end", "freight", "invoices",
+            "receivables", "human review",
         ]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
