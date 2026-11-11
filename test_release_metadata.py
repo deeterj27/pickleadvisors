@@ -61,11 +61,11 @@ class ReleaseMetadataTest(unittest.TestCase):
             "og:type": "website",
             "og:site_name": "Pickle Advisors",
             "og:url": "https://pickleadvisors.com/",
-            "og:image": "https://pickleadvisors.com/assets/social/home-20261107.png",
+            "og:image": "https://pickleadvisors.com/assets/social/home-20261111.png",
             "og:image:width": "1200",
             "og:image:height": "630",
             "twitter:card": "summary_large_image",
-            "twitter:image": "https://pickleadvisors.com/assets/social/home-20261107.png",
+            "twitter:image": "https://pickleadvisors.com/assets/social/home-20261111.png",
         }
         for key, value in expected.items():
             self.assertEqual(head.meta.get(key), value, key)
@@ -79,7 +79,7 @@ class ReleaseMetadataTest(unittest.TestCase):
         self.assertNotIn("Operating System", card_source)
         self.assertFalse((ROOT / "og-image-v2.png").exists())
         self.assertNotIn("three businesses built around", head.meta["og:title"].lower())
-        self.assertEqual(png_dimensions("assets/social/home-20261107.png"), (1200, 630))
+        self.assertEqual(png_dimensions("assets/social/home-20261111.png"), (1200, 630))
 
     def test_audit_has_its_own_social_card_and_canonical(self):
         head = parse_head("audit/index.html")
